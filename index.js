@@ -64,9 +64,9 @@ var editor =
 	    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 	};
 	var qtk_1 = __webpack_require__(2);
-	var main_window_1 = __webpack_require__(168);
-	var view_modal_1 = __webpack_require__(172);
-	var iparticles_view_modal_1 = __webpack_require__(178);
+	var main_window_1 = __webpack_require__(166);
+	var view_modal_1 = __webpack_require__(170);
+	var iparticles_view_modal_1 = __webpack_require__(176);
 	var themeDataURL = "https://qtoolkit.github.io/demos/assets/theme/default/theme.json";
 	var ParticlesEditor = (function (_super) {
 	    __extends(ParticlesEditor, _super);
@@ -75,11 +75,11 @@ var editor =
 	    }
 	    ParticlesEditor.prototype.onReady = function () {
 	        var vp = this.getViewPort();
-	        var viewModal = iparticles_view_modal_1.IParticlesViewModalFactory.create(view_modal_1.ProtonViewModal.TYPE);
+	        var viewModal = iparticles_view_modal_1.ParticlesViewModalFactory.create(view_modal_1.ProtonViewModal.TYPE);
 	        this.mainWindow = main_window_1.MainWindow.create({ w: vp.w, h: vp.h, app: this, viewModal: viewModal });
 	    };
 	    ParticlesEditor.run = function () {
-	        var app = new ParticlesEditor("proton-editor");
+	        var app = new ParticlesEditor("particles-editor");
 	        app.init({ sysThemeDataURL: themeDataURL });
 	        app.run();
 	        return app;
@@ -111,142 +111,142 @@ var editor =
 	exports.Label = label_1.Label;
 	var emitter_1 = __webpack_require__(6);
 	exports.Emitter = emitter_1.Emitter;
-	var page_1 = __webpack_require__(89);
+	var page_1 = __webpack_require__(87);
 	exports.Page = page_1.Page;
 	var key_event_1 = __webpack_require__(18);
 	exports.KeyEvent = key_event_1.KeyEvent;
-	var view_port_1 = __webpack_require__(90);
+	var view_port_1 = __webpack_require__(88);
 	exports.ViewPort = view_port_1.ViewPort;
-	var pages_1 = __webpack_require__(91);
+	var pages_1 = __webpack_require__(89);
 	exports.Pages = pages_1.Pages;
-	var main_loop_1 = __webpack_require__(92);
+	var main_loop_1 = __webpack_require__(90);
 	exports.MainLoop = main_loop_1.MainLoop;
-	var image_1 = __webpack_require__(93);
+	var image_1 = __webpack_require__(91);
 	exports.Image = image_1.Image;
-	var group_1 = __webpack_require__(94);
+	var group_1 = __webpack_require__(92);
 	exports.Group = group_1.Group;
-	var dialog_1 = __webpack_require__(95);
+	var dialog_1 = __webpack_require__(93);
 	exports.Dialog = dialog_1.Dialog;
-	var button_1 = __webpack_require__(97);
+	var button_1 = __webpack_require__(95);
 	exports.Button = button_1.Button;
-	var slider_1 = __webpack_require__(98);
+	var slider_1 = __webpack_require__(96);
 	exports.Slider = slider_1.Slider;
-	var switch_1 = __webpack_require__(100);
+	var switch_1 = __webpack_require__(98);
 	exports.Switch = switch_1.Switch;
 	var matrix_stack_1 = __webpack_require__(24);
 	exports.MatrixStack = matrix_stack_1.MatrixStack;
-	var tab_page_1 = __webpack_require__(101);
+	var tab_page_1 = __webpack_require__(99);
 	exports.TabPage = tab_page_1.TabPage;
-	var rich_text_1 = __webpack_require__(102);
+	var rich_text_1 = __webpack_require__(100);
 	exports.RichText = rich_text_1.RichText;
-	var tab_button_1 = __webpack_require__(107);
+	var tab_button_1 = __webpack_require__(105);
 	exports.TabButton = tab_button_1.TabButton;
-	var tab_control_1 = __webpack_require__(111);
+	var tab_control_1 = __webpack_require__(109);
 	exports.TabControl = tab_control_1.TabControl;
 	var image_tile_1 = __webpack_require__(9);
 	exports.ImageDrawType = image_tile_1.ImageDrawType;
 	exports.ImageTile = image_tile_1.ImageTile;
-	var rich_text_edit_1 = __webpack_require__(113);
+	var rich_text_edit_1 = __webpack_require__(111);
 	exports.RichTextEdit = rich_text_edit_1.RichTextEdit;
-	var tab_button_group_1 = __webpack_require__(112);
+	var tab_button_group_1 = __webpack_require__(110);
 	exports.TabButtonGroup = tab_button_group_1.TabButtonGroup;
-	var combo_box_1 = __webpack_require__(114);
+	var combo_box_1 = __webpack_require__(112);
 	exports.ComboBox = combo_box_1.ComboBox;
 	exports.ComboBoxEditable = combo_box_1.ComboBoxEditable;
-	var grid_view_1 = __webpack_require__(119);
+	var grid_view_1 = __webpack_require__(117);
 	exports.GridView = grid_view_1.GridView;
-	var list_view_1 = __webpack_require__(115);
+	var list_view_1 = __webpack_require__(113);
 	exports.ListView = list_view_1.ListView;
-	var tree_item_1 = __webpack_require__(121);
+	var tree_item_1 = __webpack_require__(119);
 	exports.TreeItem = tree_item_1.TreeItem;
-	var tree_view_1 = __webpack_require__(122);
+	var tree_view_1 = __webpack_require__(120);
 	exports.TreeView = tree_view_1.TreeView;
-	var application_1 = __webpack_require__(124);
+	var application_1 = __webpack_require__(122);
 	exports.Application = application_1.Application;
-	var movable_1 = __webpack_require__(128);
+	var movable_1 = __webpack_require__(126);
 	exports.Movable = movable_1.Movable;
-	var theme_manager_1 = __webpack_require__(125);
+	var theme_manager_1 = __webpack_require__(123);
 	exports.ThemeManager = theme_manager_1.ThemeManager;
-	var draggable_1 = __webpack_require__(129);
+	var draggable_1 = __webpack_require__(127);
 	exports.Draggable = draggable_1.Draggable;
-	var droppable_1 = __webpack_require__(130);
+	var droppable_1 = __webpack_require__(128);
 	exports.Droppable = droppable_1.Droppable;
-	var resizable_1 = __webpack_require__(131);
+	var resizable_1 = __webpack_require__(129);
 	exports.Resizable = resizable_1.Resizable;
-	var menu_1 = __webpack_require__(132);
+	var menu_1 = __webpack_require__(130);
 	exports.Menu = menu_1.Menu;
 	exports.MenuItem = menu_1.MenuItem;
-	var radio_button_1 = __webpack_require__(109);
+	var radio_button_1 = __webpack_require__(107);
 	exports.RadioButton = radio_button_1.RadioButton;
-	var tree_item_data_1 = __webpack_require__(123);
+	var tree_item_data_1 = __webpack_require__(121);
 	exports.TreeItemData = tree_item_data_1.TreeItemData;
-	var check_button_1 = __webpack_require__(110);
+	var check_button_1 = __webpack_require__(108);
 	exports.CheckButton = check_button_1.CheckButton;
-	var window_normal_1 = __webpack_require__(133);
+	var window_normal_1 = __webpack_require__(131);
 	exports.WindowNormal = window_normal_1.WindowNormal;
 	var widget_factory_1 = __webpack_require__(25);
 	exports.WidgetFactory = widget_factory_1.WidgetFactory;
-	var menu_bar_1 = __webpack_require__(134);
+	var menu_bar_1 = __webpack_require__(132);
 	exports.MenuBar = menu_bar_1.MenuBar;
 	exports.MenuBarItem = menu_bar_1.MenuBarItem;
-	var color_tile_1 = __webpack_require__(136);
+	var color_tile_1 = __webpack_require__(134);
 	exports.ColorTile = color_tile_1.ColorTile;
 	exports.ColorLine = color_tile_1.ColorLine;
-	var list_item_1 = __webpack_require__(117);
+	var list_item_1 = __webpack_require__(115);
 	exports.ListItem = list_item_1.ListItem;
 	exports.ListItemStyle = list_item_1.ListItemStyle;
 	var graphics_1 = __webpack_require__(27);
 	exports.RoundType = graphics_1.RoundType;
 	exports.Graphics = graphics_1.Graphics;
-	var accordion_1 = __webpack_require__(137);
+	var accordion_1 = __webpack_require__(135);
 	exports.Accordion = accordion_1.Accordion;
-	var service_locator_1 = __webpack_require__(127);
+	var service_locator_1 = __webpack_require__(125);
 	exports.ServiceLocator = service_locator_1.ServiceLocator;
-	var ruler_1 = __webpack_require__(140);
+	var ruler_1 = __webpack_require__(138);
 	exports.VRuler = ruler_1.VRuler;
 	exports.HRuler = ruler_1.HRuler;
-	var title_content_1 = __webpack_require__(138);
+	var title_content_1 = __webpack_require__(136);
 	exports.TitleContent = title_content_1.TitleContent;
-	var title_label_1 = __webpack_require__(141);
+	var title_label_1 = __webpack_require__(139);
 	exports.TitleLabel = title_label_1.TitleLabel;
-	var title_range_1 = __webpack_require__(143);
+	var title_range_1 = __webpack_require__(141);
 	exports.TitleRange = title_range_1.TitleRange;
-	var title_vector_1 = __webpack_require__(145);
+	var title_vector_1 = __webpack_require__(143);
 	exports.TitleVector = title_vector_1.TitleVector;
-	var title_edit_1 = __webpack_require__(147);
+	var title_edit_1 = __webpack_require__(145);
 	exports.TitleEdit = title_edit_1.TitleEdit;
-	var title_slider_1 = __webpack_require__(148);
+	var title_slider_1 = __webpack_require__(146);
 	exports.TitleSlider = title_slider_1.TitleSlider;
-	var property_page_1 = __webpack_require__(149);
+	var property_page_1 = __webpack_require__(147);
 	exports.PropertyPage = property_page_1.PropertyPage;
-	var range_edit_1 = __webpack_require__(144);
+	var range_edit_1 = __webpack_require__(142);
 	exports.RangeEdit = range_edit_1.RangeEdit;
-	var vector_edit_1 = __webpack_require__(146);
+	var vector_edit_1 = __webpack_require__(144);
 	exports.VectorEdit = vector_edit_1.VectorEdit;
-	var choosable_edit_1 = __webpack_require__(155);
+	var choosable_edit_1 = __webpack_require__(153);
 	exports.ChoosableEdit = choosable_edit_1.ChoosableEdit;
-	var title_text_area_1 = __webpack_require__(151);
+	var title_text_area_1 = __webpack_require__(149);
 	exports.TitleTextArea = title_text_area_1.TitleTextArea;
-	var property_sheets_1 = __webpack_require__(156);
+	var property_sheets_1 = __webpack_require__(154);
 	exports.PropertySheets = property_sheets_1.PropertySheets;
-	var progress_bar_1 = __webpack_require__(99);
+	var progress_bar_1 = __webpack_require__(97);
 	exports.ProgressBarType = progress_bar_1.ProgressBarType;
 	exports.ProgressBar = progress_bar_1.ProgressBar;
-	var title_choosable_edit_1 = __webpack_require__(154);
+	var title_choosable_edit_1 = __webpack_require__(152);
 	exports.TitleChoosableEdit = title_choosable_edit_1.TitleChoosableEdit;
-	var dock_layouter_1 = __webpack_require__(157);
+	var dock_layouter_1 = __webpack_require__(155);
 	exports.DockLayouter = dock_layouter_1.DockLayouter;
 	exports.DockLayouterParam = dock_layouter_1.DockLayouterParam;
-	var grid_layouter_1 = __webpack_require__(120);
+	var grid_layouter_1 = __webpack_require__(118);
 	exports.GridLayouter = grid_layouter_1.GridLayouter;
 	exports.GridLayouterParam = grid_layouter_1.GridLayouterParam;
-	var list_layouter_1 = __webpack_require__(116);
+	var list_layouter_1 = __webpack_require__(114);
 	exports.ListLayouter = list_layouter_1.ListLayouter;
 	exports.ListLayouterParam = list_layouter_1.ListLayouterParam;
-	var simple_layouter_1 = __webpack_require__(118);
+	var simple_layouter_1 = __webpack_require__(116);
 	exports.SimpleLayouter = simple_layouter_1.SimpleLayouter;
 	exports.SimpleLayouterParam = simple_layouter_1.SimpleLayouterParam;
-	var linear_layouter_1 = __webpack_require__(135);
+	var linear_layouter_1 = __webpack_require__(133);
 	exports.LinearLayouter = linear_layouter_1.LinearLayouter;
 	exports.LinearLayouterParam = linear_layouter_1.LinearLayouterParam;
 	var widget_1 = __webpack_require__(21);
@@ -254,58 +254,58 @@ var editor =
 	exports.WidgetState = widget_1.WidgetState;
 	exports.WidgetMode = widget_1.WidgetMode;
 	exports.HitTestResult = widget_1.HitTestResult;
-	var consts_1 = __webpack_require__(108);
+	var consts_1 = __webpack_require__(106);
 	exports.Direction = consts_1.Direction;
 	exports.Align = consts_1.Align;
 	exports.AlignH = consts_1.AlignH;
 	exports.AlignV = consts_1.AlignV;
 	exports.Orientation = consts_1.Orientation;
 	exports.Services = consts_1.Services;
-	var title_combo_box_1 = __webpack_require__(153);
+	var title_combo_box_1 = __webpack_require__(151);
 	exports.TitleComboBox = title_combo_box_1.TitleComboBox;
 	exports.TitleComboBoxEditable = title_combo_box_1.TitleComboBoxEditable;
-	var message_box_1 = __webpack_require__(158);
+	var message_box_1 = __webpack_require__(156);
 	exports.ButtonOption = message_box_1.ButtonOption;
 	exports.ButtonsOptions = message_box_1.ButtonsOptions;
 	exports.TitleOptions = message_box_1.TitleOptions;
 	exports.MessageBox = message_box_1.MessageBox;
-	var scroll_view_1 = __webpack_require__(103);
+	var scroll_view_1 = __webpack_require__(101);
 	exports.ScrollerBarVisibility = scroll_view_1.ScrollerBarVisibility;
 	exports.ScrollBarStyle = scroll_view_1.ScrollBarStyle;
 	exports.ScrollView = scroll_view_1.ScrollView;
-	var device_info_1 = __webpack_require__(126);
+	var device_info_1 = __webpack_require__(124);
 	exports.DeviceInfo = device_info_1.DeviceInfo;
-	var view_modal_1 = __webpack_require__(159);
+	var view_modal_1 = __webpack_require__(157);
 	exports.ViewModal = view_modal_1.ViewModal;
-	var recyclable_creator_1 = __webpack_require__(86);
+	var recyclable_creator_1 = __webpack_require__(84);
 	exports.RecyclableCreator = recyclable_creator_1.RecyclableCreator;
-	var delegate_command_1 = __webpack_require__(164);
+	var delegate_command_1 = __webpack_require__(162);
 	exports.DelegateCommand = delegate_command_1.DelegateCommand;
-	var collection_view_modal_1 = __webpack_require__(165);
+	var collection_view_modal_1 = __webpack_require__(163);
 	exports.CollectionViewModal = collection_view_modal_1.CollectionViewModal;
-	var delegate_value_converter_1 = __webpack_require__(166);
+	var delegate_value_converter_1 = __webpack_require__(164);
 	exports.DelegateValueConverter = delegate_value_converter_1.DelegateValueConverter;
-	var ivalidation_rule_1 = __webpack_require__(163);
+	var ivalidation_rule_1 = __webpack_require__(161);
 	exports.ValidationResult = ivalidation_rule_1.ValidationResult;
-	var delegate_validation_rule_1 = __webpack_require__(167);
+	var delegate_validation_rule_1 = __webpack_require__(165);
 	exports.DelegateValidationRule = delegate_validation_rule_1.DelegateValidationRule;
-	var binding_rule_1 = __webpack_require__(83);
+	var binding_rule_1 = __webpack_require__(81);
 	exports.BindingRule = binding_rule_1.BindingRule;
 	exports.BindingDataSource = binding_rule_1.BindingDataSource;
 	exports.BindingCommandSource = binding_rule_1.BindingCommandSource;
 	exports.BindingRuleItem = binding_rule_1.BindingRuleItem;
-	var props_desc_1 = __webpack_require__(152);
+	var props_desc_1 = __webpack_require__(150);
 	exports.PagePropsDesc = props_desc_1.PagePropsDesc;
 	exports.PropsDesc = props_desc_1.PropsDesc;
 	exports.PropDesc = props_desc_1.PropDesc;
 	exports.NumberPropDesc = props_desc_1.NumberPropDesc;
 	exports.SliderPropDesc = props_desc_1.SliderPropDesc;
-	var props_desc_2 = __webpack_require__(152);
+	var props_desc_2 = __webpack_require__(150);
 	exports.TextPropDesc = props_desc_2.TextPropDesc;
 	exports.ReadonlyTextPropDesc = props_desc_2.ReadonlyTextPropDesc;
 	exports.OptionsPropDesc = props_desc_2.OptionsPropDesc;
 	exports.RangePropDesc = props_desc_2.RangePropDesc;
-	var props_desc_3 = __webpack_require__(152);
+	var props_desc_3 = __webpack_require__(150);
 	exports.Vector2PropDesc = props_desc_3.Vector2PropDesc;
 	exports.Vector3PropDesc = props_desc_3.Vector3PropDesc;
 	exports.LinePropDesc = props_desc_3.LinePropDesc;
@@ -2824,25 +2824,40 @@ var editor =
 	var cachedSetTimeout;
 	var cachedClearTimeout;
 
+	function defaultSetTimout() {
+	    throw new Error('setTimeout has not been defined');
+	}
+	function defaultClearTimeout () {
+	    throw new Error('clearTimeout has not been defined');
+	}
 	(function () {
 	    try {
-	        cachedSetTimeout = setTimeout;
-	    } catch (e) {
-	        cachedSetTimeout = function () {
-	            throw new Error('setTimeout is not defined');
+	        if (typeof setTimeout === 'function') {
+	            cachedSetTimeout = setTimeout;
+	        } else {
+	            cachedSetTimeout = defaultSetTimout;
 	        }
+	    } catch (e) {
+	        cachedSetTimeout = defaultSetTimout;
 	    }
 	    try {
-	        cachedClearTimeout = clearTimeout;
-	    } catch (e) {
-	        cachedClearTimeout = function () {
-	            throw new Error('clearTimeout is not defined');
+	        if (typeof clearTimeout === 'function') {
+	            cachedClearTimeout = clearTimeout;
+	        } else {
+	            cachedClearTimeout = defaultClearTimeout;
 	        }
+	    } catch (e) {
+	        cachedClearTimeout = defaultClearTimeout;
 	    }
 	} ())
 	function runTimeout(fun) {
 	    if (cachedSetTimeout === setTimeout) {
 	        //normal enviroments in sane situations
+	        return setTimeout(fun, 0);
+	    }
+	    // if setTimeout wasn't available but was latter defined
+	    if ((cachedSetTimeout === defaultSetTimout || !cachedSetTimeout) && setTimeout) {
+	        cachedSetTimeout = setTimeout;
 	        return setTimeout(fun, 0);
 	    }
 	    try {
@@ -2863,6 +2878,11 @@ var editor =
 	function runClearTimeout(marker) {
 	    if (cachedClearTimeout === clearTimeout) {
 	        //normal enviroments in sane situations
+	        return clearTimeout(marker);
+	    }
+	    // if clearTimeout wasn't available but was latter defined
+	    if ((cachedClearTimeout === defaultClearTimeout || !cachedClearTimeout) && clearTimeout) {
+	        cachedClearTimeout = clearTimeout;
 	        return clearTimeout(marker);
 	    }
 	    try {
@@ -4115,11 +4135,11 @@ var editor =
 	var point_1 = __webpack_require__(4);
 	var label_1 = __webpack_require__(20);
 	var Events = __webpack_require__(8);
-	var html_edit_1 = __webpack_require__(87);
+	var html_edit_1 = __webpack_require__(85);
 	var widget_1 = __webpack_require__(21);
 	var widget_factory_1 = __webpack_require__(25);
 	var graphics_1 = __webpack_require__(27);
-	var recyclable_creator_1 = __webpack_require__(86);
+	var recyclable_creator_1 = __webpack_require__(84);
 	/**
 	 * 编辑器。multiLineMode决定是多行编辑器还是单行编辑器。
 	 */
@@ -4332,7 +4352,7 @@ var editor =
 	var widget_1 = __webpack_require__(21);
 	var graphics_1 = __webpack_require__(27);
 	var widget_factory_1 = __webpack_require__(25);
-	var recyclable_creator_1 = __webpack_require__(86);
+	var recyclable_creator_1 = __webpack_require__(84);
 	/**
 	 * 文本控件。
 	 */
@@ -4457,12 +4477,12 @@ var editor =
 	var matrix_stack_1 = __webpack_require__(24);
 	var widget_factory_1 = __webpack_require__(25);
 	var graphics_1 = __webpack_require__(27);
-	var dirty_rect_context_1 = __webpack_require__(80);
+	var dirty_rect_context_1 = __webpack_require__(78);
 	var image_tile_1 = __webpack_require__(9);
-	var behavior_1 = __webpack_require__(81);
-	var layouter_1 = __webpack_require__(82);
-	var binding_rule_1 = __webpack_require__(83);
-	var iview_modal_1 = __webpack_require__(85);
+	var behavior_1 = __webpack_require__(79);
+	var layouter_1 = __webpack_require__(80);
+	var binding_rule_1 = __webpack_require__(81);
+	var iview_modal_1 = __webpack_require__(83);
 	(function (WidgetMode) {
 	    WidgetMode[WidgetMode["RUNTIME"] = 0] = "RUNTIME";
 	    WidgetMode[WidgetMode["DESIGN"] = 1] = "DESIGN";
@@ -10934,10 +10954,10 @@ var editor =
 
 	var Stream = __webpack_require__(50).Stream,
 	    util = __webpack_require__(71),
-	    TokenType = __webpack_require__(74),
-	    BreakType = __webpack_require__(75),
-	    tokenizer = __webpack_require__(76),
-	    LineBreak = __webpack_require__(78);
+	    TokenType = __webpack_require__(73),
+	    BreakType = __webpack_require__(74),
+	    tokenizer = __webpack_require__(75),
+	    LineBreak = __webpack_require__(77);
 
 	function TokenizerStream() {
 	    Stream.call(this);
@@ -12467,9 +12487,6 @@ var editor =
 	exports.Buffer = Buffer
 	exports.SlowBuffer = SlowBuffer
 	exports.INSPECT_MAX_BYTES = 50
-	Buffer.poolSize = 8192 // not used by this implementation
-
-	var rootParent = {}
 
 	/**
 	 * If `Buffer.TYPED_ARRAY_SUPPORT`:
@@ -12487,9 +12504,6 @@ var editor =
 	 *   - Firefox 4-29 lacks support for adding new properties to `Uint8Array` instances,
 	 *     See: https://bugzilla.mozilla.org/show_bug.cgi?id=695438.
 	 *
-	 *   - Safari 5-7 lacks support for changing the `Object.prototype.constructor` property
-	 *     on objects.
-	 *
 	 *   - Chrome 9-10 is missing the `TypedArray.prototype.subarray` function.
 	 *
 	 *   - IE10 has a broken `TypedArray.prototype.subarray` function which returns arrays of
@@ -12502,14 +12516,16 @@ var editor =
 	  ? global.TYPED_ARRAY_SUPPORT
 	  : typedArraySupport()
 
+	/*
+	 * Export kMaxLength after typed array support is determined.
+	 */
+	exports.kMaxLength = kMaxLength()
+
 	function typedArraySupport () {
-	  function Bar () {}
 	  try {
 	    var arr = new Uint8Array(1)
-	    arr.foo = function () { return 42 }
-	    arr.constructor = Bar
+	    arr.__proto__ = {__proto__: Uint8Array.prototype, foo: function () { return 42 }}
 	    return arr.foo() === 42 && // typed array instances can be augmented
-	        arr.constructor === Bar && // constructor can be set
 	        typeof arr.subarray === 'function' && // chrome 9-10 lack `subarray`
 	        arr.subarray(1, 1).byteLength === 0 // ie10 has broken `subarray`
 	  } catch (e) {
@@ -12523,184 +12539,252 @@ var editor =
 	    : 0x3fffffff
 	}
 
-	/**
-	 * Class: Buffer
-	 * =============
-	 *
-	 * The Buffer constructor returns instances of `Uint8Array` that are augmented
-	 * with function properties for all the node `Buffer` API functions. We use
-	 * `Uint8Array` so that square bracket notation works as expected -- it returns
-	 * a single octet.
-	 *
-	 * By augmenting the instances, we can avoid modifying the `Uint8Array`
-	 * prototype.
-	 */
-	function Buffer (arg) {
-	  if (!(this instanceof Buffer)) {
-	    // Avoid going through an ArgumentsAdaptorTrampoline in the common case.
-	    if (arguments.length > 1) return new Buffer(arg, arguments[1])
-	    return new Buffer(arg)
+	function createBuffer (that, length) {
+	  if (kMaxLength() < length) {
+	    throw new RangeError('Invalid typed array length')
+	  }
+	  if (Buffer.TYPED_ARRAY_SUPPORT) {
+	    // Return an augmented `Uint8Array` instance, for best performance
+	    that = new Uint8Array(length)
+	    that.__proto__ = Buffer.prototype
+	  } else {
+	    // Fallback: Return an object instance of the Buffer class
+	    if (that === null) {
+	      that = new Buffer(length)
+	    }
+	    that.length = length
 	  }
 
-	  if (!Buffer.TYPED_ARRAY_SUPPORT) {
-	    this.length = 0
-	    this.parent = undefined
+	  return that
+	}
+
+	/**
+	 * The Buffer constructor returns instances of `Uint8Array` that have their
+	 * prototype changed to `Buffer.prototype`. Furthermore, `Buffer` is a subclass of
+	 * `Uint8Array`, so the returned instances will have all the node `Buffer` methods
+	 * and the `Uint8Array` methods. Square bracket notation works as expected -- it
+	 * returns a single octet.
+	 *
+	 * The `Uint8Array` prototype remains unmodified.
+	 */
+
+	function Buffer (arg, encodingOrOffset, length) {
+	  if (!Buffer.TYPED_ARRAY_SUPPORT && !(this instanceof Buffer)) {
+	    return new Buffer(arg, encodingOrOffset, length)
 	  }
 
 	  // Common case.
 	  if (typeof arg === 'number') {
-	    return fromNumber(this, arg)
+	    if (typeof encodingOrOffset === 'string') {
+	      throw new Error(
+	        'If encoding is specified then the first argument must be a string'
+	      )
+	    }
+	    return allocUnsafe(this, arg)
 	  }
-
-	  // Slightly less common case.
-	  if (typeof arg === 'string') {
-	    return fromString(this, arg, arguments.length > 1 ? arguments[1] : 'utf8')
-	  }
-
-	  // Unusual.
-	  return fromObject(this, arg)
+	  return from(this, arg, encodingOrOffset, length)
 	}
 
-	function fromNumber (that, length) {
-	  that = allocate(that, length < 0 ? 0 : checked(length) | 0)
+	Buffer.poolSize = 8192 // not used by this implementation
+
+	// TODO: Legacy, not needed anymore. Remove in next major version.
+	Buffer._augment = function (arr) {
+	  arr.__proto__ = Buffer.prototype
+	  return arr
+	}
+
+	function from (that, value, encodingOrOffset, length) {
+	  if (typeof value === 'number') {
+	    throw new TypeError('"value" argument must not be a number')
+	  }
+
+	  if (typeof ArrayBuffer !== 'undefined' && value instanceof ArrayBuffer) {
+	    return fromArrayBuffer(that, value, encodingOrOffset, length)
+	  }
+
+	  if (typeof value === 'string') {
+	    return fromString(that, value, encodingOrOffset)
+	  }
+
+	  return fromObject(that, value)
+	}
+
+	/**
+	 * Functionally equivalent to Buffer(arg, encoding) but throws a TypeError
+	 * if value is a number.
+	 * Buffer.from(str[, encoding])
+	 * Buffer.from(array)
+	 * Buffer.from(buffer)
+	 * Buffer.from(arrayBuffer[, byteOffset[, length]])
+	 **/
+	Buffer.from = function (value, encodingOrOffset, length) {
+	  return from(null, value, encodingOrOffset, length)
+	}
+
+	if (Buffer.TYPED_ARRAY_SUPPORT) {
+	  Buffer.prototype.__proto__ = Uint8Array.prototype
+	  Buffer.__proto__ = Uint8Array
+	  if (typeof Symbol !== 'undefined' && Symbol.species &&
+	      Buffer[Symbol.species] === Buffer) {
+	    // Fix subarray() in ES2016. See: https://github.com/feross/buffer/pull/97
+	    Object.defineProperty(Buffer, Symbol.species, {
+	      value: null,
+	      configurable: true
+	    })
+	  }
+	}
+
+	function assertSize (size) {
+	  if (typeof size !== 'number') {
+	    throw new TypeError('"size" argument must be a number')
+	  } else if (size < 0) {
+	    throw new RangeError('"size" argument must not be negative')
+	  }
+	}
+
+	function alloc (that, size, fill, encoding) {
+	  assertSize(size)
+	  if (size <= 0) {
+	    return createBuffer(that, size)
+	  }
+	  if (fill !== undefined) {
+	    // Only pay attention to encoding if it's a string. This
+	    // prevents accidentally sending in a number that would
+	    // be interpretted as a start offset.
+	    return typeof encoding === 'string'
+	      ? createBuffer(that, size).fill(fill, encoding)
+	      : createBuffer(that, size).fill(fill)
+	  }
+	  return createBuffer(that, size)
+	}
+
+	/**
+	 * Creates a new filled Buffer instance.
+	 * alloc(size[, fill[, encoding]])
+	 **/
+	Buffer.alloc = function (size, fill, encoding) {
+	  return alloc(null, size, fill, encoding)
+	}
+
+	function allocUnsafe (that, size) {
+	  assertSize(size)
+	  that = createBuffer(that, size < 0 ? 0 : checked(size) | 0)
 	  if (!Buffer.TYPED_ARRAY_SUPPORT) {
-	    for (var i = 0; i < length; i++) {
+	    for (var i = 0; i < size; ++i) {
 	      that[i] = 0
 	    }
 	  }
 	  return that
 	}
 
+	/**
+	 * Equivalent to Buffer(num), by default creates a non-zero-filled Buffer instance.
+	 * */
+	Buffer.allocUnsafe = function (size) {
+	  return allocUnsafe(null, size)
+	}
+	/**
+	 * Equivalent to SlowBuffer(num), by default creates a non-zero-filled Buffer instance.
+	 */
+	Buffer.allocUnsafeSlow = function (size) {
+	  return allocUnsafe(null, size)
+	}
+
 	function fromString (that, string, encoding) {
-	  if (typeof encoding !== 'string' || encoding === '') encoding = 'utf8'
+	  if (typeof encoding !== 'string' || encoding === '') {
+	    encoding = 'utf8'
+	  }
 
-	  // Assumption: byteLength() return value is always < kMaxLength.
+	  if (!Buffer.isEncoding(encoding)) {
+	    throw new TypeError('"encoding" must be a valid string encoding')
+	  }
+
 	  var length = byteLength(string, encoding) | 0
-	  that = allocate(that, length)
+	  that = createBuffer(that, length)
 
-	  that.write(string, encoding)
-	  return that
-	}
+	  var actual = that.write(string, encoding)
 
-	function fromObject (that, object) {
-	  if (Buffer.isBuffer(object)) return fromBuffer(that, object)
-
-	  if (isArray(object)) return fromArray(that, object)
-
-	  if (object == null) {
-	    throw new TypeError('must start with number, buffer, array or string')
+	  if (actual !== length) {
+	    // Writing a hex string, for example, that contains invalid characters will
+	    // cause everything after the first invalid character to be ignored. (e.g.
+	    // 'abxxcd' will be treated as 'ab')
+	    that = that.slice(0, actual)
 	  }
 
-	  if (typeof ArrayBuffer !== 'undefined') {
-	    if (object.buffer instanceof ArrayBuffer) {
-	      return fromTypedArray(that, object)
-	    }
-	    if (object instanceof ArrayBuffer) {
-	      return fromArrayBuffer(that, object)
-	    }
-	  }
-
-	  if (object.length) return fromArrayLike(that, object)
-
-	  return fromJsonObject(that, object)
-	}
-
-	function fromBuffer (that, buffer) {
-	  var length = checked(buffer.length) | 0
-	  that = allocate(that, length)
-	  buffer.copy(that, 0, 0, length)
-	  return that
-	}
-
-	function fromArray (that, array) {
-	  var length = checked(array.length) | 0
-	  that = allocate(that, length)
-	  for (var i = 0; i < length; i += 1) {
-	    that[i] = array[i] & 255
-	  }
-	  return that
-	}
-
-	// Duplicate of fromArray() to keep fromArray() monomorphic.
-	function fromTypedArray (that, array) {
-	  var length = checked(array.length) | 0
-	  that = allocate(that, length)
-	  // Truncating the elements is probably not what people expect from typed
-	  // arrays with BYTES_PER_ELEMENT > 1 but it's compatible with the behavior
-	  // of the old Buffer constructor.
-	  for (var i = 0; i < length; i += 1) {
-	    that[i] = array[i] & 255
-	  }
-	  return that
-	}
-
-	function fromArrayBuffer (that, array) {
-	  if (Buffer.TYPED_ARRAY_SUPPORT) {
-	    // Return an augmented `Uint8Array` instance, for best performance
-	    array.byteLength
-	    that = Buffer._augment(new Uint8Array(array))
-	  } else {
-	    // Fallback: Return an object instance of the Buffer class
-	    that = fromTypedArray(that, new Uint8Array(array))
-	  }
 	  return that
 	}
 
 	function fromArrayLike (that, array) {
-	  var length = checked(array.length) | 0
-	  that = allocate(that, length)
+	  var length = array.length < 0 ? 0 : checked(array.length) | 0
+	  that = createBuffer(that, length)
 	  for (var i = 0; i < length; i += 1) {
 	    that[i] = array[i] & 255
 	  }
 	  return that
 	}
 
-	// Deserialize { type: 'Buffer', data: [1,2,3,...] } into a Buffer object.
-	// Returns a zero-length buffer for inputs that don't conform to the spec.
-	function fromJsonObject (that, object) {
-	  var array
-	  var length = 0
+	function fromArrayBuffer (that, array, byteOffset, length) {
+	  array.byteLength // this throws if `array` is not a valid ArrayBuffer
 
-	  if (object.type === 'Buffer' && isArray(object.data)) {
-	    array = object.data
-	    length = checked(array.length) | 0
+	  if (byteOffset < 0 || array.byteLength < byteOffset) {
+	    throw new RangeError('\'offset\' is out of bounds')
 	  }
-	  that = allocate(that, length)
 
-	  for (var i = 0; i < length; i += 1) {
-	    that[i] = array[i] & 255
+	  if (array.byteLength < byteOffset + (length || 0)) {
+	    throw new RangeError('\'length\' is out of bounds')
 	  }
-	  return that
-	}
 
-	if (Buffer.TYPED_ARRAY_SUPPORT) {
-	  Buffer.prototype.__proto__ = Uint8Array.prototype
-	  Buffer.__proto__ = Uint8Array
-	} else {
-	  // pre-set for values that may exist in the future
-	  Buffer.prototype.length = undefined
-	  Buffer.prototype.parent = undefined
-	}
+	  if (byteOffset === undefined && length === undefined) {
+	    array = new Uint8Array(array)
+	  } else if (length === undefined) {
+	    array = new Uint8Array(array, byteOffset)
+	  } else {
+	    array = new Uint8Array(array, byteOffset, length)
+	  }
 
-	function allocate (that, length) {
 	  if (Buffer.TYPED_ARRAY_SUPPORT) {
 	    // Return an augmented `Uint8Array` instance, for best performance
-	    that = Buffer._augment(new Uint8Array(length))
+	    that = array
 	    that.__proto__ = Buffer.prototype
 	  } else {
 	    // Fallback: Return an object instance of the Buffer class
-	    that.length = length
-	    that._isBuffer = true
+	    that = fromArrayLike(that, array)
 	  }
-
-	  var fromPool = length !== 0 && length <= Buffer.poolSize >>> 1
-	  if (fromPool) that.parent = rootParent
-
 	  return that
 	}
 
+	function fromObject (that, obj) {
+	  if (Buffer.isBuffer(obj)) {
+	    var len = checked(obj.length) | 0
+	    that = createBuffer(that, len)
+
+	    if (that.length === 0) {
+	      return that
+	    }
+
+	    obj.copy(that, 0, 0, len)
+	    return that
+	  }
+
+	  if (obj) {
+	    if ((typeof ArrayBuffer !== 'undefined' &&
+	        obj.buffer instanceof ArrayBuffer) || 'length' in obj) {
+	      if (typeof obj.length !== 'number' || isnan(obj.length)) {
+	        return createBuffer(that, 0)
+	      }
+	      return fromArrayLike(that, obj)
+	    }
+
+	    if (obj.type === 'Buffer' && isArray(obj.data)) {
+	      return fromArrayLike(that, obj.data)
+	    }
+	  }
+
+	  throw new TypeError('First argument must be a string, Buffer, ArrayBuffer, Array, or array-like object.')
+	}
+
 	function checked (length) {
-	  // Note: cannot use `length < kMaxLength` here because that fails when
+	  // Note: cannot use `length < kMaxLength()` here because that fails when
 	  // length is NaN (which is otherwise coerced to zero.)
 	  if (length >= kMaxLength()) {
 	    throw new RangeError('Attempt to allocate Buffer larger than maximum ' +
@@ -12709,12 +12793,11 @@ var editor =
 	  return length | 0
 	}
 
-	function SlowBuffer (subject, encoding) {
-	  if (!(this instanceof SlowBuffer)) return new SlowBuffer(subject, encoding)
-
-	  var buf = new Buffer(subject, encoding)
-	  delete buf.parent
-	  return buf
+	function SlowBuffer (length) {
+	  if (+length != length) { // eslint-disable-line eqeqeq
+	    length = 0
+	  }
+	  return Buffer.alloc(+length)
 	}
 
 	Buffer.isBuffer = function isBuffer (b) {
@@ -12731,17 +12814,12 @@ var editor =
 	  var x = a.length
 	  var y = b.length
 
-	  var i = 0
-	  var len = Math.min(x, y)
-	  while (i < len) {
-	    if (a[i] !== b[i]) break
-
-	    ++i
-	  }
-
-	  if (i !== len) {
-	    x = a[i]
-	    y = b[i]
+	  for (var i = 0, len = Math.min(x, y); i < len; ++i) {
+	    if (a[i] !== b[i]) {
+	      x = a[i]
+	      y = b[i]
+	      break
+	    }
 	  }
 
 	  if (x < y) return -1
@@ -12755,9 +12833,9 @@ var editor =
 	    case 'utf8':
 	    case 'utf-8':
 	    case 'ascii':
+	    case 'latin1':
 	    case 'binary':
 	    case 'base64':
-	    case 'raw':
 	    case 'ucs2':
 	    case 'ucs-2':
 	    case 'utf16le':
@@ -12769,32 +12847,46 @@ var editor =
 	}
 
 	Buffer.concat = function concat (list, length) {
-	  if (!isArray(list)) throw new TypeError('list argument must be an Array of Buffers.')
+	  if (!isArray(list)) {
+	    throw new TypeError('"list" argument must be an Array of Buffers')
+	  }
 
 	  if (list.length === 0) {
-	    return new Buffer(0)
+	    return Buffer.alloc(0)
 	  }
 
 	  var i
 	  if (length === undefined) {
 	    length = 0
-	    for (i = 0; i < list.length; i++) {
+	    for (i = 0; i < list.length; ++i) {
 	      length += list[i].length
 	    }
 	  }
 
-	  var buf = new Buffer(length)
+	  var buffer = Buffer.allocUnsafe(length)
 	  var pos = 0
-	  for (i = 0; i < list.length; i++) {
-	    var item = list[i]
-	    item.copy(buf, pos)
-	    pos += item.length
+	  for (i = 0; i < list.length; ++i) {
+	    var buf = list[i]
+	    if (!Buffer.isBuffer(buf)) {
+	      throw new TypeError('"list" argument must be an Array of Buffers')
+	    }
+	    buf.copy(buffer, pos)
+	    pos += buf.length
 	  }
-	  return buf
+	  return buffer
 	}
 
 	function byteLength (string, encoding) {
-	  if (typeof string !== 'string') string = '' + string
+	  if (Buffer.isBuffer(string)) {
+	    return string.length
+	  }
+	  if (typeof ArrayBuffer !== 'undefined' && typeof ArrayBuffer.isView === 'function' &&
+	      (ArrayBuffer.isView(string) || string instanceof ArrayBuffer)) {
+	    return string.byteLength
+	  }
+	  if (typeof string !== 'string') {
+	    string = '' + string
+	  }
 
 	  var len = string.length
 	  if (len === 0) return 0
@@ -12804,13 +12896,12 @@ var editor =
 	  for (;;) {
 	    switch (encoding) {
 	      case 'ascii':
+	      case 'latin1':
 	      case 'binary':
-	      // Deprecated
-	      case 'raw':
-	      case 'raws':
 	        return len
 	      case 'utf8':
 	      case 'utf-8':
+	      case undefined:
 	        return utf8ToBytes(string).length
 	      case 'ucs2':
 	      case 'ucs-2':
@@ -12833,13 +12924,39 @@ var editor =
 	function slowToString (encoding, start, end) {
 	  var loweredCase = false
 
-	  start = start | 0
-	  end = end === undefined || end === Infinity ? this.length : end | 0
+	  // No need to verify that "this.length <= MAX_UINT32" since it's a read-only
+	  // property of a typed array.
+
+	  // This behaves neither like String nor Uint8Array in that we set start/end
+	  // to their upper/lower bounds if the value passed is out of range.
+	  // undefined is handled specially as per ECMA-262 6th Edition,
+	  // Section 13.3.3.7 Runtime Semantics: KeyedBindingInitialization.
+	  if (start === undefined || start < 0) {
+	    start = 0
+	  }
+	  // Return early if start > this.length. Done here to prevent potential uint32
+	  // coercion fail below.
+	  if (start > this.length) {
+	    return ''
+	  }
+
+	  if (end === undefined || end > this.length) {
+	    end = this.length
+	  }
+
+	  if (end <= 0) {
+	    return ''
+	  }
+
+	  // Force coersion to uint32. This will also coerce falsey/NaN values to 0.
+	  end >>>= 0
+	  start >>>= 0
+
+	  if (end <= start) {
+	    return ''
+	  }
 
 	  if (!encoding) encoding = 'utf8'
-	  if (start < 0) start = 0
-	  if (end > this.length) end = this.length
-	  if (end <= start) return ''
 
 	  while (true) {
 	    switch (encoding) {
@@ -12853,8 +12970,9 @@ var editor =
 	      case 'ascii':
 	        return asciiSlice(this, start, end)
 
+	      case 'latin1':
 	      case 'binary':
-	        return binarySlice(this, start, end)
+	        return latin1Slice(this, start, end)
 
 	      case 'base64':
 	        return base64Slice(this, start, end)
@@ -12871,6 +12989,53 @@ var editor =
 	        loweredCase = true
 	    }
 	  }
+	}
+
+	// The property is used by `Buffer.isBuffer` and `is-buffer` (in Safari 5-7) to detect
+	// Buffer instances.
+	Buffer.prototype._isBuffer = true
+
+	function swap (b, n, m) {
+	  var i = b[n]
+	  b[n] = b[m]
+	  b[m] = i
+	}
+
+	Buffer.prototype.swap16 = function swap16 () {
+	  var len = this.length
+	  if (len % 2 !== 0) {
+	    throw new RangeError('Buffer size must be a multiple of 16-bits')
+	  }
+	  for (var i = 0; i < len; i += 2) {
+	    swap(this, i, i + 1)
+	  }
+	  return this
+	}
+
+	Buffer.prototype.swap32 = function swap32 () {
+	  var len = this.length
+	  if (len % 4 !== 0) {
+	    throw new RangeError('Buffer size must be a multiple of 32-bits')
+	  }
+	  for (var i = 0; i < len; i += 4) {
+	    swap(this, i, i + 3)
+	    swap(this, i + 1, i + 2)
+	  }
+	  return this
+	}
+
+	Buffer.prototype.swap64 = function swap64 () {
+	  var len = this.length
+	  if (len % 8 !== 0) {
+	    throw new RangeError('Buffer size must be a multiple of 64-bits')
+	  }
+	  for (var i = 0; i < len; i += 8) {
+	    swap(this, i, i + 7)
+	    swap(this, i + 1, i + 6)
+	    swap(this, i + 2, i + 5)
+	    swap(this, i + 3, i + 4)
+	  }
+	  return this
 	}
 
 	Buffer.prototype.toString = function toString () {
@@ -12896,63 +13061,197 @@ var editor =
 	  return '<Buffer ' + str + '>'
 	}
 
-	Buffer.prototype.compare = function compare (b) {
-	  if (!Buffer.isBuffer(b)) throw new TypeError('Argument must be a Buffer')
-	  if (this === b) return 0
-	  return Buffer.compare(this, b)
+	Buffer.prototype.compare = function compare (target, start, end, thisStart, thisEnd) {
+	  if (!Buffer.isBuffer(target)) {
+	    throw new TypeError('Argument must be a Buffer')
+	  }
+
+	  if (start === undefined) {
+	    start = 0
+	  }
+	  if (end === undefined) {
+	    end = target ? target.length : 0
+	  }
+	  if (thisStart === undefined) {
+	    thisStart = 0
+	  }
+	  if (thisEnd === undefined) {
+	    thisEnd = this.length
+	  }
+
+	  if (start < 0 || end > target.length || thisStart < 0 || thisEnd > this.length) {
+	    throw new RangeError('out of range index')
+	  }
+
+	  if (thisStart >= thisEnd && start >= end) {
+	    return 0
+	  }
+	  if (thisStart >= thisEnd) {
+	    return -1
+	  }
+	  if (start >= end) {
+	    return 1
+	  }
+
+	  start >>>= 0
+	  end >>>= 0
+	  thisStart >>>= 0
+	  thisEnd >>>= 0
+
+	  if (this === target) return 0
+
+	  var x = thisEnd - thisStart
+	  var y = end - start
+	  var len = Math.min(x, y)
+
+	  var thisCopy = this.slice(thisStart, thisEnd)
+	  var targetCopy = target.slice(start, end)
+
+	  for (var i = 0; i < len; ++i) {
+	    if (thisCopy[i] !== targetCopy[i]) {
+	      x = thisCopy[i]
+	      y = targetCopy[i]
+	      break
+	    }
+	  }
+
+	  if (x < y) return -1
+	  if (y < x) return 1
+	  return 0
 	}
 
-	Buffer.prototype.indexOf = function indexOf (val, byteOffset) {
-	  if (byteOffset > 0x7fffffff) byteOffset = 0x7fffffff
-	  else if (byteOffset < -0x80000000) byteOffset = -0x80000000
-	  byteOffset >>= 0
+	// Finds either the first index of `val` in `buffer` at offset >= `byteOffset`,
+	// OR the last index of `val` in `buffer` at offset <= `byteOffset`.
+	//
+	// Arguments:
+	// - buffer - a Buffer to search
+	// - val - a string, Buffer, or number
+	// - byteOffset - an index into `buffer`; will be clamped to an int32
+	// - encoding - an optional encoding, relevant is val is a string
+	// - dir - true for indexOf, false for lastIndexOf
+	function bidirectionalIndexOf (buffer, val, byteOffset, encoding, dir) {
+	  // Empty buffer means no match
+	  if (buffer.length === 0) return -1
 
-	  if (this.length === 0) return -1
-	  if (byteOffset >= this.length) return -1
+	  // Normalize byteOffset
+	  if (typeof byteOffset === 'string') {
+	    encoding = byteOffset
+	    byteOffset = 0
+	  } else if (byteOffset > 0x7fffffff) {
+	    byteOffset = 0x7fffffff
+	  } else if (byteOffset < -0x80000000) {
+	    byteOffset = -0x80000000
+	  }
+	  byteOffset = +byteOffset  // Coerce to Number.
+	  if (isNaN(byteOffset)) {
+	    // byteOffset: it it's undefined, null, NaN, "foo", etc, search whole buffer
+	    byteOffset = dir ? 0 : (buffer.length - 1)
+	  }
 
-	  // Negative offsets start from the end of the buffer
-	  if (byteOffset < 0) byteOffset = Math.max(this.length + byteOffset, 0)
+	  // Normalize byteOffset: negative offsets start from the end of the buffer
+	  if (byteOffset < 0) byteOffset = buffer.length + byteOffset
+	  if (byteOffset >= buffer.length) {
+	    if (dir) return -1
+	    else byteOffset = buffer.length - 1
+	  } else if (byteOffset < 0) {
+	    if (dir) byteOffset = 0
+	    else return -1
+	  }
 
+	  // Normalize val
 	  if (typeof val === 'string') {
-	    if (val.length === 0) return -1 // special case: looking for empty string always fails
-	    return String.prototype.indexOf.call(this, val, byteOffset)
-	  }
-	  if (Buffer.isBuffer(val)) {
-	    return arrayIndexOf(this, val, byteOffset)
-	  }
-	  if (typeof val === 'number') {
-	    if (Buffer.TYPED_ARRAY_SUPPORT && Uint8Array.prototype.indexOf === 'function') {
-	      return Uint8Array.prototype.indexOf.call(this, val, byteOffset)
-	    }
-	    return arrayIndexOf(this, [ val ], byteOffset)
+	    val = Buffer.from(val, encoding)
 	  }
 
-	  function arrayIndexOf (arr, val, byteOffset) {
-	    var foundIndex = -1
-	    for (var i = 0; byteOffset + i < arr.length; i++) {
-	      if (arr[byteOffset + i] === val[foundIndex === -1 ? 0 : i - foundIndex]) {
-	        if (foundIndex === -1) foundIndex = i
-	        if (i - foundIndex + 1 === val.length) return byteOffset + foundIndex
+	  // Finally, search either indexOf (if dir is true) or lastIndexOf
+	  if (Buffer.isBuffer(val)) {
+	    // Special case: looking for empty string/buffer always fails
+	    if (val.length === 0) {
+	      return -1
+	    }
+	    return arrayIndexOf(buffer, val, byteOffset, encoding, dir)
+	  } else if (typeof val === 'number') {
+	    val = val & 0xFF // Search for a byte value [0-255]
+	    if (Buffer.TYPED_ARRAY_SUPPORT &&
+	        typeof Uint8Array.prototype.indexOf === 'function') {
+	      if (dir) {
+	        return Uint8Array.prototype.indexOf.call(buffer, val, byteOffset)
 	      } else {
-	        foundIndex = -1
+	        return Uint8Array.prototype.lastIndexOf.call(buffer, val, byteOffset)
 	      }
 	    }
-	    return -1
+	    return arrayIndexOf(buffer, [ val ], byteOffset, encoding, dir)
 	  }
 
 	  throw new TypeError('val must be string, number or Buffer')
 	}
 
-	// `get` is deprecated
-	Buffer.prototype.get = function get (offset) {
-	  console.log('.get() is deprecated. Access using array indexes instead.')
-	  return this.readUInt8(offset)
+	function arrayIndexOf (arr, val, byteOffset, encoding, dir) {
+	  var indexSize = 1
+	  var arrLength = arr.length
+	  var valLength = val.length
+
+	  if (encoding !== undefined) {
+	    encoding = String(encoding).toLowerCase()
+	    if (encoding === 'ucs2' || encoding === 'ucs-2' ||
+	        encoding === 'utf16le' || encoding === 'utf-16le') {
+	      if (arr.length < 2 || val.length < 2) {
+	        return -1
+	      }
+	      indexSize = 2
+	      arrLength /= 2
+	      valLength /= 2
+	      byteOffset /= 2
+	    }
+	  }
+
+	  function read (buf, i) {
+	    if (indexSize === 1) {
+	      return buf[i]
+	    } else {
+	      return buf.readUInt16BE(i * indexSize)
+	    }
+	  }
+
+	  var i
+	  if (dir) {
+	    var foundIndex = -1
+	    for (i = byteOffset; i < arrLength; i++) {
+	      if (read(arr, i) === read(val, foundIndex === -1 ? 0 : i - foundIndex)) {
+	        if (foundIndex === -1) foundIndex = i
+	        if (i - foundIndex + 1 === valLength) return foundIndex * indexSize
+	      } else {
+	        if (foundIndex !== -1) i -= i - foundIndex
+	        foundIndex = -1
+	      }
+	    }
+	  } else {
+	    if (byteOffset + valLength > arrLength) byteOffset = arrLength - valLength
+	    for (i = byteOffset; i >= 0; i--) {
+	      var found = true
+	      for (var j = 0; j < valLength; j++) {
+	        if (read(arr, i + j) !== read(val, j)) {
+	          found = false
+	          break
+	        }
+	      }
+	      if (found) return i
+	    }
+	  }
+
+	  return -1
 	}
 
-	// `set` is deprecated
-	Buffer.prototype.set = function set (v, offset) {
-	  console.log('.set() is deprecated. Access using array indexes instead.')
-	  return this.writeUInt8(v, offset)
+	Buffer.prototype.includes = function includes (val, byteOffset, encoding) {
+	  return this.indexOf(val, byteOffset, encoding) !== -1
+	}
+
+	Buffer.prototype.indexOf = function indexOf (val, byteOffset, encoding) {
+	  return bidirectionalIndexOf(this, val, byteOffset, encoding, true)
+	}
+
+	Buffer.prototype.lastIndexOf = function lastIndexOf (val, byteOffset, encoding) {
+	  return bidirectionalIndexOf(this, val, byteOffset, encoding, false)
 	}
 
 	function hexWrite (buf, string, offset, length) {
@@ -12969,14 +13268,14 @@ var editor =
 
 	  // must be an even number of digits
 	  var strLen = string.length
-	  if (strLen % 2 !== 0) throw new Error('Invalid hex string')
+	  if (strLen % 2 !== 0) throw new TypeError('Invalid hex string')
 
 	  if (length > strLen / 2) {
 	    length = strLen / 2
 	  }
-	  for (var i = 0; i < length; i++) {
+	  for (var i = 0; i < length; ++i) {
 	    var parsed = parseInt(string.substr(i * 2, 2), 16)
-	    if (isNaN(parsed)) throw new Error('Invalid hex string')
+	    if (isNaN(parsed)) return i
 	    buf[offset + i] = parsed
 	  }
 	  return i
@@ -12990,7 +13289,7 @@ var editor =
 	  return blitBuffer(asciiToBytes(string), buf, offset, length)
 	}
 
-	function binaryWrite (buf, string, offset, length) {
+	function latin1Write (buf, string, offset, length) {
 	  return asciiWrite(buf, string, offset, length)
 	}
 
@@ -13025,17 +13324,16 @@ var editor =
 	    }
 	  // legacy write(string, encoding, offset, length) - remove in v0.13
 	  } else {
-	    var swap = encoding
-	    encoding = offset
-	    offset = length | 0
-	    length = swap
+	    throw new Error(
+	      'Buffer.write(string, encoding, offset[, length]) is no longer supported'
+	    )
 	  }
 
 	  var remaining = this.length - offset
 	  if (length === undefined || length > remaining) length = remaining
 
 	  if ((string.length > 0 && (length < 0 || offset < 0)) || offset > this.length) {
-	    throw new RangeError('attempt to write outside buffer bounds')
+	    throw new RangeError('Attempt to write outside buffer bounds')
 	  }
 
 	  if (!encoding) encoding = 'utf8'
@@ -13053,8 +13351,9 @@ var editor =
 	      case 'ascii':
 	        return asciiWrite(this, string, offset, length)
 
+	      case 'latin1':
 	      case 'binary':
-	        return binaryWrite(this, string, offset, length)
+	        return latin1Write(this, string, offset, length)
 
 	      case 'base64':
 	        // Warning: maxLength not taken into account in base64Write
@@ -13189,17 +13488,17 @@ var editor =
 	  var ret = ''
 	  end = Math.min(buf.length, end)
 
-	  for (var i = start; i < end; i++) {
+	  for (var i = start; i < end; ++i) {
 	    ret += String.fromCharCode(buf[i] & 0x7F)
 	  }
 	  return ret
 	}
 
-	function binarySlice (buf, start, end) {
+	function latin1Slice (buf, start, end) {
 	  var ret = ''
 	  end = Math.min(buf.length, end)
 
-	  for (var i = start; i < end; i++) {
+	  for (var i = start; i < end; ++i) {
 	    ret += String.fromCharCode(buf[i])
 	  }
 	  return ret
@@ -13212,7 +13511,7 @@ var editor =
 	  if (!end || end < 0 || end > len) end = len
 
 	  var out = ''
-	  for (var i = start; i < end; i++) {
+	  for (var i = start; i < end; ++i) {
 	    out += toHex(buf[i])
 	  }
 	  return out
@@ -13250,16 +13549,15 @@ var editor =
 
 	  var newBuf
 	  if (Buffer.TYPED_ARRAY_SUPPORT) {
-	    newBuf = Buffer._augment(this.subarray(start, end))
+	    newBuf = this.subarray(start, end)
+	    newBuf.__proto__ = Buffer.prototype
 	  } else {
 	    var sliceLen = end - start
 	    newBuf = new Buffer(sliceLen, undefined)
-	    for (var i = 0; i < sliceLen; i++) {
+	    for (var i = 0; i < sliceLen; ++i) {
 	      newBuf[i] = this[i + start]
 	    }
 	  }
-
-	  if (newBuf.length) newBuf.parent = this.parent || this
 
 	  return newBuf
 	}
@@ -13429,16 +13727,19 @@ var editor =
 	}
 
 	function checkInt (buf, value, offset, ext, max, min) {
-	  if (!Buffer.isBuffer(buf)) throw new TypeError('buffer must be a Buffer instance')
-	  if (value > max || value < min) throw new RangeError('value is out of bounds')
-	  if (offset + ext > buf.length) throw new RangeError('index out of range')
+	  if (!Buffer.isBuffer(buf)) throw new TypeError('"buffer" argument must be a Buffer instance')
+	  if (value > max || value < min) throw new RangeError('"value" argument is out of bounds')
+	  if (offset + ext > buf.length) throw new RangeError('Index out of range')
 	}
 
 	Buffer.prototype.writeUIntLE = function writeUIntLE (value, offset, byteLength, noAssert) {
 	  value = +value
 	  offset = offset | 0
 	  byteLength = byteLength | 0
-	  if (!noAssert) checkInt(this, value, offset, byteLength, Math.pow(2, 8 * byteLength), 0)
+	  if (!noAssert) {
+	    var maxBytes = Math.pow(2, 8 * byteLength) - 1
+	    checkInt(this, value, offset, byteLength, maxBytes, 0)
+	  }
 
 	  var mul = 1
 	  var i = 0
@@ -13454,7 +13755,10 @@ var editor =
 	  value = +value
 	  offset = offset | 0
 	  byteLength = byteLength | 0
-	  if (!noAssert) checkInt(this, value, offset, byteLength, Math.pow(2, 8 * byteLength), 0)
+	  if (!noAssert) {
+	    var maxBytes = Math.pow(2, 8 * byteLength) - 1
+	    checkInt(this, value, offset, byteLength, maxBytes, 0)
+	  }
 
 	  var i = byteLength - 1
 	  var mul = 1
@@ -13477,7 +13781,7 @@ var editor =
 
 	function objectWriteUInt16 (buf, value, offset, littleEndian) {
 	  if (value < 0) value = 0xffff + value + 1
-	  for (var i = 0, j = Math.min(buf.length - offset, 2); i < j; i++) {
+	  for (var i = 0, j = Math.min(buf.length - offset, 2); i < j; ++i) {
 	    buf[offset + i] = (value & (0xff << (8 * (littleEndian ? i : 1 - i)))) >>>
 	      (littleEndian ? i : 1 - i) * 8
 	  }
@@ -13511,7 +13815,7 @@ var editor =
 
 	function objectWriteUInt32 (buf, value, offset, littleEndian) {
 	  if (value < 0) value = 0xffffffff + value + 1
-	  for (var i = 0, j = Math.min(buf.length - offset, 4); i < j; i++) {
+	  for (var i = 0, j = Math.min(buf.length - offset, 4); i < j; ++i) {
 	    buf[offset + i] = (value >>> (littleEndian ? i : 3 - i) * 8) & 0xff
 	  }
 	}
@@ -13557,9 +13861,12 @@ var editor =
 
 	  var i = 0
 	  var mul = 1
-	  var sub = value < 0 ? 1 : 0
+	  var sub = 0
 	  this[offset] = value & 0xFF
 	  while (++i < byteLength && (mul *= 0x100)) {
+	    if (value < 0 && sub === 0 && this[offset + i - 1] !== 0) {
+	      sub = 1
+	    }
 	    this[offset + i] = ((value / mul) >> 0) - sub & 0xFF
 	  }
 
@@ -13577,9 +13884,12 @@ var editor =
 
 	  var i = byteLength - 1
 	  var mul = 1
-	  var sub = value < 0 ? 1 : 0
+	  var sub = 0
 	  this[offset + i] = value & 0xFF
 	  while (--i >= 0 && (mul *= 0x100)) {
+	    if (value < 0 && sub === 0 && this[offset + i + 1] !== 0) {
+	      sub = 1
+	    }
 	    this[offset + i] = ((value / mul) >> 0) - sub & 0xFF
 	  }
 
@@ -13654,9 +13964,8 @@ var editor =
 	}
 
 	function checkIEEE754 (buf, value, offset, ext, max, min) {
-	  if (value > max || value < min) throw new RangeError('value is out of bounds')
-	  if (offset + ext > buf.length) throw new RangeError('index out of range')
-	  if (offset < 0) throw new RangeError('index out of range')
+	  if (offset + ext > buf.length) throw new RangeError('Index out of range')
+	  if (offset < 0) throw new RangeError('Index out of range')
 	}
 
 	function writeFloat (buf, value, offset, littleEndian, noAssert) {
@@ -13721,142 +14030,90 @@ var editor =
 
 	  if (this === target && start < targetStart && targetStart < end) {
 	    // descending copy from end
-	    for (i = len - 1; i >= 0; i--) {
+	    for (i = len - 1; i >= 0; --i) {
 	      target[i + targetStart] = this[i + start]
 	    }
 	  } else if (len < 1000 || !Buffer.TYPED_ARRAY_SUPPORT) {
 	    // ascending copy from start
-	    for (i = 0; i < len; i++) {
+	    for (i = 0; i < len; ++i) {
 	      target[i + targetStart] = this[i + start]
 	    }
 	  } else {
-	    target._set(this.subarray(start, start + len), targetStart)
+	    Uint8Array.prototype.set.call(
+	      target,
+	      this.subarray(start, start + len),
+	      targetStart
+	    )
 	  }
 
 	  return len
 	}
 
-	// fill(value, start=0, end=buffer.length)
-	Buffer.prototype.fill = function fill (value, start, end) {
-	  if (!value) value = 0
-	  if (!start) start = 0
-	  if (!end) end = this.length
+	// Usage:
+	//    buffer.fill(number[, offset[, end]])
+	//    buffer.fill(buffer[, offset[, end]])
+	//    buffer.fill(string[, offset[, end]][, encoding])
+	Buffer.prototype.fill = function fill (val, start, end, encoding) {
+	  // Handle string cases:
+	  if (typeof val === 'string') {
+	    if (typeof start === 'string') {
+	      encoding = start
+	      start = 0
+	      end = this.length
+	    } else if (typeof end === 'string') {
+	      encoding = end
+	      end = this.length
+	    }
+	    if (val.length === 1) {
+	      var code = val.charCodeAt(0)
+	      if (code < 256) {
+	        val = code
+	      }
+	    }
+	    if (encoding !== undefined && typeof encoding !== 'string') {
+	      throw new TypeError('encoding must be a string')
+	    }
+	    if (typeof encoding === 'string' && !Buffer.isEncoding(encoding)) {
+	      throw new TypeError('Unknown encoding: ' + encoding)
+	    }
+	  } else if (typeof val === 'number') {
+	    val = val & 255
+	  }
 
-	  if (end < start) throw new RangeError('end < start')
+	  // Invalid ranges are not set to a default, so can range check early.
+	  if (start < 0 || this.length < start || this.length < end) {
+	    throw new RangeError('Out of range index')
+	  }
 
-	  // Fill 0 bytes; we're done
-	  if (end === start) return
-	  if (this.length === 0) return
+	  if (end <= start) {
+	    return this
+	  }
 
-	  if (start < 0 || start >= this.length) throw new RangeError('start out of bounds')
-	  if (end < 0 || end > this.length) throw new RangeError('end out of bounds')
+	  start = start >>> 0
+	  end = end === undefined ? this.length : end >>> 0
+
+	  if (!val) val = 0
 
 	  var i
-	  if (typeof value === 'number') {
-	    for (i = start; i < end; i++) {
-	      this[i] = value
+	  if (typeof val === 'number') {
+	    for (i = start; i < end; ++i) {
+	      this[i] = val
 	    }
 	  } else {
-	    var bytes = utf8ToBytes(value.toString())
+	    var bytes = Buffer.isBuffer(val)
+	      ? val
+	      : utf8ToBytes(new Buffer(val, encoding).toString())
 	    var len = bytes.length
-	    for (i = start; i < end; i++) {
-	      this[i] = bytes[i % len]
+	    for (i = 0; i < end - start; ++i) {
+	      this[i + start] = bytes[i % len]
 	    }
 	  }
 
 	  return this
 	}
 
-	/**
-	 * Creates a new `ArrayBuffer` with the *copied* memory of the buffer instance.
-	 * Added in Node 0.12. Only available in browsers that support ArrayBuffer.
-	 */
-	Buffer.prototype.toArrayBuffer = function toArrayBuffer () {
-	  if (typeof Uint8Array !== 'undefined') {
-	    if (Buffer.TYPED_ARRAY_SUPPORT) {
-	      return (new Buffer(this)).buffer
-	    } else {
-	      var buf = new Uint8Array(this.length)
-	      for (var i = 0, len = buf.length; i < len; i += 1) {
-	        buf[i] = this[i]
-	      }
-	      return buf.buffer
-	    }
-	  } else {
-	    throw new TypeError('Buffer.toArrayBuffer not supported in this browser')
-	  }
-	}
-
 	// HELPER FUNCTIONS
 	// ================
-
-	var BP = Buffer.prototype
-
-	/**
-	 * Augment a Uint8Array *instance* (not the Uint8Array class!) with Buffer methods
-	 */
-	Buffer._augment = function _augment (arr) {
-	  arr.constructor = Buffer
-	  arr._isBuffer = true
-
-	  // save reference to original Uint8Array set method before overwriting
-	  arr._set = arr.set
-
-	  // deprecated
-	  arr.get = BP.get
-	  arr.set = BP.set
-
-	  arr.write = BP.write
-	  arr.toString = BP.toString
-	  arr.toLocaleString = BP.toString
-	  arr.toJSON = BP.toJSON
-	  arr.equals = BP.equals
-	  arr.compare = BP.compare
-	  arr.indexOf = BP.indexOf
-	  arr.copy = BP.copy
-	  arr.slice = BP.slice
-	  arr.readUIntLE = BP.readUIntLE
-	  arr.readUIntBE = BP.readUIntBE
-	  arr.readUInt8 = BP.readUInt8
-	  arr.readUInt16LE = BP.readUInt16LE
-	  arr.readUInt16BE = BP.readUInt16BE
-	  arr.readUInt32LE = BP.readUInt32LE
-	  arr.readUInt32BE = BP.readUInt32BE
-	  arr.readIntLE = BP.readIntLE
-	  arr.readIntBE = BP.readIntBE
-	  arr.readInt8 = BP.readInt8
-	  arr.readInt16LE = BP.readInt16LE
-	  arr.readInt16BE = BP.readInt16BE
-	  arr.readInt32LE = BP.readInt32LE
-	  arr.readInt32BE = BP.readInt32BE
-	  arr.readFloatLE = BP.readFloatLE
-	  arr.readFloatBE = BP.readFloatBE
-	  arr.readDoubleLE = BP.readDoubleLE
-	  arr.readDoubleBE = BP.readDoubleBE
-	  arr.writeUInt8 = BP.writeUInt8
-	  arr.writeUIntLE = BP.writeUIntLE
-	  arr.writeUIntBE = BP.writeUIntBE
-	  arr.writeUInt16LE = BP.writeUInt16LE
-	  arr.writeUInt16BE = BP.writeUInt16BE
-	  arr.writeUInt32LE = BP.writeUInt32LE
-	  arr.writeUInt32BE = BP.writeUInt32BE
-	  arr.writeIntLE = BP.writeIntLE
-	  arr.writeIntBE = BP.writeIntBE
-	  arr.writeInt8 = BP.writeInt8
-	  arr.writeInt16LE = BP.writeInt16LE
-	  arr.writeInt16BE = BP.writeInt16BE
-	  arr.writeInt32LE = BP.writeInt32LE
-	  arr.writeInt32BE = BP.writeInt32BE
-	  arr.writeFloatLE = BP.writeFloatLE
-	  arr.writeFloatBE = BP.writeFloatBE
-	  arr.writeDoubleLE = BP.writeDoubleLE
-	  arr.writeDoubleBE = BP.writeDoubleBE
-	  arr.fill = BP.fill
-	  arr.inspect = BP.inspect
-	  arr.toArrayBuffer = BP.toArrayBuffer
-
-	  return arr
-	}
 
 	var INVALID_BASE64_RE = /[^+\/0-9A-Za-z-_]/g
 
@@ -13889,7 +14146,7 @@ var editor =
 	  var leadSurrogate = null
 	  var bytes = []
 
-	  for (var i = 0; i < length; i++) {
+	  for (var i = 0; i < length; ++i) {
 	    codePoint = string.charCodeAt(i)
 
 	    // is surrogate component
@@ -13964,7 +14221,7 @@ var editor =
 
 	function asciiToBytes (str) {
 	  var byteArray = []
-	  for (var i = 0; i < str.length; i++) {
+	  for (var i = 0; i < str.length; ++i) {
 	    // Node's code seems to be doing this and not & 0x7F..
 	    byteArray.push(str.charCodeAt(i) & 0xFF)
 	  }
@@ -13974,7 +14231,7 @@ var editor =
 	function utf16leToBytes (str, units) {
 	  var c, hi, lo
 	  var byteArray = []
-	  for (var i = 0; i < str.length; i++) {
+	  for (var i = 0; i < str.length; ++i) {
 	    if ((units -= 2) < 0) break
 
 	    c = str.charCodeAt(i)
@@ -13992,143 +14249,137 @@ var editor =
 	}
 
 	function blitBuffer (src, dst, offset, length) {
-	  for (var i = 0; i < length; i++) {
+	  for (var i = 0; i < length; ++i) {
 	    if ((i + offset >= dst.length) || (i >= src.length)) break
 	    dst[i + offset] = src[i]
 	  }
 	  return i
 	}
 
+	function isnan (val) {
+	  return val !== val // eslint-disable-line no-self-compare
+	}
+
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(56).Buffer, (function() { return this; }())))
 
 /***/ },
 /* 57 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ function(module, exports) {
 
-	var lookup = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/';
+	'use strict'
 
-	;(function (exports) {
-		'use strict';
+	exports.byteLength = byteLength
+	exports.toByteArray = toByteArray
+	exports.fromByteArray = fromByteArray
 
-	  var Arr = (typeof Uint8Array !== 'undefined')
-	    ? Uint8Array
-	    : Array
+	var lookup = []
+	var revLookup = []
+	var Arr = typeof Uint8Array !== 'undefined' ? Uint8Array : Array
 
-		var PLUS   = '+'.charCodeAt(0)
-		var SLASH  = '/'.charCodeAt(0)
-		var NUMBER = '0'.charCodeAt(0)
-		var LOWER  = 'a'.charCodeAt(0)
-		var UPPER  = 'A'.charCodeAt(0)
-		var PLUS_URL_SAFE = '-'.charCodeAt(0)
-		var SLASH_URL_SAFE = '_'.charCodeAt(0)
+	var code = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/'
+	for (var i = 0, len = code.length; i < len; ++i) {
+	  lookup[i] = code[i]
+	  revLookup[code.charCodeAt(i)] = i
+	}
 
-		function decode (elt) {
-			var code = elt.charCodeAt(0)
-			if (code === PLUS ||
-			    code === PLUS_URL_SAFE)
-				return 62 // '+'
-			if (code === SLASH ||
-			    code === SLASH_URL_SAFE)
-				return 63 // '/'
-			if (code < NUMBER)
-				return -1 //no match
-			if (code < NUMBER + 10)
-				return code - NUMBER + 26 + 26
-			if (code < UPPER + 26)
-				return code - UPPER
-			if (code < LOWER + 26)
-				return code - LOWER + 26
-		}
+	revLookup['-'.charCodeAt(0)] = 62
+	revLookup['_'.charCodeAt(0)] = 63
 
-		function b64ToByteArray (b64) {
-			var i, j, l, tmp, placeHolders, arr
+	function placeHoldersCount (b64) {
+	  var len = b64.length
+	  if (len % 4 > 0) {
+	    throw new Error('Invalid string. Length must be a multiple of 4')
+	  }
 
-			if (b64.length % 4 > 0) {
-				throw new Error('Invalid string. Length must be a multiple of 4')
-			}
+	  // the number of equal signs (place holders)
+	  // if there are two placeholders, than the two characters before it
+	  // represent one byte
+	  // if there is only one, then the three characters before it represent 2 bytes
+	  // this is just a cheap hack to not do indexOf twice
+	  return b64[len - 2] === '=' ? 2 : b64[len - 1] === '=' ? 1 : 0
+	}
 
-			// the number of equal signs (place holders)
-			// if there are two placeholders, than the two characters before it
-			// represent one byte
-			// if there is only one, then the three characters before it represent 2 bytes
-			// this is just a cheap hack to not do indexOf twice
-			var len = b64.length
-			placeHolders = '=' === b64.charAt(len - 2) ? 2 : '=' === b64.charAt(len - 1) ? 1 : 0
+	function byteLength (b64) {
+	  // base64 is 4/3 + up to two characters of the original data
+	  return b64.length * 3 / 4 - placeHoldersCount(b64)
+	}
 
-			// base64 is 4/3 + up to two characters of the original data
-			arr = new Arr(b64.length * 3 / 4 - placeHolders)
+	function toByteArray (b64) {
+	  var i, j, l, tmp, placeHolders, arr
+	  var len = b64.length
+	  placeHolders = placeHoldersCount(b64)
 
-			// if there are placeholders, only get up to the last complete 4 chars
-			l = placeHolders > 0 ? b64.length - 4 : b64.length
+	  arr = new Arr(len * 3 / 4 - placeHolders)
 
-			var L = 0
+	  // if there are placeholders, only get up to the last complete 4 chars
+	  l = placeHolders > 0 ? len - 4 : len
 
-			function push (v) {
-				arr[L++] = v
-			}
+	  var L = 0
 
-			for (i = 0, j = 0; i < l; i += 4, j += 3) {
-				tmp = (decode(b64.charAt(i)) << 18) | (decode(b64.charAt(i + 1)) << 12) | (decode(b64.charAt(i + 2)) << 6) | decode(b64.charAt(i + 3))
-				push((tmp & 0xFF0000) >> 16)
-				push((tmp & 0xFF00) >> 8)
-				push(tmp & 0xFF)
-			}
+	  for (i = 0, j = 0; i < l; i += 4, j += 3) {
+	    tmp = (revLookup[b64.charCodeAt(i)] << 18) | (revLookup[b64.charCodeAt(i + 1)] << 12) | (revLookup[b64.charCodeAt(i + 2)] << 6) | revLookup[b64.charCodeAt(i + 3)]
+	    arr[L++] = (tmp >> 16) & 0xFF
+	    arr[L++] = (tmp >> 8) & 0xFF
+	    arr[L++] = tmp & 0xFF
+	  }
 
-			if (placeHolders === 2) {
-				tmp = (decode(b64.charAt(i)) << 2) | (decode(b64.charAt(i + 1)) >> 4)
-				push(tmp & 0xFF)
-			} else if (placeHolders === 1) {
-				tmp = (decode(b64.charAt(i)) << 10) | (decode(b64.charAt(i + 1)) << 4) | (decode(b64.charAt(i + 2)) >> 2)
-				push((tmp >> 8) & 0xFF)
-				push(tmp & 0xFF)
-			}
+	  if (placeHolders === 2) {
+	    tmp = (revLookup[b64.charCodeAt(i)] << 2) | (revLookup[b64.charCodeAt(i + 1)] >> 4)
+	    arr[L++] = tmp & 0xFF
+	  } else if (placeHolders === 1) {
+	    tmp = (revLookup[b64.charCodeAt(i)] << 10) | (revLookup[b64.charCodeAt(i + 1)] << 4) | (revLookup[b64.charCodeAt(i + 2)] >> 2)
+	    arr[L++] = (tmp >> 8) & 0xFF
+	    arr[L++] = tmp & 0xFF
+	  }
 
-			return arr
-		}
+	  return arr
+	}
 
-		function uint8ToBase64 (uint8) {
-			var i,
-				extraBytes = uint8.length % 3, // if we have 1 byte left, pad 2 bytes
-				output = "",
-				temp, length
+	function tripletToBase64 (num) {
+	  return lookup[num >> 18 & 0x3F] + lookup[num >> 12 & 0x3F] + lookup[num >> 6 & 0x3F] + lookup[num & 0x3F]
+	}
 
-			function encode (num) {
-				return lookup.charAt(num)
-			}
+	function encodeChunk (uint8, start, end) {
+	  var tmp
+	  var output = []
+	  for (var i = start; i < end; i += 3) {
+	    tmp = (uint8[i] << 16) + (uint8[i + 1] << 8) + (uint8[i + 2])
+	    output.push(tripletToBase64(tmp))
+	  }
+	  return output.join('')
+	}
 
-			function tripletToBase64 (num) {
-				return encode(num >> 18 & 0x3F) + encode(num >> 12 & 0x3F) + encode(num >> 6 & 0x3F) + encode(num & 0x3F)
-			}
+	function fromByteArray (uint8) {
+	  var tmp
+	  var len = uint8.length
+	  var extraBytes = len % 3 // if we have 1 byte left, pad 2 bytes
+	  var output = ''
+	  var parts = []
+	  var maxChunkLength = 16383 // must be multiple of 3
 
-			// go through the array every three bytes, we'll deal with trailing stuff later
-			for (i = 0, length = uint8.length - extraBytes; i < length; i += 3) {
-				temp = (uint8[i] << 16) + (uint8[i + 1] << 8) + (uint8[i + 2])
-				output += tripletToBase64(temp)
-			}
+	  // go through the array every three bytes, we'll deal with trailing stuff later
+	  for (var i = 0, len2 = len - extraBytes; i < len2; i += maxChunkLength) {
+	    parts.push(encodeChunk(uint8, i, (i + maxChunkLength) > len2 ? len2 : (i + maxChunkLength)))
+	  }
 
-			// pad the end with zeros, but make sure to not forget the extra bytes
-			switch (extraBytes) {
-				case 1:
-					temp = uint8[uint8.length - 1]
-					output += encode(temp >> 2)
-					output += encode((temp << 4) & 0x3F)
-					output += '=='
-					break
-				case 2:
-					temp = (uint8[uint8.length - 2] << 8) + (uint8[uint8.length - 1])
-					output += encode(temp >> 10)
-					output += encode((temp >> 4) & 0x3F)
-					output += encode((temp << 2) & 0x3F)
-					output += '='
-					break
-			}
+	  // pad the end with zeros, but make sure to not forget the extra bytes
+	  if (extraBytes === 1) {
+	    tmp = uint8[len - 1]
+	    output += lookup[tmp >> 2]
+	    output += lookup[(tmp << 4) & 0x3F]
+	    output += '=='
+	  } else if (extraBytes === 2) {
+	    tmp = (uint8[len - 2] << 8) + (uint8[len - 1])
+	    output += lookup[tmp >> 10]
+	    output += lookup[(tmp >> 4) & 0x3F]
+	    output += lookup[(tmp << 2) & 0x3F]
+	    output += '='
+	  }
 
-			return output
-		}
+	  parts.push(output)
 
-		exports.toByteArray = b64ToByteArray
-		exports.fromByteArray = uint8ToBase64
-	}( false ? (this.base64js = {}) : exports))
+	  return parts.join('')
+	}
 
 
 /***/ },
@@ -16027,7 +16278,7 @@ var editor =
 	 *     prototype.
 	 * @param {function} superCtor Constructor function to inherit prototype from.
 	 */
-	exports.inherits = __webpack_require__(73);
+	exports.inherits = __webpack_require__(52);
 
 	exports._extend = function(origin, add) {
 	  // Don't do anything if add isn't an object
@@ -16060,35 +16311,6 @@ var editor =
 
 /***/ },
 /* 73 */
-/***/ function(module, exports) {
-
-	if (typeof Object.create === 'function') {
-	  // implementation from standard node.js 'util' module
-	  module.exports = function inherits(ctor, superCtor) {
-	    ctor.super_ = superCtor
-	    ctor.prototype = Object.create(superCtor.prototype, {
-	      constructor: {
-	        value: ctor,
-	        enumerable: false,
-	        writable: true,
-	        configurable: true
-	      }
-	    });
-	  };
-	} else {
-	  // old school shim for old browsers
-	  module.exports = function inherits(ctor, superCtor) {
-	    ctor.super_ = superCtor
-	    var TempCtor = function () {}
-	    TempCtor.prototype = superCtor.prototype
-	    ctor.prototype = new TempCtor()
-	    ctor.prototype.constructor = ctor
-	  }
-	}
-
-
-/***/ },
-/* 74 */
 /***/ function(module, exports) {
 
 	module.exports = {
@@ -16133,7 +16355,7 @@ var editor =
 
 
 /***/ },
-/* 75 */
+/* 74 */
 /***/ function(module, exports) {
 
 	module.exports = {
@@ -16165,13 +16387,13 @@ var editor =
 
 
 /***/ },
-/* 76 */
+/* 75 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var util = __webpack_require__(71),
 	    Stream = __webpack_require__(50).Stream,
-	    types = __webpack_require__(74),
-	    tokens = __webpack_require__(77),
+	    types = __webpack_require__(73),
+	    tokens = __webpack_require__(76),
 	    tokenClasses = Object.keys(tokens),
 	    tokenRegExp = {};
 
@@ -16271,7 +16493,7 @@ var editor =
 
 
 /***/ },
-/* 77 */
+/* 76 */
 /***/ function(module, exports) {
 
 	// This file is auto-generated. Do not modify.
@@ -16318,12 +16540,12 @@ var editor =
 
 
 /***/ },
-/* 78 */
+/* 77 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var EventEmitter = __webpack_require__(79).EventEmitter,
-	    TokenType = __webpack_require__(74),
-	    BreakType = __webpack_require__(75),
+	var EventEmitter = __webpack_require__(51).EventEmitter,
+	    TokenType = __webpack_require__(73),
+	    BreakType = __webpack_require__(74),
 	    util = __webpack_require__(71);
 
 	function LineBreak() {
@@ -16447,315 +16669,7 @@ var editor =
 
 
 /***/ },
-/* 79 */
-/***/ function(module, exports) {
-
-	// Copyright Joyent, Inc. and other Node contributors.
-	//
-	// Permission is hereby granted, free of charge, to any person obtaining a
-	// copy of this software and associated documentation files (the
-	// "Software"), to deal in the Software without restriction, including
-	// without limitation the rights to use, copy, modify, merge, publish,
-	// distribute, sublicense, and/or sell copies of the Software, and to permit
-	// persons to whom the Software is furnished to do so, subject to the
-	// following conditions:
-	//
-	// The above copyright notice and this permission notice shall be included
-	// in all copies or substantial portions of the Software.
-	//
-	// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS
-	// OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
-	// MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN
-	// NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
-	// DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR
-	// OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE
-	// USE OR OTHER DEALINGS IN THE SOFTWARE.
-
-	function EventEmitter() {
-	  this._events = this._events || {};
-	  this._maxListeners = this._maxListeners || undefined;
-	}
-	module.exports = EventEmitter;
-
-	// Backwards-compat with node 0.10.x
-	EventEmitter.EventEmitter = EventEmitter;
-
-	EventEmitter.prototype._events = undefined;
-	EventEmitter.prototype._maxListeners = undefined;
-
-	// By default EventEmitters will print a warning if more than 10 listeners are
-	// added to it. This is a useful default which helps finding memory leaks.
-	EventEmitter.defaultMaxListeners = 10;
-
-	// Obviously not all Emitters should be limited to 10. This function allows
-	// that to be increased. Set to zero for unlimited.
-	EventEmitter.prototype.setMaxListeners = function(n) {
-	  if (!isNumber(n) || n < 0 || isNaN(n))
-	    throw TypeError('n must be a positive number');
-	  this._maxListeners = n;
-	  return this;
-	};
-
-	EventEmitter.prototype.emit = function(type) {
-	  var er, handler, len, args, i, listeners;
-
-	  if (!this._events)
-	    this._events = {};
-
-	  // If there is no 'error' event listener then throw.
-	  if (type === 'error') {
-	    if (!this._events.error ||
-	        (isObject(this._events.error) && !this._events.error.length)) {
-	      er = arguments[1];
-	      if (er instanceof Error) {
-	        throw er; // Unhandled 'error' event
-	      } else {
-	        // At least give some kind of context to the user
-	        var err = new Error('Uncaught, unspecified "error" event. (' + er + ')');
-	        err.context = er;
-	        throw err;
-	      }
-	    }
-	  }
-
-	  handler = this._events[type];
-
-	  if (isUndefined(handler))
-	    return false;
-
-	  if (isFunction(handler)) {
-	    switch (arguments.length) {
-	      // fast cases
-	      case 1:
-	        handler.call(this);
-	        break;
-	      case 2:
-	        handler.call(this, arguments[1]);
-	        break;
-	      case 3:
-	        handler.call(this, arguments[1], arguments[2]);
-	        break;
-	      // slower
-	      default:
-	        args = Array.prototype.slice.call(arguments, 1);
-	        handler.apply(this, args);
-	    }
-	  } else if (isObject(handler)) {
-	    args = Array.prototype.slice.call(arguments, 1);
-	    listeners = handler.slice();
-	    len = listeners.length;
-	    for (i = 0; i < len; i++)
-	      listeners[i].apply(this, args);
-	  }
-
-	  return true;
-	};
-
-	EventEmitter.prototype.addListener = function(type, listener) {
-	  var m;
-
-	  if (!isFunction(listener))
-	    throw TypeError('listener must be a function');
-
-	  if (!this._events)
-	    this._events = {};
-
-	  // To avoid recursion in the case that type === "newListener"! Before
-	  // adding it to the listeners, first emit "newListener".
-	  if (this._events.newListener)
-	    this.emit('newListener', type,
-	              isFunction(listener.listener) ?
-	              listener.listener : listener);
-
-	  if (!this._events[type])
-	    // Optimize the case of one listener. Don't need the extra array object.
-	    this._events[type] = listener;
-	  else if (isObject(this._events[type]))
-	    // If we've already got an array, just append.
-	    this._events[type].push(listener);
-	  else
-	    // Adding the second element, need to change to array.
-	    this._events[type] = [this._events[type], listener];
-
-	  // Check for listener leak
-	  if (isObject(this._events[type]) && !this._events[type].warned) {
-	    if (!isUndefined(this._maxListeners)) {
-	      m = this._maxListeners;
-	    } else {
-	      m = EventEmitter.defaultMaxListeners;
-	    }
-
-	    if (m && m > 0 && this._events[type].length > m) {
-	      this._events[type].warned = true;
-	      console.error('(node) warning: possible EventEmitter memory ' +
-	                    'leak detected. %d listeners added. ' +
-	                    'Use emitter.setMaxListeners() to increase limit.',
-	                    this._events[type].length);
-	      if (typeof console.trace === 'function') {
-	        // not supported in IE 10
-	        console.trace();
-	      }
-	    }
-	  }
-
-	  return this;
-	};
-
-	EventEmitter.prototype.on = EventEmitter.prototype.addListener;
-
-	EventEmitter.prototype.once = function(type, listener) {
-	  if (!isFunction(listener))
-	    throw TypeError('listener must be a function');
-
-	  var fired = false;
-
-	  function g() {
-	    this.removeListener(type, g);
-
-	    if (!fired) {
-	      fired = true;
-	      listener.apply(this, arguments);
-	    }
-	  }
-
-	  g.listener = listener;
-	  this.on(type, g);
-
-	  return this;
-	};
-
-	// emits a 'removeListener' event iff the listener was removed
-	EventEmitter.prototype.removeListener = function(type, listener) {
-	  var list, position, length, i;
-
-	  if (!isFunction(listener))
-	    throw TypeError('listener must be a function');
-
-	  if (!this._events || !this._events[type])
-	    return this;
-
-	  list = this._events[type];
-	  length = list.length;
-	  position = -1;
-
-	  if (list === listener ||
-	      (isFunction(list.listener) && list.listener === listener)) {
-	    delete this._events[type];
-	    if (this._events.removeListener)
-	      this.emit('removeListener', type, listener);
-
-	  } else if (isObject(list)) {
-	    for (i = length; i-- > 0;) {
-	      if (list[i] === listener ||
-	          (list[i].listener && list[i].listener === listener)) {
-	        position = i;
-	        break;
-	      }
-	    }
-
-	    if (position < 0)
-	      return this;
-
-	    if (list.length === 1) {
-	      list.length = 0;
-	      delete this._events[type];
-	    } else {
-	      list.splice(position, 1);
-	    }
-
-	    if (this._events.removeListener)
-	      this.emit('removeListener', type, listener);
-	  }
-
-	  return this;
-	};
-
-	EventEmitter.prototype.removeAllListeners = function(type) {
-	  var key, listeners;
-
-	  if (!this._events)
-	    return this;
-
-	  // not listening for removeListener, no need to emit
-	  if (!this._events.removeListener) {
-	    if (arguments.length === 0)
-	      this._events = {};
-	    else if (this._events[type])
-	      delete this._events[type];
-	    return this;
-	  }
-
-	  // emit removeListener for all listeners on all events
-	  if (arguments.length === 0) {
-	    for (key in this._events) {
-	      if (key === 'removeListener') continue;
-	      this.removeAllListeners(key);
-	    }
-	    this.removeAllListeners('removeListener');
-	    this._events = {};
-	    return this;
-	  }
-
-	  listeners = this._events[type];
-
-	  if (isFunction(listeners)) {
-	    this.removeListener(type, listeners);
-	  } else if (listeners) {
-	    // LIFO order
-	    while (listeners.length)
-	      this.removeListener(type, listeners[listeners.length - 1]);
-	  }
-	  delete this._events[type];
-
-	  return this;
-	};
-
-	EventEmitter.prototype.listeners = function(type) {
-	  var ret;
-	  if (!this._events || !this._events[type])
-	    ret = [];
-	  else if (isFunction(this._events[type]))
-	    ret = [this._events[type]];
-	  else
-	    ret = this._events[type].slice();
-	  return ret;
-	};
-
-	EventEmitter.prototype.listenerCount = function(type) {
-	  if (this._events) {
-	    var evlistener = this._events[type];
-
-	    if (isFunction(evlistener))
-	      return 1;
-	    else if (evlistener)
-	      return evlistener.length;
-	  }
-	  return 0;
-	};
-
-	EventEmitter.listenerCount = function(emitter, type) {
-	  return emitter.listenerCount(type);
-	};
-
-	function isFunction(arg) {
-	  return typeof arg === 'function';
-	}
-
-	function isNumber(arg) {
-	  return typeof arg === 'number';
-	}
-
-	function isObject(arg) {
-	  return typeof arg === 'object' && arg !== null;
-	}
-
-	function isUndefined(arg) {
-	  return arg === void 0;
-	}
-
-
-/***/ },
-/* 80 */
+/* 78 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -16830,7 +16744,7 @@ var editor =
 
 
 /***/ },
-/* 81 */
+/* 79 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -16984,7 +16898,7 @@ var editor =
 
 
 /***/ },
-/* 82 */
+/* 80 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -17155,7 +17069,7 @@ var editor =
 
 
 /***/ },
-/* 83 */
+/* 81 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -17164,9 +17078,9 @@ var editor =
 	    function __() { this.constructor = d; }
 	    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 	};
-	var json_serializer_1 = __webpack_require__(84);
-	var iview_modal_1 = __webpack_require__(85);
-	var iview_modal_2 = __webpack_require__(85);
+	var json_serializer_1 = __webpack_require__(82);
+	var iview_modal_1 = __webpack_require__(83);
+	var iview_modal_2 = __webpack_require__(83);
 	;
 	/**
 	 * 数据源。如果指定了value，直接从value获取数据。否则通过path从ViewModal中获取数据。
@@ -17319,7 +17233,7 @@ var editor =
 
 
 /***/ },
-/* 84 */
+/* 82 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -17350,7 +17264,7 @@ var editor =
 
 
 /***/ },
-/* 85 */
+/* 83 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -17415,7 +17329,7 @@ var editor =
 
 
 /***/ },
-/* 86 */
+/* 84 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -17458,7 +17372,7 @@ var editor =
 
 
 /***/ },
-/* 87 */
+/* 85 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -17468,7 +17382,7 @@ var editor =
 	    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 	};
 	var Events = __webpack_require__(8);
-	var html_element_1 = __webpack_require__(88);
+	var html_element_1 = __webpack_require__(86);
 	var HtmlEdit = (function (_super) {
 	    __extends(HtmlEdit, _super);
 	    function HtmlEdit() {
@@ -17570,7 +17484,7 @@ var editor =
 
 
 /***/ },
-/* 88 */
+/* 86 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -17670,7 +17584,7 @@ var editor =
 
 
 /***/ },
-/* 89 */
+/* 87 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -17681,7 +17595,7 @@ var editor =
 	};
 	var widget_1 = __webpack_require__(21);
 	var widget_factory_1 = __webpack_require__(25);
-	var recyclable_creator_1 = __webpack_require__(86);
+	var recyclable_creator_1 = __webpack_require__(84);
 	var Page = (function (_super) {
 	    __extends(Page, _super);
 	    function Page(type) {
@@ -17700,7 +17614,7 @@ var editor =
 
 
 /***/ },
-/* 90 */
+/* 88 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/// <reference path="../typings/globals/eventemitter3/index.d.ts"/>
@@ -17801,7 +17715,7 @@ var editor =
 
 
 /***/ },
-/* 91 */
+/* 89 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -17812,7 +17726,7 @@ var editor =
 	};
 	var widget_1 = __webpack_require__(21);
 	var widget_factory_1 = __webpack_require__(25);
-	var recyclable_creator_1 = __webpack_require__(86);
+	var recyclable_creator_1 = __webpack_require__(84);
 	/**
 	 * 页面管理器。管理多个页面，只有一个页面处于活跃状态，仅该页面可见，可以处理事件。
 	 * value表示该活跃页面的索引。
@@ -17883,7 +17797,7 @@ var editor =
 
 
 /***/ },
-/* 92 */
+/* 90 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -17944,7 +17858,7 @@ var editor =
 
 
 /***/ },
-/* 93 */
+/* 91 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -17957,7 +17871,7 @@ var editor =
 	var widget_1 = __webpack_require__(21);
 	var widget_factory_1 = __webpack_require__(25);
 	var image_tile_1 = __webpack_require__(9);
-	var recyclable_creator_1 = __webpack_require__(86);
+	var recyclable_creator_1 = __webpack_require__(84);
 	/**
 	 * 图片控件。
 	 */
@@ -18038,7 +17952,7 @@ var editor =
 
 
 /***/ },
-/* 94 */
+/* 92 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -18049,7 +17963,7 @@ var editor =
 	};
 	var widget_1 = __webpack_require__(21);
 	var widget_factory_1 = __webpack_require__(25);
-	var recyclable_creator_1 = __webpack_require__(86);
+	var recyclable_creator_1 = __webpack_require__(84);
 	var Group = (function (_super) {
 	    __extends(Group, _super);
 	    function Group() {
@@ -18068,7 +17982,7 @@ var editor =
 
 
 /***/ },
-/* 95 */
+/* 93 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -18077,9 +17991,9 @@ var editor =
 	    function __() { this.constructor = d; }
 	    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 	};
-	var window_1 = __webpack_require__(96);
+	var window_1 = __webpack_require__(94);
 	var widget_factory_1 = __webpack_require__(25);
-	var recyclable_creator_1 = __webpack_require__(86);
+	var recyclable_creator_1 = __webpack_require__(84);
 	/**
 	 * 对话框。
 	 */
@@ -18112,7 +18026,7 @@ var editor =
 
 
 /***/ },
-/* 96 */
+/* 94 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -18233,7 +18147,7 @@ var editor =
 
 
 /***/ },
-/* 97 */
+/* 95 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -18244,7 +18158,7 @@ var editor =
 	};
 	var widget_1 = __webpack_require__(21);
 	var widget_factory_1 = __webpack_require__(25);
-	var recyclable_creator_1 = __webpack_require__(86);
+	var recyclable_creator_1 = __webpack_require__(84);
 	var Button = (function (_super) {
 	    __extends(Button, _super);
 	    function Button() {
@@ -18263,7 +18177,7 @@ var editor =
 
 
 /***/ },
-/* 98 */
+/* 96 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -18273,11 +18187,11 @@ var editor =
 	    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 	};
 	var Events = __webpack_require__(8);
-	var button_1 = __webpack_require__(97);
+	var button_1 = __webpack_require__(95);
 	var graphics_1 = __webpack_require__(27);
 	var widget_factory_1 = __webpack_require__(25);
-	var recyclable_creator_1 = __webpack_require__(86);
-	var progress_bar_1 = __webpack_require__(99);
+	var recyclable_creator_1 = __webpack_require__(84);
+	var progress_bar_1 = __webpack_require__(97);
 	/**
 	 * 滑块控件。拖动滑块可以改变它的值。
 	 */
@@ -18419,7 +18333,7 @@ var editor =
 
 
 /***/ },
-/* 99 */
+/* 97 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -18431,7 +18345,7 @@ var editor =
 	var widget_1 = __webpack_require__(21);
 	var graphics_1 = __webpack_require__(27);
 	var widget_factory_1 = __webpack_require__(25);
-	var recyclable_creator_1 = __webpack_require__(86);
+	var recyclable_creator_1 = __webpack_require__(84);
 	/**
 	 * 进度条的类型有三种：水平，垂直和圆形。
 	 */
@@ -18534,7 +18448,7 @@ var editor =
 
 
 /***/ },
-/* 100 */
+/* 98 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -18547,7 +18461,7 @@ var editor =
 	var TWEEN = __webpack_require__(22);
 	var graphics_1 = __webpack_require__(27);
 	var widget_factory_1 = __webpack_require__(25);
-	var recyclable_creator_1 = __webpack_require__(86);
+	var recyclable_creator_1 = __webpack_require__(84);
 	/**
 	 * 开关控件。
 	 */
@@ -18641,7 +18555,7 @@ var editor =
 
 
 /***/ },
-/* 101 */
+/* 99 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -18650,9 +18564,9 @@ var editor =
 	    function __() { this.constructor = d; }
 	    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 	};
-	var page_1 = __webpack_require__(89);
+	var page_1 = __webpack_require__(87);
 	var widget_factory_1 = __webpack_require__(25);
-	var recyclable_creator_1 = __webpack_require__(86);
+	var recyclable_creator_1 = __webpack_require__(84);
 	var TabPage = (function (_super) {
 	    __extends(TabPage, _super);
 	    function TabPage() {
@@ -18685,7 +18599,7 @@ var editor =
 
 
 /***/ },
-/* 102 */
+/* 100 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -18695,8 +18609,8 @@ var editor =
 	    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 	};
 	var widget_factory_1 = __webpack_require__(25);
-	var recyclable_creator_1 = __webpack_require__(86);
-	var scroll_view_1 = __webpack_require__(103);
+	var recyclable_creator_1 = __webpack_require__(84);
+	var scroll_view_1 = __webpack_require__(101);
 	var carota = __webpack_require__(28);
 	var rect = carota.rect;
 	var createDoc = carota.document;
@@ -18797,7 +18711,7 @@ var editor =
 
 
 /***/ },
-/* 103 */
+/* 101 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/// <reference path="../../typings/globals/scroller/index.d.ts"/>
@@ -18810,12 +18724,12 @@ var editor =
 	};
 	var rect_1 = __webpack_require__(3);
 	var point_1 = __webpack_require__(4);
-	var scroller_1 = __webpack_require__(104);
+	var scroller_1 = __webpack_require__(102);
 	var TWEEN = __webpack_require__(22);
 	var Events = __webpack_require__(8);
 	var graphics_1 = __webpack_require__(27);
 	var widget_factory_1 = __webpack_require__(25);
-	var recyclable_creator_1 = __webpack_require__(86);
+	var recyclable_creator_1 = __webpack_require__(84);
 	var widget_1 = __webpack_require__(21);
 	/**
 	 * 滚动视图，同时支持PC和Mobile风格，通过dragToScroll和slideToScroll参数控制。
@@ -19433,13 +19347,13 @@ var editor =
 
 
 /***/ },
-/* 104 */
+/* 102 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;(function (root, factory) {
 	    if (true) {
 	        // AMD
-	        !(__WEBPACK_AMD_DEFINE_ARRAY__ = [exports, __webpack_require__(105), __webpack_require__(106)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
+	        !(__WEBPACK_AMD_DEFINE_ARRAY__ = [exports, __webpack_require__(103), __webpack_require__(104)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
 	    } else if (typeof exports === 'object') {
 	        // CommonJS
 	        factory(exports, require('./lib/animate'), require('./lib/Scroller'));
@@ -19451,7 +19365,7 @@ var editor =
 
 
 /***/ },
-/* 105 */
+/* 103 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*
@@ -19688,7 +19602,7 @@ var editor =
 
 
 /***/ },
-/* 106 */
+/* 104 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*
@@ -19708,7 +19622,7 @@ var editor =
 	(function (root, factory) {
 	    if (true) {
 	        // AMD
-	        !(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(105)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
+	        !(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(103)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
 	    } else if (typeof module === 'object') {
 	        // CommonJS
 	        module.exports = factory(require('./animate'));
@@ -20846,7 +20760,7 @@ var editor =
 
 
 /***/ },
-/* 107 */
+/* 105 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -20857,13 +20771,13 @@ var editor =
 	};
 	var rect_1 = __webpack_require__(3);
 	var widget_1 = __webpack_require__(21);
-	var button_1 = __webpack_require__(97);
+	var button_1 = __webpack_require__(95);
 	var graphics_1 = __webpack_require__(27);
-	var consts_1 = __webpack_require__(108);
-	var radio_button_1 = __webpack_require__(109);
+	var consts_1 = __webpack_require__(106);
+	var radio_button_1 = __webpack_require__(107);
 	var widget_factory_1 = __webpack_require__(25);
 	var image_tile_1 = __webpack_require__(9);
-	var recyclable_creator_1 = __webpack_require__(86);
+	var recyclable_creator_1 = __webpack_require__(84);
 	/**
 	 * 标签控件上的标签按钮。
 	 */
@@ -21057,7 +20971,7 @@ var editor =
 
 
 /***/ },
-/* 108 */
+/* 106 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -21136,7 +21050,7 @@ var editor =
 
 
 /***/ },
-/* 109 */
+/* 107 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -21145,9 +21059,9 @@ var editor =
 	    function __() { this.constructor = d; }
 	    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 	};
-	var check_button_1 = __webpack_require__(110);
+	var check_button_1 = __webpack_require__(108);
 	var widget_factory_1 = __webpack_require__(25);
-	var recyclable_creator_1 = __webpack_require__(86);
+	var recyclable_creator_1 = __webpack_require__(84);
 	/**
 	 * 单选按钮。同一个父控件中，只有一个单选按钮被勾选。被勾选时value为true，否则为false。
 	 */
@@ -21179,7 +21093,7 @@ var editor =
 
 
 /***/ },
-/* 110 */
+/* 108 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -21191,7 +21105,7 @@ var editor =
 	var widget_1 = __webpack_require__(21);
 	var widget_factory_1 = __webpack_require__(25);
 	var image_tile_1 = __webpack_require__(9);
-	var recyclable_creator_1 = __webpack_require__(86);
+	var recyclable_creator_1 = __webpack_require__(84);
 	var CheckButton = (function (_super) {
 	    __extends(CheckButton, _super);
 	    function CheckButton(type) {
@@ -21297,7 +21211,7 @@ var editor =
 
 
 /***/ },
-/* 111 */
+/* 109 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -21307,14 +21221,14 @@ var editor =
 	    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 	};
 	var rect_1 = __webpack_require__(3);
-	var pages_1 = __webpack_require__(91);
+	var pages_1 = __webpack_require__(89);
 	var widget_1 = __webpack_require__(21);
-	var tab_page_1 = __webpack_require__(101);
+	var tab_page_1 = __webpack_require__(99);
 	var Events = __webpack_require__(8);
-	var tab_button_1 = __webpack_require__(107);
-	var tab_button_group_1 = __webpack_require__(112);
+	var tab_button_1 = __webpack_require__(105);
+	var tab_button_group_1 = __webpack_require__(110);
 	var widget_factory_1 = __webpack_require__(25);
-	var recyclable_creator_1 = __webpack_require__(86);
+	var recyclable_creator_1 = __webpack_require__(84);
 	var TabControl = (function (_super) {
 	    __extends(TabControl, _super);
 	    function TabControl() {
@@ -21460,7 +21374,7 @@ var editor =
 
 
 /***/ },
-/* 112 */
+/* 110 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -21472,7 +21386,7 @@ var editor =
 	var rect_1 = __webpack_require__(3);
 	var widget_1 = __webpack_require__(21);
 	var widget_factory_1 = __webpack_require__(25);
-	var recyclable_creator_1 = __webpack_require__(86);
+	var recyclable_creator_1 = __webpack_require__(84);
 	var TabButtonGroup = (function (_super) {
 	    __extends(TabButtonGroup, _super);
 	    function TabButtonGroup() {
@@ -21569,7 +21483,7 @@ var editor =
 
 
 /***/ },
-/* 113 */
+/* 111 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -21578,9 +21492,9 @@ var editor =
 	    function __() { this.constructor = d; }
 	    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 	};
-	var rich_text_1 = __webpack_require__(102);
+	var rich_text_1 = __webpack_require__(100);
 	var widget_factory_1 = __webpack_require__(25);
-	var recyclable_creator_1 = __webpack_require__(86);
+	var recyclable_creator_1 = __webpack_require__(84);
 	var carota = __webpack_require__(28);
 	var createDoc = carota.document;
 	var dom = carota.dom;
@@ -22094,7 +22008,7 @@ var editor =
 
 
 /***/ },
-/* 114 */
+/* 112 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -22106,17 +22020,17 @@ var editor =
 	var rect_1 = __webpack_require__(3);
 	var point_1 = __webpack_require__(4);
 	var edit_1 = __webpack_require__(19);
-	var button_1 = __webpack_require__(97);
+	var button_1 = __webpack_require__(95);
 	var widget_1 = __webpack_require__(21);
-	var dialog_1 = __webpack_require__(95);
+	var dialog_1 = __webpack_require__(93);
 	var graphics_1 = __webpack_require__(27);
 	var Events = __webpack_require__(8);
-	var list_view_1 = __webpack_require__(115);
-	var list_item_1 = __webpack_require__(117);
+	var list_view_1 = __webpack_require__(113);
+	var list_item_1 = __webpack_require__(115);
 	var widget_factory_1 = __webpack_require__(25);
-	var recyclable_creator_1 = __webpack_require__(86);
+	var recyclable_creator_1 = __webpack_require__(84);
 	var image_tile_1 = __webpack_require__(9);
-	var simple_layouter_1 = __webpack_require__(118);
+	var simple_layouter_1 = __webpack_require__(116);
 	var ComboBoxOption = (function () {
 	    function ComboBoxOption(text, value, imageURL, color) {
 	        this.text = text;
@@ -22516,7 +22430,7 @@ var editor =
 
 
 /***/ },
-/* 115 */
+/* 113 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -22526,10 +22440,10 @@ var editor =
 	    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 	};
 	var widget_1 = __webpack_require__(21);
-	var scroll_view_1 = __webpack_require__(103);
+	var scroll_view_1 = __webpack_require__(101);
 	var widget_factory_1 = __webpack_require__(25);
-	var recyclable_creator_1 = __webpack_require__(86);
-	var list_layouter_1 = __webpack_require__(116);
+	var recyclable_creator_1 = __webpack_require__(84);
+	var list_layouter_1 = __webpack_require__(114);
 	var ListView = (function (_super) {
 	    __extends(ListView, _super);
 	    function ListView() {
@@ -22625,7 +22539,7 @@ var editor =
 
 
 /***/ },
-/* 116 */
+/* 114 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -22635,7 +22549,7 @@ var editor =
 	    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 	};
 	var rect_1 = __webpack_require__(3);
-	var layouter_1 = __webpack_require__(82);
+	var layouter_1 = __webpack_require__(80);
 	var TYPE = "list";
 	/**
 	 * 列表布局器。
@@ -22727,7 +22641,7 @@ var editor =
 
 
 /***/ },
-/* 117 */
+/* 115 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -22740,7 +22654,7 @@ var editor =
 	var widget_1 = __webpack_require__(21);
 	var widget_factory_1 = __webpack_require__(25);
 	var graphics_1 = __webpack_require__(27);
-	var recyclable_creator_1 = __webpack_require__(86);
+	var recyclable_creator_1 = __webpack_require__(84);
 	var image_tile_1 = __webpack_require__(9);
 	(function (ListItemStyle) {
 	    ListItemStyle[ListItemStyle["NORMAL"] = 0] = "NORMAL";
@@ -22879,7 +22793,7 @@ var editor =
 
 
 /***/ },
-/* 118 */
+/* 116 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -22888,7 +22802,7 @@ var editor =
 	    function __() { this.constructor = d; }
 	    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 	};
-	var layouter_1 = __webpack_require__(82);
+	var layouter_1 = __webpack_require__(80);
 	var TYPE = "simple";
 	/**
 	 * 简单的布局器。
@@ -22999,7 +22913,7 @@ var editor =
 
 
 /***/ },
-/* 119 */
+/* 117 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -23009,9 +22923,9 @@ var editor =
 	    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 	};
 	var widget_factory_1 = __webpack_require__(25);
-	var recyclable_creator_1 = __webpack_require__(86);
-	var grid_layouter_1 = __webpack_require__(120);
-	var scroll_view_1 = __webpack_require__(103);
+	var recyclable_creator_1 = __webpack_require__(84);
+	var grid_layouter_1 = __webpack_require__(118);
+	var scroll_view_1 = __webpack_require__(101);
 	/**
 	 * 网格视图。
 	 */
@@ -23170,7 +23084,7 @@ var editor =
 
 
 /***/ },
-/* 120 */
+/* 118 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -23180,7 +23094,7 @@ var editor =
 	    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 	};
 	var rect_1 = __webpack_require__(3);
-	var layouter_1 = __webpack_require__(82);
+	var layouter_1 = __webpack_require__(80);
 	var TYPE = "grid";
 	/**
 	 * 网格布局器。
@@ -23310,7 +23224,7 @@ var editor =
 
 
 /***/ },
-/* 121 */
+/* 119 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -23324,7 +23238,7 @@ var editor =
 	var widget_factory_1 = __webpack_require__(25);
 	var graphics_1 = __webpack_require__(27);
 	var image_tile_1 = __webpack_require__(9);
-	var recyclable_creator_1 = __webpack_require__(86);
+	var recyclable_creator_1 = __webpack_require__(84);
 	var widget_1 = __webpack_require__(21);
 	/**
 	 * 树形视图中，显示的一个子项。
@@ -23561,7 +23475,7 @@ var editor =
 
 
 /***/ },
-/* 122 */
+/* 120 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -23570,11 +23484,11 @@ var editor =
 	    function __() { this.constructor = d; }
 	    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 	};
-	var tree_item_1 = __webpack_require__(121);
-	var list_view_1 = __webpack_require__(115);
-	var tree_item_data_1 = __webpack_require__(123);
+	var tree_item_1 = __webpack_require__(119);
+	var list_view_1 = __webpack_require__(113);
+	var tree_item_data_1 = __webpack_require__(121);
 	var widget_factory_1 = __webpack_require__(25);
-	var recyclable_creator_1 = __webpack_require__(86);
+	var recyclable_creator_1 = __webpack_require__(84);
 	/**
 	 * 树形视图。
 	 */
@@ -23716,7 +23630,7 @@ var editor =
 
 
 /***/ },
-/* 123 */
+/* 121 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -23805,7 +23719,7 @@ var editor =
 
 
 /***/ },
-/* 124 */
+/* 122 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -23818,14 +23732,14 @@ var editor =
 	var TWEEN = __webpack_require__(22);
 	var Assets = __webpack_require__(13);
 	var Events = __webpack_require__(8);
-	var consts_1 = __webpack_require__(108);
-	var main_loop_1 = __webpack_require__(92);
+	var consts_1 = __webpack_require__(106);
+	var main_loop_1 = __webpack_require__(90);
 	var emitter_1 = __webpack_require__(6);
-	var view_port_1 = __webpack_require__(90);
+	var view_port_1 = __webpack_require__(88);
 	var image_tile_1 = __webpack_require__(9);
-	var theme_manager_1 = __webpack_require__(125);
-	var device_info_1 = __webpack_require__(126);
-	var service_locator_1 = __webpack_require__(127);
+	var theme_manager_1 = __webpack_require__(123);
+	var device_info_1 = __webpack_require__(124);
+	var service_locator_1 = __webpack_require__(125);
 	var inputEventAdapter = __webpack_require__(17);
 	/**
 	 * 代表整个应用程序，可以通过Application获取各种服务。
@@ -23992,7 +23906,7 @@ var editor =
 
 
 /***/ },
-/* 125 */
+/* 123 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -24083,7 +23997,7 @@ var editor =
 
 
 /***/ },
-/* 126 */
+/* 124 */
 /***/ function(module, exports) {
 
 	/**
@@ -24117,7 +24031,7 @@ var editor =
 
 
 /***/ },
-/* 127 */
+/* 125 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -24142,7 +24056,7 @@ var editor =
 
 
 /***/ },
-/* 128 */
+/* 126 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -24153,7 +24067,7 @@ var editor =
 	};
 	var Events = __webpack_require__(8);
 	var key_event_1 = __webpack_require__(18);
-	var behavior_1 = __webpack_require__(81);
+	var behavior_1 = __webpack_require__(79);
 	/**
 	 * Movable Behavior的初始化参数。
 	 */
@@ -24262,7 +24176,7 @@ var editor =
 
 
 /***/ },
-/* 129 */
+/* 127 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -24273,7 +24187,7 @@ var editor =
 	};
 	var Events = __webpack_require__(8);
 	var key_event_1 = __webpack_require__(18);
-	var behavior_1 = __webpack_require__(81);
+	var behavior_1 = __webpack_require__(79);
 	/**
 	 * 让Widget具有拖放功能的拖动功能。
 	 *
@@ -24347,7 +24261,7 @@ var editor =
 
 
 /***/ },
-/* 130 */
+/* 128 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -24357,7 +24271,7 @@ var editor =
 	    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 	};
 	var Events = __webpack_require__(8);
-	var behavior_1 = __webpack_require__(81);
+	var behavior_1 = __webpack_require__(79);
 	/**
 	 * 让Widget可作为拖放功能的Drop目标。
 	 *
@@ -24398,7 +24312,7 @@ var editor =
 
 
 /***/ },
-/* 131 */
+/* 129 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -24409,7 +24323,7 @@ var editor =
 	};
 	var point_1 = __webpack_require__(4);
 	var key_event_1 = __webpack_require__(18);
-	var behavior_1 = __webpack_require__(81);
+	var behavior_1 = __webpack_require__(79);
 	/**
 	 * Resizable Behavior的初始化参数。
 	 */
@@ -24574,7 +24488,7 @@ var editor =
 
 
 /***/ },
-/* 132 */
+/* 130 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -24585,16 +24499,16 @@ var editor =
 	};
 	var rect_1 = __webpack_require__(3);
 	var point_1 = __webpack_require__(4);
-	var dialog_1 = __webpack_require__(95);
+	var dialog_1 = __webpack_require__(93);
 	var graphics_1 = __webpack_require__(27);
-	var list_view_1 = __webpack_require__(115);
+	var list_view_1 = __webpack_require__(113);
 	var Events = __webpack_require__(8);
 	var widget_1 = __webpack_require__(21);
 	var widget_factory_1 = __webpack_require__(25);
 	var image_tile_1 = __webpack_require__(9);
-	var recyclable_creator_1 = __webpack_require__(86);
-	var list_layouter_1 = __webpack_require__(116);
-	var simple_layouter_1 = __webpack_require__(118);
+	var recyclable_creator_1 = __webpack_require__(84);
+	var list_layouter_1 = __webpack_require__(114);
+	var simple_layouter_1 = __webpack_require__(116);
 	var Menu = (function (_super) {
 	    __extends(Menu, _super);
 	    function Menu() {
@@ -24940,7 +24854,7 @@ var editor =
 
 
 /***/ },
-/* 133 */
+/* 131 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -24949,9 +24863,9 @@ var editor =
 	    function __() { this.constructor = d; }
 	    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 	};
-	var window_1 = __webpack_require__(96);
+	var window_1 = __webpack_require__(94);
 	var widget_factory_1 = __webpack_require__(25);
-	var recyclable_creator_1 = __webpack_require__(86);
+	var recyclable_creator_1 = __webpack_require__(84);
 	var WindowNormal = (function (_super) {
 	    __extends(WindowNormal, _super);
 	    function WindowNormal() {
@@ -24970,7 +24884,7 @@ var editor =
 
 
 /***/ },
-/* 134 */
+/* 132 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -24979,14 +24893,14 @@ var editor =
 	    function __() { this.constructor = d; }
 	    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 	};
-	var menu_1 = __webpack_require__(132);
+	var menu_1 = __webpack_require__(130);
 	var point_1 = __webpack_require__(4);
 	var Events = __webpack_require__(8);
 	var widget_1 = __webpack_require__(21);
 	var widget_factory_1 = __webpack_require__(25);
 	var image_tile_1 = __webpack_require__(9);
-	var recyclable_creator_1 = __webpack_require__(86);
-	var linear_layouter_1 = __webpack_require__(135);
+	var recyclable_creator_1 = __webpack_require__(84);
+	var linear_layouter_1 = __webpack_require__(133);
 	var MenuBar = (function (_super) {
 	    __extends(MenuBar, _super);
 	    function MenuBar() {
@@ -25045,11 +24959,12 @@ var editor =
 	        this.addChild(item);
 	        return item;
 	    };
-	    MenuBar.prototype.addLogo = function (iconURL) {
+	    MenuBar.prototype.addLogo = function (iconURL, width) {
 	        var item = MenuBarItem.create();
+	        var w = width || this.h || (this.itemWidth >> 1);
 	        item.styleType = "widget.transparent";
 	        item.setIcons(iconURL, iconURL);
-	        item.layoutParam = this.createChildLayoutParam({ w: this.h, h: "100%", position: 0.1 });
+	        item.layoutParam = this.createChildLayoutParam({ w: w, h: "100%", position: 0.1 });
 	        this.addChild(item);
 	        return item;
 	    };
@@ -25194,7 +25109,7 @@ var editor =
 
 
 /***/ },
-/* 135 */
+/* 133 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -25203,9 +25118,9 @@ var editor =
 	    function __() { this.constructor = d; }
 	    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 	};
-	var consts_1 = __webpack_require__(108);
+	var consts_1 = __webpack_require__(106);
 	var utils_1 = __webpack_require__(23);
-	var layouter_1 = __webpack_require__(82);
+	var layouter_1 = __webpack_require__(80);
 	var TYPE_H = "linear-h";
 	var TYPE_V = "linear-v";
 	/**
@@ -25405,7 +25320,7 @@ var editor =
 
 
 /***/ },
-/* 136 */
+/* 134 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -25418,8 +25333,8 @@ var editor =
 	var widget_1 = __webpack_require__(21);
 	var widget_factory_1 = __webpack_require__(25);
 	var graphics_1 = __webpack_require__(27);
-	var consts_1 = __webpack_require__(108);
-	var recyclable_creator_1 = __webpack_require__(86);
+	var consts_1 = __webpack_require__(106);
+	var recyclable_creator_1 = __webpack_require__(84);
 	/**
 	 * 颜色控件。
 	 */
@@ -25665,7 +25580,7 @@ var editor =
 
 
 /***/ },
-/* 137 */
+/* 135 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -25676,9 +25591,9 @@ var editor =
 	};
 	var widget_1 = __webpack_require__(21);
 	var widget_factory_1 = __webpack_require__(25);
-	var recyclable_creator_1 = __webpack_require__(86);
-	var title_content_1 = __webpack_require__(138);
-	var collapsable_title_1 = __webpack_require__(139);
+	var recyclable_creator_1 = __webpack_require__(84);
+	var title_content_1 = __webpack_require__(136);
+	var collapsable_title_1 = __webpack_require__(137);
 	/**
 	 * 手风琴控件。它有多个页面，在每一时刻只展开一个。
 	 */
@@ -25781,7 +25696,7 @@ var editor =
 
 
 /***/ },
-/* 138 */
+/* 136 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -25793,7 +25708,7 @@ var editor =
 	var widget_1 = __webpack_require__(21);
 	var Events = __webpack_require__(8);
 	var widget_factory_1 = __webpack_require__(25);
-	var recyclable_creator_1 = __webpack_require__(86);
+	var recyclable_creator_1 = __webpack_require__(84);
 	/**
 	 * 一个用来显示标题和内容的控件。通常用于Accordion和PropertySheets的子控件。
 	 */
@@ -26012,7 +25927,7 @@ var editor =
 
 
 /***/ },
-/* 139 */
+/* 137 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -26024,7 +25939,7 @@ var editor =
 	var rect_1 = __webpack_require__(3);
 	var point_1 = __webpack_require__(4);
 	var widget_1 = __webpack_require__(21);
-	var recyclable_creator_1 = __webpack_require__(86);
+	var recyclable_creator_1 = __webpack_require__(84);
 	/**
 	 * 可折叠的标题控件，点击折叠图片或双击时折叠或展开。
 	 * 只能用于TitleContent的titleWidget。
@@ -26098,7 +26013,7 @@ var editor =
 
 
 /***/ },
-/* 140 */
+/* 138 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -26109,7 +26024,7 @@ var editor =
 	};
 	var widget_1 = __webpack_require__(21);
 	var widget_factory_1 = __webpack_require__(25);
-	var recyclable_creator_1 = __webpack_require__(86);
+	var recyclable_creator_1 = __webpack_require__(84);
 	var Ruler = (function (_super) {
 	    __extends(Ruler, _super);
 	    function Ruler(type) {
@@ -26407,7 +26322,7 @@ var editor =
 
 
 /***/ },
-/* 141 */
+/* 139 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -26417,9 +26332,9 @@ var editor =
 	    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 	};
 	var label_1 = __webpack_require__(20);
-	var title_value_1 = __webpack_require__(142);
+	var title_value_1 = __webpack_require__(140);
 	var widget_factory_1 = __webpack_require__(25);
-	var recyclable_creator_1 = __webpack_require__(86);
+	var recyclable_creator_1 = __webpack_require__(84);
 	var TitleLabel = (function (_super) {
 	    __extends(TitleLabel, _super);
 	    function TitleLabel(type) {
@@ -26441,7 +26356,7 @@ var editor =
 
 
 /***/ },
-/* 142 */
+/* 140 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -26453,7 +26368,7 @@ var editor =
 	var Events = __webpack_require__(8);
 	var label_1 = __webpack_require__(20);
 	var widget_1 = __webpack_require__(21);
-	var linear_layouter_1 = __webpack_require__(135);
+	var linear_layouter_1 = __webpack_require__(133);
 	var TitleValue = (function (_super) {
 	    __extends(TitleValue, _super);
 	    function TitleValue(type) {
@@ -26577,7 +26492,7 @@ var editor =
 
 
 /***/ },
-/* 143 */
+/* 141 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -26586,10 +26501,10 @@ var editor =
 	    function __() { this.constructor = d; }
 	    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 	};
-	var range_edit_1 = __webpack_require__(144);
-	var title_value_1 = __webpack_require__(142);
+	var range_edit_1 = __webpack_require__(142);
+	var title_value_1 = __webpack_require__(140);
 	var widget_factory_1 = __webpack_require__(25);
-	var recyclable_creator_1 = __webpack_require__(86);
+	var recyclable_creator_1 = __webpack_require__(84);
 	var TitleRange = (function (_super) {
 	    __extends(TitleRange, _super);
 	    function TitleRange(type) {
@@ -26611,7 +26526,7 @@ var editor =
 
 
 /***/ },
-/* 144 */
+/* 142 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -26625,7 +26540,7 @@ var editor =
 	var widget_1 = __webpack_require__(21);
 	var Events = __webpack_require__(8);
 	var widget_factory_1 = __webpack_require__(25);
-	var recyclable_creator_1 = __webpack_require__(86);
+	var recyclable_creator_1 = __webpack_require__(84);
 	/**
 	 * 范围编辑器。
 	 */
@@ -26749,7 +26664,7 @@ var editor =
 
 
 /***/ },
-/* 145 */
+/* 143 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -26758,10 +26673,10 @@ var editor =
 	    function __() { this.constructor = d; }
 	    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 	};
-	var vector_edit_1 = __webpack_require__(146);
-	var title_value_1 = __webpack_require__(142);
+	var vector_edit_1 = __webpack_require__(144);
+	var title_value_1 = __webpack_require__(140);
 	var widget_factory_1 = __webpack_require__(25);
-	var recyclable_creator_1 = __webpack_require__(86);
+	var recyclable_creator_1 = __webpack_require__(84);
 	var TitleVector = (function (_super) {
 	    __extends(TitleVector, _super);
 	    function TitleVector(type) {
@@ -26800,7 +26715,7 @@ var editor =
 
 
 /***/ },
-/* 146 */
+/* 144 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -26814,8 +26729,8 @@ var editor =
 	var widget_1 = __webpack_require__(21);
 	var Events = __webpack_require__(8);
 	var widget_factory_1 = __webpack_require__(25);
-	var recyclable_creator_1 = __webpack_require__(86);
-	var grid_layouter_1 = __webpack_require__(120);
+	var recyclable_creator_1 = __webpack_require__(84);
+	var grid_layouter_1 = __webpack_require__(118);
 	/**
 	 * 范围编辑器。
 	 */
@@ -26982,7 +26897,7 @@ var editor =
 
 
 /***/ },
-/* 147 */
+/* 145 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -26992,9 +26907,9 @@ var editor =
 	    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 	};
 	var edit_1 = __webpack_require__(19);
-	var title_value_1 = __webpack_require__(142);
+	var title_value_1 = __webpack_require__(140);
 	var widget_factory_1 = __webpack_require__(25);
-	var recyclable_creator_1 = __webpack_require__(86);
+	var recyclable_creator_1 = __webpack_require__(84);
 	var TitleEdit = (function (_super) {
 	    __extends(TitleEdit, _super);
 	    function TitleEdit(type) {
@@ -27065,7 +26980,7 @@ var editor =
 
 
 /***/ },
-/* 148 */
+/* 146 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -27074,10 +26989,10 @@ var editor =
 	    function __() { this.constructor = d; }
 	    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 	};
-	var slider_1 = __webpack_require__(98);
-	var title_value_1 = __webpack_require__(142);
+	var slider_1 = __webpack_require__(96);
+	var title_value_1 = __webpack_require__(140);
 	var widget_factory_1 = __webpack_require__(25);
-	var recyclable_creator_1 = __webpack_require__(86);
+	var recyclable_creator_1 = __webpack_require__(84);
 	var TitleSlider = (function (_super) {
 	    __extends(TitleSlider, _super);
 	    function TitleSlider(type) {
@@ -27099,7 +27014,7 @@ var editor =
 
 
 /***/ },
-/* 149 */
+/* 147 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -27109,21 +27024,21 @@ var editor =
 	    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 	};
 	var Events = __webpack_require__(8);
-	var title_line_1 = __webpack_require__(150);
-	var title_edit_1 = __webpack_require__(147);
-	var title_label_1 = __webpack_require__(141);
-	var title_range_1 = __webpack_require__(143);
-	var title_vector_1 = __webpack_require__(145);
+	var title_line_1 = __webpack_require__(148);
+	var title_edit_1 = __webpack_require__(145);
+	var title_label_1 = __webpack_require__(139);
+	var title_range_1 = __webpack_require__(141);
+	var title_vector_1 = __webpack_require__(143);
 	var widget_1 = __webpack_require__(21);
-	var title_slider_1 = __webpack_require__(148);
-	var title_text_area_1 = __webpack_require__(151);
-	var props_desc_1 = __webpack_require__(152);
-	var props_desc_2 = __webpack_require__(152);
-	var props_desc_3 = __webpack_require__(152);
-	var title_combo_box_1 = __webpack_require__(153);
-	var title_choosable_edit_1 = __webpack_require__(154);
+	var title_slider_1 = __webpack_require__(146);
+	var title_text_area_1 = __webpack_require__(149);
+	var props_desc_1 = __webpack_require__(150);
+	var props_desc_2 = __webpack_require__(150);
+	var props_desc_3 = __webpack_require__(150);
+	var title_combo_box_1 = __webpack_require__(151);
+	var title_choosable_edit_1 = __webpack_require__(152);
 	var widget_factory_1 = __webpack_require__(25);
-	var recyclable_creator_1 = __webpack_require__(86);
+	var recyclable_creator_1 = __webpack_require__(84);
 	/**
 	 * 属性编辑页，包装了各种TitleValue。
 	 */
@@ -27445,7 +27360,7 @@ var editor =
 
 
 /***/ },
-/* 150 */
+/* 148 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -27454,10 +27369,10 @@ var editor =
 	    function __() { this.constructor = d; }
 	    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 	};
-	var title_value_1 = __webpack_require__(142);
-	var color_tile_1 = __webpack_require__(136);
+	var title_value_1 = __webpack_require__(140);
+	var color_tile_1 = __webpack_require__(134);
 	var widget_factory_1 = __webpack_require__(25);
-	var recyclable_creator_1 = __webpack_require__(86);
+	var recyclable_creator_1 = __webpack_require__(84);
 	var TitleLine = (function (_super) {
 	    __extends(TitleLine, _super);
 	    function TitleLine(type) {
@@ -27479,7 +27394,7 @@ var editor =
 
 
 /***/ },
-/* 151 */
+/* 149 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -27489,9 +27404,9 @@ var editor =
 	    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 	};
 	var edit_1 = __webpack_require__(19);
-	var title_value_1 = __webpack_require__(142);
+	var title_value_1 = __webpack_require__(140);
 	var widget_factory_1 = __webpack_require__(25);
-	var recyclable_creator_1 = __webpack_require__(86);
+	var recyclable_creator_1 = __webpack_require__(84);
 	var TitleTextArea = (function (_super) {
 	    __extends(TitleTextArea, _super);
 	    function TitleTextArea(type) {
@@ -27531,7 +27446,7 @@ var editor =
 
 
 /***/ },
-/* 152 */
+/* 150 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -27758,7 +27673,7 @@ var editor =
 
 
 /***/ },
-/* 153 */
+/* 151 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -27767,10 +27682,10 @@ var editor =
 	    function __() { this.constructor = d; }
 	    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 	};
-	var title_value_1 = __webpack_require__(142);
+	var title_value_1 = __webpack_require__(140);
 	var widget_factory_1 = __webpack_require__(25);
-	var recyclable_creator_1 = __webpack_require__(86);
-	var combo_box_1 = __webpack_require__(114);
+	var recyclable_creator_1 = __webpack_require__(84);
+	var combo_box_1 = __webpack_require__(112);
 	var TitleComboBoxBase = (function (_super) {
 	    __extends(TitleComboBoxBase, _super);
 	    function TitleComboBoxBase(type) {
@@ -27840,7 +27755,7 @@ var editor =
 
 
 /***/ },
-/* 154 */
+/* 152 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -27849,10 +27764,10 @@ var editor =
 	    function __() { this.constructor = d; }
 	    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 	};
-	var title_value_1 = __webpack_require__(142);
-	var choosable_edit_1 = __webpack_require__(155);
+	var title_value_1 = __webpack_require__(140);
+	var choosable_edit_1 = __webpack_require__(153);
 	var widget_factory_1 = __webpack_require__(25);
-	var recyclable_creator_1 = __webpack_require__(86);
+	var recyclable_creator_1 = __webpack_require__(84);
 	var TitleChoosableEdit = (function (_super) {
 	    __extends(TitleChoosableEdit, _super);
 	    function TitleChoosableEdit(type) {
@@ -27899,7 +27814,7 @@ var editor =
 
 
 /***/ },
-/* 155 */
+/* 153 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -27909,11 +27824,11 @@ var editor =
 	    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 	};
 	var edit_1 = __webpack_require__(19);
-	var button_1 = __webpack_require__(97);
+	var button_1 = __webpack_require__(95);
 	var widget_1 = __webpack_require__(21);
 	var Events = __webpack_require__(8);
 	var widget_factory_1 = __webpack_require__(25);
-	var recyclable_creator_1 = __webpack_require__(86);
+	var recyclable_creator_1 = __webpack_require__(84);
 	/**
 	 * 编辑器+选择按钮。
 	 */
@@ -28000,7 +27915,7 @@ var editor =
 
 
 /***/ },
-/* 156 */
+/* 154 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -28009,11 +27924,11 @@ var editor =
 	    function __() { this.constructor = d; }
 	    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 	};
-	var scroll_view_1 = __webpack_require__(103);
+	var scroll_view_1 = __webpack_require__(101);
 	var widget_factory_1 = __webpack_require__(25);
-	var title_content_1 = __webpack_require__(138);
-	var recyclable_creator_1 = __webpack_require__(86);
-	var collapsable_title_1 = __webpack_require__(139);
+	var title_content_1 = __webpack_require__(136);
+	var recyclable_creator_1 = __webpack_require__(84);
+	var collapsable_title_1 = __webpack_require__(137);
 	/**
 	 * 管理多个页面，每个页面可以展开或折叠。
 	 */
@@ -28111,7 +28026,7 @@ var editor =
 
 
 /***/ },
-/* 157 */
+/* 155 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -28120,8 +28035,8 @@ var editor =
 	    function __() { this.constructor = d; }
 	    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 	};
-	var consts_1 = __webpack_require__(108);
-	var layouter_1 = __webpack_require__(82);
+	var consts_1 = __webpack_require__(106);
+	var layouter_1 = __webpack_require__(80);
 	var TYPE = "dock";
 	/**
 	 * Dock布局器。
@@ -28237,7 +28152,7 @@ var editor =
 
 
 /***/ },
-/* 158 */
+/* 156 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -28246,25 +28161,25 @@ var editor =
 	    function __() { this.constructor = d; }
 	    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 	};
-	var group_1 = __webpack_require__(94);
-	var dialog_1 = __webpack_require__(95);
+	var group_1 = __webpack_require__(92);
+	var dialog_1 = __webpack_require__(93);
 	var label_1 = __webpack_require__(20);
 	var edit_1 = __webpack_require__(19);
-	var button_1 = __webpack_require__(97);
+	var button_1 = __webpack_require__(95);
 	var Events = __webpack_require__(8);
 	var graphics_1 = __webpack_require__(27);
-	var list_view_1 = __webpack_require__(115);
-	var progress_bar_1 = __webpack_require__(99);
-	var application_1 = __webpack_require__(124);
+	var list_view_1 = __webpack_require__(113);
+	var progress_bar_1 = __webpack_require__(97);
+	var application_1 = __webpack_require__(122);
 	var widget_1 = __webpack_require__(21);
 	var widget_factory_1 = __webpack_require__(25);
-	var consts_1 = __webpack_require__(108);
-	var recyclable_creator_1 = __webpack_require__(86);
-	var list_item_1 = __webpack_require__(117);
-	var dock_layouter_1 = __webpack_require__(157);
-	var linear_layouter_1 = __webpack_require__(135);
-	var grid_layouter_1 = __webpack_require__(120);
-	var simple_layouter_1 = __webpack_require__(118);
+	var consts_1 = __webpack_require__(106);
+	var recyclable_creator_1 = __webpack_require__(84);
+	var list_item_1 = __webpack_require__(115);
+	var dock_layouter_1 = __webpack_require__(155);
+	var linear_layouter_1 = __webpack_require__(133);
+	var grid_layouter_1 = __webpack_require__(118);
+	var simple_layouter_1 = __webpack_require__(116);
 	var TitleOptions = (function () {
 	    function TitleOptions(text, iconStyleType, hasCloseButton) {
 	        this.h = 0;
@@ -28614,7 +28529,7 @@ var editor =
 
 
 /***/ },
-/* 159 */
+/* 157 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -28623,7 +28538,7 @@ var editor =
 	    function __() { this.constructor = d; }
 	    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 	};
-	var view_modal_default_1 = __webpack_require__(160);
+	var view_modal_default_1 = __webpack_require__(158);
 	/**
 	 * IViewModal的基本实现。如果不能满足要求，可以重载部分函数。
 	 */
@@ -28643,7 +28558,7 @@ var editor =
 
 
 /***/ },
-/* 160 */
+/* 158 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -28652,11 +28567,11 @@ var editor =
 	    function __() { this.constructor = d; }
 	    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 	};
-	var pointer = __webpack_require__(161);
+	var pointer = __webpack_require__(159);
 	var emitter_1 = __webpack_require__(6);
 	var Events = __webpack_require__(8);
-	var ivalidation_rule_1 = __webpack_require__(163);
-	var iview_modal_1 = __webpack_require__(85);
+	var ivalidation_rule_1 = __webpack_require__(161);
+	var iview_modal_1 = __webpack_require__(83);
 	var ViewModalDefault = (function (_super) {
 	    __extends(ViewModalDefault, _super);
 	    function ViewModalDefault(data) {
@@ -28792,12 +28707,12 @@ var editor =
 
 
 /***/ },
-/* 161 */
+/* 159 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var each = __webpack_require__(162);
+	var each = __webpack_require__(160);
 	module.exports = api;
 
 
@@ -29009,7 +28924,7 @@ var editor =
 
 
 /***/ },
-/* 162 */
+/* 160 */
 /***/ function(module, exports) {
 
 	
@@ -29037,7 +28952,7 @@ var editor =
 
 
 /***/ },
-/* 163 */
+/* 161 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -29070,7 +28985,7 @@ var editor =
 
 
 /***/ },
-/* 164 */
+/* 162 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -29095,7 +29010,7 @@ var editor =
 
 
 /***/ },
-/* 165 */
+/* 163 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -29105,9 +29020,9 @@ var editor =
 	    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 	};
 	var Events = __webpack_require__(8);
-	var delegate_command_1 = __webpack_require__(164);
-	var ivalidation_rule_1 = __webpack_require__(163);
-	var view_modal_default_1 = __webpack_require__(160);
+	var delegate_command_1 = __webpack_require__(162);
+	var ivalidation_rule_1 = __webpack_require__(161);
+	var view_modal_default_1 = __webpack_require__(158);
 	/**
 	 * 集合ViewModal。delProp/getProp/setProp操作当前的项。
 	 */
@@ -29307,7 +29222,7 @@ var editor =
 
 
 /***/ },
-/* 166 */
+/* 164 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -29332,7 +29247,7 @@ var editor =
 
 
 /***/ },
-/* 167 */
+/* 165 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -29353,7 +29268,7 @@ var editor =
 
 
 /***/ },
-/* 168 */
+/* 166 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -29363,14 +29278,14 @@ var editor =
 	    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 	};
 	var qtk_1 = __webpack_require__(2);
-	var main_menu_bar_1 = __webpack_require__(169);
-	var particles_view_1 = __webpack_require__(170);
-	var particle_properties_1 = __webpack_require__(171);
+	var main_menu_bar_1 = __webpack_require__(167);
+	var particles_view_1 = __webpack_require__(168);
+	var particle_properties_1 = __webpack_require__(169);
 	var qtk_2 = __webpack_require__(2);
 	var MainWindow = (function (_super) {
 	    __extends(MainWindow, _super);
 	    function MainWindow() {
-	        _super.call(this);
+	        _super.apply(this, arguments);
 	    }
 	    MainWindow.prototype.onCreated = function () {
 	        _super.prototype.onCreated.call(this);
@@ -29399,7 +29314,7 @@ var editor =
 
 
 /***/ },
-/* 169 */
+/* 167 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -29412,12 +29327,18 @@ var editor =
 	var MainMenuBar = (function (_super) {
 	    __extends(MainMenuBar, _super);
 	    function MainMenuBar() {
-	        _super.call(this);
+	        _super.apply(this, arguments);
 	    }
 	    MainMenuBar.prototype.onFileMenu = function (menu) {
 	        menu.w = 128;
 	        menu.addItem("Open", null).set({ dataBindingRule: { click: { command: "open" } } });
 	        menu.addItem("Save", null).set({ dataBindingRule: { click: { command: "save" } } });
+	        menu.bindData(this.viewModal);
+	    };
+	    MainMenuBar.prototype.onHelpMenu = function (menu) {
+	        menu.w = 128;
+	        menu.addItem("About", null).set({ dataBindingRule: { click: { command: "about" } } });
+	        menu.addItem("About QToolKit", null).set({ dataBindingRule: { click: { command: "about-qtk" } } });
 	        menu.bindData(this.viewModal);
 	    };
 	    MainMenuBar.prototype.onEditMenu = function (menu) {
@@ -29426,14 +29347,16 @@ var editor =
 	        menu.addItem("Redo", null).set({ dataBindingRule: { click: { command: "redo" } } });
 	        menu.bindData(this.viewModal);
 	    };
-	    MainMenuBar.prototype.createUI = function () {
+	    MainMenuBar.prototype.onCreated = function () {
+	        _super.prototype.onCreated.call(this);
+	        this.addLogo("https://qtoolkit.github.io/demos/assets/icons/@density/apple.png");
 	        this.addItem("File", this.onFileMenu.bind(this));
 	        this.addItem("Edit", this.onEditMenu.bind(this));
+	        this.addItem("Help", this.onHelpMenu.bind(this));
 	    };
 	    MainMenuBar.create = function (options) {
 	        var menuBar = new MainMenuBar();
 	        menuBar.reset("menu-bar", options);
-	        menuBar.createUI();
 	        return menuBar;
 	    };
 	    return MainMenuBar;
@@ -29443,7 +29366,7 @@ var editor =
 
 
 /***/ },
-/* 170 */
+/* 168 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -29462,8 +29385,7 @@ var editor =
 	    ParticlesView.prototype.drawBackground = function (ctx, style) {
 	        ctx.fillStyle = "#F6F6F6";
 	        ctx.fillRect(0, 0, this.w, this.h);
-	        var args = { ctx: ctx, rect: qtk_1.Rect.rect.init(0, 0, this.w, this.h) };
-	        this.viewModal.execCommand("draw", args);
+	        this.viewModal.execCommand("draw", { ctx: ctx, rect: qtk_1.Rect.rect.init(0, 0, this.w, this.h) });
 	        this.requestRedraw();
 	        return this;
 	    };
@@ -29482,7 +29404,7 @@ var editor =
 
 
 /***/ },
-/* 171 */
+/* 169 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -29525,7 +29447,7 @@ var editor =
 
 
 /***/ },
-/* 172 */
+/* 170 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -29534,12 +29456,12 @@ var editor =
 	    function __() { this.constructor = d; }
 	    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 	};
-	var proton = __webpack_require__(173);
-	var template_1 = __webpack_require__(174);
-	var converters_1 = __webpack_require__(175);
-	var command_draw_1 = __webpack_require__(176);
-	var particles_view_modal_1 = __webpack_require__(177);
-	var iparticles_view_modal_1 = __webpack_require__(178);
+	var proton = __webpack_require__(171);
+	var template_1 = __webpack_require__(172);
+	var converters_1 = __webpack_require__(173);
+	var command_draw_1 = __webpack_require__(174);
+	var particles_view_modal_1 = __webpack_require__(175);
+	var iparticles_view_modal_1 = __webpack_require__(176);
 	var ProtonViewModal = (function (_super) {
 	    __extends(ProtonViewModal, _super);
 	    function ProtonViewModal(template) {
@@ -29565,9 +29487,9 @@ var editor =
 	        var alpha = new Proton.Alpha(data.alpha.first, data.alpha.second);
 	        var scale = new Proton.Scale(data.scale.first, data.scale.second);
 	        var velocity = new Proton.Velocity(3, Proton.getSpan(0, 360), 'polar');
-	        var rate = new Proton.Rate(new Proton.Span(10, 20), new Proton.Span(.1, .25));
-	        var mass = new Proton.Mass(1);
-	        var velocity = new Proton.Velocity(new Proton.Span(2, 4), new Proton.Span(-30, 30), 'polar');
+	        var rate = new Proton.Rate(new Proton.Span(data.rateNum.first, data.rateNum.second), new Proton.Span(data.rateTime.first, data.rateTime.second));
+	        var mass = new Proton.Mass(data.mass.first, data.mass.second);
+	        var velocity = new Proton.Velocity(new Proton.Span(data.vRpan.first, data.vRpan.second), new Proton.Span(data.vThapan.first, data.vThapan.second), data.vType);
 	        var randomDrift = new Proton.RandomDrift(data.driftPoint.x, data.driftPoint.y, data.driftDelay);
 	        var color = new Proton.Color('ff0000', 'random', Infinity, Proton.easeOutQuart);
 	        if (!this.canvas) {
@@ -29591,8 +29513,8 @@ var editor =
 	        emitter.addBehaviour(color);
 	        emitter.addBehaviour(scale);
 	        emitter.addBehaviour(alpha);
-	        emitter.p.x = canvas.width / 2;
-	        emitter.p.y = canvas.height / 2;
+	        emitter.p.x = data.position.x;
+	        emitter.p.y = data.position.y;
 	        emitter.emit();
 	        proton.addEmitter(emitter);
 	        this.protonEmitter = emitter;
@@ -29617,11 +29539,11 @@ var editor =
 	}(particles_view_modal_1.ParticlesViewModal));
 	exports.ProtonViewModal = ProtonViewModal;
 	;
-	iparticles_view_modal_1.IParticlesViewModalFactory.register(ProtonViewModal.TYPE, ProtonViewModal.create);
+	iparticles_view_modal_1.ParticlesViewModalFactory.register(ProtonViewModal.TYPE, ProtonViewModal.create);
 
 
 /***/ },
-/* 173 */
+/* 171 */
 /***/ function(module, exports) {
 
 	/*!
@@ -33792,7 +33714,7 @@ var editor =
 		}()); 
 
 /***/ },
-/* 174 */
+/* 172 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -33806,7 +33728,9 @@ var editor =
 	        json.forEach(function (item) {
 	            var pagePropsDesc = qtk_1.PagePropsDesc.create(item.title, item.propsDesc);
 	            item.propsDesc.forEach(function (desc) {
-	                data[desc.path] = desc.value;
+	                if (desc.path) {
+	                    data[desc.path] = desc.value;
+	                }
 	            });
 	            propsDesc.push(pagePropsDesc);
 	        });
@@ -33831,16 +33755,29 @@ var editor =
 	        title: "Initialize",
 	        propsDesc: [
 	            { type: "range", name: "Radius", converter: "radius", path: "radius", value: { first: 1, second: 12 } },
-	            { type: "range", name: "Life", converter: "life", path: "life", value: { first: 2, second: 4 } }
+	            { type: "range", name: "Life", converter: "life", path: "life", value: { first: 2, second: 4 } },
+	            { type: "range", name: "Mass", converter: "mass", path: "mass", value: { first: 1, second: 1 } },
+	            { type: "vector2", name: "Position", path: "position", converter: "point", value: { x: 300, y: 300 } },
+	            { type: "line", name: "Rate" },
+	            { type: "range", name: "number", converter: "number", path: "rateNum", value: { first: 10, second: 20 } },
+	            { type: "range", name: "time", converter: "time", path: "rateTime", value: { first: .1, second: .25 } },
+	            { type: "line" },
+	            { type: "options", name: "Type", converter: "velocity", path: "vType", value: "polar",
+	                options: ["polar", "linear"] },
+	            { type: "range", name: "rpan", converter: "velocity", path: "vRpan", value: { first: 2, second: 4 } },
+	            { type: "range", name: "thapan", converter: "velocity", path: "vThapan", value: { first: -30, second: 30 } },
+	            { type: "line" }
 	        ]
 	    },
 	    {
 	        title: "Behaviour",
 	        propsDesc: [
-	            { type: "range", name: "Scale", path: "scale", value: { first: 1, second: 0.7 } },
-	            { type: "range", name: "Alpha", path: "alpha", value: { first: 1, second: 0 } },
-	            { type: "number", name: "Drift Delay", path: "driftDelay", value: 0.05 },
-	            { type: "vector2", name: "Drift Point", path: "driftPoint", value: { x: 30, y: 30 } }
+	            { type: "range", name: "Scale", path: "scale", converter: "scale", value: { first: 1, second: 0.7 } },
+	            { type: "range", name: "Alpha", path: "alpha", converter: "alpha", value: { first: 1, second: 0 } },
+	            { type: "line", name: "Drift" },
+	            { type: "vector2", name: "Point", path: "driftPoint", converter: "point", value: { x: 30, y: 30 } },
+	            { type: "number", name: "Delay", path: "driftDelay", converter: "delay", value: 0.05 },
+	            { type: "line" }
 	        ]
 	    }
 	];
@@ -33848,11 +33785,14 @@ var editor =
 
 
 /***/ },
-/* 175 */
+/* 173 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
 	var qtk_1 = __webpack_require__(2);
+	function convertPoint(value) {
+	    return { x: Math.max(0, +value.x), y: Math.max(0, +value.y) };
+	}
 	function convertRange(value, fix) {
 	    var first = Math.max(0, +value.first);
 	    var second = Math.max(0, +value.second);
@@ -33875,6 +33815,10 @@ var editor =
 	    Converters.init = function (viewModal) {
 	        viewModal.registerValueConverter("life", qtk_1.DelegateValueConverter.create(noChange, fixRange));
 	        viewModal.registerValueConverter("radius", qtk_1.DelegateValueConverter.create(noChange, fixRange));
+	        viewModal.registerValueConverter("mass", qtk_1.DelegateValueConverter.create(noChange, fixRange));
+	        viewModal.registerValueConverter("point", qtk_1.DelegateValueConverter.create(noChange, convertPoint));
+	        viewModal.registerValueConverter("scale", qtk_1.DelegateValueConverter.create(noChange, convertRange));
+	        viewModal.registerValueConverter("alpha", qtk_1.DelegateValueConverter.create(noChange, convertRange));
 	    };
 	    return Converters;
 	}());
@@ -33883,7 +33827,7 @@ var editor =
 
 
 /***/ },
-/* 176 */
+/* 174 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -33905,12 +33849,9 @@ var editor =
 	            if (canvas.width !== w || canvas.height !== h) {
 	                canvas.width = w;
 	                canvas.height = h;
-	                emitter.p.x = w >> 1;
-	                emitter.p.y = h >> 1;
 	            }
 	            ctx.drawImage(canvas, 0, 0);
 	        }
-	        console.log("CommandDraw");
 	        return true;
 	    };
 	    CommandDraw.create = function (protonData) {
@@ -33923,7 +33864,7 @@ var editor =
 
 
 /***/ },
-/* 177 */
+/* 175 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -33948,25 +33889,25 @@ var editor =
 
 
 /***/ },
-/* 178 */
+/* 176 */
 /***/ function(module, exports) {
 
 	"use strict";
 	;
-	var IParticlesViewModalFactory = (function () {
-	    function IParticlesViewModalFactory() {
+	var ParticlesViewModalFactory = (function () {
+	    function ParticlesViewModalFactory() {
 	    }
-	    IParticlesViewModalFactory.register = function (type, creator) {
-	        IParticlesViewModalFactory.viewModals[type] = creator;
+	    ParticlesViewModalFactory.register = function (type, creator) {
+	        ParticlesViewModalFactory.viewModals[type] = creator;
 	    };
-	    IParticlesViewModalFactory.create = function (type, options) {
-	        var creator = IParticlesViewModalFactory.viewModals[type];
+	    ParticlesViewModalFactory.create = function (type, options) {
+	        var creator = ParticlesViewModalFactory.viewModals[type];
 	        return creator(options);
 	    };
-	    IParticlesViewModalFactory.viewModals = {};
-	    return IParticlesViewModalFactory;
+	    ParticlesViewModalFactory.viewModals = {};
+	    return ParticlesViewModalFactory;
 	}());
-	exports.IParticlesViewModalFactory = IParticlesViewModalFactory;
+	exports.ParticlesViewModalFactory = ParticlesViewModalFactory;
 
 
 /***/ }

@@ -12,7 +12,7 @@ var qtk_2 = require("qtk");
 var MainWindow = (function (_super) {
     __extends(MainWindow, _super);
     function MainWindow() {
-        _super.call(this);
+        _super.apply(this, arguments);
     }
     MainWindow.prototype.onCreated = function () {
         _super.prototype.onCreated.call(this);

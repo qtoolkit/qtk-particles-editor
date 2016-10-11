@@ -17,12 +17,9 @@ var CommandDraw = (function () {
             if (canvas.width !== w || canvas.height !== h) {
                 canvas.width = w;
                 canvas.height = h;
-                emitter.p.x = w >> 1;
-                emitter.p.y = h >> 1;
             }
             ctx.drawImage(canvas, 0, 0);
         }
-        console.log("CommandDraw");
         return true;
     };
     CommandDraw.create = function (protonData) {

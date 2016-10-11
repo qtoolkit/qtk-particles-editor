@@ -1,4 +1,4 @@
-import {PagePropsDesc, PropsDesc, PropertyPage, PropertySheets, Style} from "qtk";
+import {PagePropsDesc, PropertyPage, PropertySheets, Style} from "qtk";
 import {IParticlesViewModal} from "../view-modals/iparticles-view-modal";
 
 export class ParticleProperties extends PropertySheets {

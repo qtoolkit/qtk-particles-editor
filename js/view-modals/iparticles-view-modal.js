@@ -1,16 +1,16 @@
 "use strict";
 ;
-var IParticlesViewModalFactory = (function () {
-    function IParticlesViewModalFactory() {
+var ParticlesViewModalFactory = (function () {
+    function ParticlesViewModalFactory() {
     }
-    IParticlesViewModalFactory.register = function (type, creator) {
-        IParticlesViewModalFactory.viewModals[type] = creator;
+    ParticlesViewModalFactory.register = function (type, creator) {
+        ParticlesViewModalFactory.viewModals[type] = creator;
     };
-    IParticlesViewModalFactory.create = function (type, options) {
-        var creator = IParticlesViewModalFactory.viewModals[type];
+    ParticlesViewModalFactory.create = function (type, options) {
+        var creator = ParticlesViewModalFactory.viewModals[type];
         return creator(options);
     };
-    IParticlesViewModalFactory.viewModals = {};
-    return IParticlesViewModalFactory;
+    ParticlesViewModalFactory.viewModals = {};
+    return ParticlesViewModalFactory;
 }());
-exports.IParticlesViewModalFactory = IParticlesViewModalFactory;
+exports.ParticlesViewModalFactory = ParticlesViewModalFactory;

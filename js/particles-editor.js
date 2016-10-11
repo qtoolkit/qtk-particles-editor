@@ -16,11 +16,11 @@ var ParticlesEditor = (function (_super) {
     }
     ParticlesEditor.prototype.onReady = function () {
         var vp = this.getViewPort();
-        var viewModal = iparticles_view_modal_1.IParticlesViewModalFactory.create(view_modal_1.ProtonViewModal.TYPE);
+        var viewModal = iparticles_view_modal_1.ParticlesViewModalFactory.create(view_modal_1.ProtonViewModal.TYPE);
         this.mainWindow = main_window_1.MainWindow.create({ w: vp.w, h: vp.h, app: this, viewModal: viewModal });
     };
     ParticlesEditor.run = function () {
-        var app = new ParticlesEditor("proton-editor");
+        var app = new ParticlesEditor("particles-editor");
         app.init({ sysThemeDataURL: themeDataURL });
         app.run();
         return app;

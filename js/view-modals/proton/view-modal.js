@@ -35,9 +35,9 @@ var ProtonViewModal = (function (_super) {
         var alpha = new Proton.Alpha(data.alpha.first, data.alpha.second);
         var scale = new Proton.Scale(data.scale.first, data.scale.second);
         var velocity = new Proton.Velocity(3, Proton.getSpan(0, 360), 'polar');
-        var rate = new Proton.Rate(new Proton.Span(10, 20), new Proton.Span(.1, .25));
-        var mass = new Proton.Mass(1);
-        var velocity = new Proton.Velocity(new Proton.Span(2, 4), new Proton.Span(-30, 30), 'polar');
+        var rate = new Proton.Rate(new Proton.Span(data.rateNum.first, data.rateNum.second), new Proton.Span(data.rateTime.first, data.rateTime.second));
+        var mass = new Proton.Mass(data.mass.first, data.mass.second);
+        var velocity = new Proton.Velocity(new Proton.Span(data.vRpan.first, data.vRpan.second), new Proton.Span(data.vThapan.first, data.vThapan.second), data.vType);
         var randomDrift = new Proton.RandomDrift(data.driftPoint.x, data.driftPoint.y, data.driftDelay);
         var color = new Proton.Color('ff0000', 'random', Infinity, Proton.easeOutQuart);
         if (!this.canvas) {
@@ -61,8 +61,8 @@ var ProtonViewModal = (function (_super) {
         emitter.addBehaviour(color);
         emitter.addBehaviour(scale);
         emitter.addBehaviour(alpha);
-        emitter.p.x = canvas.width / 2;
-        emitter.p.y = canvas.height / 2;
+        emitter.p.x = data.position.x;
+        emitter.p.y = data.position.y;
         emitter.emit();
         proton.addEmitter(emitter);
         this.protonEmitter = emitter;
@@ -87,4 +87,4 @@ var ProtonViewModal = (function (_super) {
 }(particles_view_modal_1.ParticlesViewModal));
 exports.ProtonViewModal = ProtonViewModal;
 ;
-iparticles_view_modal_1.IParticlesViewModalFactory.register(ProtonViewModal.TYPE, ProtonViewModal.create);
+iparticles_view_modal_1.ParticlesViewModalFactory.register(ProtonViewModal.TYPE, ProtonViewModal.create);

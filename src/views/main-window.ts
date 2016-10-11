@@ -6,11 +6,7 @@ import {IParticlesViewModal} from "../view-modals/iparticles-view-modal";
 import {Widget, IViewModal, WindowNormal, DockLayouter, DockLayouterParam} from "qtk"
 
 export class MainWindow extends WindowNormal {
-	protected viewModal:IParticlesViewModal;
-
-	constructor() {
-		super();
-	}
+	protected viewModal : IParticlesViewModal;
 
 	protected onCreated() {
 		super.onCreated();

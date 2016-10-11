@@ -5,15 +5,15 @@ export interface IParticlesViewModal extends IViewModal {
 	getPropsDesc() : Array<PagePropsDesc>;
 };
 	
-export class IParticlesViewModalFactory {
+export class ParticlesViewModalFactory {
 	public static viewModals:any = {};
 
 	public static register(type:string, creator:Function) {
-		IParticlesViewModalFactory.viewModals[type] = creator;
+		ParticlesViewModalFactory.viewModals[type] = creator;
 	}
 
 	public static create(type:string, options?:any) : IParticlesViewModal {
-		var creator = IParticlesViewModalFactory.viewModals[type];
+		var creator = ParticlesViewModalFactory.viewModals[type];
 
 		return creator(options);
 	}
