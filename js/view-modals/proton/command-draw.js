@@ -7,8 +7,9 @@ var CommandDraw = (function () {
         return true;
     };
     CommandDraw.prototype.execute = function (args) {
-        var ctx = args.ctx;
-        var rect = args.rect;
+        var drawInfo = args;
+        var ctx = drawInfo.ctx;
+        var rect = drawInfo.rect;
         var canvas = this._protonData.canvas;
         var emitter = this._protonData.protonEmitter;
         if (canvas) {

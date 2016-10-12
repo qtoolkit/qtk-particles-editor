@@ -4,6 +4,9 @@ import {Template} from "./template";
 import {IProtonData} from "./iproton-data";
 import {Converters} from "./converters";
 import {CommandDraw} from "./command-draw";
+import {CommandAbout} from "../command-about";
+import {CommandContent} from "../command-content";
+import {AboutInfo} from "../../modals/about-info";
 
 import {PropsDesc, PagePropsDesc, Events} from "qtk";
 import {ViewModal, IViewModal, ValidationResult} from "qtk"
@@ -33,11 +36,17 @@ export class ProtonViewModal extends ParticlesViewModal implements IProtonData{
 
 		this.createEmitter();
 		this.template = template;
-		
-		Converters.init(this);
-		this.registerCommand("draw", CommandDraw.create(this));
-	}
 	
+		Converters.init(this);
+		this.registerCommands();
+	}
+
+	protected registerCommands() {
+		this.registerCommand("draw", CommandDraw.create(this));
+		this.registerCommand("about", CommandAbout.create(this, "https://github.com/a-jie/Proton"));
+		this.registerCommand("content", CommandContent.create(this, "http://proton.jpeer.at/index.html"));
+	}
+
 	protected createEmitter() {
 		var data = this.data;
 

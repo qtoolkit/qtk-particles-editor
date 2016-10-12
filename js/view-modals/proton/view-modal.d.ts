@@ -11,6 +11,7 @@ export declare class ProtonViewModal extends ParticlesViewModal implements IProt
     getPropsDesc(): Array<PagePropsDesc>;
     setProp(path: string, value: any, converter?: string, validationRule?: string): ValidationResult;
     constructor(template: Template);
+    protected registerCommands(): void;
     protected createEmitter(): void;
     static TYPE: string;
     static create(options: any): IParticlesViewModal;

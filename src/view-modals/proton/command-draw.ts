@@ -1,6 +1,7 @@
 
 import {ICommand} from "qtk";
 import {IProtonData} from "./iproton-data";
+import {DrawInfo} from "../../modals/draw-info"
 
 export class CommandDraw implements ICommand {
 	protected _protonData : IProtonData;
@@ -14,8 +15,10 @@ export class CommandDraw implements ICommand {
 	}
 
 	public execute(args:any) : boolean {
-		var ctx = args.ctx;
-		var rect = args.rect;
+		var drawInfo = <DrawInfo>args;
+
+		var ctx = drawInfo.ctx;
+		var rect = drawInfo.rect;
 		var canvas = this._protonData.canvas;
 		var emitter = this._protonData.protonEmitter;
 		

@@ -8,6 +8,8 @@ var proton = require("proton");
 var template_1 = require("./template");
 var converters_1 = require("./converters");
 var command_draw_1 = require("./command-draw");
+var command_about_1 = require("../command-about");
+var command_content_1 = require("../command-content");
 var particles_view_modal_1 = require("../particles-view-modal");
 var iparticles_view_modal_1 = require("../iparticles-view-modal");
 var ProtonViewModal = (function (_super) {
@@ -17,7 +19,7 @@ var ProtonViewModal = (function (_super) {
         this.createEmitter();
         this.template = template;
         converters_1.Converters.init(this);
-        this.registerCommand("draw", command_draw_1.CommandDraw.create(this));
+        this.registerCommands();
     }
     ProtonViewModal.prototype.getPropsDesc = function () {
         return this.template.propsDesc;
@@ -26,6 +28,11 @@ var ProtonViewModal = (function (_super) {
         var result = _super.prototype.setProp.call(this, path, value, converter, validationRule);
         this.createEmitter();
         return result;
+    };
+    ProtonViewModal.prototype.registerCommands = function () {
+        this.registerCommand("draw", command_draw_1.CommandDraw.create(this));
+        this.registerCommand("about", command_about_1.CommandAbout.create(this, "https://github.com/a-jie/Proton"));
+        this.registerCommand("content", command_content_1.CommandContent.create(this, "http://proton.jpeer.at/index.html"));
     };
     ProtonViewModal.prototype.createEmitter = function () {
         var data = this.data;
