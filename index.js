@@ -30410,62 +30410,14 @@ var editor =
 	        converters_1.Converters.init(this);
 	        this.registerCommands();
 	        this.doc = document_1.Document.createFromTemplate(null);
-	        this.docList = this.storage.getItems();
 	        this.createDoc("default");
+	        this.updateDocList();
 	    }
-	    ProtonViewModal.prototype.getFormatList = function () {
-	        return ["json"];
-	    };
-	    ProtonViewModal.prototype.getDocList = function () {
-	        return this.docList;
-	    };
-	    ProtonViewModal.prototype.saveDoc = function (fileName) {
-	        var data = JSON.stringify(this.doc.toJson(), null, "\t");
-	        this.fileName = fileName;
-	        this.storage.set(fileName, data);
-	        this.docList = this.storage.getItems();
-	    };
-	    ProtonViewModal.prototype.createDoc = function (templateName) {
-	        this.doc.fromTemplate(templateName);
-	        this.data = this.doc.data;
-	        this.createEmitter();
-	        this.docList = this.storage.getItems();
-	    };
-	    ProtonViewModal.prototype.removeDoc = function (fileName) {
-	        this.storage.remove(fileName);
-	        this.docList = this.storage.getItems();
-	    };
-	    ProtonViewModal.prototype.openDoc = function (fileName) {
-	        var data = this.storage.get(fileName);
-	        var json = JSON.parse(data);
-	        this.doc.fromJson(json);
-	        this.data = this.doc.data;
-	        this.createEmitter();
-	        this.fileName = fileName;
-	        this.docList = this.storage.getItems();
-	    };
-	    ProtonViewModal.prototype.exportDoc = function (format) {
-	        if (format.indexOf("json") >= 0) {
-	            return JSON.stringify(this.data, null, "\t");
-	        }
-	        return null;
-	    };
-	    ProtonViewModal.prototype.getDocName = function () {
-	        return this.fileName;
-	    };
-	    ProtonViewModal.prototype.getPropsDesc = function () {
-	        return this.doc.propsDesc;
-	    };
-	    ProtonViewModal.prototype.setProp = function (path, value, converter, validationRule) {
-	        var result = _super.prototype.setProp.call(this, path, value, converter, validationRule);
-	        this.createEmitter();
-	        return result;
-	    };
 	    ProtonViewModal.prototype.registerCommands = function () {
 	        this.registerCommand("draw", command_draw_1.CommandDraw.create(this.canvas));
 	        this.registerCommand("about", command_about_1.CommandAbout.create(this, "https://github.com/a-jie/Proton"));
 	        this.registerCommand("content", command_content_1.CommandContent.create(this, "http://proton.jpeer.at/index.html"));
-	        this.registerCommand("new", command_new_1.CommandNew.create(this, this.getTemplateList()));
+	        this.registerCommand("new", command_new_1.CommandNew.create(this, document_1.Document.getTemplateList()));
 	        this.registerCommand("open", command_open_1.CommandOpen.create(this));
 	        this.registerCommand("remove", command_remove_1.CommandRemove.create(this));
 	        this.registerCommand("save", command_save_1.CommandSave.create(this, false));
@@ -30486,9 +30438,6 @@ var editor =
 	            emitter.destroy();
 	        }
 	        this.protonEmitter = proton_wrapper_1.createProtonEmitter(proton, data);
-	    };
-	    ProtonViewModal.prototype.getTemplateList = function () {
-	        return document_1.Document.templateNames;
 	    };
 	    ProtonViewModal.update = function () {
 	        ProtonViewModal.proton.update();
@@ -35398,9 +35347,15 @@ var editor =
 	        }
 	        return doc;
 	    };
+	    Document.prototype.getTemplateList = function () {
+	        return Document.templateNames;
+	    };
 	    Document.registerTemplate = function (name, json) {
 	        Document.templates[name] = json;
 	        Document.templateNames.push(name);
+	    };
+	    Document.getTemplateList = function () {
+	        return Document.templateNames;
 	    };
 	    Document.createFromTemplate = function (name) {
 	        var doc = new Document();
@@ -35464,28 +35419,64 @@ var editor =
 	    function ParticlesViewModal() {
 	        _super.apply(this, arguments);
 	    }
-	    ParticlesViewModal.prototype.getPropsDesc = function () {
-	        return null;
-	    };
 	    ParticlesViewModal.prototype.getDocList = function () {
-	        return null;
-	    };
-	    ParticlesViewModal.prototype.getFormatList = function () {
-	        return null;
+	        return this.docList;
 	    };
 	    ParticlesViewModal.prototype.getDocName = function () {
-	        return null;
+	        return this.fileName;
 	    };
-	    ParticlesViewModal.prototype.openDoc = function (fileName) {
+	    ParticlesViewModal.prototype.getPropsDesc = function () {
+	        return this.doc.propsDesc;
 	    };
 	    ParticlesViewModal.prototype.saveDoc = function (fileName) {
+	        var data = JSON.stringify(this.doc.toJson(), null, "\t");
+	        this.fileName = fileName;
+	        this.storage.set(fileName, data);
+	        this.updateDocList();
+	    };
+	    /*
+	     * subclass should implement it.
+	     */
+	    ParticlesViewModal.prototype.createEmitter = function () {
 	    };
 	    ParticlesViewModal.prototype.createDoc = function (templateName) {
+	        this.doc.fromTemplate(templateName);
+	        this.data = this.doc.data;
+	        this.createEmitter();
+	        this.updateDocList();
+	    };
+	    ParticlesViewModal.prototype.openDoc = function (fileName) {
+	        var data = this.storage.get(fileName);
+	        var json = JSON.parse(data);
+	        this.doc.fromJson(json);
+	        this.data = this.doc.data;
+	        this.createEmitter();
+	        this.fileName = fileName;
+	        this.updateDocList();
 	    };
 	    ParticlesViewModal.prototype.removeDoc = function (fileName) {
+	        this.storage.remove(fileName);
+	        this.updateDocList();
+	    };
+	    ParticlesViewModal.prototype.getFormatList = function () {
+	        return ["json"];
 	    };
 	    ParticlesViewModal.prototype.exportDoc = function (format) {
+	        if (format.indexOf("json") >= 0) {
+	            return JSON.stringify(this.data, null, "\t");
+	        }
 	        return null;
+	    };
+	    ParticlesViewModal.prototype.setProp = function (path, value, converter, validationRule) {
+	        var result = _super.prototype.setProp.call(this, path, value, converter, validationRule);
+	        this.createEmitter();
+	        return result;
+	    };
+	    ParticlesViewModal.prototype.getTemplateList = function () {
+	        return this.doc.getTemplateList();
+	    };
+	    ParticlesViewModal.prototype.updateDocList = function () {
+	        this.docList = this.storage.getItems();
 	    };
 	    return ParticlesViewModal;
 	}(qtk_1.ViewModal));

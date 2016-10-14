@@ -12,6 +12,7 @@ import {CommandRemove} from "../command-remove";
 import {CommandContent} from "../command-content";
 import {createProtonEmitter} from "./proton-wrapper";
 import {PropsDesc, PagePropsDesc, Events} from "qtk";
+import {IDocument} from "../../modals/idocument";
 import {Document} from "../../modals/proton/document";
 import {ParticlesViewModal} from "../particles-view-modal";
 import {ViewModal, IViewModal, ItemsStorage, ValidationResult} from "qtk"
@@ -21,77 +22,8 @@ declare var Proton : any;
 
 export class ProtonViewModal extends ParticlesViewModal {
 	public canvas : any;
-
-	protected fileName : string;
-	protected protonEmitter : any;
-	protected storage : ItemsStorage;
-	protected docList : Array<string>;
 	protected renderer : any;
-	protected doc : Document;
-	
-	public getFormatList() : Array<string> {
-		return ["json"];
-	}
-
-	public getDocList() : Array<string> {
-		return this.docList;
-	}
-	
-	public saveDoc(fileName:string) {
-		var data = JSON.stringify(this.doc.toJson(), null, "\t"); 
-		
-		this.fileName = fileName;
-		this.storage.set(fileName, data);
-		this.docList = this.storage.getItems();
-	}
-	
-	public createDoc(templateName:string) {
-		this.doc.fromTemplate(templateName);
-		this.data = this.doc.data;
-		
-		this.createEmitter();
-		this.docList = this.storage.getItems();
-	}
-	
-	public removeDoc(fileName:string) {
-		this.storage.remove(fileName);
-		this.docList = this.storage.getItems();
-	}
-
-	public openDoc(fileName:string) {
-		var data = this.storage.get(fileName);
-		var json = JSON.parse(data);
-
-		this.doc.fromJson(json);
-		this.data = this.doc.data;
-
-		this.createEmitter();
-		this.fileName = fileName;
-		this.docList = this.storage.getItems();
-	}
-
-	public exportDoc(format:string) : string {
-		if(format.indexOf("json") >= 0) {
-			return JSON.stringify(this.data, null, "\t");
-		}
-
-		return null; 
-	}
-
-	public getDocName() : string {
-		return this.fileName;
-	}
-
-	public getPropsDesc() : Array<PagePropsDesc> {
-		return this.doc.propsDesc;
-	}
-
-	public setProp(path:string, value:any, converter?:string, validationRule?:string) : ValidationResult {
-		var result = super.setProp(path, value, converter, validationRule);
-		this.createEmitter();
-
-		return result;
-	}
+	protected protonEmitter : any;
 	
 	constructor(storage:ItemsStorage) {
 		super(null);
@@ -101,19 +33,20 @@ export class ProtonViewModal extends ParticlesViewModal {
 		this.canvas.height = 400;
 		
 		this.storage = storage;
+		
 		Converters.init(this);
 		this.registerCommands();
 		
 		this.doc = Document.createFromTemplate(null);
-		this.docList = this.storage.getItems();
 		this.createDoc("default");
+		this.updateDocList();
 	}
 
 	protected registerCommands() {
 		this.registerCommand("draw", CommandDraw.create(this.canvas));
 		this.registerCommand("about", CommandAbout.create(this, "https://github.com/a-jie/Proton"));
 		this.registerCommand("content", CommandContent.create(this, "http://proton.jpeer.at/index.html"));
-		this.registerCommand("new", CommandNew.create(this, this.getTemplateList()));
+		this.registerCommand("new", CommandNew.create(this, Document.getTemplateList()));
 		this.registerCommand("open", CommandOpen.create(this));
 		this.registerCommand("remove", CommandRemove.create(this));
 		this.registerCommand("save", CommandSave.create(this, false));
@@ -140,10 +73,6 @@ export class ProtonViewModal extends ParticlesViewModal {
 		this.protonEmitter = createProtonEmitter(proton, data);
 	}
 
-	public getTemplateList() : Array<string> {
-		return Document.templateNames;
-	}
-	
 	public static TYPE = "proton";
 	public static proton = null;
 	public static update() {

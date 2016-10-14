@@ -54,6 +54,10 @@ export class Document implements IDocument {
 		return doc;
 	}
 
+	public getTemplateList() : Array<string> {
+		return Document.templateNames;
+	}
+
 	public static templates = {};
 	public static templateNames = [];
 	public static registerTemplate(name:string, json:any) {
@@ -61,6 +65,9 @@ export class Document implements IDocument {
 		Document.templateNames.push(name);
 	}
 	
+	public static  getTemplateList() : Array<string> {
+		return Document.templateNames;
+	}
 	public static createFromTemplate(name:string) {
 		var doc = new Document();
 		if(name) {

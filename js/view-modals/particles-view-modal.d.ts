@@ -1,14 +1,23 @@
+import { IDocument } from "../modals/idocument";
 import { IParticlesViewModal } from "./iparticles-view-modal";
-import { PagePropsDesc } from "qtk";
-import { ViewModal } from "qtk";
+import { ViewModal, ValidationResult } from "qtk";
+import { PagePropsDesc, ItemsStorage } from "qtk";
 export declare abstract class ParticlesViewModal extends ViewModal implements IParticlesViewModal {
-    getPropsDesc(): Array<PagePropsDesc>;
+    protected doc: IDocument;
+    protected fileName: string;
+    protected storage: ItemsStorage;
+    protected docList: Array<string>;
     getDocList(): Array<string>;
-    getFormatList(): Array<string>;
     getDocName(): string;
-    openDoc(fileName: string): void;
+    getPropsDesc(): Array<PagePropsDesc>;
     saveDoc(fileName: string): void;
+    protected createEmitter(): void;
     createDoc(templateName: string): void;
+    openDoc(fileName: string): void;
     removeDoc(fileName: string): void;
+    getFormatList(): Array<string>;
     exportDoc(format: string): string;
+    setProp(path: string, value: any, converter?: string, validationRule?: string): ValidationResult;
+    getTemplateList(): Array<string>;
+    protected updateDocList(): void;
 }

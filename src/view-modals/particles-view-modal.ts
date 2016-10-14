@@ -1,40 +1,92 @@
 import {CommandOpen} from "./command-open";
 import {CommandSave} from "./command-save";
+import {IDocument} from "../modals/idocument";
 import {IParticlesViewModal} from "./iparticles-view-modal";
-import {PropsDesc, PagePropsDesc, Events} from "qtk";
 import {ViewModal, IViewModal, ValidationResult} from "qtk"
+import {PropsDesc, PagePropsDesc, Events, ItemsStorage} from "qtk";
 
 export abstract class ParticlesViewModal extends ViewModal implements IParticlesViewModal {
-	public getPropsDesc() : Array<PagePropsDesc> {
-		return null;
-	}
-
+	protected doc : IDocument;
+	protected fileName : string;
+	protected storage : ItemsStorage;
+	protected docList : Array<string>;
+	
 	public getDocList() : Array<string> {
-		return null;
+		return this.docList;
 	}
-
-	public getFormatList() : Array<string> {
-		return null;
-	}
-
+	
 	public getDocName() : string {
-		return null;
+		return this.fileName;
 	}
 
-	public openDoc(fileName:string) {
+	public getPropsDesc() : Array<PagePropsDesc> {
+		return this.doc.propsDesc;
 	}
-	
+
 	public saveDoc(fileName:string) {
+		var data = JSON.stringify(this.doc.toJson(), null, "\t"); 
+		
+		this.fileName = fileName;
+		this.storage.set(fileName, data);
+		this.updateDocList();
+	}
+
+	/*
+	 * subclass should implement it.
+	 */
+	protected createEmitter() {
+	}
+
+	public createDoc(templateName:string) {
+		this.doc.fromTemplate(templateName);
+		this.data = this.doc.data;
+		
+		this.createEmitter();
+		this.updateDocList();
 	}
 	
-	public createDoc(templateName:string){
+	public openDoc(fileName:string) {
+		var data = this.storage.get(fileName);
+		var json = JSON.parse(data);
+
+		this.doc.fromJson(json);
+		this.data = this.doc.data;
+
+		this.createEmitter();
+		this.fileName = fileName;
+		this.updateDocList();
 	}
 
 	public removeDoc(fileName:string) {
+		this.storage.remove(fileName);
+		this.updateDocList();
+	}
+	
+	public getFormatList() : Array<string> {
+		return ["json"];
 	}
 
 	public exportDoc(format:string) : string {
-		return null;
+		if(format.indexOf("json") >= 0) {
+			return JSON.stringify(this.data, null, "\t");
+		}
+
+		return null; 
+	}
+	
+	public setProp(path:string, value:any, converter?:string, validationRule?:string) : ValidationResult {
+		var result = super.setProp(path, value, converter, validationRule);
+		this.createEmitter();
+
+		return result;
+	}
+	
+	public getTemplateList() : Array<string> {
+		return this.doc.getTemplateList();
+	}
+
+	protected updateDocList() {
+		this.docList = this.storage.getItems();
 	}
 };
 

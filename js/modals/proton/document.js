@@ -41,9 +41,15 @@ var Document = (function () {
         }
         return doc;
     };
+    Document.prototype.getTemplateList = function () {
+        return Document.templateNames;
+    };
     Document.registerTemplate = function (name, json) {
         Document.templates[name] = json;
         Document.templateNames.push(name);
+    };
+    Document.getTemplateList = function () {
+        return Document.templateNames;
     };
     Document.createFromTemplate = function (name) {
         var doc = new Document();
