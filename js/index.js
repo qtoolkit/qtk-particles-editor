@@ -4,3 +4,4 @@ function run() {
     particles_editor_1.ParticlesEditor.run();
 }
 exports.run = run;
+//# sourceMappingURL=index.js.map

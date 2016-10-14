@@ -31,3 +31,4 @@ var CommandRemove = (function () {
 }());
 exports.CommandRemove = CommandRemove;
 ;
+//# sourceMappingURL=command-remove.js.map

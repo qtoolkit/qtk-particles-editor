@@ -9,3 +9,4 @@ var ContentInfo = (function () {
     return ContentInfo;
 }());
 exports.ContentInfo = ContentInfo;
+//# sourceMappingURL=content-info.js.map

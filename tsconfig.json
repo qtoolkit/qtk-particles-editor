@@ -4,6 +4,7 @@
     "target": "es5",
     "declaration": true,
     "outDir": "./js/",
+    "sourceMap":true,
     "lib": ["es6", "es2015", "dom"]
   },
   "files": [

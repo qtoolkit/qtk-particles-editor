@@ -13,3 +13,4 @@ var DrawInfo = (function () {
 }());
 exports.DrawInfo = DrawInfo;
 ;
+//# sourceMappingURL=draw-info.js.map

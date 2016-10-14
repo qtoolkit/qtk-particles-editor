@@ -35,3 +35,4 @@ var ParticleProperties = (function (_super) {
 }(qtk_1.PropertySheets));
 exports.ParticleProperties = ParticleProperties;
 ;
+//# sourceMappingURL=particle-properties.js.map

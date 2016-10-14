@@ -82,8 +82,15 @@ var ProtonViewModal = (function (_super) {
             this.canvas.width = 400;
             this.canvas.height = 400;
         }
-        if (this.protonEmitter) {
-            proton.removeEmitter(this.protonEmitter);
+        if (!this.renderer) {
+            var renderer = new Proton.Renderer('canvas', proton, this.canvas);
+            this.renderer = renderer;
+            renderer.start();
+        }
+        var emitter = this.protonEmitter;
+        if (emitter) {
+            proton.removeEmitter(emitter);
+            emitter.destroy();
         }
         this.protonEmitter = proton_wrapper_1.createProtonEmitter(proton, this.canvas, data);
     };
@@ -110,3 +117,4 @@ var ProtonViewModal = (function (_super) {
 exports.ProtonViewModal = ProtonViewModal;
 ;
 iparticles_view_modal_1.ParticlesViewModalFactory.register(ProtonViewModal.TYPE, ProtonViewModal.create);
+//# sourceMappingURL=view-modal.js.map

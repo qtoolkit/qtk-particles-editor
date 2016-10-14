@@ -25,6 +25,7 @@ export class ProtonViewModal extends ParticlesViewModal implements IProtonData{
 	public protonEmitter : any;
 	public storage : ItemsStorage;
 
+	protected renderer : any;
 	protected doc : Document;
 	
 	public getDocList() : Array<string> {
@@ -102,9 +103,19 @@ export class ProtonViewModal extends ParticlesViewModal implements IProtonData{
 			this.canvas = document.createElement('canvas');
 			this.canvas.width = 400;
 			this.canvas.height = 400;
+			
 		}
-		if(this.protonEmitter) {
-			proton.removeEmitter(this.protonEmitter);
+
+		if(!this.renderer) {
+			var renderer = new Proton.Renderer('canvas', proton, this.canvas);
+			this.renderer = renderer;
+			renderer.start();
+		}
+
+		var emitter = this.protonEmitter;
+		if(emitter) {
+			proton.removeEmitter(emitter);
+			emitter.destroy();
 		}
 
 		this.protonEmitter = createProtonEmitter(proton, this.canvas, data);

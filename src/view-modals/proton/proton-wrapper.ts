@@ -2,7 +2,7 @@
 var proton = require("proton");
 declare var Proton : any;
 
-export function createProtonEmitter(proton:any, canvas:any, data:any) {
+export function createProtonEmitter(proton:any, renderer:any, data:any) {
 	var life   = new Proton.Life(data.life.first, data.life.second);
 	var radius = new Proton.Radius(data.radius.first, data.radius.second);
 	var alpha  = new Proton.Alpha(data.alpha.first, data.alpha.second);
@@ -17,9 +17,6 @@ export function createProtonEmitter(proton:any, canvas:any, data:any) {
 	var randomDrift = new Proton.RandomDrift(data.driftPoint.x, data.driftPoint.y, data.driftDelay);
 	var color = new Proton.Color('ff0000', 'random', Infinity, Proton.easeOutQuart);
 	
-	var renderer = new Proton.Renderer('canvas', proton, canvas);
-	renderer.start();
-
 	var emitter = new Proton.Emitter();
 	emitter.rate = rate;
 	emitter.addInitialize(mass);

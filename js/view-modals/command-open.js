@@ -31,3 +31,4 @@ var CommandOpen = (function () {
 }());
 exports.CommandOpen = CommandOpen;
 ;
+//# sourceMappingURL=command-open.js.map

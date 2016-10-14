@@ -33,3 +33,4 @@ var ParticlesView = (function (_super) {
 }(qtk_1.Widget));
 exports.ParticlesView = ParticlesView;
 ;
+//# sourceMappingURL=particles-view.js.map

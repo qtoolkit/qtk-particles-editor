@@ -18,3 +18,4 @@ var CommandContent = (function () {
 }());
 exports.CommandContent = CommandContent;
 ;
+//# sourceMappingURL=command-content.js.map

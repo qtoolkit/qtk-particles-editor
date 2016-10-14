@@ -14,3 +14,4 @@ var ParticlesViewModalFactory = (function () {
     return ParticlesViewModalFactory;
 }());
 exports.ParticlesViewModalFactory = ParticlesViewModalFactory;
+//# sourceMappingURL=iparticles-view-modal.js.map

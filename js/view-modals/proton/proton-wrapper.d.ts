@@ -1,1 +1,1 @@
-export declare function createProtonEmitter(proton: any, canvas: any, data: any): any;
+export declare function createProtonEmitter(proton: any, renderer: any, data: any): any;

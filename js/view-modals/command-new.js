@@ -30,3 +30,4 @@ var CommandNew = (function () {
 }());
 exports.CommandNew = CommandNew;
 ;
+//# sourceMappingURL=command-new.js.map

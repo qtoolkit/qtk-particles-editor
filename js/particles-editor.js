@@ -33,3 +33,4 @@ var ParticlesEditor = (function (_super) {
 }(qtk_1.Application));
 exports.ParticlesEditor = ParticlesEditor;
 ;
+//# sourceMappingURL=particles-editor.js.map

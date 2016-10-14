@@ -30,3 +30,4 @@ var CommandDraw = (function () {
 }());
 exports.CommandDraw = CommandDraw;
 ;
+//# sourceMappingURL=command-draw.js.map

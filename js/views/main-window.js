@@ -38,3 +38,4 @@ var MainWindow = (function (_super) {
 }(qtk_2.WindowNormal));
 exports.MainWindow = MainWindow;
 ;
+//# sourceMappingURL=main-window.js.map

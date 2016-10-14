@@ -82,3 +82,4 @@ var defaultTemplate = [
     }
 ];
 Document.registerTemplate("default", defaultTemplate);
+//# sourceMappingURL=document.js.map

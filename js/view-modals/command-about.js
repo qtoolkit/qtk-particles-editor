@@ -34,3 +34,4 @@ var CommandAbout = (function () {
 }());
 exports.CommandAbout = CommandAbout;
 ;
+//# sourceMappingURL=command-about.js.map

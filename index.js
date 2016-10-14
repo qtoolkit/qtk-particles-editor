@@ -51,7 +51,7 @@ var editor =
 	    particles_editor_1.ParticlesEditor.run();
 	}
 	exports.run = run;
-
+	//# sourceMappingURL=index.js.map
 
 /***/ },
 /* 1 */
@@ -92,7 +92,7 @@ var editor =
 	}(qtk_1.Application));
 	exports.ParticlesEditor = ParticlesEditor;
 	;
-
+	//# sourceMappingURL=particles-editor.js.map
 
 /***/ },
 /* 2 */
@@ -30195,7 +30195,7 @@ var editor =
 	}(qtk_2.WindowNormal));
 	exports.MainWindow = MainWindow;
 	;
-
+	//# sourceMappingURL=main-window.js.map
 
 /***/ },
 /* 187 */
@@ -30251,7 +30251,7 @@ var editor =
 	}(qtk_1.MenuBar));
 	exports.MainMenuBar = MainMenuBar;
 	;
-
+	//# sourceMappingURL=main-menu-bar.js.map
 
 /***/ },
 /* 188 */
@@ -30292,7 +30292,7 @@ var editor =
 	}(qtk_1.Widget));
 	exports.ParticlesView = ParticlesView;
 	;
-
+	//# sourceMappingURL=particles-view.js.map
 
 /***/ },
 /* 189 */
@@ -30313,7 +30313,7 @@ var editor =
 	}());
 	exports.DrawInfo = DrawInfo;
 	;
-
+	//# sourceMappingURL=draw-info.js.map
 
 /***/ },
 /* 190 */
@@ -30356,7 +30356,7 @@ var editor =
 	}(qtk_1.PropertySheets));
 	exports.ParticleProperties = ParticleProperties;
 	;
-
+	//# sourceMappingURL=particle-properties.js.map
 
 /***/ },
 /* 191 */
@@ -30446,8 +30446,15 @@ var editor =
 	            this.canvas.width = 400;
 	            this.canvas.height = 400;
 	        }
-	        if (this.protonEmitter) {
-	            proton.removeEmitter(this.protonEmitter);
+	        if (!this.renderer) {
+	            var renderer = new Proton.Renderer('canvas', proton, this.canvas);
+	            this.renderer = renderer;
+	            renderer.start();
+	        }
+	        var emitter = this.protonEmitter;
+	        if (emitter) {
+	            proton.removeEmitter(emitter);
+	            emitter.destroy();
 	        }
 	        this.protonEmitter = proton_wrapper_1.createProtonEmitter(proton, this.canvas, data);
 	    };
@@ -30474,7 +30481,7 @@ var editor =
 	exports.ProtonViewModal = ProtonViewModal;
 	;
 	iparticles_view_modal_1.ParticlesViewModalFactory.register(ProtonViewModal.TYPE, ProtonViewModal.create);
-
+	//# sourceMappingURL=view-modal.js.map
 
 /***/ },
 /* 192 */
@@ -34735,7 +34742,7 @@ var editor =
 	    }
 	];
 	Document.registerTemplate("default", defaultTemplate);
-
+	//# sourceMappingURL=document.js.map
 
 /***/ },
 /* 194 */
@@ -34777,7 +34784,7 @@ var editor =
 	}());
 	exports.Converters = Converters;
 	;
-
+	//# sourceMappingURL=converters.js.map
 
 /***/ },
 /* 195 */
@@ -34815,7 +34822,7 @@ var editor =
 	}());
 	exports.CommandDraw = CommandDraw;
 	;
-
+	//# sourceMappingURL=command-draw.js.map
 
 /***/ },
 /* 196 */
@@ -34853,7 +34860,7 @@ var editor =
 	}());
 	exports.CommandNew = CommandNew;
 	;
-
+	//# sourceMappingURL=command-new.js.map
 
 /***/ },
 /* 197 */
@@ -34892,7 +34899,7 @@ var editor =
 	}());
 	exports.CommandOpen = CommandOpen;
 	;
-
+	//# sourceMappingURL=command-open.js.map
 
 /***/ },
 /* 198 */
@@ -34931,7 +34938,7 @@ var editor =
 	}());
 	exports.CommandSave = CommandSave;
 	;
-
+	//# sourceMappingURL=command-save.js.map
 
 /***/ },
 /* 199 */
@@ -34969,7 +34976,7 @@ var editor =
 	}());
 	exports.CommandExport = CommandExport;
 	;
-
+	//# sourceMappingURL=command-export.js.map
 
 /***/ },
 /* 200 */
@@ -35011,7 +35018,7 @@ var editor =
 	}());
 	exports.CommandAbout = CommandAbout;
 	;
-
+	//# sourceMappingURL=command-about.js.map
 
 /***/ },
 /* 201 */
@@ -35050,7 +35057,7 @@ var editor =
 	}());
 	exports.CommandRemove = CommandRemove;
 	;
-
+	//# sourceMappingURL=command-remove.js.map
 
 /***/ },
 /* 202 */
@@ -35076,7 +35083,7 @@ var editor =
 	}());
 	exports.CommandContent = CommandContent;
 	;
-
+	//# sourceMappingURL=command-content.js.map
 
 /***/ },
 /* 203 */
@@ -35084,7 +35091,7 @@ var editor =
 
 	"use strict";
 	var proton = __webpack_require__(192);
-	function createProtonEmitter(proton, canvas, data) {
+	function createProtonEmitter(proton, renderer, data) {
 	    var life = new Proton.Life(data.life.first, data.life.second);
 	    var radius = new Proton.Radius(data.radius.first, data.radius.second);
 	    var alpha = new Proton.Alpha(data.alpha.first, data.alpha.second);
@@ -35095,8 +35102,6 @@ var editor =
 	    var velocity = new Proton.Velocity(new Proton.Span(data.vRpan.first, data.vRpan.second), new Proton.Span(data.vThapan.first, data.vThapan.second), data.vType);
 	    var randomDrift = new Proton.RandomDrift(data.driftPoint.x, data.driftPoint.y, data.driftDelay);
 	    var color = new Proton.Color('ff0000', 'random', Infinity, Proton.easeOutQuart);
-	    var renderer = new Proton.Renderer('canvas', proton, canvas);
-	    renderer.start();
 	    var emitter = new Proton.Emitter();
 	    emitter.rate = rate;
 	    emitter.addInitialize(mass);
@@ -35114,7 +35119,7 @@ var editor =
 	    return emitter;
 	}
 	exports.createProtonEmitter = createProtonEmitter;
-
+	//# sourceMappingURL=proton-wrapper.js.map
 
 /***/ },
 /* 204 */
@@ -35155,7 +35160,7 @@ var editor =
 	}(qtk_1.ViewModal));
 	exports.ParticlesViewModal = ParticlesViewModal;
 	;
-
+	//# sourceMappingURL=particles-view-modal.js.map
 
 /***/ },
 /* 205 */
@@ -35177,7 +35182,7 @@ var editor =
 	    return ParticlesViewModalFactory;
 	}());
 	exports.ParticlesViewModalFactory = ParticlesViewModalFactory;
-
+	//# sourceMappingURL=iparticles-view-modal.js.map
 
 /***/ }
 /******/ ]);

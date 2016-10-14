@@ -48,3 +48,4 @@ var MainMenuBar = (function (_super) {
 }(qtk_1.MenuBar));
 exports.MainMenuBar = MainMenuBar;
 ;
+//# sourceMappingURL=main-menu-bar.js.map
