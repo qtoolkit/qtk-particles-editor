@@ -10,6 +10,22 @@ var ParticlesViewModal = (function (_super) {
     function ParticlesViewModal() {
         _super.apply(this, arguments);
     }
+    ParticlesViewModal.prototype.getDocList = function () {
+        return null;
+    };
+    ParticlesViewModal.prototype.getFormatList = function () {
+        return ["json", "plist", "javascript"];
+    };
+    ParticlesViewModal.prototype.saveDoc = function (fileName) {
+    };
+    ParticlesViewModal.prototype.createDoc = function (templateName) {
+    };
+    ParticlesViewModal.prototype.openDoc = function (fileName) {
+    };
+    ParticlesViewModal.prototype.removeDoc = function (fileName) {
+    };
+    ParticlesViewModal.prototype.newWithTemplate = function (name) {
+    };
     ParticlesViewModal.prototype.getPropsDesc = function () {
         return null;
     };

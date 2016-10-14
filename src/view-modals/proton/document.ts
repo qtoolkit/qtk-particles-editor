@@ -1,44 +1,71 @@
 
 import {PropsDesc, PagePropsDesc, Events} from "qtk";
 
-export class Template {
+export class Document {
 	public data:any;
 	public propsDesc : Array<PagePropsDesc>;
 
-	public parse(json:Array<any>) {
-		var data = {};
-		var propsDesc = [];
+	public toJson() : any {
+		var json = {
+			data:this.data,
+			propsDesc: this.propsDesc.map((item:PagePropsDesc) => {
+				return item.toJson();
+			})
+		};
+		
+		return json;
+	}
 
-		json.forEach(item => {
+	public fromJson(json:any) : Document {
+		this.data = json.data;
+		this.propsDesc = json.propsDesc.map(item => {
+			return PagePropsDesc.create(item.title, item.propsDesc.items);
+		});
+
+		return this;
+	}
+
+	public fromTemplate(json:Array<any>) : Document {
+		var data = {};
+		this.propsDesc = json.map(item => {
 			var pagePropsDesc = PagePropsDesc.create(item.title, item.propsDesc);
+			
 			item.propsDesc.forEach(desc => {
 				if(desc.path) {
 					data[desc.path] = desc.value;
 				}
 			});
-			propsDesc.push(pagePropsDesc);
+
+			return pagePropsDesc;
 		});
 
 		this.data = data;
-		this.propsDesc = propsDesc;
+
+		return this;
+	}
+
+	public static createFromJson(json:any) {
+		var doc = new Document();
+
+		return doc.fromJson(json);
 	}
 
 	public static templates = {};
-	public static register(name:string, json:any) {
-		Template.templates[name] = json;
+	public static templateNames = [];
+	public static registerTemplate(name:string, json:any) {
+		Document.templates[name] = json;
+		Document.templateNames.push(name);
+	}
+	
+	public static createFromTemplate(name:string) {
+		var doc = new Document();
+		return doc.fromTemplate(Document.templates[name]);
 	}
 
-	public static create(name:string) {
-		var json = Template.templates[name];
 
-		var template = new Template();
-		template.parse(json);
-
-		return template;
-	}
 }
 
-const defaultTemplateJson = [
+const defaultTemplate = [
 	{
 		title : "Initialize",
 		propsDesc : [
@@ -70,5 +97,5 @@ const defaultTemplateJson = [
 	}
 ];
 
-Template.register("default", defaultTemplateJson);
+Document.registerTemplate("default", defaultTemplate);
 

@@ -9,7 +9,6 @@ var CommandContent = (function () {
     };
     CommandContent.prototype.execute = function (args) {
         console.log("CommandContent");
-        this._viewModal.sendViewRequest("help.content", null, this._helpURL);
         return true;
     };
     CommandContent.create = function (viewModal, helpURL) {

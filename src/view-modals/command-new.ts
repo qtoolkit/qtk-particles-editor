@@ -1,7 +1,7 @@
 import {ParticlesViewModal} from "./particles-view-modal";
 import {ICommand, InteractionRequest, ChoiceInfo} from "qtk";
 
-export class CommandOpen implements ICommand {
+export class CommandNew implements ICommand {
 	protected _choiceInfo : ChoiceInfo;
 	protected _viewModal : ParticlesViewModal;
 
@@ -19,21 +19,20 @@ export class CommandOpen implements ICommand {
 		InteractionRequest.choice(this._choiceInfo, (ret:ChoiceInfo) => {
 			var arr = ret.value;
 			if(arr && arr.length) {
-				var fileName = arr[0].text;
-				viewModal.openDoc(fileName);
+				var template = arr[0].text;
+				viewModal.createDoc(template);
 			}
 		});
 
 		return true;
 	}
 
-	public static create(viewModal:ParticlesViewModal) : ICommand {
-		var docList = viewModal.getDocList();
-		var choiceInfo = ChoiceInfo.create("Open...", false, 300, 300);
-		docList.forEach((item:string) => {
+	public static create(viewModal:ParticlesViewModal, templates:Array<string>) : ICommand {
+		var choiceInfo = ChoiceInfo.create("Please choose a template", false, 300, 300);
+		templates.forEach((item:string) => {
 			choiceInfo.addOption(item);
 		});
 
-		return new CommandOpen(viewModal, choiceInfo);
+		return new CommandNew(viewModal, choiceInfo);
 	}
 };

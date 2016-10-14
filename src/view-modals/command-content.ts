@@ -1,4 +1,5 @@
 import {ICommand} from "qtk";
+import {ContentInfo} from "../modals/content-info";
 import {ParticlesViewModal} from "./particles-view-modal";
 
 export class CommandContent implements ICommand {
@@ -16,7 +17,6 @@ export class CommandContent implements ICommand {
 
 	public execute(args:any) : boolean {
 		console.log("CommandContent")
-		this._viewModal.sendViewRequest("help.content", null, this._helpURL);
 
 		return true;
 	}

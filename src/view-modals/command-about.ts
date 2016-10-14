@@ -1,14 +1,13 @@
-import {ICommand} from "qtk";
-import {AboutInfo} from "../modals/about-info";
 import {ParticlesViewModal} from "./particles-view-modal";
+import {ICommand, InteractionRequest, PropsInfo, PagePropsDesc} from "qtk";
 
 export class CommandAbout implements ICommand {
+	protected _propsInfo : PropsInfo;
 	protected _viewModal : ParticlesViewModal;
-	protected _aboutInfo : AboutInfo;
 
-	constructor(viewModal:ParticlesViewModal, aboutInfo:AboutInfo) {
+	constructor(viewModal:ParticlesViewModal, propsInfo:PropsInfo) {
 		this._viewModal = viewModal;
-		this._aboutInfo = aboutInfo;
+		this._propsInfo = propsInfo;
 	}
 
 	public canExecute() : boolean {
@@ -16,18 +15,30 @@ export class CommandAbout implements ICommand {
 	}
 
 	public execute(args:any) : boolean {
-		console.log("CommandAbout")
-		this._viewModal.sendViewRequest("help.about", function(aboutInfo) {
-			console.log("About Closed");	
-		}, this._aboutInfo);
+		InteractionRequest.props(this._propsInfo, function(ret) {
+		});
 
 		return true;
 	}
 
 	public static create(viewModal:ParticlesViewModal, engine:string) : ICommand {
-		var aboutInfo = AboutInfo.create("Li XianJing", "xianjimli@hotmail.com", 
-					"https://github.com/qtoolkit/qtk", engine);
+		var data = {
+			author: "Li XianJing",
+			email: "xianjimli@hotmail.com",
+			home: "https://github.com/qtoolkit/qtk",
+			engine : engine
+		};
+		
+		var descJson = [
+			{type:"text-readonly", name:"Author", path:"author"},
+			{type:"link", name:"Email", path:"email"},
+			{type:"link", name:"Home", path:"home"},
+			{type:"link", name:"Engine", path:"engine"},
+		];
 
-		return new CommandAbout(viewModal, aboutInfo);
+		var pagePropsDesc = PagePropsDesc.create("About", descJson);
+		var propsInfo = PropsInfo.create(pagePropsDesc, data, false, 300);
+
+		return new CommandAbout(viewModal, propsInfo);
 	}
 };

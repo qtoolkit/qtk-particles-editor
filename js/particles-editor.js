@@ -14,9 +14,13 @@ var ParticlesEditor = (function (_super) {
     function ParticlesEditor() {
         _super.apply(this, arguments);
     }
+    ParticlesEditor.prototype.createViewModal = function () {
+        var storage = qtk_1.ItemsStorage.create(view_modal_1.ProtonViewModal.TYPE);
+        return iparticles_view_modal_1.ParticlesViewModalFactory.create(view_modal_1.ProtonViewModal.TYPE, { storage: storage });
+    };
     ParticlesEditor.prototype.onReady = function () {
         var vp = this.getViewPort();
-        var viewModal = iparticles_view_modal_1.ParticlesViewModalFactory.create(view_modal_1.ProtonViewModal.TYPE);
+        var viewModal = this.createViewModal();
         this.mainWindow = main_window_1.MainWindow.create({ w: vp.w, h: vp.h, app: this, viewModal: viewModal });
     };
     ParticlesEditor.run = function () {

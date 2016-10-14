@@ -64,18 +64,22 @@ var editor =
 	    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 	};
 	var qtk_1 = __webpack_require__(2);
-	var main_window_1 = __webpack_require__(168);
-	var view_modal_1 = __webpack_require__(174);
-	var iparticles_view_modal_1 = __webpack_require__(183);
+	var main_window_1 = __webpack_require__(186);
+	var view_modal_1 = __webpack_require__(191);
+	var iparticles_view_modal_1 = __webpack_require__(205);
 	var themeDataURL = "https://qtoolkit.github.io/demos/assets/theme/default/theme.json";
 	var ParticlesEditor = (function (_super) {
 	    __extends(ParticlesEditor, _super);
 	    function ParticlesEditor() {
 	        _super.apply(this, arguments);
 	    }
+	    ParticlesEditor.prototype.createViewModal = function () {
+	        var storage = qtk_1.ItemsStorage.create(view_modal_1.ProtonViewModal.TYPE);
+	        return iparticles_view_modal_1.ParticlesViewModalFactory.create(view_modal_1.ProtonViewModal.TYPE, { storage: storage });
+	    };
 	    ParticlesEditor.prototype.onReady = function () {
 	        var vp = this.getViewPort();
-	        var viewModal = iparticles_view_modal_1.ParticlesViewModalFactory.create(view_modal_1.ProtonViewModal.TYPE);
+	        var viewModal = this.createViewModal();
 	        this.mainWindow = main_window_1.MainWindow.create({ w: vp.w, h: vp.h, app: this, viewModal: viewModal });
 	    };
 	    ParticlesEditor.run = function () {
@@ -163,17 +167,17 @@ var editor =
 	exports.TreeView = tree_view_1.TreeView;
 	var application_1 = __webpack_require__(122);
 	exports.Application = application_1.Application;
-	var movable_1 = __webpack_require__(126);
+	var movable_1 = __webpack_require__(162);
 	exports.Movable = movable_1.Movable;
 	var theme_manager_1 = __webpack_require__(123);
 	exports.ThemeManager = theme_manager_1.ThemeManager;
-	var draggable_1 = __webpack_require__(127);
+	var draggable_1 = __webpack_require__(163);
 	exports.Draggable = draggable_1.Draggable;
-	var droppable_1 = __webpack_require__(128);
+	var droppable_1 = __webpack_require__(164);
 	exports.Droppable = droppable_1.Droppable;
-	var resizable_1 = __webpack_require__(129);
+	var resizable_1 = __webpack_require__(165);
 	exports.Resizable = resizable_1.Resizable;
-	var menu_1 = __webpack_require__(130);
+	var menu_1 = __webpack_require__(166);
 	exports.Menu = menu_1.Menu;
 	exports.MenuItem = menu_1.MenuItem;
 	var radio_button_1 = __webpack_require__(107);
@@ -182,14 +186,14 @@ var editor =
 	exports.TreeItemData = tree_item_data_1.TreeItemData;
 	var check_button_1 = __webpack_require__(108);
 	exports.CheckButton = check_button_1.CheckButton;
-	var window_normal_1 = __webpack_require__(131);
+	var window_normal_1 = __webpack_require__(167);
 	exports.WindowNormal = window_normal_1.WindowNormal;
 	var widget_factory_1 = __webpack_require__(25);
 	exports.WidgetFactory = widget_factory_1.WidgetFactory;
-	var menu_bar_1 = __webpack_require__(132);
+	var menu_bar_1 = __webpack_require__(168);
 	exports.MenuBar = menu_bar_1.MenuBar;
 	exports.MenuBarItem = menu_bar_1.MenuBarItem;
-	var color_tile_1 = __webpack_require__(134);
+	var color_tile_1 = __webpack_require__(140);
 	exports.ColorTile = color_tile_1.ColorTile;
 	exports.ColorLine = color_tile_1.ColorLine;
 	var list_item_1 = __webpack_require__(115);
@@ -198,45 +202,45 @@ var editor =
 	var graphics_1 = __webpack_require__(27);
 	exports.RoundType = graphics_1.RoundType;
 	exports.Graphics = graphics_1.Graphics;
-	var accordion_1 = __webpack_require__(135);
+	var accordion_1 = __webpack_require__(169);
 	exports.Accordion = accordion_1.Accordion;
 	var service_locator_1 = __webpack_require__(125);
 	exports.ServiceLocator = service_locator_1.ServiceLocator;
-	var ruler_1 = __webpack_require__(138);
+	var ruler_1 = __webpack_require__(172);
 	exports.VRuler = ruler_1.VRuler;
 	exports.HRuler = ruler_1.HRuler;
-	var title_content_1 = __webpack_require__(136);
+	var title_content_1 = __webpack_require__(170);
 	exports.TitleContent = title_content_1.TitleContent;
-	var title_label_1 = __webpack_require__(139);
+	var title_label_1 = __webpack_require__(142);
 	exports.TitleLabel = title_label_1.TitleLabel;
-	var title_range_1 = __webpack_require__(141);
+	var title_range_1 = __webpack_require__(143);
 	exports.TitleRange = title_range_1.TitleRange;
-	var title_vector_1 = __webpack_require__(143);
+	var title_vector_1 = __webpack_require__(145);
 	exports.TitleVector = title_vector_1.TitleVector;
-	var title_edit_1 = __webpack_require__(145);
+	var title_edit_1 = __webpack_require__(141);
 	exports.TitleEdit = title_edit_1.TitleEdit;
-	var title_slider_1 = __webpack_require__(146);
+	var title_slider_1 = __webpack_require__(147);
 	exports.TitleSlider = title_slider_1.TitleSlider;
-	var property_page_1 = __webpack_require__(147);
+	var property_page_1 = __webpack_require__(136);
 	exports.PropertyPage = property_page_1.PropertyPage;
-	var property_dialog_1 = __webpack_require__(155);
+	var property_dialog_1 = __webpack_require__(135);
 	exports.PropertyDialog = property_dialog_1.PropertyDialog;
-	var range_edit_1 = __webpack_require__(142);
+	var range_edit_1 = __webpack_require__(144);
 	exports.RangeEdit = range_edit_1.RangeEdit;
-	var vector_edit_1 = __webpack_require__(144);
+	var vector_edit_1 = __webpack_require__(146);
 	exports.VectorEdit = vector_edit_1.VectorEdit;
-	var choosable_edit_1 = __webpack_require__(154);
+	var choosable_edit_1 = __webpack_require__(152);
 	exports.ChoosableEdit = choosable_edit_1.ChoosableEdit;
-	var title_text_area_1 = __webpack_require__(150);
+	var title_text_area_1 = __webpack_require__(148);
 	exports.TitleTextArea = title_text_area_1.TitleTextArea;
-	var property_sheets_1 = __webpack_require__(163);
+	var property_sheets_1 = __webpack_require__(173);
 	exports.PropertySheets = property_sheets_1.PropertySheets;
 	var progress_bar_1 = __webpack_require__(97);
 	exports.ProgressBarType = progress_bar_1.ProgressBarType;
 	exports.ProgressBar = progress_bar_1.ProgressBar;
-	var title_choosable_edit_1 = __webpack_require__(153);
+	var title_choosable_edit_1 = __webpack_require__(151);
 	exports.TitleChoosableEdit = title_choosable_edit_1.TitleChoosableEdit;
-	var dock_layouter_1 = __webpack_require__(162);
+	var dock_layouter_1 = __webpack_require__(131);
 	exports.DockLayouter = dock_layouter_1.DockLayouter;
 	exports.DockLayouterParam = dock_layouter_1.DockLayouterParam;
 	var grid_layouter_1 = __webpack_require__(118);
@@ -248,7 +252,7 @@ var editor =
 	var simple_layouter_1 = __webpack_require__(116);
 	exports.SimpleLayouter = simple_layouter_1.SimpleLayouter;
 	exports.SimpleLayouterParam = simple_layouter_1.SimpleLayouterParam;
-	var linear_layouter_1 = __webpack_require__(133);
+	var linear_layouter_1 = __webpack_require__(132);
 	exports.LinearLayouter = linear_layouter_1.LinearLayouter;
 	exports.LinearLayouterParam = linear_layouter_1.LinearLayouterParam;
 	var widget_1 = __webpack_require__(21);
@@ -263,10 +267,10 @@ var editor =
 	exports.AlignV = consts_1.AlignV;
 	exports.Orientation = consts_1.Orientation;
 	exports.Services = consts_1.Services;
-	var title_combo_box_1 = __webpack_require__(152);
+	var title_combo_box_1 = __webpack_require__(150);
 	exports.TitleComboBox = title_combo_box_1.TitleComboBox;
 	exports.TitleComboBoxEditable = title_combo_box_1.TitleComboBoxEditable;
-	var message_box_1 = __webpack_require__(161);
+	var message_box_1 = __webpack_require__(130);
 	exports.ButtonOption = message_box_1.ButtonOption;
 	exports.ButtonsOptions = message_box_1.ButtonsOptions;
 	exports.TitleOptions = message_box_1.TitleOptions;
@@ -277,37 +281,37 @@ var editor =
 	exports.ScrollView = scroll_view_1.ScrollView;
 	var device_info_1 = __webpack_require__(124);
 	exports.DeviceInfo = device_info_1.DeviceInfo;
-	var view_modal_1 = __webpack_require__(156);
+	var view_modal_1 = __webpack_require__(153);
 	exports.ViewModal = view_modal_1.ViewModal;
 	var recyclable_creator_1 = __webpack_require__(84);
 	exports.RecyclableCreator = recyclable_creator_1.RecyclableCreator;
-	var delegate_command_1 = __webpack_require__(164);
+	var delegate_command_1 = __webpack_require__(174);
 	exports.DelegateCommand = delegate_command_1.DelegateCommand;
-	var collection_view_modal_1 = __webpack_require__(165);
+	var collection_view_modal_1 = __webpack_require__(175);
 	exports.CollectionViewModal = collection_view_modal_1.CollectionViewModal;
-	var delegate_value_converter_1 = __webpack_require__(166);
+	var delegate_value_converter_1 = __webpack_require__(176);
 	exports.DelegateValueConverter = delegate_value_converter_1.DelegateValueConverter;
-	var ivalidation_rule_1 = __webpack_require__(160);
+	var ivalidation_rule_1 = __webpack_require__(157);
 	exports.ValidationResult = ivalidation_rule_1.ValidationResult;
-	var delegate_validation_rule_1 = __webpack_require__(167);
+	var delegate_validation_rule_1 = __webpack_require__(177);
 	exports.DelegateValidationRule = delegate_validation_rule_1.DelegateValidationRule;
 	var binding_rule_1 = __webpack_require__(81);
 	exports.BindingRule = binding_rule_1.BindingRule;
 	exports.BindingDataSource = binding_rule_1.BindingDataSource;
 	exports.BindingCommandSource = binding_rule_1.BindingCommandSource;
 	exports.BindingRuleItem = binding_rule_1.BindingRuleItem;
-	var props_desc_1 = __webpack_require__(151);
+	var props_desc_1 = __webpack_require__(149);
 	exports.PagePropsDesc = props_desc_1.PagePropsDesc;
 	exports.PropsDesc = props_desc_1.PropsDesc;
 	exports.PropDesc = props_desc_1.PropDesc;
 	exports.NumberPropDesc = props_desc_1.NumberPropDesc;
 	exports.SliderPropDesc = props_desc_1.SliderPropDesc;
-	var props_desc_2 = __webpack_require__(151);
+	var props_desc_2 = __webpack_require__(149);
 	exports.TextPropDesc = props_desc_2.TextPropDesc;
 	exports.ReadonlyTextPropDesc = props_desc_2.ReadonlyTextPropDesc;
 	exports.OptionsPropDesc = props_desc_2.OptionsPropDesc;
 	exports.RangePropDesc = props_desc_2.RangePropDesc;
-	var props_desc_3 = __webpack_require__(151);
+	var props_desc_3 = __webpack_require__(149);
 	exports.Vector2PropDesc = props_desc_3.Vector2PropDesc;
 	exports.Vector3PropDesc = props_desc_3.Vector3PropDesc;
 	exports.LinePropDesc = props_desc_3.LinePropDesc;
@@ -320,6 +324,28 @@ var editor =
 	exports.Assets = Assets;
 	var inputEventAdapter = __webpack_require__(17);
 	exports.inputEventAdapter = inputEventAdapter;
+	var toast_info_1 = __webpack_require__(178);
+	exports.ToastInfo = toast_info_1.ToastInfo;
+	var input_info_1 = __webpack_require__(179);
+	exports.InputInfo = input_info_1.InputInfo;
+	var props_info_1 = __webpack_require__(180);
+	exports.PropsInfo = props_info_1.PropsInfo;
+	var choice_info_1 = __webpack_require__(181);
+	exports.ChoiceInfo = choice_info_1.ChoiceInfo;
+	var progress_info_1 = __webpack_require__(182);
+	exports.ProgressInfo = progress_info_1.ProgressInfo;
+	var confirmation_info_1 = __webpack_require__(183);
+	exports.ConfirmationInfo = confirmation_info_1.ConfirmationInfo;
+	var notification_info_1 = __webpack_require__(184);
+	exports.NotificationInfo = notification_info_1.NotificationInfo;
+	var interaction_types_1 = __webpack_require__(127);
+	exports.InteractionTypes = interaction_types_1.InteractionTypes;
+	var interaction_request_1 = __webpack_require__(126);
+	exports.InteractionRequest = interaction_request_1.InteractionRequest;
+	var interaction_service_1 = __webpack_require__(128);
+	exports.InteractionService = interaction_service_1.InteractionService;
+	var items_storage_1 = __webpack_require__(185);
+	exports.ItemsStorage = items_storage_1.ItemsStorage;
 
 
 /***/ },
@@ -1415,16 +1441,27 @@ var editor =
 	exports.DRAGLEAVE = "dragleave";
 	exports.DRAGOVER = "dragover";
 	exports.DRAGSTART = "dragstart";
-	exports.SHOW_VIEW = "show-view";
+	exports.INTERACTION_REQUEST = "interaction-request";
 	var Event = (function () {
 	    function Event() {
 	    }
 	    Event.prototype.init = function (type, detail) {
 	        this._type = type;
 	        this._target = null;
+	        this._preventedDefault = false;
 	        this._propagationStopped = false;
 	        return this;
 	    };
+	    Event.prototype.preventDefault = function () {
+	        this._preventedDefault = true;
+	    };
+	    Object.defineProperty(Event.prototype, "defaultPrevented", {
+	        get: function () {
+	            return this._preventedDefault;
+	        },
+	        enumerable: true,
+	        configurable: true
+	    });
 	    Object.defineProperty(Event.prototype, "propagationStopped", {
 	        get: function () {
 	            return this._propagationStopped;
@@ -1482,31 +1519,31 @@ var editor =
 	/**
 	 * View Modal请求显示指定的视图或跳转到指定的视图。
 	 */
-	var ViewRequestEvent = (function (_super) {
-	    __extends(ViewRequestEvent, _super);
-	    function ViewRequestEvent() {
+	var InteractionRequestEvent = (function (_super) {
+	    __extends(InteractionRequestEvent, _super);
+	    function InteractionRequestEvent() {
 	        _super.apply(this, arguments);
 	    }
 	    ;
-	    ViewRequestEvent.prototype.returnResult = function () {
+	    InteractionRequestEvent.prototype.returnResult = function () {
 	        if (this._callback) {
 	            this._callback(this.payload);
 	        }
 	    };
-	    ViewRequestEvent.prototype.init = function (type, detail) {
+	    InteractionRequestEvent.prototype.init = function (type, detail) {
 	        _super.prototype.init.call(this, type);
 	        this.name = detail.name;
 	        this.payload = detail.payload;
 	        this._callback = detail.callback;
 	        return this;
 	    };
-	    ViewRequestEvent.create = function (type, detail) {
-	        var e = new ViewRequestEvent();
+	    InteractionRequestEvent.create = function (type, detail) {
+	        var e = new InteractionRequestEvent();
 	        return e.init(type, detail);
 	    };
-	    return ViewRequestEvent;
+	    return InteractionRequestEvent;
 	}(Event));
-	exports.ViewRequestEvent = ViewRequestEvent;
+	exports.InteractionRequestEvent = InteractionRequestEvent;
 	;
 	var InputEvent = (function (_super) {
 	    __extends(InputEvent, _super);
@@ -1758,6 +1795,25 @@ var editor =
 	    return ScrollEvent;
 	}(Event));
 	exports.ScrollEvent = ScrollEvent;
+	;
+	var ProgressEvent = (function (_super) {
+	    __extends(ProgressEvent, _super);
+	    function ProgressEvent() {
+	        _super.apply(this, arguments);
+	    }
+	    ProgressEvent.prototype.reset = function (progress, total, done) {
+	        _super.prototype.init.call(this, exports.PROGRESS);
+	        this.done = done;
+	        this.total = total;
+	        this.progress = progress;
+	        return this;
+	    };
+	    ProgressEvent.create = function () {
+	        return new ProgressEvent();
+	    };
+	    return ProgressEvent;
+	}(Event));
+	exports.ProgressEvent = ProgressEvent;
 	;
 	function createAnyEvent(type, payload) {
 	    return AnyEvent.create(type, payload);
@@ -4324,14 +4380,16 @@ var editor =
 	        input.on(Events.CHANGING, function (evt) {
 	            var e = _this.eChangeEvent;
 	            _this.text = _this.filterText(evt.value);
-	            e.init(Events.CHANGING, { value: _this.text });
+	            var value = _this.inputType === "number" ? +_this.text : _this.text;
+	            e.init(Events.CHANGING, { value: value });
 	            ;
 	            _this.dispatchEvent(e);
 	        });
 	        input.on(Events.CHANGE, function (evt) {
 	            var e = _this.eChangeEvent;
 	            _this.text = _this.filterText(evt.value);
-	            e.init(Events.CHANGE, { value: _this.text, oldValue: oldValue });
+	            var value = _this.inputType === "number" ? +_this.text : _this.text;
+	            e.init(Events.CHANGE, { value: value, oldValue: oldValue });
 	            ;
 	            _this.dispatchEvent(e);
 	        });
@@ -5628,8 +5686,21 @@ var editor =
 	        enumerable: true,
 	        configurable: true
 	    });
+	    Object.defineProperty(Widget.prototype, "isEnableFunc", {
+	        get: function () {
+	            return this._isEnableFunc;
+	        },
+	        set: function (value) {
+	            this._isEnableFunc = value;
+	        },
+	        enumerable: true,
+	        configurable: true
+	    });
 	    Object.defineProperty(Widget.prototype, "enable", {
 	        get: function () {
+	            if (this.isEnableFunc) {
+	                return this.isEnableFunc();
+	            }
 	            return this._enable;
 	        },
 	        set: function (value) {
@@ -6198,6 +6269,17 @@ var editor =
 	                    _this.onBindData(viewModal, dataBindingRule);
 	                });
 	            }
+	            this._isEnableFunc = function () {
+	                var enable = true;
+	                dataBindingRule.forEach(function (prop, item) {
+	                    var source = item.source;
+	                    if (source.type === binding_rule_1.BindingCommandSource.TYPE) {
+	                        var commandSource = source;
+	                        enable = enable && viewModal.canExecute(commandSource.command);
+	                    }
+	                });
+	                return enable;
+	            };
 	        }
 	        this.bindChildren(viewModal);
 	        if (viewModal.isCollection && this._templateItemJson) {
@@ -23789,6 +23871,8 @@ var editor =
 	var device_info_1 = __webpack_require__(124);
 	var service_locator_1 = __webpack_require__(125);
 	var inputEventAdapter = __webpack_require__(17);
+	var interaction_request_1 = __webpack_require__(126);
+	var interaction_service_1 = __webpack_require__(128);
 	/**
 	 * 代表整个应用程序，可以通过Application获取各种服务。
 	 *
@@ -23876,6 +23960,7 @@ var editor =
 	        var themeManager = new theme_manager_1.ThemeManager();
 	        var sysThemeDataURL = this._options.sysThemeDataURL;
 	        var appThemeDataURL = this._options.appThemeDataURL;
+	        interaction_request_1.InteractionRequest.init(interaction_service_1.InteractionService.init());
 	        if (sysThemeDataURL) {
 	            Assets.loadJSON(sysThemeDataURL).then(function (json) {
 	                var baseURL = path.dirname(sysThemeDataURL);
@@ -24108,6 +24193,3566 @@ var editor =
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
+	var interaction_types_1 = __webpack_require__(127);
+	var InteractionRequest = (function () {
+	    function InteractionRequest(service) {
+	        this.service = service;
+	    }
+	    InteractionRequest.prototype.request = function (name, callback, payload) {
+	        var detail = { name: name, callback: callback, payload: payload };
+	        this.service.dispatchRequest(detail);
+	    };
+	    InteractionRequest.prototype.toast = function (info) {
+	        this.request(interaction_types_1.InteractionTypes.TOAST, null, info);
+	    };
+	    InteractionRequest.prototype.notify = function (info) {
+	        this.request(interaction_types_1.InteractionTypes.NOTIFICATION, null, info);
+	    };
+	    InteractionRequest.prototype.confirm = function (info, callback) {
+	        this.request(interaction_types_1.InteractionTypes.CONFIRMATION, callback, info);
+	    };
+	    InteractionRequest.prototype.input = function (info, callback) {
+	        this.request(interaction_types_1.InteractionTypes.INPUT, callback, info);
+	    };
+	    InteractionRequest.prototype.choice = function (info, callback) {
+	        this.request(interaction_types_1.InteractionTypes.CHOICE, callback, info);
+	    };
+	    InteractionRequest.prototype.props = function (info, callback) {
+	        this.request(interaction_types_1.InteractionTypes.PROPS, callback, info);
+	    };
+	    InteractionRequest.prototype.progress = function (info, callback) {
+	        this.request(interaction_types_1.InteractionTypes.PROGRESS, callback, info);
+	    };
+	    InteractionRequest.init = function (service) {
+	        InteractionRequest.instance = new InteractionRequest(service);
+	    };
+	    InteractionRequest.toast = function (info) {
+	        InteractionRequest.instance.toast(info);
+	    };
+	    InteractionRequest.notify = function (info) {
+	        InteractionRequest.instance.notify(info);
+	    };
+	    InteractionRequest.confirm = function (info, callback) {
+	        InteractionRequest.instance.confirm(info, callback);
+	    };
+	    InteractionRequest.input = function (info, callback) {
+	        InteractionRequest.instance.input(info, callback);
+	    };
+	    InteractionRequest.choice = function (info, callback) {
+	        InteractionRequest.instance.choice(info, callback);
+	    };
+	    InteractionRequest.props = function (info, callback) {
+	        InteractionRequest.instance.props(info, callback);
+	    };
+	    InteractionRequest.progress = function (info, callback) {
+	        InteractionRequest.instance.progress(info, callback);
+	    };
+	    InteractionRequest.request = function (name, callback, payload) {
+	        InteractionRequest.instance.request(name, callback, payload);
+	    };
+	    return InteractionRequest;
+	}());
+	exports.InteractionRequest = InteractionRequest;
+
+
+/***/ },
+/* 127 */
+/***/ function(module, exports) {
+
+	"use strict";
+	var InteractionTypes = (function () {
+	    function InteractionTypes() {
+	    }
+	    InteractionTypes.PROPS = "props";
+	    InteractionTypes.TOAST = "toast";
+	    InteractionTypes.INPUT = "input";
+	    InteractionTypes.CHOICE = "choice";
+	    InteractionTypes.PROGRESS = "progress";
+	    InteractionTypes.NOTIFICATION = "notification";
+	    InteractionTypes.CONFIRMATION = "confirmation";
+	    return InteractionTypes;
+	}());
+	exports.InteractionTypes = InteractionTypes;
+	;
+
+
+/***/ },
+/* 128 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+	var emitter_1 = __webpack_require__(6);
+	var Events = __webpack_require__(8);
+	var toast_dialog_1 = __webpack_require__(129);
+	var input_dialog_1 = __webpack_require__(133);
+	var props_dialog_1 = __webpack_require__(134);
+	var choice_dialog_1 = __webpack_require__(158);
+	var progress_dialog_1 = __webpack_require__(159);
+	var confirmation_dialog_1 = __webpack_require__(160);
+	var notification_dialog_1 = __webpack_require__(161);
+	var interaction_types_1 = __webpack_require__(127);
+	var InteractionService = (function () {
+	    function InteractionService() {
+	        this._emitter = new emitter_1.Emitter();
+	    }
+	    InteractionService.prototype.onRequest = function (callback) {
+	        this._emitter.on(Events.INTERACTION_REQUEST, callback);
+	    };
+	    InteractionService.prototype.offRequest = function (callback) {
+	        this._emitter.off(Events.INTERACTION_REQUEST, callback);
+	    };
+	    InteractionService.prototype.dispatchRequest = function (detail) {
+	        var type = Events.INTERACTION_REQUEST;
+	        var e = Events.InteractionRequestEvent.create(type, detail);
+	        this._emitter.dispatchEvent(e);
+	        if (!e.defaultPrevented) {
+	            this.defaultHandler(e);
+	        }
+	        e.dispose();
+	    };
+	    InteractionService.prototype.defaultHandler = function (e) {
+	        var name = e.name;
+	        var payload = e.payload;
+	        switch (name) {
+	            case interaction_types_1.InteractionTypes.TOAST: {
+	                toast_dialog_1.ToastDialog.show(e);
+	                break;
+	            }
+	            case interaction_types_1.InteractionTypes.INPUT: {
+	                input_dialog_1.InputDialog.show(e);
+	                break;
+	            }
+	            case interaction_types_1.InteractionTypes.PROGRESS: {
+	                progress_dialog_1.ProgressDialog.show(e);
+	                break;
+	            }
+	            case interaction_types_1.InteractionTypes.CHOICE: {
+	                choice_dialog_1.ChoiceDialog.show(e);
+	                break;
+	            }
+	            case interaction_types_1.InteractionTypes.PROPS: {
+	                props_dialog_1.PropsDialog.show(e);
+	                break;
+	            }
+	            case interaction_types_1.InteractionTypes.NOTIFICATION: {
+	                notification_dialog_1.NotificationDialog.show(e);
+	                break;
+	            }
+	            case interaction_types_1.InteractionTypes.CONFIRMATION: {
+	                confirmation_dialog_1.ConfirmationDialog.show(e);
+	                break;
+	            }
+	            default: break;
+	        }
+	    };
+	    InteractionService.getInstance = function () {
+	        return InteractionService.instance;
+	    };
+	    InteractionService.init = function () {
+	        InteractionService.instance = new InteractionService();
+	        return InteractionService.instance;
+	    };
+	    InteractionService.onRequest = function (callback) {
+	        InteractionService.instance.onRequest(callback);
+	    };
+	    InteractionService.offRequest = function (callback) {
+	        InteractionService.instance.offRequest(callback);
+	    };
+	    return InteractionService;
+	}());
+	exports.InteractionService = InteractionService;
+	;
+
+
+/***/ },
+/* 129 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+	var message_box_1 = __webpack_require__(130);
+	var ToastDialog = (function () {
+	    function ToastDialog() {
+	    }
+	    ToastDialog.show = function (e) {
+	        var info = e.payload;
+	        message_box_1.MessageBox.showToast(info.text, info.duration || 1000, info.w);
+	    };
+	    return ToastDialog;
+	}());
+	exports.ToastDialog = ToastDialog;
+
+
+/***/ },
+/* 130 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+	var __extends = (this && this.__extends) || function (d, b) {
+	    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
+	    function __() { this.constructor = d; }
+	    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+	};
+	var group_1 = __webpack_require__(92);
+	var dialog_1 = __webpack_require__(93);
+	var label_1 = __webpack_require__(20);
+	var edit_1 = __webpack_require__(19);
+	var button_1 = __webpack_require__(95);
+	var Events = __webpack_require__(8);
+	var graphics_1 = __webpack_require__(27);
+	var list_view_1 = __webpack_require__(113);
+	var progress_bar_1 = __webpack_require__(97);
+	var application_1 = __webpack_require__(122);
+	var widget_1 = __webpack_require__(21);
+	var widget_factory_1 = __webpack_require__(25);
+	var consts_1 = __webpack_require__(106);
+	var recyclable_creator_1 = __webpack_require__(84);
+	var list_item_1 = __webpack_require__(115);
+	var dock_layouter_1 = __webpack_require__(131);
+	var linear_layouter_1 = __webpack_require__(132);
+	var grid_layouter_1 = __webpack_require__(118);
+	var simple_layouter_1 = __webpack_require__(116);
+	var TitleOptions = (function () {
+	    function TitleOptions(text, iconStyleType, hasCloseButton) {
+	        this.h = 0;
+	        this.text = text;
+	        this.draggable = true;
+	        this.iconStyleType = iconStyleType;
+	        this.hasCloseButton = hasCloseButton;
+	    }
+	    return TitleOptions;
+	}());
+	exports.TitleOptions = TitleOptions;
+	;
+	var ButtonOption = (function () {
+	    function ButtonOption() {
+	    }
+	    return ButtonOption;
+	}());
+	exports.ButtonOption = ButtonOption;
+	var ButtonsOptions = (function () {
+	    function ButtonsOptions() {
+	        this.buttons = [];
+	    }
+	    Object.defineProperty(ButtonsOptions.prototype, "buttonCount", {
+	        get: function () {
+	            return this.buttons.length;
+	        },
+	        enumerable: true,
+	        configurable: true
+	    });
+	    return ButtonsOptions;
+	}());
+	exports.ButtonsOptions = ButtonsOptions;
+	;
+	var MessageBox = (function (_super) {
+	    __extends(MessageBox, _super);
+	    function MessageBox(type) {
+	        _super.call(this, type || MessageBox.TYPE);
+	        this._contentPadding = 10;
+	    }
+	    Object.defineProperty(MessageBox.prototype, "title", {
+	        get: function () {
+	            return this._title;
+	        },
+	        enumerable: true,
+	        configurable: true
+	    });
+	    Object.defineProperty(MessageBox.prototype, "content", {
+	        get: function () {
+	            return this._content;
+	        },
+	        enumerable: true,
+	        configurable: true
+	    });
+	    Object.defineProperty(MessageBox.prototype, "buttons", {
+	        get: function () {
+	            return this._buttons;
+	        },
+	        enumerable: true,
+	        configurable: true
+	    });
+	    MessageBox.prototype.initTitle = function (titleOptions) {
+	        var w = this.w;
+	        var win = this;
+	        if (titleOptions) {
+	            var title = group_1.Group.create({ styleType: "dialog.title-bg" });
+	            var titleH = titleOptions.h || MessageBox.TITLE_H;
+	            title.layoutParam = dock_layouter_1.DockLayouterParam.create({ position: consts_1.Direction.TOP, size: titleH });
+	            title.childrenLayouter = linear_layouter_1.LinearLayouter.createH();
+	            this.addChild(title);
+	            if (titleOptions.draggable) {
+	                title.useBehavior("movable", { moveParent: true });
+	            }
+	            if (titleOptions.iconStyleType) {
+	                var icon = button_1.Button.create({ name: "icon", styleType: titleOptions.iconStyleType });
+	                icon.layoutParam = linear_layouter_1.LinearLayouterParam.create({ position: 1, h: "100%", w: title.h });
+	                title.addChild(icon);
+	            }
+	            if (titleOptions.text) {
+	                var label = label_1.Label.create({ name: "text", text: titleOptions.text, styleType: "dialog.title-text" });
+	                label.layoutParam = linear_layouter_1.LinearLayouterParam.create({ position: 2, h: "100%", w: w - titleH * 2 });
+	                title.addChild(label);
+	            }
+	            if (titleOptions.hasCloseButton) {
+	                var button = button_1.Button.create({ name: "close", styleType: "messagebox.button.close" });
+	                button.layoutParam = linear_layouter_1.LinearLayouterParam.create({ position: -1, h: "100%", w: titleH });
+	                title.addChild(button);
+	                button.on(Events.CLICK, function (evt) {
+	                    win.animateClose();
+	                });
+	            }
+	            this._title = title;
+	        }
+	    };
+	    MessageBox.prototype.initButtons = function (buttonsOptions) {
+	        var w = this.w;
+	        var win = this;
+	        if (buttonsOptions && buttonsOptions.buttons) {
+	            var buttons = group_1.Group.create();
+	            var n = buttonsOptions.buttons.length;
+	            var buttonsH = buttonsOptions.h || MessageBox.BUTTONS_H;
+	            var margin = n < 2 ? w / (4 * n) : w / (8 * n);
+	            buttons.layoutParam = dock_layouter_1.DockLayouterParam.create({ position: consts_1.Direction.BOTTOM, size: buttonsH });
+	            buttons.childrenLayouter = grid_layouter_1.GridLayouter.create({
+	                topMargin: 5,
+	                bottomMargin: 5,
+	                leftMargin: margin,
+	                rightMargin: margin,
+	                rows: 1,
+	                cols: n
+	            });
+	            this.addChild(buttons);
+	            buttonsOptions.buttons.forEach(function (iter) {
+	                var b = button_1.Button.create({ text: iter.text, styleType: iter.styleType });
+	                b.on(Events.CLICK, function (evt) {
+	                    if (iter.onClick) {
+	                        iter.onClick();
+	                    }
+	                    win.animateClose();
+	                });
+	                buttons.addChild(b);
+	            });
+	            this._buttons = buttons;
+	        }
+	        return this;
+	    };
+	    MessageBox.prototype.initContent = function (data) {
+	        var content = group_1.Group.create();
+	        content.layoutParam = dock_layouter_1.DockLayouterParam.create({ position: consts_1.Direction.BOTTOM, size: "100%" });
+	        this.addChild(content);
+	        if (data) {
+	            content.childrenLayouter = simple_layouter_1.SimpleLayouter.create();
+	            var label = label_1.Label.create({ text: data, multiLineMode: true, padding: this._contentPadding });
+	            label.layoutParam = simple_layouter_1.SimpleLayouterParam.create({ w: "100%", h: "100%" });
+	            content.addChild(label);
+	        }
+	        this._content = content;
+	    };
+	    MessageBox.prototype.createChildren = function (titleOptions, buttonsOptions, content) {
+	        var vp = this.app.getViewPort();
+	        var style = this._themeManager.get("messagebox.content", this.stateToString(widget_1.WidgetState.NORMAL));
+	        if (this.w <= 10) {
+	            var textW = graphics_1.Graphics.measureText(content, style.font);
+	            var padding = this.leftPadding + this.rightPadding + this._contentPadding * 2;
+	            var w = Math.min(vp.width, Math.max(60, textW + padding));
+	            if (buttonsOptions) {
+	                w = Math.max(w, buttonsOptions.buttonCount * 128);
+	            }
+	            this.w = w;
+	        }
+	        if (this.h < 10) {
+	            var lines = graphics_1.Graphics.layoutText(content, this.w, style.font);
+	            var n = lines ? lines.length : 0;
+	            var padding = this.topPadding + this.bottomPadding + this._contentPadding * 2;
+	            var h = n * style.fontSize * 1.5 + padding;
+	            if (titleOptions) {
+	                h += titleOptions.h || MessageBox.TITLE_H;
+	            }
+	            if (buttonsOptions) {
+	                h += buttonsOptions.h || MessageBox.BUTTONS_H;
+	            }
+	            this.h = h;
+	        }
+	        this.initTitle(titleOptions);
+	        this.initButtons(buttonsOptions);
+	        this.initContent(content);
+	    };
+	    MessageBox.prototype.onReset = function () {
+	        _super.prototype.onReset.call(this);
+	        this.padding = 1;
+	        this.childrenLayouter = dock_layouter_1.DockLayouter.create();
+	    };
+	    MessageBox.prototype.dispose = function () {
+	        _super.prototype.dispose.call(this);
+	        this._title = null;
+	        this._content = null;
+	        this._buttons = null;
+	    };
+	    MessageBox.prototype.open = function () {
+	        _super.prototype.open.call(this);
+	        this.grab();
+	        this.moveToCenter();
+	        return this;
+	    };
+	    MessageBox.prototype.animateClose = function () {
+	        var _this = this;
+	        this.opacityTo(0, 300).onComplete(function (evt) {
+	            _this.close();
+	        });
+	    };
+	    MessageBox.showMessage = function (msg, onClose, w) {
+	        var app = application_1.Application.get();
+	        var vp = app.getViewPort();
+	        var rw = Math.min(vp.w, w || 0);
+	        var messageBox = MessageBox.create({ app: app, w: rw, h: 0 });
+	        var buttonsOption = new ButtonsOptions();
+	        buttonsOption.buttons.push({ styleType: "button.ok", text: "Close", onClick: null });
+	        var titleOptions = new TitleOptions("Infomation", "messagebox.info.icon", true);
+	        messageBox.createChildren(titleOptions, buttonsOption, msg);
+	        messageBox.on(Events.CLOSE, onClose);
+	        messageBox.open();
+	    };
+	    MessageBox.showConfirm = function (msg, onYes, onNo, w) {
+	        var app = application_1.Application.get();
+	        var vp = app.getViewPort();
+	        var rw = Math.min(vp.w, w || 0);
+	        var messageBox = MessageBox.create({ app: app, w: rw, h: 0 });
+	        var buttonsOption = new ButtonsOptions();
+	        buttonsOption.buttons.push({ styleType: "button.cancel", text: "Cancel", onClick: onNo });
+	        buttonsOption.buttons.push({ styleType: "button.ok", text: "Yes", onClick: onYes });
+	        var titleOptions = new TitleOptions("Question", "messagebox.question.icon", false);
+	        messageBox.createChildren(titleOptions, buttonsOption, msg);
+	        messageBox.open();
+	    };
+	    MessageBox.showToast = function (msg, duration, w) {
+	        var app = application_1.Application.get();
+	        var vp = app.getViewPort();
+	        var rw = Math.min(vp.w, w || 0);
+	        var messageBox = MessageBox.create({ app: app, styleType: "messagebox.toast", w: rw, h: 0 });
+	        messageBox.createChildren(null, null, msg);
+	        messageBox.on(Events.POINTER_UP, function (evt) {
+	            if (messageBox) {
+	                this.animateClose();
+	                messageBox = null;
+	            }
+	        });
+	        setTimeout(function (evt) {
+	            if (messageBox) {
+	                messageBox.animateClose();
+	                messageBox = null;
+	            }
+	        }, duration || 3000);
+	        messageBox.open();
+	    };
+	    MessageBox.showProgress = function (msg, taskStart, onDone, w) {
+	        var app = application_1.Application.get();
+	        var vp = app.getViewPort();
+	        var rw = Math.min(vp.w, w || 0) || 200;
+	        var rh = MessageBox.TITLE_H + MessageBox.BUTTONS_H + 50;
+	        var messageBox = MessageBox.create({ app: app, w: rw, h: rh });
+	        var buttonsOption = new ButtonsOptions();
+	        buttonsOption.buttons.push({ styleType: "button.ok", text: "Close", onClick: null });
+	        var titleOptions = new TitleOptions(msg, "messagebox.info.icon", false);
+	        messageBox.createChildren(titleOptions, buttonsOption, null);
+	        var group = messageBox.content;
+	        var progressBar = progress_bar_1.ProgressBar.create();
+	        group.padding = 10;
+	        group.topPadding = 20;
+	        group.childrenLayouter = simple_layouter_1.SimpleLayouter.create();
+	        progressBar.layoutParam = simple_layouter_1.SimpleLayouterParam.create({ x: "center", y: "middle", w: "100%", h: "20px" });
+	        var closeButton = messageBox.buttons.children[0];
+	        closeButton.enable = false;
+	        function onProgress(value) {
+	            progressBar.value = value;
+	            progressBar.requestRedraw();
+	            if (value >= 1) {
+	                onDone();
+	                closeButton.enable = true;
+	            }
+	        }
+	        group.addChild(progressBar);
+	        messageBox.open();
+	        taskStart(onProgress);
+	    };
+	    MessageBox.showInput = function (title, inputTips, value, isValueValid, onDone, inputType, w) {
+	        var app = application_1.Application.get();
+	        var vp = app.getViewPort();
+	        var rw = Math.min(vp.w, w || 0) || 200;
+	        var rh = MessageBox.TITLE_H + MessageBox.BUTTONS_H + 50;
+	        var messageBox = MessageBox.create({ app: app, w: rw, h: rh });
+	        var buttonsOption = new ButtonsOptions();
+	        buttonsOption.buttons.push({ styleType: "button.cancel", text: "Cancel", onClick: null });
+	        buttonsOption.buttons.push({ styleType: "button.ok", text: "OK", onClick: onOK });
+	        var titleOptions = new TitleOptions(title, "messagebox.info.icon", false);
+	        messageBox.createChildren(titleOptions, buttonsOption, null);
+	        var group = messageBox.content;
+	        var edit = edit_1.Edit.create({ inputTips: inputTips, value: value, inputType: inputType || "text" });
+	        group.padding = 10;
+	        group.topPadding = 15;
+	        group.childrenLayouter = simple_layouter_1.SimpleLayouter.create();
+	        edit.layoutParam = simple_layouter_1.SimpleLayouterParam.create({ x: "center", y: "middle", w: "100%", h: "25px" });
+	        function onOK() {
+	            onDone(edit.text);
+	        }
+	        edit.on(Events.CHANGING, function (evt) {
+	            okButton.enable = isValueValid(evt.value);
+	        });
+	        var okButton = messageBox.buttons.children[1];
+	        okButton.enable = isValueValid(value);
+	        group.addChild(edit);
+	        messageBox.open();
+	    };
+	    MessageBox.showChoice = function (title, data, multiple, onDone, w, h) {
+	        var itemH = 30;
+	        var app = application_1.Application.get();
+	        var vp = app.getViewPort();
+	        var contentH = Math.min(8, data.length) * itemH;
+	        var rw = Math.min(vp.w, w || 0) || 300;
+	        var rh = Math.min(vp.h, h || 0) || MessageBox.TITLE_H + MessageBox.BUTTONS_H + contentH + 30;
+	        var messageBox = MessageBox.create({ app: app, w: rw, h: rh });
+	        var buttonsOption = new ButtonsOptions();
+	        buttonsOption.buttons.push({ styleType: "button.cancel", text: "Cancel", onClick: null });
+	        buttonsOption.buttons.push({ styleType: "button.ok", text: "OK", onClick: onOK });
+	        var titleOptions = new TitleOptions(title, "messagebox.info.icon", false);
+	        messageBox.createChildren(titleOptions, buttonsOption, null);
+	        var group = messageBox.content;
+	        var listView = list_view_1.ListView.create({ itemH: itemH, dragToScroll: true });
+	        group.padding = 5;
+	        group.topPadding = 5;
+	        group.childrenLayouter = simple_layouter_1.SimpleLayouter.create();
+	        listView.layoutParam = simple_layouter_1.SimpleLayouterParam.create({ x: "center", y: "middle", w: "100%", h: "100%" });
+	        data.forEach(function (iter) {
+	            var item = list_item_1.ListItemCheckable.create({
+	                multiCheckable: multiple,
+	                iconURL: iter.iconURL,
+	                text: iter.text,
+	                userData: iter,
+	                leftPadding: 2
+	            });
+	            listView.addChild(item, true);
+	        });
+	        listView.relayoutChildren();
+	        function onOK() {
+	            var ret = [];
+	            listView.children.forEach(function (iter) {
+	                if (iter.value) {
+	                    ret.push(iter.userData);
+	                }
+	            });
+	            onDone(ret);
+	        }
+	        group.addChild(listView);
+	        messageBox.open();
+	    };
+	    MessageBox.create = function (options) {
+	        return MessageBox.rBin.create().reset(MessageBox.TYPE, options);
+	    };
+	    MessageBox.TITLE_H = 25;
+	    MessageBox.BUTTONS_H = 40;
+	    MessageBox.MSG_FONT_SIZE = 12;
+	    MessageBox.TYPE = "messagebox";
+	    MessageBox.rBin = new recyclable_creator_1.RecyclableCreator(function () { return new MessageBox(); });
+	    return MessageBox;
+	}(dialog_1.Dialog));
+	exports.MessageBox = MessageBox;
+	;
+	widget_factory_1.WidgetFactory.register(MessageBox.TYPE, MessageBox.create);
+
+
+/***/ },
+/* 131 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+	var __extends = (this && this.__extends) || function (d, b) {
+	    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
+	    function __() { this.constructor = d; }
+	    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+	};
+	var consts_1 = __webpack_require__(106);
+	var layouter_1 = __webpack_require__(80);
+	var TYPE = "dock";
+	/**
+	 * Dock布局器。
+	 */
+	var DockLayouter = (function (_super) {
+	    __extends(DockLayouter, _super);
+	    function DockLayouter() {
+	        _super.apply(this, arguments);
+	    }
+	    Object.defineProperty(DockLayouter.prototype, "type", {
+	        get: function () {
+	            return TYPE;
+	        },
+	        enumerable: true,
+	        configurable: true
+	    });
+	    DockLayouter.prototype.layoutChildren = function (widget, children, rect) {
+	        var _this = this;
+	        var r = rect.clone();
+	        var arr = widget.children.forEach(function (child) {
+	            if (r.w > 0 && r.h > 0) {
+	                _this.layoutChild(child, r);
+	            }
+	        });
+	        r.dispose();
+	        return rect;
+	    };
+	    DockLayouter.prototype.layoutChild = function (child, r) {
+	        var x = 0;
+	        var y = 0;
+	        var w = 0;
+	        var h = 0;
+	        var param = child.layoutParam;
+	        if (param && param.type === TYPE && child.visible) {
+	            switch (param.position) {
+	                case consts_1.Direction.LEFT: {
+	                    x = r.x;
+	                    y = r.y;
+	                    h = r.h;
+	                    w = Math.min(r.w, param.size ? layouter_1.Layouter.evalValue(param.size, r.w) : child.w);
+	                    r.x += w;
+	                    r.w -= w;
+	                    break;
+	                }
+	                case consts_1.Direction.RIGHT: {
+	                    y = r.y;
+	                    h = r.h;
+	                    w = Math.min(r.w, param.size ? layouter_1.Layouter.evalValue(param.size, r.w) : child.w);
+	                    x = r.x + r.w - w;
+	                    r.w -= w;
+	                    break;
+	                }
+	                case consts_1.Direction.BOTTOM: {
+	                    x = r.x;
+	                    w = r.w;
+	                    h = Math.min(r.h, param.size ? layouter_1.Layouter.evalValue(param.size, r.h) : child.h);
+	                    y = r.y + r.h - h;
+	                    r.h -= h;
+	                    break;
+	                }
+	                default: {
+	                    x = r.x;
+	                    y = r.y;
+	                    w = r.w;
+	                    h = Math.min(r.h, param.size ? layouter_1.Layouter.evalValue(param.size, r.h) : child.h);
+	                    r.h -= h;
+	                    r.y += h;
+	                    break;
+	                }
+	            }
+	            child.moveResizeTo(x, y, w, h);
+	            child.relayoutChildren();
+	        }
+	    };
+	    DockLayouter.prototype.createParam = function (options) {
+	        return DockLayouterParam.create(options);
+	    };
+	    DockLayouter.create = function (options) {
+	        var layouter = new DockLayouter();
+	        return layouter.setOptions(options);
+	    };
+	    return DockLayouter;
+	}(layouter_1.Layouter));
+	exports.DockLayouter = DockLayouter;
+	;
+	layouter_1.LayouterFactory.register(TYPE, DockLayouter.create);
+	/**
+	 * Dock布局器的参数。
+	 *
+	 * 如果父控件使用DockLayouter布局器，则子控件需要把layoutParam设置为DockLayouterParam。
+	 *
+	 * 对于size参数：
+	 * *.如果以px结尾，则直接取它的值。
+	 * *.如果以%结尾，则表示剩余空间的宽度/高度的百分比。
+	 *
+	 */
+	var DockLayouterParam = (function (_super) {
+	    __extends(DockLayouterParam, _super);
+	    function DockLayouterParam(position, size) {
+	        _super.call(this, TYPE);
+	        this.size = size;
+	        this.position = position;
+	    }
+	    DockLayouterParam.create = function (opts) {
+	        var options = opts || {};
+	        return new DockLayouterParam(options.position, options.size || "");
+	    };
+	    return DockLayouterParam;
+	}(layouter_1.LayouterParam));
+	exports.DockLayouterParam = DockLayouterParam;
+	;
+	layouter_1.LayouterParamFactory.register(TYPE, DockLayouterParam.create);
+
+
+/***/ },
+/* 132 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+	var __extends = (this && this.__extends) || function (d, b) {
+	    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
+	    function __() { this.constructor = d; }
+	    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+	};
+	var consts_1 = __webpack_require__(106);
+	var utils_1 = __webpack_require__(23);
+	var layouter_1 = __webpack_require__(80);
+	var TYPE_H = "linear-h";
+	var TYPE_V = "linear-v";
+	/**
+	 * 线性布局器。可以设置为水平和垂直两个方向。
+	 */
+	var LinearLayouter = (function (_super) {
+	    __extends(LinearLayouter, _super);
+	    function LinearLayouter() {
+	        _super.apply(this, arguments);
+	    }
+	    Object.defineProperty(LinearLayouter.prototype, "type", {
+	        get: function () {
+	            return this.orientation === consts_1.Orientation.V ? TYPE_V : TYPE_H;
+	        },
+	        enumerable: true,
+	        configurable: true
+	    });
+	    /**
+	     * 设置参数。
+	     */
+	    LinearLayouter.prototype.setOptions = function (options) {
+	        this.spacing = options.spacing || 0;
+	        this.orientation = options.orientation || consts_1.Orientation.V;
+	        return this;
+	    };
+	    LinearLayouter.prototype.layoutChildren = function (widget, children, rect) {
+	        var _this = this;
+	        var r = rect.clone();
+	        var defParam = LinearLayouterParam.defParam;
+	        var arr = children.filter(function (child) {
+	            var param = child.layoutParam || defParam;
+	            return param.position > 0;
+	        });
+	        utils_1.stableSort(arr, function (a, b) {
+	            var ap = a.layoutParam || defParam;
+	            var bp = b.layoutParam || defParam;
+	            return ap.position - bp.position;
+	        });
+	        arr.forEach(function (child, index) {
+	            if (r.w > 0 && r.h > 0) {
+	                _this.layoutChild(child, r, index);
+	            }
+	        });
+	        arr = children.filter(function (child) {
+	            var param = child.layoutParam || defParam;
+	            return !param.position;
+	        });
+	        arr.forEach(function (child, index) {
+	            if (r.w > 0 && r.h > 0) {
+	                _this.layoutChild(child, r, index);
+	            }
+	        });
+	        arr = children.filter(function (child) {
+	            var param = child.layoutParam || defParam;
+	            return param.position < 0;
+	        });
+	        utils_1.stableSort(arr, function (a, b) {
+	            var ap = a.layoutParam || defParam;
+	            var bp = b.layoutParam || defParam;
+	            return bp.position - ap.position;
+	        });
+	        arr.forEach(function (child, index) {
+	            if (r.w > 0 && r.h > 0) {
+	                _this.layoutChild(child, r, index);
+	            }
+	        });
+	        r.dispose();
+	        return rect;
+	    };
+	    LinearLayouter.prototype.layoutChild = function (child, r, index) {
+	        var x = 0;
+	        var y = 0;
+	        var w = 0;
+	        var h = 0;
+	        var defParam = LinearLayouterParam.defParam;
+	        var param = child.layoutParam || defParam;
+	        var position = param.position;
+	        if (param && param.type === LinearLayouterParam.TYPE && child.visible) {
+	            var spacing = (index > 0 || !position) ? (param.spacing || this.spacing) : 0;
+	            if (this.orientation === consts_1.Orientation.V) {
+	                r.h -= spacing;
+	            }
+	            else {
+	                r.w -= spacing;
+	            }
+	            h = Math.min(r.h, param.h ? layouter_1.Layouter.evalValue(param.h, r.h) : child.h);
+	            w = Math.min(r.w, param.w ? layouter_1.Layouter.evalValue(param.w, r.w) : child.w);
+	            if (this.orientation === consts_1.Orientation.V) {
+	                switch (param.align) {
+	                    case consts_1.Align.LEFT: {
+	                        x = r.x;
+	                        break;
+	                    }
+	                    case consts_1.Align.RIGHT: {
+	                        x = r.x + r.w - w;
+	                        break;
+	                    }
+	                    default: {
+	                        x = r.x + ((r.w - w) >> 1);
+	                        break;
+	                    }
+	                }
+	                var spacingH = spacing + h;
+	                if (position >= 0) {
+	                    y = r.y + spacing;
+	                    r.y += spacingH;
+	                }
+	                else {
+	                    y = r.y + r.h - spacingH;
+	                }
+	                r.h -= h;
+	            }
+	            else {
+	                switch (param.align) {
+	                    case consts_1.Align.TOP: {
+	                        y = r.y;
+	                        break;
+	                    }
+	                    case consts_1.Align.BOTTOM: {
+	                        y = r.y + r.h - h;
+	                        break;
+	                    }
+	                    default: {
+	                        y = r.y + ((r.h - h) >> 1);
+	                        break;
+	                    }
+	                }
+	                var spacingW = spacing + w;
+	                if (position >= 0) {
+	                    x = r.x + spacing;
+	                    r.x += spacingW;
+	                }
+	                else {
+	                    x = r.x + r.w - spacingW;
+	                }
+	                r.w -= w;
+	            }
+	            child.moveResizeTo(x, y, w, h);
+	            child.relayoutChildren();
+	        }
+	    };
+	    LinearLayouter.prototype.createParam = function (options) {
+	        return LinearLayouterParam.create(options);
+	    };
+	    LinearLayouter.createV = function (options) {
+	        var layouter = new LinearLayouter();
+	        layouter.setOptions(options);
+	        layouter.orientation = consts_1.Orientation.V;
+	        return layouter;
+	    };
+	    LinearLayouter.createH = function (options) {
+	        var layouter = new LinearLayouter();
+	        layouter.setOptions(options || {});
+	        layouter.orientation = consts_1.Orientation.H;
+	        return layouter;
+	    };
+	    return LinearLayouter;
+	}(layouter_1.Layouter));
+	exports.LinearLayouter = LinearLayouter;
+	;
+	layouter_1.LayouterFactory.register(TYPE_H, LinearLayouter.createH);
+	layouter_1.LayouterFactory.register(TYPE_V, LinearLayouter.createV);
+	/**
+	 * Linear布局器的参数。
+	 *
+	 * 如果父控件使用LinearLayouter布局器，则子控件需要把layoutParam设置为LinearLayouterParam。
+	 *
+	 * 对于w参数：
+	 * *.如果以px结尾，则直接取它的值。
+	 * *.如果以%结尾，则表示剩余空间的宽度/高度的百分比。
+	 *
+	 */
+	var LinearLayouterParam = (function (_super) {
+	    __extends(LinearLayouterParam, _super);
+	    function LinearLayouterParam(type, w, h, spacing, align, position) {
+	        _super.call(this, type || LinearLayouterParam.TYPE);
+	        this.w = w || "100%";
+	        this.h = h || "100%";
+	        this.align = align;
+	        this.spacing = spacing;
+	        this.position = position;
+	    }
+	    LinearLayouterParam.createWithType = function (type, opts) {
+	        var options = opts || {};
+	        return new LinearLayouterParam(LinearLayouterParam.TYPE, options.w || options.width, options.h || options.height, options.spacing || 0, options.align || consts_1.Align.C, options.position === undefined ? 1 : options.position);
+	    };
+	    LinearLayouterParam.create = function (opts) {
+	        return LinearLayouterParam.createWithType(LinearLayouterParam.TYPE, opts);
+	    };
+	    LinearLayouterParam.TYPE = "linear";
+	    LinearLayouterParam.defParam = LinearLayouterParam.create(null);
+	    return LinearLayouterParam;
+	}(layouter_1.LayouterParam));
+	exports.LinearLayouterParam = LinearLayouterParam;
+	;
+	layouter_1.LayouterParamFactory.register(LinearLayouterParam.TYPE, LinearLayouterParam.create);
+
+
+/***/ },
+/* 133 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+	var message_box_1 = __webpack_require__(130);
+	var InputDialog = (function () {
+	    function InputDialog() {
+	    }
+	    InputDialog.show = function (e) {
+	        var info = e.payload;
+	        message_box_1.MessageBox.showInput(info.title, info.inputTips, info.value, info.isValueValid, function (value) {
+	            info.value = value;
+	            e.returnResult();
+	        }, info.inputType, info.w);
+	    };
+	    return InputDialog;
+	}());
+	exports.InputDialog = InputDialog;
+
+
+/***/ },
+/* 134 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+	var property_dialog_1 = __webpack_require__(135);
+	var PropsDialog = (function () {
+	    function PropsDialog() {
+	    }
+	    PropsDialog.show = function (e) {
+	        var info = e.payload;
+	        var onCancel = info.mutable ? function (ret) { } : null;
+	        property_dialog_1.PropertyDialog.show(info.pagePropsDesc, info.data, function (ret) {
+	            info.data = ret;
+	            e.returnResult();
+	        }, onCancel, info.w);
+	    };
+	    return PropsDialog;
+	}());
+	exports.PropsDialog = PropsDialog;
+
+
+/***/ },
+/* 135 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+	var __extends = (this && this.__extends) || function (d, b) {
+	    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
+	    function __() { this.constructor = d; }
+	    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+	};
+	var application_1 = __webpack_require__(122);
+	var property_page_1 = __webpack_require__(136);
+	var view_modal_1 = __webpack_require__(153);
+	var recyclable_creator_1 = __webpack_require__(84);
+	var widget_factory_1 = __webpack_require__(25);
+	var message_box_1 = __webpack_require__(130);
+	var simple_layouter_1 = __webpack_require__(116);
+	/**
+	 * 属性对话框。
+	 */
+	var PropertyDialog = (function (_super) {
+	    __extends(PropertyDialog, _super);
+	    function PropertyDialog() {
+	        _super.apply(this, arguments);
+	    }
+	    PropertyDialog.prototype.createChildren = function (titleOptions, buttonsOptions, content) {
+	        _super.prototype.createChildren.call(this, titleOptions, buttonsOptions, content);
+	    };
+	    PropertyDialog.show = function (pagePropsDesc, data, onYes, onNo, w) {
+	        var app = application_1.Application.get();
+	        var vp = app.getViewPort();
+	        var rw = Math.min(vp.w, w || 300);
+	        var dataCopy = onNo ? JSON.parse(JSON.stringify(data)) : data;
+	        var page = property_page_1.PropertyPage.create({ layoutParam: simple_layouter_1.SimpleLayouterParam.create({ w: "100%", h: "100%" }) });
+	        page.initWithPropsDesc(pagePropsDesc.propsDesc);
+	        var h = page.h + message_box_1.MessageBox.TITLE_H + message_box_1.MessageBox.BUTTONS_H + 20;
+	        var messageBox = PropertyDialog.create({ app: app, styleType: message_box_1.MessageBox.TYPE, w: rw, h: h });
+	        var titleOptions = new message_box_1.TitleOptions(pagePropsDesc.title, "messagebox.info.icon", false);
+	        var buttonsOption = new message_box_1.ButtonsOptions();
+	        if (onNo) {
+	            buttonsOption.buttons.push({ styleType: "button.cancel", text: "Cancel", onClick: function () {
+	                    if (onNo) {
+	                        onNo(data);
+	                    }
+	                } });
+	        }
+	        buttonsOption.buttons.push({ styleType: "button.ok", text: onNo ? "Yes" : "OK", onClick: function () {
+	                if (onYes) {
+	                    onYes(dataCopy);
+	                }
+	            } });
+	        messageBox.createChildren(titleOptions, buttonsOption, null);
+	        var group = messageBox.content.set({ padding: 5, childrenLayouter: simple_layouter_1.SimpleLayouter.create() });
+	        group.addChild(page);
+	        var vm = view_modal_1.ViewModal.create(dataCopy);
+	        page.bindData(vm);
+	        messageBox.open();
+	    };
+	    PropertyDialog.create = function (options) {
+	        return PropertyDialog.rb.create().reset(PropertyDialog.TYPE, options);
+	    };
+	    PropertyDialog.TYPE = "property-dialog";
+	    PropertyDialog.rb = new recyclable_creator_1.RecyclableCreator(function () { return new PropertyDialog(); });
+	    return PropertyDialog;
+	}(message_box_1.MessageBox));
+	exports.PropertyDialog = PropertyDialog;
+	widget_factory_1.WidgetFactory.register(PropertyDialog.TYPE, PropertyDialog.create);
+
+
+/***/ },
+/* 136 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+	var __extends = (this && this.__extends) || function (d, b) {
+	    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
+	    function __() { this.constructor = d; }
+	    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+	};
+	var Events = __webpack_require__(8);
+	var title_link_1 = __webpack_require__(137);
+	var title_line_1 = __webpack_require__(139);
+	var title_edit_1 = __webpack_require__(141);
+	var title_label_1 = __webpack_require__(142);
+	var title_range_1 = __webpack_require__(143);
+	var title_vector_1 = __webpack_require__(145);
+	var widget_1 = __webpack_require__(21);
+	var title_slider_1 = __webpack_require__(147);
+	var title_text_area_1 = __webpack_require__(148);
+	var props_desc_1 = __webpack_require__(149);
+	var props_desc_2 = __webpack_require__(149);
+	var props_desc_3 = __webpack_require__(149);
+	var title_combo_box_1 = __webpack_require__(150);
+	var title_choosable_edit_1 = __webpack_require__(151);
+	var widget_factory_1 = __webpack_require__(25);
+	var recyclable_creator_1 = __webpack_require__(84);
+	/**
+	 * 属性编辑页，包装了各种TitleValue。
+	 */
+	var PropertyPage = (function (_super) {
+	    __extends(PropertyPage, _super);
+	    function PropertyPage() {
+	        _super.call(this, PropertyPage.TYPE);
+	    }
+	    Object.defineProperty(PropertyPage.prototype, "itemH", {
+	        get: function () {
+	            return this._itemH;
+	        },
+	        set: function (value) {
+	            this._itemH = value;
+	        },
+	        enumerable: true,
+	        configurable: true
+	    });
+	    Object.defineProperty(PropertyPage.prototype, "titleW", {
+	        get: function () {
+	            return this._titleW;
+	        },
+	        set: function (value) {
+	            this._titleW = value;
+	        },
+	        enumerable: true,
+	        configurable: true
+	    });
+	    Object.defineProperty(PropertyPage.prototype, "valueW", {
+	        get: function () {
+	            return this._valueW;
+	        },
+	        set: function (value) {
+	            this._valueW = value;
+	        },
+	        enumerable: true,
+	        configurable: true
+	    });
+	    PropertyPage.prototype.addLabel = function (title, value) {
+	        var itemH = this.itemH;
+	        var widget = title_label_1.TitleLabel.create({
+	            h: itemH,
+	            name: title,
+	            title: title,
+	            titleW: this.titleW,
+	            valueW: this.valueW
+	        });
+	        widget.value = value,
+	            this.addChild(widget, true);
+	        return widget;
+	    };
+	    PropertyPage.prototype.addLink = function (title, value) {
+	        var itemH = this.itemH;
+	        var widget = title_link_1.TitleLink.create({
+	            h: itemH,
+	            name: title,
+	            title: title,
+	            titleW: this.titleW,
+	            valueW: this.valueW
+	        });
+	        widget.value = value,
+	            this.addChild(widget, true);
+	        return widget;
+	    };
+	    PropertyPage.prototype.addGroupBegin = function (title) {
+	        var itemH = this.itemH;
+	        var widget = title_line_1.TitleLine.create({
+	            h: itemH,
+	            name: title,
+	            title: title,
+	            titleW: this.titleW,
+	            valueW: this.valueW
+	        });
+	        this.addChild(widget, true);
+	        return widget;
+	    };
+	    PropertyPage.prototype.addGroupEnd = function () {
+	        var itemH = this.itemH;
+	        var widget = title_line_1.TitleLine.create({
+	            h: itemH,
+	            titleW: this.titleW,
+	            valueW: this.valueW
+	        });
+	        this.addChild(widget, true);
+	        return widget;
+	    };
+	    PropertyPage.prototype.addRange = function (title, firstValue, secondValue) {
+	        var itemH = this.itemH;
+	        var widget = title_range_1.TitleRange.create({
+	            h: itemH,
+	            name: title,
+	            title: title,
+	            titleW: this.titleW,
+	            valueW: this.valueW
+	        });
+	        widget.value = { first: firstValue, second: secondValue };
+	        this.addChild(widget, true);
+	        return widget;
+	    };
+	    PropertyPage.prototype.addVector2 = function (title, x, y) {
+	        var itemH = this.itemH * 2;
+	        var widget = title_vector_1.TitleVector.create({
+	            d: 2,
+	            h: itemH,
+	            name: title,
+	            title: title,
+	            titleW: this.titleW,
+	            valueW: this.valueW
+	        });
+	        widget.value = { x: x, y: y };
+	        this.addChild(widget, true);
+	        return widget;
+	    };
+	    PropertyPage.prototype.addVector3 = function (title, x, y, z) {
+	        var itemH = this.itemH * 2;
+	        var widget = title_vector_1.TitleVector.create({
+	            d: 3,
+	            h: itemH,
+	            name: title,
+	            title: title,
+	            titleW: this.titleW,
+	            valueW: this.valueW
+	        });
+	        widget.value = { x: x, y: y, z: z };
+	        this.addChild(widget, true);
+	        return widget;
+	    };
+	    PropertyPage.prototype.addEdit = function (title, value, inputTips, inputType, inputFilter) {
+	        var itemH = this.itemH;
+	        var valueW = inputType === "number" ? "50%" : this.valueW;
+	        var widget = title_edit_1.TitleEdit.create({
+	            h: itemH,
+	            name: title,
+	            title: title,
+	            valueW: valueW,
+	            titleW: this.titleW,
+	            inputType: inputType,
+	            inputTips: inputTips,
+	            inputFilter: inputFilter
+	        });
+	        widget.value = value,
+	            this.addChild(widget, true);
+	        return widget;
+	    };
+	    PropertyPage.prototype.addChoosableEdit = function (title, value, inputTips) {
+	        var itemH = this.itemH;
+	        var widget = title_choosable_edit_1.TitleChoosableEdit.create({
+	            h: itemH,
+	            name: title,
+	            title: title,
+	            inputTips: inputTips,
+	            titleW: this.titleW,
+	            valueW: this.valueW
+	        });
+	        widget.value = value,
+	            this.addChild(widget, true);
+	        return widget;
+	    };
+	    PropertyPage.prototype.addComboBox = function (title, value) {
+	        var itemH = this.itemH;
+	        var widget = title_combo_box_1.TitleComboBox.create({
+	            h: itemH,
+	            name: title,
+	            title: title,
+	            titleW: this.titleW,
+	            valueW: this.valueW
+	        });
+	        widget.value = value,
+	            this.addChild(widget, true);
+	        return widget;
+	    };
+	    PropertyPage.prototype.addComboBoxEditable = function (title, value) {
+	        var itemH = this.itemH;
+	        var widget = title_combo_box_1.TitleComboBoxEditable.create({
+	            h: itemH,
+	            name: title,
+	            title: title,
+	            value: value,
+	            titleW: this.titleW,
+	            valueW: this.valueW
+	        });
+	        widget.value = value,
+	            this.addChild(widget, true);
+	        return widget;
+	    };
+	    PropertyPage.prototype.addSlider = function (title, value) {
+	        var itemH = this.itemH;
+	        var widget = title_slider_1.TitleSlider.create({
+	            h: itemH,
+	            name: title,
+	            title: title,
+	            titleW: this.titleW,
+	            valueW: this.valueW
+	        });
+	        widget.value = value,
+	            this.addChild(widget, true);
+	        return widget;
+	    };
+	    PropertyPage.prototype.addTextArea = function (title, value, h) {
+	        var itemH = h || (this.itemH * 4);
+	        var widget = title_text_area_1.TitleTextArea.create({
+	            h: itemH,
+	            name: title,
+	            title: title,
+	            titleW: this.titleW,
+	            valueW: this.valueW
+	        });
+	        widget.value = value,
+	            this.addChild(widget, true);
+	        return widget;
+	    };
+	    PropertyPage.prototype.findByTitle = function (title) {
+	        return this.findChildByName(title);
+	    };
+	    PropertyPage.prototype.addWithPropDesc = function (item) {
+	        var titleValue = null;
+	        if (item.type === props_desc_2.NumberPropDesc.TYPE) {
+	            titleValue = this.addEdit(item.name, item.value, item.desc, "number");
+	        }
+	        else if (item.type === props_desc_2.TextPropDesc.TYPE) {
+	            titleValue = this.addEdit(item.name, item.value, item.desc, "text");
+	        }
+	        else if (item.type === props_desc_2.ReadonlyTextPropDesc.TYPE) {
+	            titleValue = this.addLabel(item.name, item.value);
+	        }
+	        else if (item.type === props_desc_3.SliderPropDesc.TYPE) {
+	            titleValue = this.addSlider(item.name, item.value);
+	        }
+	        else if (item.type === props_desc_1.LinkPropDesc.TYPE) {
+	            titleValue = this.addLink(item.name, item.value);
+	        }
+	        else if (item.type === props_desc_1.LinePropDesc.TYPE) {
+	            if (item.name) {
+	                titleValue = this.addGroupBegin(item.name);
+	            }
+	            else {
+	                titleValue = this.addGroupEnd();
+	            }
+	        }
+	        else if (item.type === props_desc_3.RangePropDesc.TYPE) {
+	            var value = item.value || { first: 0, second: 0 };
+	            titleValue = this.addRange(item.name, value.first, value.second);
+	        }
+	        else if (item.type === props_desc_3.Vector2PropDesc.TYPE) {
+	            var value = item.value || { x: 0, y: 0 };
+	            titleValue = this.addVector2(item.name, value.x, value.y);
+	        }
+	        else if (item.type === props_desc_3.OptionsPropDesc.TYPE) {
+	            var value = item.value || { x: 0, y: 0 };
+	            var propDesc = item;
+	            titleValue = this.addComboBox(item.name, value);
+	            if (propDesc.options) {
+	                var comboBox = titleValue.valueWidget;
+	                comboBox.optionsJson = propDesc.options;
+	            }
+	        }
+	        else if (item.type === props_desc_3.Vector3PropDesc.TYPE) {
+	            var value = item.value || { x: 0, y: 0, z: 0 };
+	            titleValue = this.addVector3(item.name, value.x, value.y, value.z);
+	        }
+	        if (titleValue && item.path) {
+	            var valueWidget = titleValue.valueWidget;
+	            var bindRule = {
+	                value: {
+	                    path: item.path,
+	                    converter: item.converter,
+	                    validationRule: item.validationRule
+	                }
+	            };
+	            valueWidget.dataBindingRule = bindRule;
+	        }
+	    };
+	    PropertyPage.prototype.initWithPropsDesc = function (propsDesc) {
+	        var _this = this;
+	        this.removeAllChildren();
+	        propsDesc.forEach(function (item) {
+	            _this.addWithPropDesc(item);
+	        });
+	        propsDesc.once(Events.CHANGE, function (evt) {
+	            console.log("reload changed");
+	            _this.initWithPropsDesc(propsDesc);
+	        });
+	        var viewModal = this._viewModal;
+	        if (viewModal) {
+	            this.children.forEach(function (child) {
+	                child.bindData(viewModal);
+	            });
+	        }
+	        this.relayoutChildren();
+	    };
+	    PropertyPage.prototype.initWithJson = function (json) {
+	        var propsDesc = props_desc_2.PropsDesc.create(json);
+	        this.initWithPropsDesc(propsDesc);
+	    };
+	    PropertyPage.prototype.onAddChild = function (child) {
+	        this.reComputeH();
+	    };
+	    PropertyPage.prototype.onRemoveChild = function (child) {
+	        this.reComputeH();
+	    };
+	    PropertyPage.prototype.reComputeH = function () {
+	        var h = this.topPadding + this.bottomPadding;
+	        this.children.forEach(function (child) {
+	            h += child.h;
+	        });
+	        this.h = h;
+	        return this;
+	    };
+	    PropertyPage.prototype.relayoutChildren = function () {
+	        var r = this.getLayoutRect();
+	        var y = r.y;
+	        this.children.forEach(function (child) {
+	            child.moveResizeTo(r.x, y, r.w, child.h, 0);
+	            child.relayoutChildren();
+	            y += child.h;
+	        });
+	        this.h = this.bottomPadding + y;
+	        this.requestRedraw();
+	        return r;
+	    };
+	    PropertyPage.prototype.getDefProps = function () {
+	        return PropertyPage.defProps;
+	    };
+	    PropertyPage.create = function (options) {
+	        return PropertyPage.rBin.create().reset(PropertyPage.TYPE, options);
+	    };
+	    PropertyPage.defProps = Object.assign({}, widget_1.Widget.defProps, { _itemH: 30, _titleW: "60px", _valueW: "100%" });
+	    PropertyPage.TYPE = "property-page";
+	    PropertyPage.rBin = new recyclable_creator_1.RecyclableCreator(function () { return new PropertyPage(); });
+	    return PropertyPage;
+	}(widget_1.Widget));
+	exports.PropertyPage = PropertyPage;
+	;
+	widget_factory_1.WidgetFactory.register(PropertyPage.TYPE, PropertyPage.create);
+
+
+/***/ },
+/* 137 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+	var __extends = (this && this.__extends) || function (d, b) {
+	    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
+	    function __() { this.constructor = d; }
+	    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+	};
+	var Events = __webpack_require__(8);
+	var label_1 = __webpack_require__(20);
+	var title_value_1 = __webpack_require__(138);
+	var widget_factory_1 = __webpack_require__(25);
+	var recyclable_creator_1 = __webpack_require__(84);
+	var TitleLink = (function (_super) {
+	    __extends(TitleLink, _super);
+	    function TitleLink(type) {
+	        _super.call(this, type || TitleLink.TYPE);
+	    }
+	    TitleLink.prototype.createValueWidget = function (options) {
+	        var link = label_1.Label.create(options);
+	        link.styleType = "link";
+	        link.on(Events.CLICK, function (evt) {
+	            window.open(this.text, "_blank");
+	        });
+	        link.on(Events.POINTER_ENTER, function (evt) {
+	            document.body.style.cursor = "pointer";
+	        });
+	        link.on(Events.POINTER_LEAVE, function (evt) {
+	            document.body.style.cursor = "default";
+	        });
+	        return link;
+	    };
+	    TitleLink.create = function (options) {
+	        return TitleLink.recycleBin.create().reset(TitleLink.TYPE, options);
+	    };
+	    TitleLink.TYPE = "title-link";
+	    TitleLink.recycleBin = new recyclable_creator_1.RecyclableCreator(function () { return new TitleLink(); });
+	    return TitleLink;
+	}(title_value_1.TitleValue));
+	exports.TitleLink = TitleLink;
+	;
+	widget_factory_1.WidgetFactory.register(TitleLink.TYPE, TitleLink.create);
+
+
+/***/ },
+/* 138 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+	var __extends = (this && this.__extends) || function (d, b) {
+	    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
+	    function __() { this.constructor = d; }
+	    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+	};
+	var Events = __webpack_require__(8);
+	var label_1 = __webpack_require__(20);
+	var widget_1 = __webpack_require__(21);
+	var linear_layouter_1 = __webpack_require__(132);
+	var TitleValue = (function (_super) {
+	    __extends(TitleValue, _super);
+	    function TitleValue(type) {
+	        _super.call(this, type);
+	    }
+	    Object.defineProperty(TitleValue.prototype, "title", {
+	        get: function () {
+	            return this._title;
+	        },
+	        set: function (value) {
+	            this._title = value;
+	        },
+	        enumerable: true,
+	        configurable: true
+	    });
+	    Object.defineProperty(TitleValue.prototype, "titleW", {
+	        get: function () {
+	            return this._titleW;
+	        },
+	        set: function (value) {
+	            this._titleW = value;
+	        },
+	        enumerable: true,
+	        configurable: true
+	    });
+	    Object.defineProperty(TitleValue.prototype, "valueW", {
+	        get: function () {
+	            return this._valueW;
+	        },
+	        set: function (value) {
+	            this._valueW = value;
+	        },
+	        enumerable: true,
+	        configurable: true
+	    });
+	    Object.defineProperty(TitleValue.prototype, "titleWidget", {
+	        get: function () {
+	            return this._titleWidget;
+	        },
+	        enumerable: true,
+	        configurable: true
+	    });
+	    Object.defineProperty(TitleValue.prototype, "valueWidget", {
+	        get: function () {
+	            return this._valueWidget;
+	        },
+	        enumerable: true,
+	        configurable: true
+	    });
+	    Object.defineProperty(TitleValue.prototype, "value", {
+	        get: function () {
+	            return this._valueWidget ? this.valueWidget.value : this._value;
+	        },
+	        set: function (value) {
+	            this._value = value;
+	            if (this._valueWidget) {
+	                this._valueWidget.value = value;
+	            }
+	        },
+	        enumerable: true,
+	        configurable: true
+	    });
+	    /*
+	     * Child must override
+	     */
+	    TitleValue.prototype.createValueWidget = function (options) {
+	        return null;
+	    };
+	    TitleValue.prototype.onInit = function () {
+	        _super.prototype.onInit.call(this);
+	        this.titleWidget.text = this._title;
+	        this.titleWidget.layoutParam = linear_layouter_1.LinearLayouterParam.create({ w: this._titleW, h: "100%" });
+	        this.valueWidget.layoutParam = linear_layouter_1.LinearLayouterParam.create({ w: this._valueW, h: "100%" });
+	    };
+	    TitleValue.prototype.onReset = function () {
+	        _super.prototype.onReset.call(this);
+	        this.childrenLayouter = linear_layouter_1.LinearLayouter.createH({ spacing: 5 });
+	        var titleWidget = label_1.Label.create();
+	        this.addChild(titleWidget);
+	        this._titleWidget = titleWidget;
+	        var valueWidget = this.createValueWidget();
+	        this.addChild(valueWidget);
+	        this._valueWidget = valueWidget;
+	        if (this._value !== undefined) {
+	            valueWidget.value = this._value;
+	        }
+	    };
+	    TitleValue.prototype.forwardChangeEvent = function (evt) {
+	        var e = this.eChangeEvent;
+	        e.init(evt.type, { value: this.value });
+	        this.dispatchEvent(e);
+	    };
+	    TitleValue.prototype.onCreated = function () {
+	        var _this = this;
+	        _super.prototype.onCreated.call(this);
+	        var valueWidget = this.valueWidget;
+	        valueWidget.on(Events.CHANGE, function (evt) {
+	            _this.forwardChangeEvent(evt);
+	        });
+	        valueWidget.on(Events.CHANGING, function (evt) {
+	            _this.forwardChangeEvent(evt);
+	        });
+	    };
+	    TitleValue.prototype.onToJson = function (json) {
+	        delete json._value;
+	    };
+	    TitleValue.prototype.getDefProps = function () {
+	        return TitleValue.defProps;
+	    };
+	    TitleValue.prototype.dispose = function () {
+	        _super.prototype.dispose.call(this);
+	        this._titleWidget = null;
+	        this._valueWidget = null;
+	    };
+	    TitleValue.defProps = Object.assign({}, widget_1.Widget.defProps, { _lp: 2, _tp: 2, _rp: 2, _bp: 2,
+	        _title: null, _titleW: 60, _valueW: 60 });
+	    return TitleValue;
+	}(widget_1.Widget));
+	exports.TitleValue = TitleValue;
+	;
+
+
+/***/ },
+/* 139 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+	var __extends = (this && this.__extends) || function (d, b) {
+	    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
+	    function __() { this.constructor = d; }
+	    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+	};
+	var title_value_1 = __webpack_require__(138);
+	var color_tile_1 = __webpack_require__(140);
+	var widget_factory_1 = __webpack_require__(25);
+	var recyclable_creator_1 = __webpack_require__(84);
+	var TitleLine = (function (_super) {
+	    __extends(TitleLine, _super);
+	    function TitleLine(type) {
+	        _super.call(this, type || TitleLine.TYPE);
+	    }
+	    TitleLine.prototype.createValueWidget = function (options) {
+	        return color_tile_1.ColorLine.create({ styleType: "title.line" });
+	    };
+	    TitleLine.create = function (options) {
+	        return TitleLine.recycleBin.create().reset(TitleLine.TYPE, options);
+	    };
+	    TitleLine.TYPE = "title-line";
+	    TitleLine.recycleBin = new recyclable_creator_1.RecyclableCreator(function () { return new TitleLine(); });
+	    return TitleLine;
+	}(title_value_1.TitleValue));
+	exports.TitleLine = TitleLine;
+	;
+	widget_factory_1.WidgetFactory.register(TitleLine.TYPE, TitleLine.create);
+
+
+/***/ },
+/* 140 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+	var __extends = (this && this.__extends) || function (d, b) {
+	    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
+	    function __() { this.constructor = d; }
+	    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+	};
+	var style_1 = __webpack_require__(5);
+	var widget_1 = __webpack_require__(21);
+	var widget_factory_1 = __webpack_require__(25);
+	var graphics_1 = __webpack_require__(27);
+	var consts_1 = __webpack_require__(106);
+	var recyclable_creator_1 = __webpack_require__(84);
+	/**
+	 * 颜色控件。
+	 */
+	var Color = (function (_super) {
+	    __extends(Color, _super);
+	    function Color(type) {
+	        _super.call(this, type);
+	    }
+	    Object.defineProperty(Color.prototype, "color", {
+	        get: function () {
+	            return this._style.lineColor;
+	        },
+	        set: function (value) {
+	            this._style.lineColor = value;
+	        },
+	        enumerable: true,
+	        configurable: true
+	    });
+	    Object.defineProperty(Color.prototype, "lineColor", {
+	        get: function () {
+	            return this._style.lineColor;
+	        },
+	        set: function (value) {
+	            this._style.lineColor = value;
+	        },
+	        enumerable: true,
+	        configurable: true
+	    });
+	    Object.defineProperty(Color.prototype, "lineWidth", {
+	        get: function () {
+	            return this._style.lineWidth;
+	        },
+	        set: function (value) {
+	            this._style.lineWidth = value;
+	        },
+	        enumerable: true,
+	        configurable: true
+	    });
+	    Object.defineProperty(Color.prototype, "value", {
+	        get: function () {
+	            return this.color;
+	        },
+	        set: function (color) {
+	            this.color = color;
+	        },
+	        enumerable: true,
+	        configurable: true
+	    });
+	    Color.prototype.onToJson = function (json) {
+	        if (this._style) {
+	            json.style = this._style.toJson();
+	        }
+	    };
+	    Color.prototype.onFromJson = function (json) {
+	        if (json.style) {
+	            this._style = style_1.Style.create(json.style);
+	        }
+	    };
+	    Color.prototype.setStyle = function (state, style) {
+	        this._style = style;
+	        return this;
+	    };
+	    Color.prototype.onReset = function () {
+	        this._style = style_1.Style.create();
+	        this._style.fontSize = 16;
+	        this._style.textColor = "Black";
+	    };
+	    Color.prototype.getStyle = function () {
+	        if (this.styleType) {
+	            return _super.prototype.getStyle.call(this);
+	        }
+	        return this._style;
+	    };
+	    return Color;
+	}(widget_1.Widget));
+	exports.Color = Color;
+	;
+	var ColorTile = (function (_super) {
+	    __extends(ColorTile, _super);
+	    function ColorTile() {
+	        _super.call(this, ColorTile.TYPE);
+	    }
+	    Object.defineProperty(ColorTile.prototype, "color", {
+	        get: function () {
+	            return this._style.backGroundColor;
+	        },
+	        set: function (value) {
+	            this._style.backGroundColor = value;
+	        },
+	        enumerable: true,
+	        configurable: true
+	    });
+	    Object.defineProperty(ColorTile.prototype, "roundRadius", {
+	        get: function () {
+	            return this._style.roundRadius;
+	        },
+	        set: function (value) {
+	            this._style.roundRadius = value;
+	        },
+	        enumerable: true,
+	        configurable: true
+	    });
+	    ColorTile.create = function (options) {
+	        return ColorTile.recycleBin.create().reset(ColorTile.TYPE, options);
+	    };
+	    ColorTile.TYPE = "color-tile";
+	    ColorTile.recycleBin = new recyclable_creator_1.RecyclableCreator(function () { return new ColorTile(); });
+	    return ColorTile;
+	}(Color));
+	exports.ColorTile = ColorTile;
+	;
+	widget_factory_1.WidgetFactory.register(ColorTile.TYPE, ColorTile.create);
+	var ColorLine = (function (_super) {
+	    __extends(ColorLine, _super);
+	    function ColorLine() {
+	        _super.call(this, ColorLine.TYPE);
+	    }
+	    Object.defineProperty(ColorLine.prototype, "color", {
+	        get: function () {
+	            return this._style.lineColor;
+	        },
+	        set: function (value) {
+	            this._style.lineColor = value;
+	        },
+	        enumerable: true,
+	        configurable: true
+	    });
+	    Object.defineProperty(ColorLine.prototype, "orientation", {
+	        get: function () {
+	            return this._orientation;
+	        },
+	        set: function (value) {
+	            this._orientation = value;
+	        },
+	        enumerable: true,
+	        configurable: true
+	    });
+	    Object.defineProperty(ColorLine.prototype, "vAlign", {
+	        get: function () {
+	            return this._vAlign;
+	        },
+	        set: function (value) {
+	            this._vAlign = value;
+	        },
+	        enumerable: true,
+	        configurable: true
+	    });
+	    Object.defineProperty(ColorLine.prototype, "hAlign", {
+	        get: function () {
+	            return this._hAlign;
+	        },
+	        set: function (value) {
+	            this._hAlign = value;
+	        },
+	        enumerable: true,
+	        configurable: true
+	    });
+	    Object.defineProperty(ColorLine.prototype, "lineJoin", {
+	        get: function () {
+	            return this._style.lineJoin;
+	        },
+	        set: function (value) {
+	            this._style.lineJoin = value;
+	        },
+	        enumerable: true,
+	        configurable: true
+	    });
+	    Object.defineProperty(ColorLine.prototype, "lineCap", {
+	        get: function () {
+	            return this._style.lineCap;
+	        },
+	        set: function (value) {
+	            this._style.lineCap = value;
+	        },
+	        enumerable: true,
+	        configurable: true
+	    });
+	    Object.defineProperty(ColorLine.prototype, "dashLine", {
+	        get: function () {
+	            return this._style.dashLine;
+	        },
+	        set: function (value) {
+	            this._style.dashLine = value;
+	        },
+	        enumerable: true,
+	        configurable: true
+	    });
+	    ColorLine.prototype.drawColorBackground = function (ctx, style) {
+	        var x = 0;
+	        var y = 0;
+	        var lineWidth = style.lineWidth || 1;
+	        ctx.lineCap = style.lineCap || "butt";
+	        ctx.lineJoin = style.lineJoin || "miter";
+	        if (style.dashLine) {
+	            ctx.setLineDash(style.dashLine);
+	        }
+	        if (this._orientation === consts_1.Orientation.V) {
+	            switch (this._hAlign) {
+	                case consts_1.AlignH.L: {
+	                    x = 0;
+	                    break;
+	                }
+	                case consts_1.AlignH.R: {
+	                    x = this.w - lineWidth;
+	                    break;
+	                }
+	                default: {
+	                    x = this.w >> 1;
+	                    break;
+	                }
+	            }
+	            graphics_1.Graphics.drawLine(ctx, style.lineColor, lineWidth, x, y, x, this.h);
+	        }
+	        else {
+	            switch (this._vAlign) {
+	                case consts_1.AlignV.T: {
+	                    y = 0;
+	                    break;
+	                }
+	                case consts_1.AlignV.B: {
+	                    y = this.h - lineWidth;
+	                    break;
+	                }
+	                default: {
+	                    y = this.h >> 1;
+	                    break;
+	                }
+	            }
+	            graphics_1.Graphics.drawLine(ctx, style.lineColor, lineWidth, x, y, this.w, y);
+	        }
+	        return this;
+	    };
+	    ColorLine.create = function (options) {
+	        return ColorLine.recycleBin.create().reset(ColorLine.TYPE, options);
+	    };
+	    ColorLine.TYPE = "color-tile";
+	    ColorLine.recycleBin = new recyclable_creator_1.RecyclableCreator(function () { return new ColorLine(); });
+	    return ColorLine;
+	}(Color));
+	exports.ColorLine = ColorLine;
+	;
+	widget_factory_1.WidgetFactory.register(ColorLine.TYPE, ColorLine.create);
+
+
+/***/ },
+/* 141 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+	var __extends = (this && this.__extends) || function (d, b) {
+	    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
+	    function __() { this.constructor = d; }
+	    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+	};
+	var edit_1 = __webpack_require__(19);
+	var title_value_1 = __webpack_require__(138);
+	var widget_factory_1 = __webpack_require__(25);
+	var recyclable_creator_1 = __webpack_require__(84);
+	var TitleEdit = (function (_super) {
+	    __extends(TitleEdit, _super);
+	    function TitleEdit(type) {
+	        _super.call(this, type || TitleEdit.TYPE);
+	    }
+	    Object.defineProperty(TitleEdit.prototype, "inputFilter", {
+	        get: function () {
+	            return this._inputFilter;
+	        },
+	        set: function (value) {
+	            this._inputFilter = value;
+	            if (this._valueWidget) {
+	                this._valueWidget.set({ inputFilter: value });
+	            }
+	        },
+	        enumerable: true,
+	        configurable: true
+	    });
+	    Object.defineProperty(TitleEdit.prototype, "inputType", {
+	        get: function () {
+	            return this._inputType;
+	        },
+	        set: function (value) {
+	            this._inputType = value;
+	            if (this._valueWidget) {
+	                this._valueWidget.set({ inputType: value });
+	            }
+	        },
+	        enumerable: true,
+	        configurable: true
+	    });
+	    Object.defineProperty(TitleEdit.prototype, "inputTips", {
+	        get: function () {
+	            return this._inputTips;
+	        },
+	        set: function (value) {
+	            this._inputTips = value;
+	            if (this._valueWidget) {
+	                this._valueWidget.set({ inputTips: value });
+	            }
+	        },
+	        enumerable: true,
+	        configurable: true
+	    });
+	    TitleEdit.prototype.createValueWidget = function (options) {
+	        var opts = options || {};
+	        if (this._inputTips) {
+	            opts.inputTips = this._inputTips;
+	        }
+	        if (this._inputType) {
+	            opts.inputType = this._inputType;
+	        }
+	        if (this._inputFilter) {
+	            opts.inputFilter = this._inputFilter;
+	        }
+	        return edit_1.Edit.create(opts);
+	    };
+	    TitleEdit.create = function (options) {
+	        return TitleEdit.recycleBin.create().reset(TitleEdit.TYPE, options);
+	    };
+	    TitleEdit.TYPE = "title-edit";
+	    TitleEdit.recycleBin = new recyclable_creator_1.RecyclableCreator(function () { return new TitleEdit(); });
+	    return TitleEdit;
+	}(title_value_1.TitleValue));
+	exports.TitleEdit = TitleEdit;
+	;
+	widget_factory_1.WidgetFactory.register(TitleEdit.TYPE, TitleEdit.create);
+
+
+/***/ },
+/* 142 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+	var __extends = (this && this.__extends) || function (d, b) {
+	    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
+	    function __() { this.constructor = d; }
+	    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+	};
+	var label_1 = __webpack_require__(20);
+	var title_value_1 = __webpack_require__(138);
+	var widget_factory_1 = __webpack_require__(25);
+	var recyclable_creator_1 = __webpack_require__(84);
+	var TitleLabel = (function (_super) {
+	    __extends(TitleLabel, _super);
+	    function TitleLabel(type) {
+	        _super.call(this, type || TitleLabel.TYPE);
+	    }
+	    TitleLabel.prototype.createValueWidget = function (options) {
+	        return label_1.Label.create(options);
+	    };
+	    TitleLabel.create = function (options) {
+	        return TitleLabel.recycleBin.create().reset(TitleLabel.TYPE, options);
+	    };
+	    TitleLabel.TYPE = "title-label";
+	    TitleLabel.recycleBin = new recyclable_creator_1.RecyclableCreator(function () { return new TitleLabel(); });
+	    return TitleLabel;
+	}(title_value_1.TitleValue));
+	exports.TitleLabel = TitleLabel;
+	;
+	widget_factory_1.WidgetFactory.register(TitleLabel.TYPE, TitleLabel.create);
+
+
+/***/ },
+/* 143 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+	var __extends = (this && this.__extends) || function (d, b) {
+	    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
+	    function __() { this.constructor = d; }
+	    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+	};
+	var range_edit_1 = __webpack_require__(144);
+	var title_value_1 = __webpack_require__(138);
+	var widget_factory_1 = __webpack_require__(25);
+	var recyclable_creator_1 = __webpack_require__(84);
+	var TitleRange = (function (_super) {
+	    __extends(TitleRange, _super);
+	    function TitleRange(type) {
+	        _super.call(this, type || TitleRange.TYPE);
+	    }
+	    TitleRange.prototype.createValueWidget = function (options) {
+	        return range_edit_1.RangeEdit.create(options);
+	    };
+	    TitleRange.create = function (options) {
+	        return TitleRange.recycleBin.create().reset(TitleRange.TYPE, options);
+	    };
+	    TitleRange.TYPE = "title-range";
+	    TitleRange.recycleBin = new recyclable_creator_1.RecyclableCreator(function () { return new TitleRange(); });
+	    return TitleRange;
+	}(title_value_1.TitleValue));
+	exports.TitleRange = TitleRange;
+	;
+	widget_factory_1.WidgetFactory.register(TitleRange.TYPE, TitleRange.create);
+
+
+/***/ },
+/* 144 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+	var __extends = (this && this.__extends) || function (d, b) {
+	    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
+	    function __() { this.constructor = d; }
+	    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+	};
+	var label_1 = __webpack_require__(20);
+	var edit_1 = __webpack_require__(19);
+	var widget_1 = __webpack_require__(21);
+	var Events = __webpack_require__(8);
+	var widget_factory_1 = __webpack_require__(25);
+	var recyclable_creator_1 = __webpack_require__(84);
+	/**
+	 * 范围编辑器。
+	 */
+	var RangeEdit = (function (_super) {
+	    __extends(RangeEdit, _super);
+	    function RangeEdit() {
+	        _super.call(this, RangeEdit.TYPE);
+	    }
+	    Object.defineProperty(RangeEdit.prototype, "inputable", {
+	        get: function () {
+	            return true;
+	        },
+	        enumerable: true,
+	        configurable: true
+	    });
+	    Object.defineProperty(RangeEdit.prototype, "firstEditor", {
+	        get: function () {
+	            return this._firstEditor;
+	        },
+	        enumerable: true,
+	        configurable: true
+	    });
+	    Object.defineProperty(RangeEdit.prototype, "secondEditor", {
+	        get: function () {
+	            return this._secondEditor;
+	        },
+	        enumerable: true,
+	        configurable: true
+	    });
+	    Object.defineProperty(RangeEdit.prototype, "value", {
+	        get: function () {
+	            if (!this._value) {
+	                this._value = {};
+	            }
+	            if (this._firstEditor) {
+	                this._value.first = +this._firstEditor.value;
+	            }
+	            if (this._secondEditor) {
+	                this._value.second = +this._secondEditor.value;
+	            }
+	            return this._value;
+	        },
+	        set: function (value) {
+	            this._value = value;
+	            if (this._firstEditor) {
+	                this._firstEditor.value = value.first;
+	            }
+	            if (this._secondEditor) {
+	                this._secondEditor.value = value.second;
+	            }
+	        },
+	        enumerable: true,
+	        configurable: true
+	    });
+	    RangeEdit.prototype.onToJson = function (json) {
+	        delete json._value;
+	    };
+	    RangeEdit.prototype.relayoutChildren = function () {
+	        this.requestRedraw();
+	        if (this.w && this.h && this._firstEditor && this._label && this._secondEditor) {
+	            var x = this.leftPadding;
+	            var y = this.topPadding;
+	            var h = this.clientH;
+	            var labelW = 15;
+	            var w = (this.clientW - labelW) >> 1;
+	            this._firstEditor.moveResizeTo(x, y, w, h, 0);
+	            x += w;
+	            this._label.moveResizeTo(x, y, labelW, h, 0);
+	            x += labelW;
+	            this._secondEditor.moveResizeTo(x, y, w, h, 0);
+	        }
+	        return this.getLayoutRect();
+	    };
+	    RangeEdit.prototype.dispose = function () {
+	        this._firstEditor = null;
+	        this._secondEditor = null;
+	        _super.prototype.dispose.call(this);
+	    };
+	    RangeEdit.prototype.forwardChangeEvent = function (evt) {
+	        var e = this.eChangeEvent;
+	        e.init(evt.type, { value: this.value });
+	        this.dispatchEvent(e);
+	    };
+	    RangeEdit.prototype.onReset = function () {
+	        var _this = this;
+	        _super.prototype.onReset.call(this);
+	        this.padding = 0;
+	        var value = this._value || { first: 0, second: 0 };
+	        this._firstEditor = edit_1.Edit.create({ value: value.first, inputType: "number" });
+	        this.addChild(this._firstEditor, false);
+	        this._firstEditor.on(Events.CHANGE, function (evt) {
+	            _this.forwardChangeEvent(evt);
+	        });
+	        this._firstEditor.on(Events.CHANGING, function (evt) {
+	            _this.forwardChangeEvent(evt);
+	        });
+	        this._label = label_1.Label.create({ text: "-", multiLineMode: false });
+	        this.addChild(this._label, false);
+	        this._secondEditor = edit_1.Edit.create({ value: value.second, inputType: "number" });
+	        this.addChild(this._secondEditor, false);
+	        this._secondEditor.on(Events.CHANGE, function (evt) {
+	            _this.forwardChangeEvent(evt);
+	        });
+	        this._secondEditor.on(Events.CHANGING, function (evt) {
+	            _this.forwardChangeEvent(evt);
+	        });
+	        this.relayoutChildren();
+	    };
+	    RangeEdit.create = function (options) {
+	        return RangeEdit.rBin.create().reset(RangeEdit.TYPE, options);
+	    };
+	    RangeEdit.TYPE = "range.edit";
+	    RangeEdit.rBin = new recyclable_creator_1.RecyclableCreator(function () {
+	        return new RangeEdit();
+	    });
+	    return RangeEdit;
+	}(widget_1.Widget));
+	exports.RangeEdit = RangeEdit;
+	;
+	widget_factory_1.WidgetFactory.register(RangeEdit.TYPE, RangeEdit.create);
+
+
+/***/ },
+/* 145 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+	var __extends = (this && this.__extends) || function (d, b) {
+	    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
+	    function __() { this.constructor = d; }
+	    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+	};
+	var vector_edit_1 = __webpack_require__(146);
+	var title_value_1 = __webpack_require__(138);
+	var widget_factory_1 = __webpack_require__(25);
+	var recyclable_creator_1 = __webpack_require__(84);
+	var TitleVector = (function (_super) {
+	    __extends(TitleVector, _super);
+	    function TitleVector(type) {
+	        _super.call(this, type || TitleVector.TYPE);
+	    }
+	    Object.defineProperty(TitleVector.prototype, "d", {
+	        /**
+	         * dimension
+	         */
+	        get: function () {
+	            return this._d;
+	        },
+	        set: function (value) {
+	            this._d = value;
+	            ;
+	        },
+	        enumerable: true,
+	        configurable: true
+	    });
+	    TitleVector.prototype.createValueWidget = function (options) {
+	        return vector_edit_1.VectorEdit.create({ d: this.d || 2 });
+	    };
+	    TitleVector.create = function (options) {
+	        var widget = TitleVector.recycleBin.create();
+	        widget.d = options ? (options.d || 2) : 2;
+	        widget.reset(TitleVector.TYPE, options);
+	        return widget;
+	    };
+	    TitleVector.TYPE = "title-vector";
+	    TitleVector.recycleBin = new recyclable_creator_1.RecyclableCreator(function () { return new TitleVector(); });
+	    return TitleVector;
+	}(title_value_1.TitleValue));
+	exports.TitleVector = TitleVector;
+	;
+	widget_factory_1.WidgetFactory.register(TitleVector.TYPE, TitleVector.create);
+
+
+/***/ },
+/* 146 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+	var __extends = (this && this.__extends) || function (d, b) {
+	    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
+	    function __() { this.constructor = d; }
+	    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+	};
+	var label_1 = __webpack_require__(20);
+	var edit_1 = __webpack_require__(19);
+	var widget_1 = __webpack_require__(21);
+	var Events = __webpack_require__(8);
+	var widget_factory_1 = __webpack_require__(25);
+	var recyclable_creator_1 = __webpack_require__(84);
+	var grid_layouter_1 = __webpack_require__(118);
+	/**
+	 * 范围编辑器。
+	 */
+	var VectorEdit = (function (_super) {
+	    __extends(VectorEdit, _super);
+	    function VectorEdit() {
+	        _super.call(this, VectorEdit.TYPE);
+	    }
+	    Object.defineProperty(VectorEdit.prototype, "inputable", {
+	        get: function () {
+	            return true;
+	        },
+	        enumerable: true,
+	        configurable: true
+	    });
+	    Object.defineProperty(VectorEdit.prototype, "d", {
+	        /**
+	         * dimension
+	         */
+	        get: function () {
+	            return this._d;
+	        },
+	        set: function (value) {
+	            this._d = value;
+	            ;
+	        },
+	        enumerable: true,
+	        configurable: true
+	    });
+	    Object.defineProperty(VectorEdit.prototype, "xEditor", {
+	        get: function () {
+	            return this._xEditor;
+	        },
+	        enumerable: true,
+	        configurable: true
+	    });
+	    Object.defineProperty(VectorEdit.prototype, "yEditor", {
+	        get: function () {
+	            return this._yEditor;
+	        },
+	        enumerable: true,
+	        configurable: true
+	    });
+	    Object.defineProperty(VectorEdit.prototype, "zEditor", {
+	        get: function () {
+	            return this._zEditor;
+	        },
+	        enumerable: true,
+	        configurable: true
+	    });
+	    Object.defineProperty(VectorEdit.prototype, "value", {
+	        get: function () {
+	            if (!this._value) {
+	                this._value = {};
+	            }
+	            if (this._xEditor) {
+	                this._value.x = this._xEditor.value;
+	            }
+	            if (this._yEditor) {
+	                this._value.y = this._yEditor.value;
+	            }
+	            if (this._zEditor) {
+	                this._value.z = this._zEditor.value;
+	            }
+	            return this._value;
+	        },
+	        set: function (value) {
+	            this._value = value;
+	            if (this._xEditor) {
+	                this._xEditor.value = +value.x;
+	            }
+	            if (this._yEditor) {
+	                this._yEditor.value = +value.y;
+	            }
+	            if (this._zEditor) {
+	                this._zEditor.value = +value.z;
+	            }
+	        },
+	        enumerable: true,
+	        configurable: true
+	    });
+	    VectorEdit.prototype.onToJson = function (json) {
+	        delete json._value;
+	    };
+	    VectorEdit.prototype.dispose = function () {
+	        this._xEditor = null;
+	        this._yEditor = null;
+	        this._zEditor = null;
+	        this._xLabel = null;
+	        this._yLabel = null;
+	        this._zLabel = null;
+	        _super.prototype.dispose.call(this);
+	    };
+	    VectorEdit.prototype.forwardChangeEvent = function (evt) {
+	        var e = this.eChangeEvent;
+	        e.init(evt.type, { value: this.value });
+	        this.dispatchEvent(e);
+	    };
+	    VectorEdit.prototype.onCreated = function () {
+	        var _this = this;
+	        _super.prototype.onCreated.call(this);
+	        this.padding = 0;
+	        var value = this._value || { x: 0, y: 0, z: 0 };
+	        this.d = Math.max(2, Math.min(3, this.d || 2));
+	        var cols = this.d;
+	        var rows = 2;
+	        this.childrenLayouter = grid_layouter_1.GridLayouter.create({ rows: rows, cols: cols, rightMargin: 10 });
+	        var labelOptions = { multiLineMode: false, topPadding: 10, bottomPadding: 0 };
+	        this._xLabel = label_1.Label.create({ text: "X" });
+	        this._xLabel.set(labelOptions);
+	        this.addChild(this._xLabel, false);
+	        this._yLabel = label_1.Label.create({ text: "Y" });
+	        this._yLabel.set(labelOptions);
+	        this.addChild(this._yLabel, false);
+	        if (this.d > 2) {
+	            this._zLabel = label_1.Label.create({ text: "Z" });
+	            this._zLabel.set(labelOptions);
+	            this.addChild(this._zLabel, false);
+	        }
+	        this._xEditor = edit_1.Edit.create({ multiLineMode: false, value: value.x, inputType: "number" });
+	        this.addChild(this._xEditor, false);
+	        this._xEditor.on(Events.CHANGE, function (evt) {
+	            _this.forwardChangeEvent(evt);
+	        });
+	        this._xEditor.on(Events.CHANGING, function (evt) {
+	            _this.forwardChangeEvent(evt);
+	        });
+	        this._yEditor = edit_1.Edit.create({ multiLineMode: false, value: value.y, inputType: "number" });
+	        this.addChild(this._yEditor, false);
+	        this._yEditor.on(Events.CHANGE, function (evt) {
+	            _this.forwardChangeEvent(evt);
+	        });
+	        this._yEditor.on(Events.CHANGING, function (evt) {
+	            _this.forwardChangeEvent(evt);
+	        });
+	        if (this.d > 2) {
+	            this._zEditor = edit_1.Edit.create({ inputType: "number" });
+	            this.addChild(this._zEditor, false);
+	            this._zEditor.on(Events.CHANGE, function (evt) {
+	                _this.forwardChangeEvent(evt);
+	            });
+	            this._zEditor.on(Events.CHANGING, function (evt) {
+	                _this.forwardChangeEvent(evt);
+	            });
+	        }
+	        this.relayoutChildren();
+	    };
+	    VectorEdit.prototype.getDefProps = function () {
+	        return VectorEdit.defProps;
+	    };
+	    VectorEdit.create = function (options) {
+	        return VectorEdit.rBin.create().reset(VectorEdit.TYPE, options);
+	    };
+	    VectorEdit.defProps = Object.assign({}, widget_1.Widget.defProps, { _d: 2 });
+	    VectorEdit.TYPE = "vector.edit";
+	    VectorEdit.rBin = new recyclable_creator_1.RecyclableCreator(function () {
+	        return new VectorEdit();
+	    });
+	    return VectorEdit;
+	}(widget_1.Widget));
+	exports.VectorEdit = VectorEdit;
+	;
+	widget_factory_1.WidgetFactory.register(VectorEdit.TYPE, VectorEdit.create);
+
+
+/***/ },
+/* 147 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+	var __extends = (this && this.__extends) || function (d, b) {
+	    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
+	    function __() { this.constructor = d; }
+	    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+	};
+	var slider_1 = __webpack_require__(96);
+	var title_value_1 = __webpack_require__(138);
+	var widget_factory_1 = __webpack_require__(25);
+	var recyclable_creator_1 = __webpack_require__(84);
+	var TitleSlider = (function (_super) {
+	    __extends(TitleSlider, _super);
+	    function TitleSlider(type) {
+	        _super.call(this, type || TitleSlider.TYPE);
+	    }
+	    TitleSlider.prototype.createValueWidget = function (options) {
+	        return slider_1.Slider.create(options);
+	    };
+	    TitleSlider.create = function (options) {
+	        return TitleSlider.recycleBin.create().reset(TitleSlider.TYPE, options);
+	    };
+	    TitleSlider.TYPE = "title-slider";
+	    TitleSlider.recycleBin = new recyclable_creator_1.RecyclableCreator(function () { return new TitleSlider(); });
+	    return TitleSlider;
+	}(title_value_1.TitleValue));
+	exports.TitleSlider = TitleSlider;
+	;
+	widget_factory_1.WidgetFactory.register(TitleSlider.TYPE, TitleSlider.create);
+
+
+/***/ },
+/* 148 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+	var __extends = (this && this.__extends) || function (d, b) {
+	    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
+	    function __() { this.constructor = d; }
+	    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+	};
+	var edit_1 = __webpack_require__(19);
+	var title_value_1 = __webpack_require__(138);
+	var widget_factory_1 = __webpack_require__(25);
+	var recyclable_creator_1 = __webpack_require__(84);
+	var TitleTextArea = (function (_super) {
+	    __extends(TitleTextArea, _super);
+	    function TitleTextArea(type) {
+	        _super.call(this, type || TitleTextArea.TYPE);
+	    }
+	    Object.defineProperty(TitleTextArea.prototype, "inputTips", {
+	        get: function () {
+	            return this._inputTips;
+	        },
+	        set: function (value) {
+	            this._inputTips = value;
+	            if (this._valueWidget) {
+	                this._valueWidget.set({ inputTips: value });
+	            }
+	        },
+	        enumerable: true,
+	        configurable: true
+	    });
+	    TitleTextArea.prototype.createValueWidget = function (options) {
+	        var opts = options || {};
+	        if (this._inputTips) {
+	            opts.inputTips = this._inputTips;
+	        }
+	        opts.multiLines = true;
+	        return edit_1.Edit.create(opts);
+	    };
+	    TitleTextArea.create = function (options) {
+	        return TitleTextArea.recycleBin.create().reset(TitleTextArea.TYPE, options);
+	    };
+	    TitleTextArea.TYPE = "title-text-area";
+	    TitleTextArea.recycleBin = new recyclable_creator_1.RecyclableCreator(function () { return new TitleTextArea(); });
+	    return TitleTextArea;
+	}(title_value_1.TitleValue));
+	exports.TitleTextArea = TitleTextArea;
+	;
+	widget_factory_1.WidgetFactory.register(TitleTextArea.TYPE, TitleTextArea.create);
+
+
+/***/ },
+/* 149 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+	var __extends = (this && this.__extends) || function (d, b) {
+	    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
+	    function __() { this.constructor = d; }
+	    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+	};
+	var Events = __webpack_require__(8);
+	var emitter_1 = __webpack_require__(6);
+	var PropDesc = (function () {
+	    function PropDesc(type) {
+	        this.type = type;
+	    }
+	    PropDesc.prototype.toJson = function () {
+	        var _this = this;
+	        var json = {};
+	        PropDesc.keys.forEach(function (key) {
+	            var value = _this[key];
+	            if (value !== undefined) {
+	                json[key] = value;
+	            }
+	        });
+	        return json;
+	    };
+	    PropDesc.prototype.fromJson = function (json) {
+	        var _this = this;
+	        PropDesc.keys.forEach(function (key) {
+	            var value = _this[key];
+	            if (value !== undefined) {
+	                _this[key] = value;
+	            }
+	        });
+	    };
+	    PropDesc.prototype.setBasic = function (name, value, desc) {
+	        this.name = name;
+	        this.desc = desc;
+	        this.value = value;
+	    };
+	    PropDesc.prototype.setDataBindingRule = function (path, converter, validationRule) {
+	        this.path = path;
+	        this.converter = converter;
+	        this.validationRule = validationRule;
+	        return this;
+	    };
+	    PropDesc.keys = ["type", "name", "desc", "value", "path", "converter", "validationRule"];
+	    return PropDesc;
+	}());
+	exports.PropDesc = PropDesc;
+	;
+	var NumberPropDesc = (function (_super) {
+	    __extends(NumberPropDesc, _super);
+	    function NumberPropDesc(min, max) {
+	        _super.call(this, NumberPropDesc.TYPE);
+	        this.min = min;
+	        this.max = max;
+	    }
+	    NumberPropDesc.prototype.toJson = function () {
+	        var json = _super.prototype.toJson.call(this);
+	        json.min = this.min;
+	        json.max = this.max;
+	        return json;
+	    };
+	    NumberPropDesc.prototype.fromJson = function (json) {
+	        _super.prototype.fromJson.call(this, json);
+	        this.min = json.min;
+	        this.max = json.max;
+	    };
+	    NumberPropDesc.create = function (min, max) {
+	        return new NumberPropDesc(min, max);
+	    };
+	    NumberPropDesc.TYPE = "number";
+	    return NumberPropDesc;
+	}(PropDesc));
+	exports.NumberPropDesc = NumberPropDesc;
+	;
+	var TextPropDesc = (function (_super) {
+	    __extends(TextPropDesc, _super);
+	    function TextPropDesc() {
+	        _super.call(this, TextPropDesc.TYPE);
+	    }
+	    TextPropDesc.create = function () {
+	        return new TextPropDesc();
+	    };
+	    TextPropDesc.TYPE = "text";
+	    return TextPropDesc;
+	}(PropDesc));
+	exports.TextPropDesc = TextPropDesc;
+	var LinkPropDesc = (function (_super) {
+	    __extends(LinkPropDesc, _super);
+	    function LinkPropDesc() {
+	        _super.call(this, LinkPropDesc.TYPE);
+	    }
+	    LinkPropDesc.create = function () {
+	        return new LinkPropDesc();
+	    };
+	    LinkPropDesc.TYPE = "link";
+	    return LinkPropDesc;
+	}(PropDesc));
+	exports.LinkPropDesc = LinkPropDesc;
+	var ReadonlyTextPropDesc = (function (_super) {
+	    __extends(ReadonlyTextPropDesc, _super);
+	    function ReadonlyTextPropDesc() {
+	        _super.call(this, ReadonlyTextPropDesc.TYPE);
+	    }
+	    ReadonlyTextPropDesc.create = function () {
+	        return new ReadonlyTextPropDesc();
+	    };
+	    ReadonlyTextPropDesc.TYPE = "text-readonly";
+	    return ReadonlyTextPropDesc;
+	}(PropDesc));
+	exports.ReadonlyTextPropDesc = ReadonlyTextPropDesc;
+	var SliderPropDesc = (function (_super) {
+	    __extends(SliderPropDesc, _super);
+	    function SliderPropDesc() {
+	        _super.call(this, SliderPropDesc.TYPE);
+	    }
+	    SliderPropDesc.create = function () {
+	        return new SliderPropDesc();
+	    };
+	    SliderPropDesc.TYPE = "slider";
+	    return SliderPropDesc;
+	}(PropDesc));
+	exports.SliderPropDesc = SliderPropDesc;
+	var RangePropDesc = (function (_super) {
+	    __extends(RangePropDesc, _super);
+	    function RangePropDesc() {
+	        _super.call(this, RangePropDesc.TYPE);
+	    }
+	    RangePropDesc.create = function () {
+	        return new RangePropDesc();
+	    };
+	    RangePropDesc.TYPE = "range";
+	    return RangePropDesc;
+	}(PropDesc));
+	exports.RangePropDesc = RangePropDesc;
+	var Vector2PropDesc = (function (_super) {
+	    __extends(Vector2PropDesc, _super);
+	    function Vector2PropDesc() {
+	        _super.call(this, Vector2PropDesc.TYPE);
+	    }
+	    Vector2PropDesc.create = function () {
+	        return new Vector2PropDesc();
+	    };
+	    Vector2PropDesc.TYPE = "vector2";
+	    return Vector2PropDesc;
+	}(PropDesc));
+	exports.Vector2PropDesc = Vector2PropDesc;
+	var Vector3PropDesc = (function (_super) {
+	    __extends(Vector3PropDesc, _super);
+	    function Vector3PropDesc() {
+	        _super.call(this, Vector3PropDesc.TYPE);
+	    }
+	    Vector3PropDesc.create = function () {
+	        return new Vector3PropDesc();
+	    };
+	    Vector3PropDesc.TYPE = "vector3";
+	    return Vector3PropDesc;
+	}(PropDesc));
+	exports.Vector3PropDesc = Vector3PropDesc;
+	var LinePropDesc = (function (_super) {
+	    __extends(LinePropDesc, _super);
+	    function LinePropDesc() {
+	        _super.call(this, LinePropDesc.TYPE);
+	    }
+	    LinePropDesc.create = function () {
+	        return new LinePropDesc();
+	    };
+	    LinePropDesc.TYPE = "line";
+	    return LinePropDesc;
+	}(PropDesc));
+	exports.LinePropDesc = LinePropDesc;
+	var OptionsPropDesc = (function (_super) {
+	    __extends(OptionsPropDesc, _super);
+	    function OptionsPropDesc(options) {
+	        _super.call(this, OptionsPropDesc.TYPE);
+	        this.options = options;
+	    }
+	    OptionsPropDesc.prototype.toJson = function () {
+	        var json = _super.prototype.toJson.call(this);
+	        json.options = this.options;
+	        return json;
+	    };
+	    OptionsPropDesc.prototype.fromJson = function (json) {
+	        _super.prototype.fromJson.call(this, json);
+	        this.options = json.options;
+	    };
+	    OptionsPropDesc.create = function (options) {
+	        return new OptionsPropDesc(options);
+	    };
+	    OptionsPropDesc.TYPE = "options";
+	    return OptionsPropDesc;
+	}(PropDesc));
+	exports.OptionsPropDesc = OptionsPropDesc;
+	var PropsDesc = (function (_super) {
+	    __extends(PropsDesc, _super);
+	    function PropsDesc() {
+	        _super.apply(this, arguments);
+	    }
+	    PropsDesc.prototype.notifyChange = function () {
+	        var e = Events.ChangeEvent.create().init(Events.CHANGE, { value: null });
+	        this.dispatchEvent(e);
+	        e.dispose();
+	        return this;
+	    };
+	    PropsDesc.prototype.forEach = function (func) {
+	        var items = this._items;
+	        items.forEach(function (item) {
+	            func(item);
+	        });
+	    };
+	    PropsDesc.prototype.toJson = function () {
+	        var json = {};
+	        json.items = this._items.map(function (item) {
+	            return item.toJson();
+	        });
+	        return json;
+	    };
+	    ;
+	    PropsDesc.prototype.fromJson = function (json) {
+	        this.parse(json.items);
+	    };
+	    PropsDesc.prototype.parse = function (json) {
+	        var items = [];
+	        json.forEach(function (data) {
+	            var desc = null;
+	            var type = data.type;
+	            if (type === NumberPropDesc.TYPE) {
+	                desc = NumberPropDesc.create(data.min, data.max);
+	            }
+	            else if (type === SliderPropDesc.TYPE) {
+	                desc = SliderPropDesc.create();
+	            }
+	            else if (type === TextPropDesc.TYPE) {
+	                desc = TextPropDesc.create();
+	            }
+	            else if (type === LinkPropDesc.TYPE) {
+	                desc = LinkPropDesc.create();
+	            }
+	            else if (type === ReadonlyTextPropDesc.TYPE) {
+	                desc = ReadonlyTextPropDesc.create();
+	            }
+	            else if (type === RangePropDesc.TYPE) {
+	                desc = RangePropDesc.create();
+	            }
+	            else if (type === Vector2PropDesc.TYPE) {
+	                desc = Vector2PropDesc.create();
+	            }
+	            else if (type === Vector3PropDesc.TYPE) {
+	                desc = Vector3PropDesc.create();
+	            }
+	            else if (type === OptionsPropDesc.TYPE) {
+	                desc = OptionsPropDesc.create(data.options);
+	            }
+	            else if (type === LinePropDesc.TYPE) {
+	                desc = LinePropDesc.create();
+	            }
+	            else {
+	                console.log("not supported:" + type);
+	                return;
+	            }
+	            items.push(desc);
+	            desc.setBasic(data.name, data.value, data.desc);
+	            desc.setDataBindingRule(data.path, data.converter, data.validationRule);
+	        });
+	        this._items = items;
+	        return this;
+	    };
+	    PropsDesc.create = function (json) {
+	        var propsDesc = new PropsDesc();
+	        if (json) {
+	            propsDesc.parse(json);
+	        }
+	        return propsDesc;
+	    };
+	    return PropsDesc;
+	}(emitter_1.Emitter));
+	exports.PropsDesc = PropsDesc;
+	;
+	var PagePropsDesc = (function () {
+	    function PagePropsDesc(title, propsDesc) {
+	        this.title = title;
+	        this.propsDesc = propsDesc;
+	    }
+	    PagePropsDesc.prototype.toJson = function () {
+	        return { title: this.title, propsDesc: this.propsDesc.toJson() };
+	    };
+	    PagePropsDesc.prototype.fromJson = function (json) {
+	        this.title = json.title;
+	        this.propsDesc = PropsDesc.create(json.propsDesc.items);
+	    };
+	    PagePropsDesc.create = function (title, json) {
+	        var propsDesc = PropsDesc.create(json);
+	        var pagePropsDesc = new PagePropsDesc(title, propsDesc);
+	        return pagePropsDesc;
+	    };
+	    return PagePropsDesc;
+	}());
+	exports.PagePropsDesc = PagePropsDesc;
+	;
+
+
+/***/ },
+/* 150 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+	var __extends = (this && this.__extends) || function (d, b) {
+	    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
+	    function __() { this.constructor = d; }
+	    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+	};
+	var title_value_1 = __webpack_require__(138);
+	var widget_factory_1 = __webpack_require__(25);
+	var recyclable_creator_1 = __webpack_require__(84);
+	var combo_box_1 = __webpack_require__(112);
+	var TitleComboBoxBase = (function (_super) {
+	    __extends(TitleComboBoxBase, _super);
+	    function TitleComboBoxBase(type) {
+	        _super.call(this, type);
+	    }
+	    Object.defineProperty(TitleComboBoxBase.prototype, "itemH", {
+	        get: function () {
+	            var comboBox = this._valueWidget;
+	            return comboBox.itemH;
+	        },
+	        set: function (value) {
+	            var comboBox = this._valueWidget;
+	            comboBox.itemH = value;
+	        },
+	        enumerable: true,
+	        configurable: true
+	    });
+	    TitleComboBoxBase.prototype.resetOptions = function () {
+	        var comboBox = this._valueWidget;
+	        comboBox.resetOptions();
+	        return this;
+	    };
+	    TitleComboBoxBase.prototype.addOption = function (text, value, imageURL, color) {
+	        var comboBox = this._valueWidget;
+	        comboBox.addOption(text, value, imageURL, color);
+	        return this;
+	    };
+	    return TitleComboBoxBase;
+	}(title_value_1.TitleValue));
+	exports.TitleComboBoxBase = TitleComboBoxBase;
+	var TitleComboBox = (function (_super) {
+	    __extends(TitleComboBox, _super);
+	    function TitleComboBox(type) {
+	        _super.call(this, type || TitleComboBox.TYPE);
+	    }
+	    TitleComboBox.prototype.createValueWidget = function (options) {
+	        return combo_box_1.ComboBox.create(options);
+	    };
+	    TitleComboBox.create = function (options) {
+	        return TitleComboBox.recycleBin.create().reset(TitleComboBox.TYPE, options);
+	    };
+	    TitleComboBox.TYPE = "title-combo-box";
+	    TitleComboBox.recycleBin = new recyclable_creator_1.RecyclableCreator(function () { return new TitleComboBox(); });
+	    return TitleComboBox;
+	}(TitleComboBoxBase));
+	exports.TitleComboBox = TitleComboBox;
+	;
+	widget_factory_1.WidgetFactory.register(TitleComboBox.TYPE, TitleComboBox.create);
+	var TitleComboBoxEditable = (function (_super) {
+	    __extends(TitleComboBoxEditable, _super);
+	    function TitleComboBoxEditable(type) {
+	        _super.call(this, type || TitleComboBoxEditable.TYPE);
+	    }
+	    TitleComboBoxEditable.prototype.createValueWidget = function (options) {
+	        return combo_box_1.ComboBoxEditable.create(options);
+	    };
+	    TitleComboBoxEditable.create = function (options) {
+	        return TitleComboBoxEditable.recycleBin.create().reset(TitleComboBoxEditable.TYPE, options);
+	    };
+	    TitleComboBoxEditable.TYPE = "title-combo-box-editable";
+	    TitleComboBoxEditable.recycleBin = new recyclable_creator_1.RecyclableCreator(function () { return new TitleComboBoxEditable(); });
+	    return TitleComboBoxEditable;
+	}(TitleComboBoxBase));
+	exports.TitleComboBoxEditable = TitleComboBoxEditable;
+	;
+	widget_factory_1.WidgetFactory.register(TitleComboBoxEditable.TYPE, TitleComboBoxEditable.create);
+
+
+/***/ },
+/* 151 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+	var __extends = (this && this.__extends) || function (d, b) {
+	    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
+	    function __() { this.constructor = d; }
+	    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+	};
+	var title_value_1 = __webpack_require__(138);
+	var choosable_edit_1 = __webpack_require__(152);
+	var widget_factory_1 = __webpack_require__(25);
+	var recyclable_creator_1 = __webpack_require__(84);
+	var TitleChoosableEdit = (function (_super) {
+	    __extends(TitleChoosableEdit, _super);
+	    function TitleChoosableEdit(type) {
+	        _super.call(this, type || TitleChoosableEdit.TYPE);
+	    }
+	    Object.defineProperty(TitleChoosableEdit.prototype, "onChoose", {
+	        get: function () {
+	            var edit = this._valueWidget;
+	            return edit.onChoose;
+	        },
+	        set: function (value) {
+	            var edit = this._valueWidget;
+	            edit.onChoose = value;
+	        },
+	        enumerable: true,
+	        configurable: true
+	    });
+	    Object.defineProperty(TitleChoosableEdit.prototype, "inputTips", {
+	        get: function () {
+	            return this._inputTips;
+	        },
+	        set: function (value) {
+	            this._inputTips = value;
+	            if (this._valueWidget) {
+	                this._valueWidget.set({ inputTips: value });
+	            }
+	        },
+	        enumerable: true,
+	        configurable: true
+	    });
+	    TitleChoosableEdit.prototype.createValueWidget = function (options) {
+	        return choosable_edit_1.ChoosableEdit.create();
+	    };
+	    TitleChoosableEdit.create = function (options) {
+	        return TitleChoosableEdit.recycleBin.create().reset(TitleChoosableEdit.TYPE, options);
+	    };
+	    TitleChoosableEdit.TYPE = "title-choosable-edit";
+	    TitleChoosableEdit.recycleBin = new recyclable_creator_1.RecyclableCreator(function () { return new TitleChoosableEdit(); });
+	    return TitleChoosableEdit;
+	}(title_value_1.TitleValue));
+	exports.TitleChoosableEdit = TitleChoosableEdit;
+	;
+	widget_factory_1.WidgetFactory.register(TitleChoosableEdit.TYPE, TitleChoosableEdit.create);
+
+
+/***/ },
+/* 152 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+	var __extends = (this && this.__extends) || function (d, b) {
+	    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
+	    function __() { this.constructor = d; }
+	    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+	};
+	var edit_1 = __webpack_require__(19);
+	var button_1 = __webpack_require__(95);
+	var widget_1 = __webpack_require__(21);
+	var Events = __webpack_require__(8);
+	var widget_factory_1 = __webpack_require__(25);
+	var recyclable_creator_1 = __webpack_require__(84);
+	/**
+	 * 编辑器+选择按钮。
+	 */
+	var ChoosableEdit = (function (_super) {
+	    __extends(ChoosableEdit, _super);
+	    function ChoosableEdit() {
+	        _super.call(this, ChoosableEdit.TYPE);
+	    }
+	    Object.defineProperty(ChoosableEdit.prototype, "inputTips", {
+	        get: function () {
+	            return this._inputTips;
+	        },
+	        set: function (value) {
+	            this._inputTips = value;
+	            if (this._edit) {
+	                this._edit.set({ inputTips: value });
+	            }
+	        },
+	        enumerable: true,
+	        configurable: true
+	    });
+	    Object.defineProperty(ChoosableEdit.prototype, "value", {
+	        get: function () {
+	            return this._edit ? this._edit.text : this._value;
+	        },
+	        set: function (value) {
+	            this._value = value;
+	            if (this._edit) {
+	                this._edit.text = value;
+	            }
+	        },
+	        enumerable: true,
+	        configurable: true
+	    });
+	    ChoosableEdit.prototype.relayoutChildren = function () {
+	        this.requestRedraw();
+	        if (this._edit && this._button) {
+	            var x = this.leftPadding;
+	            var y = this.topPadding;
+	            var h = this.clientH;
+	            var w = this.clientW - this.h - 6;
+	            this._edit.moveResizeTo(x, y, w, h, 0);
+	            w = this.h;
+	            x = this.w - w - 4;
+	            this._button.moveResizeTo(x, y, w, h, 0);
+	        }
+	        return this.getLayoutRect();
+	    };
+	    ChoosableEdit.prototype.dispose = function () {
+	        this._edit = null;
+	        this._button = null;
+	        _super.prototype.dispose.call(this);
+	    };
+	    ChoosableEdit.prototype.onReset = function () {
+	        var _this = this;
+	        _super.prototype.onReset.call(this);
+	        this.padding = 0;
+	        this.onChoose = null;
+	        this._edit = edit_1.Edit.create();
+	        this.addChild(this._edit);
+	        this._edit.on(Events.CHANGE, function (evt) {
+	            _this.dispatchEvent(evt);
+	        });
+	        this._button = button_1.Button.create({ text: "..." });
+	        this.addChild(this._button);
+	        this._button.on(Events.CLICK, function (evt) {
+	            if (_this.onChoose) {
+	                _this.onChoose();
+	            }
+	        });
+	    };
+	    ChoosableEdit.create = function (options) {
+	        return ChoosableEdit.rBin.create().reset(ChoosableEdit.TYPE, options);
+	    };
+	    ChoosableEdit.TYPE = "choosable.edit";
+	    ChoosableEdit.rBin = new recyclable_creator_1.RecyclableCreator(function () {
+	        return new ChoosableEdit();
+	    });
+	    return ChoosableEdit;
+	}(widget_1.Widget));
+	exports.ChoosableEdit = ChoosableEdit;
+	;
+	widget_factory_1.WidgetFactory.register(ChoosableEdit.TYPE, ChoosableEdit.create);
+
+
+/***/ },
+/* 153 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+	var __extends = (this && this.__extends) || function (d, b) {
+	    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
+	    function __() { this.constructor = d; }
+	    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+	};
+	var view_modal_default_1 = __webpack_require__(154);
+	/**
+	 * IViewModal的基本实现。如果不能满足要求，可以重载部分函数。
+	 */
+	var ViewModal = (function (_super) {
+	    __extends(ViewModal, _super);
+	    function ViewModal() {
+	        _super.apply(this, arguments);
+	    }
+	    ViewModal.create = function (data) {
+	        var viewModal = new ViewModal(data);
+	        return viewModal;
+	    };
+	    return ViewModal;
+	}(view_modal_default_1.ViewModalDefault));
+	exports.ViewModal = ViewModal;
+	;
+
+
+/***/ },
+/* 154 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+	var __extends = (this && this.__extends) || function (d, b) {
+	    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
+	    function __() { this.constructor = d; }
+	    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+	};
+	var pointer = __webpack_require__(155);
+	var emitter_1 = __webpack_require__(6);
+	var Events = __webpack_require__(8);
+	var ivalidation_rule_1 = __webpack_require__(157);
+	var iview_modal_1 = __webpack_require__(83);
+	var ViewModalDefault = (function (_super) {
+	    __extends(ViewModalDefault, _super);
+	    function ViewModalDefault(data) {
+	        _super.call(this);
+	        this._commands = {};
+	        this._converters = {};
+	        this._data = data || {};
+	        this._validationRules = {};
+	        this.isCollection = false;
+	        this._ePropChange = Events.PropChangeEvent.create();
+	    }
+	    Object.defineProperty(ViewModalDefault.prototype, "data", {
+	        get: function () {
+	            return this._data;
+	        },
+	        set: function (value) {
+	            this._data = value;
+	        },
+	        enumerable: true,
+	        configurable: true
+	    });
+	    ViewModalDefault.prototype.getBindingMode = function () {
+	        return iview_modal_1.BindingMode.TWO_WAY;
+	    };
+	    ViewModalDefault.prototype.onChange = function (callback) {
+	        this.on(Events.PROP_DELETE, callback);
+	        this.on(Events.PROP_CHANGE, callback);
+	        return this;
+	    };
+	    ViewModalDefault.prototype.offChange = function (callback) {
+	        this.off(Events.PROP_DELETE, callback);
+	        this.off(Events.PROP_CHANGE, callback);
+	        return this;
+	    };
+	    ViewModalDefault.prototype.notifyChange = function (type, path, value) {
+	        this.dispatchEvent(this._ePropChange.init(type, { prop: path, value: value }));
+	    };
+	    ViewModalDefault.prototype.fixPath = function (path) {
+	        if (path && path.charAt(0) !== '/') {
+	            return '/' + path;
+	        }
+	        else {
+	            return path;
+	        }
+	    };
+	    ViewModalDefault.prototype.getProp = function (path, converterName) {
+	        var value = pointer.get(this._data, this.fixPath(path));
+	        return this.convert(converterName, value);
+	    };
+	    ViewModalDefault.prototype.delProp = function (path) {
+	        pointer.remove(this._data, path);
+	        this.notifyChange(Events.PROP_DELETE, this.fixPath(path), null);
+	        return this;
+	    };
+	    ViewModalDefault.prototype.setPropEx = function (source, value, oldValue) {
+	        var path = source.path;
+	        var converterName = source.converter;
+	        var validationRule = source.validationRule;
+	        return this.setProp(path, value, converterName, validationRule);
+	    };
+	    ViewModalDefault.prototype.setProp = function (path, v, converterName, validationRule) {
+	        var value = this.convertBack(converterName, v);
+	        var validateResult = this.isValueValid(validationRule, value);
+	        if (!validateResult.code) {
+	            pointer.set(this._data, path, value);
+	            this.notifyChange(Events.PROP_CHANGE, this.fixPath(path), value);
+	        }
+	        else {
+	            console.log("invalid value");
+	        }
+	        return validateResult;
+	        ;
+	    };
+	    ViewModalDefault.prototype.getCommand = function (name) {
+	        return this._commands[name];
+	    };
+	    ViewModalDefault.prototype.canExecute = function (name) {
+	        var ret = false;
+	        var cmd = this.getCommand(name);
+	        if (cmd && cmd.canExecute()) {
+	            ret = true;
+	        }
+	        return ret;
+	    };
+	    ViewModalDefault.prototype.execCommand = function (name, args) {
+	        var ret = false;
+	        var cmd = this.getCommand(name);
+	        if (cmd && cmd.canExecute()) {
+	            ret = cmd.execute(args);
+	        }
+	        return ret;
+	    };
+	    ViewModalDefault.prototype.registerCommand = function (name, cmd) {
+	        this._commands[name] = cmd;
+	        return this;
+	    };
+	    ViewModalDefault.prototype.unregisterCommand = function (name, cmd) {
+	        this._commands[name] = null;
+	        return this;
+	    };
+	    ViewModalDefault.prototype.getValueConverter = function (name) {
+	        return this._converters[name];
+	    };
+	    ViewModalDefault.prototype.registerValueConverter = function (name, converter) {
+	        this._converters[name] = converter;
+	        return this;
+	    };
+	    ViewModalDefault.prototype.unregisterValueConverter = function (name, converter) {
+	        this._converters[name] = null;
+	        return this;
+	    };
+	    ViewModalDefault.prototype.convert = function (converterName, value) {
+	        var converter = converterName ? this.getValueConverter(converterName) : null;
+	        return converter ? converter.convert(value) : value;
+	    };
+	    ViewModalDefault.prototype.convertBack = function (converterName, value) {
+	        var converter = converterName ? this.getValueConverter(converterName) : null;
+	        return converter ? converter.convertBack(value) : value;
+	    };
+	    ViewModalDefault.prototype.getValidationRule = function (name) {
+	        return this._validationRules[name];
+	    };
+	    ViewModalDefault.prototype.registerValidationRule = function (name, validationRule) {
+	        this._validationRules[name] = validationRule;
+	        return this;
+	    };
+	    ViewModalDefault.prototype.unregisterValidationRule = function (name, validationRule) {
+	        this._validationRules[name] = null;
+	        return this;
+	    };
+	    ViewModalDefault.prototype.isValueValid = function (ruleName, value) {
+	        var validationRule = ruleName ? this.getValidationRule(ruleName) : null;
+	        return validationRule ? validationRule.validate(value) : ivalidation_rule_1.ValidationResult.validResult;
+	    };
+	    return ViewModalDefault;
+	}(emitter_1.Emitter));
+	exports.ViewModalDefault = ViewModalDefault;
+	;
+
+
+/***/ },
+/* 155 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	var each = __webpack_require__(156);
+	module.exports = api;
+
+
+	/**
+	 * Convenience wrapper around the api.
+	 * Calls `.get` when called with an `object` and a `pointer`.
+	 * Calls `.set` when also called with `value`.
+	 * If only supplied `object`, returns a partially applied function, mapped to the object.
+	 *
+	 * @param {Object} obj
+	 * @param {String|Array} pointer
+	 * @param value
+	 * @returns {*}
+	 */
+
+	function api (obj, pointer, value) {
+	    // .set()
+	    if (arguments.length === 3) {
+	        return api.set(obj, pointer, value);
+	    }
+	    // .get()
+	    if (arguments.length === 2) {
+	        return api.get(obj, pointer);
+	    }
+	    // Return a partially applied function on `obj`.
+	    var wrapped = api.bind(api, obj);
+
+	    // Support for oo style
+	    for (var name in api) {
+	        if (api.hasOwnProperty(name)) {
+	            wrapped[name] = api[name].bind(wrapped, obj);
+	        }
+	    }
+	    return wrapped;
+	}
+
+
+	/**
+	 * Lookup a json pointer in an object
+	 *
+	 * @param {Object} obj
+	 * @param {String|Array} pointer
+	 * @returns {*}
+	 */
+	api.get = function get (obj, pointer) {
+	    var refTokens = Array.isArray(pointer) ? pointer : api.parse(pointer);
+
+	    for (var i = 0; i < refTokens.length; ++i) {
+	        var tok = refTokens[i];
+	        if (!(typeof obj == 'object' && tok in obj)) {
+	            throw new Error('Invalid reference token: ' + tok);
+	        }
+	        obj = obj[tok];
+	    }
+	    return obj;
+	};
+
+	/**
+	 * Sets a value on an object
+	 *
+	 * @param {Object} obj
+	 * @param {String|Array} pointer
+	 * @param value
+	 */
+	api.set = function set (obj, pointer, value) {
+	    var refTokens = Array.isArray(pointer) ? pointer : api.parse(pointer),
+	      nextTok = refTokens[0];
+
+	    for (var i = 0; i < refTokens.length - 1; ++i) {
+	        var tok = refTokens[i];
+	        if (tok === '-' && Array.isArray(obj)) {
+	          tok = obj.length;
+	        }
+	        nextTok = refTokens[i + 1];
+
+	        if (!(tok in obj)) {
+	            if (nextTok.match(/^(\d+|-)$/)) {
+	                obj[tok] = [];
+	            } else {
+	                obj[tok] = {};
+	            }
+	        }
+	        obj = obj[tok];
+	    }
+	    if (nextTok === '-' && Array.isArray(obj)) {
+	      nextTok = obj.length;
+	    }
+	    obj[nextTok] = value;
+	    return this;
+	};
+
+	/**
+	 * Removes an attribute
+	 *
+	 * @param {Object} obj
+	 * @param {String|Array} pointer
+	 */
+	api.remove = function (obj, pointer) {
+	    var refTokens = Array.isArray(pointer) ? pointer : api.parse(pointer);
+	    var finalToken = refTokens[refTokens.length -1];
+	    if (finalToken === undefined) {
+	        throw new Error('Invalid JSON pointer for remove: "' + pointer + '"');
+	    }
+	    delete api.get(obj, refTokens.slice(0, -1))[finalToken];
+	};
+
+	/**
+	 * Returns a (pointer -> value) dictionary for an object
+	 *
+	 * @param obj
+	 * @param {function} descend
+	 * @returns {}
+	 */
+	api.dict = function dict (obj, descend) {
+	    var results = {};
+	    api.walk(obj, function (value, pointer) {
+	        results[pointer] = value;
+	    }, descend);
+	    return results;
+	};
+
+	/**
+	 * Iterates over an object
+	 * Iterator: function (value, pointer) {}
+	 *
+	 * @param obj
+	 * @param {function} iterator
+	 * @param {function} descend
+	 */
+	api.walk = function walk (obj, iterator, descend) {
+	    var refTokens = [];
+
+	    descend = descend || function (value) {
+	        var type = Object.prototype.toString.call(value);
+	        return type === '[object Object]' || type === '[object Array]';
+	    };
+
+	    (function next (cur) {
+	        each(cur, function (value, key) {
+	            refTokens.push(String(key));
+	            if (descend(value)) {
+	                next(value);
+	            } else {
+	                iterator(value, api.compile(refTokens));
+	            }
+	            refTokens.pop();
+	        });
+	    }(obj));
+	};
+
+	/**
+	 * Tests if an object has a value for a json pointer
+	 *
+	 * @param obj
+	 * @param pointer
+	 * @returns {boolean}
+	 */
+	api.has = function has (obj, pointer) {
+	    try {
+	        api.get(obj, pointer);
+	    } catch (e) {
+	        return false;
+	    }
+	    return true;
+	};
+
+	/**
+	 * Escapes a reference token
+	 *
+	 * @param str
+	 * @returns {string}
+	 */
+	api.escape = function escape (str) {
+	    return str.toString().replace(/~/g, '~0').replace(/\//g, '~1');
+	};
+
+	/**
+	 * Unescapes a reference token
+	 *
+	 * @param str
+	 * @returns {string}
+	 */
+	api.unescape = function unescape (str) {
+	    return str.replace(/~1/g, '/').replace(/~0/g, '~');
+	};
+
+	/**
+	 * Converts a json pointer into a array of reference tokens
+	 *
+	 * @param pointer
+	 * @returns {Array}
+	 */
+	api.parse = function parse (pointer) {
+	    if (pointer === '') { return []; }
+	    if (pointer.charAt(0) !== '/') { throw new Error('Invalid JSON pointer: ' + pointer); }
+	    return pointer.substring(1).split(/\//).map(api.unescape);
+	};
+
+	/**
+	 * Builds a json pointer from a array of reference tokens
+	 *
+	 * @param refTokens
+	 * @returns {string}
+	 */
+	api.compile = function compile (refTokens) {
+	    if (refTokens.length === 0) { return ''; }
+	    return '/' + refTokens.map(api.escape).join('/');
+	};
+
+
+/***/ },
+/* 156 */
+/***/ function(module, exports) {
+
+	
+	var hasOwn = Object.prototype.hasOwnProperty;
+	var toString = Object.prototype.toString;
+
+	module.exports = function forEach (obj, fn, ctx) {
+	    if (toString.call(fn) !== '[object Function]') {
+	        throw new TypeError('iterator must be a function');
+	    }
+	    var l = obj.length;
+	    if (l === +l) {
+	        for (var i = 0; i < l; i++) {
+	            fn.call(ctx, obj[i], i, obj);
+	        }
+	    } else {
+	        for (var k in obj) {
+	            if (hasOwn.call(obj, k)) {
+	                fn.call(ctx, obj[k], k, obj);
+	            }
+	        }
+	    }
+	};
+
+
+
+/***/ },
+/* 157 */
+/***/ function(module, exports) {
+
+	"use strict";
+	/**
+	 * 数据有效性检查的结果。
+	 */
+	var ValidationResult = (function () {
+	    function ValidationResult(code, message) {
+	        this.code = code;
+	        this.message = message;
+	    }
+	    /**
+	     * 创建函数。
+	     */
+	    ValidationResult.create = function (code, message) {
+	        return new ValidationResult(code, message);
+	    };
+	    /**
+	     * 数据有效时，可以共用的结果，不能在运行时修改。
+	     */
+	    ValidationResult.validResult = ValidationResult.create(0, "valid");
+	    /**
+	     * 数据无效时，可以共用的结果，不能在运行时修改。
+	     */
+	    ValidationResult.invalidResult = ValidationResult.create(-1, "invalid");
+	    return ValidationResult;
+	}());
+	exports.ValidationResult = ValidationResult;
+	;
+
+
+/***/ },
+/* 158 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+	var message_box_1 = __webpack_require__(130);
+	var ChoiceDialog = (function () {
+	    function ChoiceDialog() {
+	    }
+	    ChoiceDialog.show = function (e) {
+	        var info = e.payload;
+	        message_box_1.MessageBox.showChoice(info.title, info.options, info.multiple, function (value) {
+	            info.value = value;
+	            e.returnResult();
+	        }, info.w, info.h);
+	    };
+	    return ChoiceDialog;
+	}());
+	exports.ChoiceDialog = ChoiceDialog;
+
+
+/***/ },
+/* 159 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+	var message_box_1 = __webpack_require__(130);
+	var ProgressDialog = (function () {
+	    function ProgressDialog() {
+	    }
+	    ProgressDialog.show = function (e) {
+	        var info = e.payload;
+	        message_box_1.MessageBox.showProgress(info.title, info.runTask, function () {
+	            e.returnResult();
+	        }, info.w);
+	    };
+	    return ProgressDialog;
+	}());
+	exports.ProgressDialog = ProgressDialog;
+
+
+/***/ },
+/* 160 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+	var message_box_1 = __webpack_require__(130);
+	var ConfirmationDialog = (function () {
+	    function ConfirmationDialog() {
+	    }
+	    ConfirmationDialog.show = function (e) {
+	        var info = e.payload;
+	        message_box_1.MessageBox.showConfirm(info.content, function (ret) {
+	            info.confirmed = true;
+	            e.returnResult();
+	        }, function (ret) {
+	            info.confirmed = false;
+	            e.returnResult();
+	        }, info.w);
+	    };
+	    return ConfirmationDialog;
+	}());
+	exports.ConfirmationDialog = ConfirmationDialog;
+
+
+/***/ },
+/* 161 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+	var message_box_1 = __webpack_require__(130);
+	var NotificationDialog = (function () {
+	    function NotificationDialog() {
+	    }
+	    NotificationDialog.show = function (e) {
+	        var info = e.payload;
+	        message_box_1.MessageBox.showMessage(info.content, function (ret) {
+	            e.returnResult();
+	        }, info.w);
+	    };
+	    return NotificationDialog;
+	}());
+	exports.NotificationDialog = NotificationDialog;
+
+
+/***/ },
+/* 162 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
 	var __extends = (this && this.__extends) || function (d, b) {
 	    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
 	    function __() { this.constructor = d; }
@@ -24227,7 +27872,7 @@ var editor =
 
 
 /***/ },
-/* 127 */
+/* 163 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -24312,7 +27957,7 @@ var editor =
 
 
 /***/ },
-/* 128 */
+/* 164 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -24363,7 +28008,7 @@ var editor =
 
 
 /***/ },
-/* 129 */
+/* 165 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -24539,7 +28184,7 @@ var editor =
 
 
 /***/ },
-/* 130 */
+/* 166 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -24905,7 +28550,7 @@ var editor =
 
 
 /***/ },
-/* 131 */
+/* 167 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -24935,7 +28580,7 @@ var editor =
 
 
 /***/ },
-/* 132 */
+/* 168 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -24944,14 +28589,14 @@ var editor =
 	    function __() { this.constructor = d; }
 	    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 	};
-	var menu_1 = __webpack_require__(130);
+	var menu_1 = __webpack_require__(166);
 	var point_1 = __webpack_require__(4);
 	var Events = __webpack_require__(8);
 	var widget_1 = __webpack_require__(21);
 	var widget_factory_1 = __webpack_require__(25);
 	var image_tile_1 = __webpack_require__(9);
 	var recyclable_creator_1 = __webpack_require__(84);
-	var linear_layouter_1 = __webpack_require__(133);
+	var linear_layouter_1 = __webpack_require__(132);
 	var MenuBar = (function (_super) {
 	    __extends(MenuBar, _super);
 	    function MenuBar() {
@@ -25160,478 +28805,7 @@ var editor =
 
 
 /***/ },
-/* 133 */
-/***/ function(module, exports, __webpack_require__) {
-
-	"use strict";
-	var __extends = (this && this.__extends) || function (d, b) {
-	    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
-	    function __() { this.constructor = d; }
-	    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-	};
-	var consts_1 = __webpack_require__(106);
-	var utils_1 = __webpack_require__(23);
-	var layouter_1 = __webpack_require__(80);
-	var TYPE_H = "linear-h";
-	var TYPE_V = "linear-v";
-	/**
-	 * 线性布局器。可以设置为水平和垂直两个方向。
-	 */
-	var LinearLayouter = (function (_super) {
-	    __extends(LinearLayouter, _super);
-	    function LinearLayouter() {
-	        _super.apply(this, arguments);
-	    }
-	    Object.defineProperty(LinearLayouter.prototype, "type", {
-	        get: function () {
-	            return this.orientation === consts_1.Orientation.V ? TYPE_V : TYPE_H;
-	        },
-	        enumerable: true,
-	        configurable: true
-	    });
-	    /**
-	     * 设置参数。
-	     */
-	    LinearLayouter.prototype.setOptions = function (options) {
-	        this.spacing = options.spacing || 0;
-	        this.orientation = options.orientation || consts_1.Orientation.V;
-	        return this;
-	    };
-	    LinearLayouter.prototype.layoutChildren = function (widget, children, rect) {
-	        var _this = this;
-	        var r = rect.clone();
-	        var defParam = LinearLayouterParam.defParam;
-	        var arr = children.filter(function (child) {
-	            var param = child.layoutParam || defParam;
-	            return param.position > 0;
-	        });
-	        utils_1.stableSort(arr, function (a, b) {
-	            var ap = a.layoutParam || defParam;
-	            var bp = b.layoutParam || defParam;
-	            return ap.position - bp.position;
-	        });
-	        arr.forEach(function (child, index) {
-	            if (r.w > 0 && r.h > 0) {
-	                _this.layoutChild(child, r, index);
-	            }
-	        });
-	        arr = children.filter(function (child) {
-	            var param = child.layoutParam || defParam;
-	            return !param.position;
-	        });
-	        arr.forEach(function (child, index) {
-	            if (r.w > 0 && r.h > 0) {
-	                _this.layoutChild(child, r, index);
-	            }
-	        });
-	        arr = children.filter(function (child) {
-	            var param = child.layoutParam || defParam;
-	            return param.position < 0;
-	        });
-	        utils_1.stableSort(arr, function (a, b) {
-	            var ap = a.layoutParam || defParam;
-	            var bp = b.layoutParam || defParam;
-	            return bp.position - ap.position;
-	        });
-	        arr.forEach(function (child, index) {
-	            if (r.w > 0 && r.h > 0) {
-	                _this.layoutChild(child, r, index);
-	            }
-	        });
-	        r.dispose();
-	        return rect;
-	    };
-	    LinearLayouter.prototype.layoutChild = function (child, r, index) {
-	        var x = 0;
-	        var y = 0;
-	        var w = 0;
-	        var h = 0;
-	        var defParam = LinearLayouterParam.defParam;
-	        var param = child.layoutParam || defParam;
-	        var position = param.position;
-	        if (param && param.type === LinearLayouterParam.TYPE && child.visible) {
-	            var spacing = (index > 0 || !position) ? (param.spacing || this.spacing) : 0;
-	            if (this.orientation === consts_1.Orientation.V) {
-	                r.h -= spacing;
-	            }
-	            else {
-	                r.w -= spacing;
-	            }
-	            h = Math.min(r.h, param.h ? layouter_1.Layouter.evalValue(param.h, r.h) : child.h);
-	            w = Math.min(r.w, param.w ? layouter_1.Layouter.evalValue(param.w, r.w) : child.w);
-	            if (this.orientation === consts_1.Orientation.V) {
-	                switch (param.align) {
-	                    case consts_1.Align.LEFT: {
-	                        x = r.x;
-	                        break;
-	                    }
-	                    case consts_1.Align.RIGHT: {
-	                        x = r.x + r.w - w;
-	                        break;
-	                    }
-	                    default: {
-	                        x = r.x + ((r.w - w) >> 1);
-	                        break;
-	                    }
-	                }
-	                var spacingH = spacing + h;
-	                if (position >= 0) {
-	                    y = r.y + spacing;
-	                    r.y += spacingH;
-	                }
-	                else {
-	                    y = r.y + r.h - spacingH;
-	                }
-	                r.h -= h;
-	            }
-	            else {
-	                switch (param.align) {
-	                    case consts_1.Align.TOP: {
-	                        y = r.y;
-	                        break;
-	                    }
-	                    case consts_1.Align.BOTTOM: {
-	                        y = r.y + r.h - h;
-	                        break;
-	                    }
-	                    default: {
-	                        y = r.y + ((r.h - h) >> 1);
-	                        break;
-	                    }
-	                }
-	                var spacingW = spacing + w;
-	                if (position >= 0) {
-	                    x = r.x + spacing;
-	                    r.x += spacingW;
-	                }
-	                else {
-	                    x = r.x + r.w - spacingW;
-	                }
-	                r.w -= w;
-	            }
-	            child.moveResizeTo(x, y, w, h);
-	            child.relayoutChildren();
-	        }
-	    };
-	    LinearLayouter.prototype.createParam = function (options) {
-	        return LinearLayouterParam.create(options);
-	    };
-	    LinearLayouter.createV = function (options) {
-	        var layouter = new LinearLayouter();
-	        layouter.setOptions(options);
-	        layouter.orientation = consts_1.Orientation.V;
-	        return layouter;
-	    };
-	    LinearLayouter.createH = function (options) {
-	        var layouter = new LinearLayouter();
-	        layouter.setOptions(options || {});
-	        layouter.orientation = consts_1.Orientation.H;
-	        return layouter;
-	    };
-	    return LinearLayouter;
-	}(layouter_1.Layouter));
-	exports.LinearLayouter = LinearLayouter;
-	;
-	layouter_1.LayouterFactory.register(TYPE_H, LinearLayouter.createH);
-	layouter_1.LayouterFactory.register(TYPE_V, LinearLayouter.createV);
-	/**
-	 * Linear布局器的参数。
-	 *
-	 * 如果父控件使用LinearLayouter布局器，则子控件需要把layoutParam设置为LinearLayouterParam。
-	 *
-	 * 对于w参数：
-	 * *.如果以px结尾，则直接取它的值。
-	 * *.如果以%结尾，则表示剩余空间的宽度/高度的百分比。
-	 *
-	 */
-	var LinearLayouterParam = (function (_super) {
-	    __extends(LinearLayouterParam, _super);
-	    function LinearLayouterParam(type, w, h, spacing, align, position) {
-	        _super.call(this, type || LinearLayouterParam.TYPE);
-	        this.w = w || "100%";
-	        this.h = h || "100%";
-	        this.align = align;
-	        this.spacing = spacing;
-	        this.position = position;
-	    }
-	    LinearLayouterParam.createWithType = function (type, opts) {
-	        var options = opts || {};
-	        return new LinearLayouterParam(LinearLayouterParam.TYPE, options.w || options.width, options.h || options.height, options.spacing || 0, options.align || consts_1.Align.C, options.position === undefined ? 1 : options.position);
-	    };
-	    LinearLayouterParam.create = function (opts) {
-	        return LinearLayouterParam.createWithType(LinearLayouterParam.TYPE, opts);
-	    };
-	    LinearLayouterParam.TYPE = "linear";
-	    LinearLayouterParam.defParam = LinearLayouterParam.create(null);
-	    return LinearLayouterParam;
-	}(layouter_1.LayouterParam));
-	exports.LinearLayouterParam = LinearLayouterParam;
-	;
-	layouter_1.LayouterParamFactory.register(LinearLayouterParam.TYPE, LinearLayouterParam.create);
-
-
-/***/ },
-/* 134 */
-/***/ function(module, exports, __webpack_require__) {
-
-	"use strict";
-	var __extends = (this && this.__extends) || function (d, b) {
-	    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
-	    function __() { this.constructor = d; }
-	    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-	};
-	var style_1 = __webpack_require__(5);
-	var widget_1 = __webpack_require__(21);
-	var widget_factory_1 = __webpack_require__(25);
-	var graphics_1 = __webpack_require__(27);
-	var consts_1 = __webpack_require__(106);
-	var recyclable_creator_1 = __webpack_require__(84);
-	/**
-	 * 颜色控件。
-	 */
-	var Color = (function (_super) {
-	    __extends(Color, _super);
-	    function Color(type) {
-	        _super.call(this, type);
-	    }
-	    Object.defineProperty(Color.prototype, "color", {
-	        get: function () {
-	            return this._style.lineColor;
-	        },
-	        set: function (value) {
-	            this._style.lineColor = value;
-	        },
-	        enumerable: true,
-	        configurable: true
-	    });
-	    Object.defineProperty(Color.prototype, "lineColor", {
-	        get: function () {
-	            return this._style.lineColor;
-	        },
-	        set: function (value) {
-	            this._style.lineColor = value;
-	        },
-	        enumerable: true,
-	        configurable: true
-	    });
-	    Object.defineProperty(Color.prototype, "lineWidth", {
-	        get: function () {
-	            return this._style.lineWidth;
-	        },
-	        set: function (value) {
-	            this._style.lineWidth = value;
-	        },
-	        enumerable: true,
-	        configurable: true
-	    });
-	    Object.defineProperty(Color.prototype, "value", {
-	        get: function () {
-	            return this.color;
-	        },
-	        set: function (color) {
-	            this.color = color;
-	        },
-	        enumerable: true,
-	        configurable: true
-	    });
-	    Color.prototype.onToJson = function (json) {
-	        if (this._style) {
-	            json.style = this._style.toJson();
-	        }
-	    };
-	    Color.prototype.onFromJson = function (json) {
-	        if (json.style) {
-	            this._style = style_1.Style.create(json.style);
-	        }
-	    };
-	    Color.prototype.setStyle = function (state, style) {
-	        this._style = style;
-	        return this;
-	    };
-	    Color.prototype.onReset = function () {
-	        this._style = style_1.Style.create();
-	        this._style.fontSize = 16;
-	        this._style.textColor = "Black";
-	    };
-	    Color.prototype.getStyle = function () {
-	        if (this.styleType) {
-	            return _super.prototype.getStyle.call(this);
-	        }
-	        return this._style;
-	    };
-	    return Color;
-	}(widget_1.Widget));
-	exports.Color = Color;
-	;
-	var ColorTile = (function (_super) {
-	    __extends(ColorTile, _super);
-	    function ColorTile() {
-	        _super.call(this, ColorTile.TYPE);
-	    }
-	    Object.defineProperty(ColorTile.prototype, "color", {
-	        get: function () {
-	            return this._style.backGroundColor;
-	        },
-	        set: function (value) {
-	            this._style.backGroundColor = value;
-	        },
-	        enumerable: true,
-	        configurable: true
-	    });
-	    Object.defineProperty(ColorTile.prototype, "roundRadius", {
-	        get: function () {
-	            return this._style.roundRadius;
-	        },
-	        set: function (value) {
-	            this._style.roundRadius = value;
-	        },
-	        enumerable: true,
-	        configurable: true
-	    });
-	    ColorTile.create = function (options) {
-	        return ColorTile.recycleBin.create().reset(ColorTile.TYPE, options);
-	    };
-	    ColorTile.TYPE = "color-tile";
-	    ColorTile.recycleBin = new recyclable_creator_1.RecyclableCreator(function () { return new ColorTile(); });
-	    return ColorTile;
-	}(Color));
-	exports.ColorTile = ColorTile;
-	;
-	widget_factory_1.WidgetFactory.register(ColorTile.TYPE, ColorTile.create);
-	var ColorLine = (function (_super) {
-	    __extends(ColorLine, _super);
-	    function ColorLine() {
-	        _super.call(this, ColorLine.TYPE);
-	    }
-	    Object.defineProperty(ColorLine.prototype, "color", {
-	        get: function () {
-	            return this._style.lineColor;
-	        },
-	        set: function (value) {
-	            this._style.lineColor = value;
-	        },
-	        enumerable: true,
-	        configurable: true
-	    });
-	    Object.defineProperty(ColorLine.prototype, "orientation", {
-	        get: function () {
-	            return this._orientation;
-	        },
-	        set: function (value) {
-	            this._orientation = value;
-	        },
-	        enumerable: true,
-	        configurable: true
-	    });
-	    Object.defineProperty(ColorLine.prototype, "vAlign", {
-	        get: function () {
-	            return this._vAlign;
-	        },
-	        set: function (value) {
-	            this._vAlign = value;
-	        },
-	        enumerable: true,
-	        configurable: true
-	    });
-	    Object.defineProperty(ColorLine.prototype, "hAlign", {
-	        get: function () {
-	            return this._hAlign;
-	        },
-	        set: function (value) {
-	            this._hAlign = value;
-	        },
-	        enumerable: true,
-	        configurable: true
-	    });
-	    Object.defineProperty(ColorLine.prototype, "lineJoin", {
-	        get: function () {
-	            return this._style.lineJoin;
-	        },
-	        set: function (value) {
-	            this._style.lineJoin = value;
-	        },
-	        enumerable: true,
-	        configurable: true
-	    });
-	    Object.defineProperty(ColorLine.prototype, "lineCap", {
-	        get: function () {
-	            return this._style.lineCap;
-	        },
-	        set: function (value) {
-	            this._style.lineCap = value;
-	        },
-	        enumerable: true,
-	        configurable: true
-	    });
-	    Object.defineProperty(ColorLine.prototype, "dashLine", {
-	        get: function () {
-	            return this._style.dashLine;
-	        },
-	        set: function (value) {
-	            this._style.dashLine = value;
-	        },
-	        enumerable: true,
-	        configurable: true
-	    });
-	    ColorLine.prototype.drawColorBackground = function (ctx, style) {
-	        var x = 0;
-	        var y = 0;
-	        var lineWidth = style.lineWidth || 1;
-	        ctx.lineCap = style.lineCap || "butt";
-	        ctx.lineJoin = style.lineJoin || "miter";
-	        if (style.dashLine) {
-	            ctx.setLineDash(style.dashLine);
-	        }
-	        if (this._orientation === consts_1.Orientation.V) {
-	            switch (this._hAlign) {
-	                case consts_1.AlignH.L: {
-	                    x = 0;
-	                    break;
-	                }
-	                case consts_1.AlignH.R: {
-	                    x = this.w - lineWidth;
-	                    break;
-	                }
-	                default: {
-	                    x = this.w >> 1;
-	                    break;
-	                }
-	            }
-	            graphics_1.Graphics.drawLine(ctx, style.lineColor, lineWidth, x, y, x, this.h);
-	        }
-	        else {
-	            switch (this._vAlign) {
-	                case consts_1.AlignV.T: {
-	                    y = 0;
-	                    break;
-	                }
-	                case consts_1.AlignV.B: {
-	                    y = this.h - lineWidth;
-	                    break;
-	                }
-	                default: {
-	                    y = this.h >> 1;
-	                    break;
-	                }
-	            }
-	            graphics_1.Graphics.drawLine(ctx, style.lineColor, lineWidth, x, y, this.w, y);
-	        }
-	        return this;
-	    };
-	    ColorLine.create = function (options) {
-	        return ColorLine.recycleBin.create().reset(ColorLine.TYPE, options);
-	    };
-	    ColorLine.TYPE = "color-tile";
-	    ColorLine.recycleBin = new recyclable_creator_1.RecyclableCreator(function () { return new ColorLine(); });
-	    return ColorLine;
-	}(Color));
-	exports.ColorLine = ColorLine;
-	;
-	widget_factory_1.WidgetFactory.register(ColorLine.TYPE, ColorLine.create);
-
-
-/***/ },
-/* 135 */
+/* 169 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -25643,8 +28817,8 @@ var editor =
 	var widget_1 = __webpack_require__(21);
 	var widget_factory_1 = __webpack_require__(25);
 	var recyclable_creator_1 = __webpack_require__(84);
-	var title_content_1 = __webpack_require__(136);
-	var collapsable_title_1 = __webpack_require__(137);
+	var title_content_1 = __webpack_require__(170);
+	var collapsable_title_1 = __webpack_require__(171);
 	/**
 	 * 手风琴控件。它有多个页面，在每一时刻只展开一个。
 	 */
@@ -25747,7 +28921,7 @@ var editor =
 
 
 /***/ },
-/* 136 */
+/* 170 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -25978,7 +29152,7 @@ var editor =
 
 
 /***/ },
-/* 137 */
+/* 171 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -26064,7 +29238,7 @@ var editor =
 
 
 /***/ },
-/* 138 */
+/* 172 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -26373,2718 +29547,7 @@ var editor =
 
 
 /***/ },
-/* 139 */
-/***/ function(module, exports, __webpack_require__) {
-
-	"use strict";
-	var __extends = (this && this.__extends) || function (d, b) {
-	    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
-	    function __() { this.constructor = d; }
-	    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-	};
-	var label_1 = __webpack_require__(20);
-	var title_value_1 = __webpack_require__(140);
-	var widget_factory_1 = __webpack_require__(25);
-	var recyclable_creator_1 = __webpack_require__(84);
-	var TitleLabel = (function (_super) {
-	    __extends(TitleLabel, _super);
-	    function TitleLabel(type) {
-	        _super.call(this, type || TitleLabel.TYPE);
-	    }
-	    TitleLabel.prototype.createValueWidget = function (options) {
-	        return label_1.Label.create(options);
-	    };
-	    TitleLabel.create = function (options) {
-	        return TitleLabel.recycleBin.create().reset(TitleLabel.TYPE, options);
-	    };
-	    TitleLabel.TYPE = "title-label";
-	    TitleLabel.recycleBin = new recyclable_creator_1.RecyclableCreator(function () { return new TitleLabel(); });
-	    return TitleLabel;
-	}(title_value_1.TitleValue));
-	exports.TitleLabel = TitleLabel;
-	;
-	widget_factory_1.WidgetFactory.register(TitleLabel.TYPE, TitleLabel.create);
-
-
-/***/ },
-/* 140 */
-/***/ function(module, exports, __webpack_require__) {
-
-	"use strict";
-	var __extends = (this && this.__extends) || function (d, b) {
-	    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
-	    function __() { this.constructor = d; }
-	    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-	};
-	var Events = __webpack_require__(8);
-	var label_1 = __webpack_require__(20);
-	var widget_1 = __webpack_require__(21);
-	var linear_layouter_1 = __webpack_require__(133);
-	var TitleValue = (function (_super) {
-	    __extends(TitleValue, _super);
-	    function TitleValue(type) {
-	        _super.call(this, type);
-	    }
-	    Object.defineProperty(TitleValue.prototype, "title", {
-	        get: function () {
-	            return this._title;
-	        },
-	        set: function (value) {
-	            this._title = value;
-	        },
-	        enumerable: true,
-	        configurable: true
-	    });
-	    Object.defineProperty(TitleValue.prototype, "titleW", {
-	        get: function () {
-	            return this._titleW;
-	        },
-	        set: function (value) {
-	            this._titleW = value;
-	        },
-	        enumerable: true,
-	        configurable: true
-	    });
-	    Object.defineProperty(TitleValue.prototype, "valueW", {
-	        get: function () {
-	            return this._valueW;
-	        },
-	        set: function (value) {
-	            this._valueW = value;
-	        },
-	        enumerable: true,
-	        configurable: true
-	    });
-	    Object.defineProperty(TitleValue.prototype, "titleWidget", {
-	        get: function () {
-	            return this._titleWidget;
-	        },
-	        enumerable: true,
-	        configurable: true
-	    });
-	    Object.defineProperty(TitleValue.prototype, "valueWidget", {
-	        get: function () {
-	            return this._valueWidget;
-	        },
-	        enumerable: true,
-	        configurable: true
-	    });
-	    Object.defineProperty(TitleValue.prototype, "value", {
-	        get: function () {
-	            return this._valueWidget ? this.valueWidget.value : this._value;
-	        },
-	        set: function (value) {
-	            this._value = value;
-	            if (this._valueWidget) {
-	                this._valueWidget.value = value;
-	            }
-	        },
-	        enumerable: true,
-	        configurable: true
-	    });
-	    /*
-	     * Child must override
-	     */
-	    TitleValue.prototype.createValueWidget = function (options) {
-	        return null;
-	    };
-	    TitleValue.prototype.onInit = function () {
-	        _super.prototype.onInit.call(this);
-	        this.titleWidget.text = this._title;
-	        this.titleWidget.layoutParam = linear_layouter_1.LinearLayouterParam.create({ w: this._titleW, h: "100%" });
-	        this.valueWidget.layoutParam = linear_layouter_1.LinearLayouterParam.create({ w: this._valueW, h: "100%" });
-	    };
-	    TitleValue.prototype.onReset = function () {
-	        _super.prototype.onReset.call(this);
-	        this.childrenLayouter = linear_layouter_1.LinearLayouter.createH({ spacing: 5 });
-	        var titleWidget = label_1.Label.create();
-	        this.addChild(titleWidget);
-	        this._titleWidget = titleWidget;
-	        var valueWidget = this.createValueWidget();
-	        this.addChild(valueWidget);
-	        this._valueWidget = valueWidget;
-	        if (this._value !== undefined) {
-	            valueWidget.value = this._value;
-	        }
-	    };
-	    TitleValue.prototype.forwardChangeEvent = function (evt) {
-	        var e = this.eChangeEvent;
-	        e.init(evt.type, { value: this.value });
-	        this.dispatchEvent(e);
-	    };
-	    TitleValue.prototype.onCreated = function () {
-	        var _this = this;
-	        _super.prototype.onCreated.call(this);
-	        var valueWidget = this.valueWidget;
-	        valueWidget.on(Events.CHANGE, function (evt) {
-	            _this.forwardChangeEvent(evt);
-	        });
-	        valueWidget.on(Events.CHANGING, function (evt) {
-	            _this.forwardChangeEvent(evt);
-	        });
-	    };
-	    TitleValue.prototype.onToJson = function (json) {
-	        delete json._value;
-	    };
-	    TitleValue.prototype.getDefProps = function () {
-	        return TitleValue.defProps;
-	    };
-	    TitleValue.prototype.dispose = function () {
-	        _super.prototype.dispose.call(this);
-	        this._titleWidget = null;
-	        this._valueWidget = null;
-	    };
-	    TitleValue.defProps = Object.assign({}, widget_1.Widget.defProps, { _lp: 2, _tp: 2, _rp: 2, _bp: 2,
-	        _title: null, _titleW: 60, _valueW: 60 });
-	    return TitleValue;
-	}(widget_1.Widget));
-	exports.TitleValue = TitleValue;
-	;
-
-
-/***/ },
-/* 141 */
-/***/ function(module, exports, __webpack_require__) {
-
-	"use strict";
-	var __extends = (this && this.__extends) || function (d, b) {
-	    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
-	    function __() { this.constructor = d; }
-	    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-	};
-	var range_edit_1 = __webpack_require__(142);
-	var title_value_1 = __webpack_require__(140);
-	var widget_factory_1 = __webpack_require__(25);
-	var recyclable_creator_1 = __webpack_require__(84);
-	var TitleRange = (function (_super) {
-	    __extends(TitleRange, _super);
-	    function TitleRange(type) {
-	        _super.call(this, type || TitleRange.TYPE);
-	    }
-	    TitleRange.prototype.createValueWidget = function (options) {
-	        return range_edit_1.RangeEdit.create(options);
-	    };
-	    TitleRange.create = function (options) {
-	        return TitleRange.recycleBin.create().reset(TitleRange.TYPE, options);
-	    };
-	    TitleRange.TYPE = "title-range";
-	    TitleRange.recycleBin = new recyclable_creator_1.RecyclableCreator(function () { return new TitleRange(); });
-	    return TitleRange;
-	}(title_value_1.TitleValue));
-	exports.TitleRange = TitleRange;
-	;
-	widget_factory_1.WidgetFactory.register(TitleRange.TYPE, TitleRange.create);
-
-
-/***/ },
-/* 142 */
-/***/ function(module, exports, __webpack_require__) {
-
-	"use strict";
-	var __extends = (this && this.__extends) || function (d, b) {
-	    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
-	    function __() { this.constructor = d; }
-	    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-	};
-	var label_1 = __webpack_require__(20);
-	var edit_1 = __webpack_require__(19);
-	var widget_1 = __webpack_require__(21);
-	var Events = __webpack_require__(8);
-	var widget_factory_1 = __webpack_require__(25);
-	var recyclable_creator_1 = __webpack_require__(84);
-	/**
-	 * 范围编辑器。
-	 */
-	var RangeEdit = (function (_super) {
-	    __extends(RangeEdit, _super);
-	    function RangeEdit() {
-	        _super.call(this, RangeEdit.TYPE);
-	    }
-	    Object.defineProperty(RangeEdit.prototype, "inputable", {
-	        get: function () {
-	            return true;
-	        },
-	        enumerable: true,
-	        configurable: true
-	    });
-	    Object.defineProperty(RangeEdit.prototype, "firstEditor", {
-	        get: function () {
-	            return this._firstEditor;
-	        },
-	        enumerable: true,
-	        configurable: true
-	    });
-	    Object.defineProperty(RangeEdit.prototype, "secondEditor", {
-	        get: function () {
-	            return this._secondEditor;
-	        },
-	        enumerable: true,
-	        configurable: true
-	    });
-	    Object.defineProperty(RangeEdit.prototype, "value", {
-	        get: function () {
-	            if (!this._value) {
-	                this._value = {};
-	            }
-	            if (this._firstEditor) {
-	                this._value.first = +this._firstEditor.value;
-	            }
-	            if (this._secondEditor) {
-	                this._value.second = +this._secondEditor.value;
-	            }
-	            return this._value;
-	        },
-	        set: function (value) {
-	            this._value = value;
-	            if (this._firstEditor) {
-	                this._firstEditor.value = value.first;
-	            }
-	            if (this._secondEditor) {
-	                this._secondEditor.value = value.second;
-	            }
-	        },
-	        enumerable: true,
-	        configurable: true
-	    });
-	    RangeEdit.prototype.onToJson = function (json) {
-	        delete json._value;
-	    };
-	    RangeEdit.prototype.relayoutChildren = function () {
-	        this.requestRedraw();
-	        if (this.w && this.h && this._firstEditor && this._label && this._secondEditor) {
-	            var x = this.leftPadding;
-	            var y = this.topPadding;
-	            var h = this.clientH;
-	            var labelW = 15;
-	            var w = (this.clientW - labelW) >> 1;
-	            this._firstEditor.moveResizeTo(x, y, w, h, 0);
-	            x += w;
-	            this._label.moveResizeTo(x, y, labelW, h, 0);
-	            x += labelW;
-	            this._secondEditor.moveResizeTo(x, y, w, h, 0);
-	        }
-	        return this.getLayoutRect();
-	    };
-	    RangeEdit.prototype.dispose = function () {
-	        this._firstEditor = null;
-	        this._secondEditor = null;
-	        _super.prototype.dispose.call(this);
-	    };
-	    RangeEdit.prototype.forwardChangeEvent = function (evt) {
-	        var e = this.eChangeEvent;
-	        e.init(evt.type, { value: this.value });
-	        this.dispatchEvent(e);
-	    };
-	    RangeEdit.prototype.onReset = function () {
-	        var _this = this;
-	        _super.prototype.onReset.call(this);
-	        this.padding = 0;
-	        var value = this._value || { first: 0, second: 0 };
-	        this._firstEditor = edit_1.Edit.create({ value: value.first, inputType: "number" });
-	        this.addChild(this._firstEditor, false);
-	        this._firstEditor.on(Events.CHANGE, function (evt) {
-	            _this.forwardChangeEvent(evt);
-	        });
-	        this._firstEditor.on(Events.CHANGING, function (evt) {
-	            _this.forwardChangeEvent(evt);
-	        });
-	        this._label = label_1.Label.create({ text: "-", multiLineMode: false });
-	        this.addChild(this._label, false);
-	        this._secondEditor = edit_1.Edit.create({ value: value.second, inputType: "number" });
-	        this.addChild(this._secondEditor, false);
-	        this._secondEditor.on(Events.CHANGE, function (evt) {
-	            _this.forwardChangeEvent(evt);
-	        });
-	        this._secondEditor.on(Events.CHANGING, function (evt) {
-	            _this.forwardChangeEvent(evt);
-	        });
-	        this.relayoutChildren();
-	    };
-	    RangeEdit.create = function (options) {
-	        return RangeEdit.rBin.create().reset(RangeEdit.TYPE, options);
-	    };
-	    RangeEdit.TYPE = "range.edit";
-	    RangeEdit.rBin = new recyclable_creator_1.RecyclableCreator(function () {
-	        return new RangeEdit();
-	    });
-	    return RangeEdit;
-	}(widget_1.Widget));
-	exports.RangeEdit = RangeEdit;
-	;
-	widget_factory_1.WidgetFactory.register(RangeEdit.TYPE, RangeEdit.create);
-
-
-/***/ },
-/* 143 */
-/***/ function(module, exports, __webpack_require__) {
-
-	"use strict";
-	var __extends = (this && this.__extends) || function (d, b) {
-	    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
-	    function __() { this.constructor = d; }
-	    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-	};
-	var vector_edit_1 = __webpack_require__(144);
-	var title_value_1 = __webpack_require__(140);
-	var widget_factory_1 = __webpack_require__(25);
-	var recyclable_creator_1 = __webpack_require__(84);
-	var TitleVector = (function (_super) {
-	    __extends(TitleVector, _super);
-	    function TitleVector(type) {
-	        _super.call(this, type || TitleVector.TYPE);
-	    }
-	    Object.defineProperty(TitleVector.prototype, "d", {
-	        /**
-	         * dimension
-	         */
-	        get: function () {
-	            return this._d;
-	        },
-	        set: function (value) {
-	            this._d = value;
-	            ;
-	        },
-	        enumerable: true,
-	        configurable: true
-	    });
-	    TitleVector.prototype.createValueWidget = function (options) {
-	        return vector_edit_1.VectorEdit.create({ d: this.d || 2 });
-	    };
-	    TitleVector.create = function (options) {
-	        var widget = TitleVector.recycleBin.create();
-	        widget.d = options ? (options.d || 2) : 2;
-	        widget.reset(TitleVector.TYPE, options);
-	        return widget;
-	    };
-	    TitleVector.TYPE = "title-vector";
-	    TitleVector.recycleBin = new recyclable_creator_1.RecyclableCreator(function () { return new TitleVector(); });
-	    return TitleVector;
-	}(title_value_1.TitleValue));
-	exports.TitleVector = TitleVector;
-	;
-	widget_factory_1.WidgetFactory.register(TitleVector.TYPE, TitleVector.create);
-
-
-/***/ },
-/* 144 */
-/***/ function(module, exports, __webpack_require__) {
-
-	"use strict";
-	var __extends = (this && this.__extends) || function (d, b) {
-	    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
-	    function __() { this.constructor = d; }
-	    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-	};
-	var label_1 = __webpack_require__(20);
-	var edit_1 = __webpack_require__(19);
-	var widget_1 = __webpack_require__(21);
-	var Events = __webpack_require__(8);
-	var widget_factory_1 = __webpack_require__(25);
-	var recyclable_creator_1 = __webpack_require__(84);
-	var grid_layouter_1 = __webpack_require__(118);
-	/**
-	 * 范围编辑器。
-	 */
-	var VectorEdit = (function (_super) {
-	    __extends(VectorEdit, _super);
-	    function VectorEdit() {
-	        _super.call(this, VectorEdit.TYPE);
-	    }
-	    Object.defineProperty(VectorEdit.prototype, "inputable", {
-	        get: function () {
-	            return true;
-	        },
-	        enumerable: true,
-	        configurable: true
-	    });
-	    Object.defineProperty(VectorEdit.prototype, "d", {
-	        /**
-	         * dimension
-	         */
-	        get: function () {
-	            return this._d;
-	        },
-	        set: function (value) {
-	            this._d = value;
-	            ;
-	        },
-	        enumerable: true,
-	        configurable: true
-	    });
-	    Object.defineProperty(VectorEdit.prototype, "xEditor", {
-	        get: function () {
-	            return this._xEditor;
-	        },
-	        enumerable: true,
-	        configurable: true
-	    });
-	    Object.defineProperty(VectorEdit.prototype, "yEditor", {
-	        get: function () {
-	            return this._yEditor;
-	        },
-	        enumerable: true,
-	        configurable: true
-	    });
-	    Object.defineProperty(VectorEdit.prototype, "zEditor", {
-	        get: function () {
-	            return this._zEditor;
-	        },
-	        enumerable: true,
-	        configurable: true
-	    });
-	    Object.defineProperty(VectorEdit.prototype, "value", {
-	        get: function () {
-	            if (!this._value) {
-	                this._value = {};
-	            }
-	            if (this._xEditor) {
-	                this._value.x = this._xEditor.value;
-	            }
-	            if (this._yEditor) {
-	                this._value.y = this._yEditor.value;
-	            }
-	            if (this._zEditor) {
-	                this._value.z = this._zEditor.value;
-	            }
-	            return this._value;
-	        },
-	        set: function (value) {
-	            this._value = value;
-	            if (this._xEditor) {
-	                this._xEditor.value = +value.x;
-	            }
-	            if (this._yEditor) {
-	                this._yEditor.value = +value.y;
-	            }
-	            if (this._zEditor) {
-	                this._zEditor.value = +value.z;
-	            }
-	        },
-	        enumerable: true,
-	        configurable: true
-	    });
-	    VectorEdit.prototype.onToJson = function (json) {
-	        delete json._value;
-	    };
-	    VectorEdit.prototype.dispose = function () {
-	        this._xEditor = null;
-	        this._yEditor = null;
-	        this._zEditor = null;
-	        this._xLabel = null;
-	        this._yLabel = null;
-	        this._zLabel = null;
-	        _super.prototype.dispose.call(this);
-	    };
-	    VectorEdit.prototype.forwardChangeEvent = function (evt) {
-	        var e = this.eChangeEvent;
-	        e.init(evt.type, { value: this.value });
-	        this.dispatchEvent(e);
-	    };
-	    VectorEdit.prototype.onCreated = function () {
-	        var _this = this;
-	        _super.prototype.onCreated.call(this);
-	        this.padding = 0;
-	        var value = this._value || { x: 0, y: 0, z: 0 };
-	        this.d = Math.max(2, Math.min(3, this.d || 2));
-	        var cols = this.d;
-	        var rows = 2;
-	        this.childrenLayouter = grid_layouter_1.GridLayouter.create({ rows: rows, cols: cols, rightMargin: 10 });
-	        var labelOptions = { multiLineMode: false, topPadding: 10, bottomPadding: 0 };
-	        this._xLabel = label_1.Label.create({ text: "X" });
-	        this._xLabel.set(labelOptions);
-	        this.addChild(this._xLabel, false);
-	        this._yLabel = label_1.Label.create({ text: "Y" });
-	        this._yLabel.set(labelOptions);
-	        this.addChild(this._yLabel, false);
-	        if (this.d > 2) {
-	            this._zLabel = label_1.Label.create({ text: "Z" });
-	            this._zLabel.set(labelOptions);
-	            this.addChild(this._zLabel, false);
-	        }
-	        this._xEditor = edit_1.Edit.create({ multiLineMode: false, value: value.x, inputType: "number" });
-	        this.addChild(this._xEditor, false);
-	        this._xEditor.on(Events.CHANGE, function (evt) {
-	            _this.forwardChangeEvent(evt);
-	        });
-	        this._xEditor.on(Events.CHANGING, function (evt) {
-	            _this.forwardChangeEvent(evt);
-	        });
-	        this._yEditor = edit_1.Edit.create({ multiLineMode: false, value: value.y, inputType: "number" });
-	        this.addChild(this._yEditor, false);
-	        this._yEditor.on(Events.CHANGE, function (evt) {
-	            _this.forwardChangeEvent(evt);
-	        });
-	        this._yEditor.on(Events.CHANGING, function (evt) {
-	            _this.forwardChangeEvent(evt);
-	        });
-	        if (this.d > 2) {
-	            this._zEditor = edit_1.Edit.create({ inputType: "number" });
-	            this.addChild(this._zEditor, false);
-	            this._zEditor.on(Events.CHANGE, function (evt) {
-	                _this.forwardChangeEvent(evt);
-	            });
-	            this._zEditor.on(Events.CHANGING, function (evt) {
-	                _this.forwardChangeEvent(evt);
-	            });
-	        }
-	        this.relayoutChildren();
-	    };
-	    VectorEdit.prototype.getDefProps = function () {
-	        return VectorEdit.defProps;
-	    };
-	    VectorEdit.create = function (options) {
-	        return VectorEdit.rBin.create().reset(VectorEdit.TYPE, options);
-	    };
-	    VectorEdit.defProps = Object.assign({}, widget_1.Widget.defProps, { _d: 2 });
-	    VectorEdit.TYPE = "vector.edit";
-	    VectorEdit.rBin = new recyclable_creator_1.RecyclableCreator(function () {
-	        return new VectorEdit();
-	    });
-	    return VectorEdit;
-	}(widget_1.Widget));
-	exports.VectorEdit = VectorEdit;
-	;
-	widget_factory_1.WidgetFactory.register(VectorEdit.TYPE, VectorEdit.create);
-
-
-/***/ },
-/* 145 */
-/***/ function(module, exports, __webpack_require__) {
-
-	"use strict";
-	var __extends = (this && this.__extends) || function (d, b) {
-	    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
-	    function __() { this.constructor = d; }
-	    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-	};
-	var edit_1 = __webpack_require__(19);
-	var title_value_1 = __webpack_require__(140);
-	var widget_factory_1 = __webpack_require__(25);
-	var recyclable_creator_1 = __webpack_require__(84);
-	var TitleEdit = (function (_super) {
-	    __extends(TitleEdit, _super);
-	    function TitleEdit(type) {
-	        _super.call(this, type || TitleEdit.TYPE);
-	    }
-	    Object.defineProperty(TitleEdit.prototype, "inputFilter", {
-	        get: function () {
-	            return this._inputFilter;
-	        },
-	        set: function (value) {
-	            this._inputFilter = value;
-	            if (this._valueWidget) {
-	                this._valueWidget.set({ inputFilter: value });
-	            }
-	        },
-	        enumerable: true,
-	        configurable: true
-	    });
-	    Object.defineProperty(TitleEdit.prototype, "inputType", {
-	        get: function () {
-	            return this._inputType;
-	        },
-	        set: function (value) {
-	            this._inputType = value;
-	            if (this._valueWidget) {
-	                this._valueWidget.set({ inputType: value });
-	            }
-	        },
-	        enumerable: true,
-	        configurable: true
-	    });
-	    Object.defineProperty(TitleEdit.prototype, "inputTips", {
-	        get: function () {
-	            return this._inputTips;
-	        },
-	        set: function (value) {
-	            this._inputTips = value;
-	            if (this._valueWidget) {
-	                this._valueWidget.set({ inputTips: value });
-	            }
-	        },
-	        enumerable: true,
-	        configurable: true
-	    });
-	    TitleEdit.prototype.createValueWidget = function (options) {
-	        var opts = options || {};
-	        if (this._inputTips) {
-	            opts.inputTips = this._inputTips;
-	        }
-	        if (this._inputType) {
-	            opts.inputType = this._inputType;
-	        }
-	        if (this._inputFilter) {
-	            opts.inputFilter = this._inputFilter;
-	        }
-	        return edit_1.Edit.create(opts);
-	    };
-	    TitleEdit.create = function (options) {
-	        return TitleEdit.recycleBin.create().reset(TitleEdit.TYPE, options);
-	    };
-	    TitleEdit.TYPE = "title-edit";
-	    TitleEdit.recycleBin = new recyclable_creator_1.RecyclableCreator(function () { return new TitleEdit(); });
-	    return TitleEdit;
-	}(title_value_1.TitleValue));
-	exports.TitleEdit = TitleEdit;
-	;
-	widget_factory_1.WidgetFactory.register(TitleEdit.TYPE, TitleEdit.create);
-
-
-/***/ },
-/* 146 */
-/***/ function(module, exports, __webpack_require__) {
-
-	"use strict";
-	var __extends = (this && this.__extends) || function (d, b) {
-	    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
-	    function __() { this.constructor = d; }
-	    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-	};
-	var slider_1 = __webpack_require__(96);
-	var title_value_1 = __webpack_require__(140);
-	var widget_factory_1 = __webpack_require__(25);
-	var recyclable_creator_1 = __webpack_require__(84);
-	var TitleSlider = (function (_super) {
-	    __extends(TitleSlider, _super);
-	    function TitleSlider(type) {
-	        _super.call(this, type || TitleSlider.TYPE);
-	    }
-	    TitleSlider.prototype.createValueWidget = function (options) {
-	        return slider_1.Slider.create(options);
-	    };
-	    TitleSlider.create = function (options) {
-	        return TitleSlider.recycleBin.create().reset(TitleSlider.TYPE, options);
-	    };
-	    TitleSlider.TYPE = "title-slider";
-	    TitleSlider.recycleBin = new recyclable_creator_1.RecyclableCreator(function () { return new TitleSlider(); });
-	    return TitleSlider;
-	}(title_value_1.TitleValue));
-	exports.TitleSlider = TitleSlider;
-	;
-	widget_factory_1.WidgetFactory.register(TitleSlider.TYPE, TitleSlider.create);
-
-
-/***/ },
-/* 147 */
-/***/ function(module, exports, __webpack_require__) {
-
-	"use strict";
-	var __extends = (this && this.__extends) || function (d, b) {
-	    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
-	    function __() { this.constructor = d; }
-	    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-	};
-	var Events = __webpack_require__(8);
-	var title_link_1 = __webpack_require__(148);
-	var title_line_1 = __webpack_require__(149);
-	var title_edit_1 = __webpack_require__(145);
-	var title_label_1 = __webpack_require__(139);
-	var title_range_1 = __webpack_require__(141);
-	var title_vector_1 = __webpack_require__(143);
-	var widget_1 = __webpack_require__(21);
-	var title_slider_1 = __webpack_require__(146);
-	var title_text_area_1 = __webpack_require__(150);
-	var props_desc_1 = __webpack_require__(151);
-	var props_desc_2 = __webpack_require__(151);
-	var props_desc_3 = __webpack_require__(151);
-	var title_combo_box_1 = __webpack_require__(152);
-	var title_choosable_edit_1 = __webpack_require__(153);
-	var widget_factory_1 = __webpack_require__(25);
-	var recyclable_creator_1 = __webpack_require__(84);
-	/**
-	 * 属性编辑页，包装了各种TitleValue。
-	 */
-	var PropertyPage = (function (_super) {
-	    __extends(PropertyPage, _super);
-	    function PropertyPage() {
-	        _super.call(this, PropertyPage.TYPE);
-	    }
-	    Object.defineProperty(PropertyPage.prototype, "itemH", {
-	        get: function () {
-	            return this._itemH;
-	        },
-	        set: function (value) {
-	            this._itemH = value;
-	        },
-	        enumerable: true,
-	        configurable: true
-	    });
-	    Object.defineProperty(PropertyPage.prototype, "titleW", {
-	        get: function () {
-	            return this._titleW;
-	        },
-	        set: function (value) {
-	            this._titleW = value;
-	        },
-	        enumerable: true,
-	        configurable: true
-	    });
-	    Object.defineProperty(PropertyPage.prototype, "valueW", {
-	        get: function () {
-	            return this._valueW;
-	        },
-	        set: function (value) {
-	            this._valueW = value;
-	        },
-	        enumerable: true,
-	        configurable: true
-	    });
-	    PropertyPage.prototype.addLabel = function (title, value) {
-	        var itemH = this.itemH;
-	        var widget = title_label_1.TitleLabel.create({
-	            h: itemH,
-	            name: title,
-	            title: title,
-	            titleW: this.titleW,
-	            valueW: this.valueW
-	        });
-	        widget.value = value,
-	            this.addChild(widget, true);
-	        return widget;
-	    };
-	    PropertyPage.prototype.addLink = function (title, value) {
-	        var itemH = this.itemH;
-	        var widget = title_link_1.TitleLink.create({
-	            h: itemH,
-	            name: title,
-	            title: title,
-	            titleW: this.titleW,
-	            valueW: this.valueW
-	        });
-	        widget.value = value,
-	            this.addChild(widget, true);
-	        return widget;
-	    };
-	    PropertyPage.prototype.addGroupBegin = function (title) {
-	        var itemH = this.itemH;
-	        var widget = title_line_1.TitleLine.create({
-	            h: itemH,
-	            name: title,
-	            title: title,
-	            titleW: this.titleW,
-	            valueW: this.valueW
-	        });
-	        this.addChild(widget, true);
-	        return widget;
-	    };
-	    PropertyPage.prototype.addGroupEnd = function () {
-	        var itemH = this.itemH;
-	        var widget = title_line_1.TitleLine.create({
-	            h: itemH,
-	            titleW: this.titleW,
-	            valueW: this.valueW
-	        });
-	        this.addChild(widget, true);
-	        return widget;
-	    };
-	    PropertyPage.prototype.addRange = function (title, firstValue, secondValue) {
-	        var itemH = this.itemH;
-	        var widget = title_range_1.TitleRange.create({
-	            h: itemH,
-	            name: title,
-	            title: title,
-	            titleW: this.titleW,
-	            valueW: this.valueW
-	        });
-	        widget.value = { first: firstValue, second: secondValue };
-	        this.addChild(widget, true);
-	        return widget;
-	    };
-	    PropertyPage.prototype.addVector2 = function (title, x, y) {
-	        var itemH = this.itemH * 2;
-	        var widget = title_vector_1.TitleVector.create({
-	            d: 2,
-	            h: itemH,
-	            name: title,
-	            title: title,
-	            titleW: this.titleW,
-	            valueW: this.valueW
-	        });
-	        widget.value = { x: x, y: y };
-	        this.addChild(widget, true);
-	        return widget;
-	    };
-	    PropertyPage.prototype.addVector3 = function (title, x, y, z) {
-	        var itemH = this.itemH * 2;
-	        var widget = title_vector_1.TitleVector.create({
-	            d: 3,
-	            h: itemH,
-	            name: title,
-	            title: title,
-	            titleW: this.titleW,
-	            valueW: this.valueW
-	        });
-	        widget.value = { x: x, y: y, z: z };
-	        this.addChild(widget, true);
-	        return widget;
-	    };
-	    PropertyPage.prototype.addEdit = function (title, value, inputTips, inputType, inputFilter) {
-	        var itemH = this.itemH;
-	        var valueW = inputType === "number" ? "50%" : this.valueW;
-	        var widget = title_edit_1.TitleEdit.create({
-	            h: itemH,
-	            name: title,
-	            title: title,
-	            valueW: valueW,
-	            titleW: this.titleW,
-	            inputType: inputType,
-	            inputTips: inputTips,
-	            inputFilter: inputFilter
-	        });
-	        widget.value = value,
-	            this.addChild(widget, true);
-	        return widget;
-	    };
-	    PropertyPage.prototype.addChoosableEdit = function (title, value, inputTips) {
-	        var itemH = this.itemH;
-	        var widget = title_choosable_edit_1.TitleChoosableEdit.create({
-	            h: itemH,
-	            name: title,
-	            title: title,
-	            inputTips: inputTips,
-	            titleW: this.titleW,
-	            valueW: this.valueW
-	        });
-	        widget.value = value,
-	            this.addChild(widget, true);
-	        return widget;
-	    };
-	    PropertyPage.prototype.addComboBox = function (title, value) {
-	        var itemH = this.itemH;
-	        var widget = title_combo_box_1.TitleComboBox.create({
-	            h: itemH,
-	            name: title,
-	            title: title,
-	            titleW: this.titleW,
-	            valueW: this.valueW
-	        });
-	        widget.value = value,
-	            this.addChild(widget, true);
-	        return widget;
-	    };
-	    PropertyPage.prototype.addComboBoxEditable = function (title, value) {
-	        var itemH = this.itemH;
-	        var widget = title_combo_box_1.TitleComboBoxEditable.create({
-	            h: itemH,
-	            name: title,
-	            title: title,
-	            value: value,
-	            titleW: this.titleW,
-	            valueW: this.valueW
-	        });
-	        widget.value = value,
-	            this.addChild(widget, true);
-	        return widget;
-	    };
-	    PropertyPage.prototype.addSlider = function (title, value) {
-	        var itemH = this.itemH;
-	        var widget = title_slider_1.TitleSlider.create({
-	            h: itemH,
-	            name: title,
-	            title: title,
-	            titleW: this.titleW,
-	            valueW: this.valueW
-	        });
-	        widget.value = value,
-	            this.addChild(widget, true);
-	        return widget;
-	    };
-	    PropertyPage.prototype.addTextArea = function (title, value, h) {
-	        var itemH = h || (this.itemH * 4);
-	        var widget = title_text_area_1.TitleTextArea.create({
-	            h: itemH,
-	            name: title,
-	            title: title,
-	            titleW: this.titleW,
-	            valueW: this.valueW
-	        });
-	        widget.value = value,
-	            this.addChild(widget, true);
-	        return widget;
-	    };
-	    PropertyPage.prototype.findByTitle = function (title) {
-	        return this.findChildByName(title);
-	    };
-	    PropertyPage.prototype.addWithPropDesc = function (item) {
-	        var titleValue = null;
-	        if (item.type === props_desc_2.NumberPropDesc.TYPE) {
-	            titleValue = this.addEdit(item.name, item.value, item.desc, "number");
-	        }
-	        else if (item.type === props_desc_2.TextPropDesc.TYPE) {
-	            titleValue = this.addEdit(item.name, item.value, item.desc, "text");
-	        }
-	        else if (item.type === props_desc_2.ReadonlyTextPropDesc.TYPE) {
-	            titleValue = this.addLabel(item.name, item.value);
-	        }
-	        else if (item.type === props_desc_3.SliderPropDesc.TYPE) {
-	            titleValue = this.addSlider(item.name, item.value);
-	        }
-	        else if (item.type === props_desc_1.LinkPropDesc.TYPE) {
-	            titleValue = this.addLink(item.name, item.value);
-	        }
-	        else if (item.type === props_desc_1.LinePropDesc.TYPE) {
-	            if (item.name) {
-	                titleValue = this.addGroupBegin(item.name);
-	            }
-	            else {
-	                titleValue = this.addGroupEnd();
-	            }
-	        }
-	        else if (item.type === props_desc_3.RangePropDesc.TYPE) {
-	            var value = item.value || { first: 0, second: 0 };
-	            titleValue = this.addRange(item.name, value.first, value.second);
-	        }
-	        else if (item.type === props_desc_3.Vector2PropDesc.TYPE) {
-	            var value = item.value || { x: 0, y: 0 };
-	            titleValue = this.addVector2(item.name, value.x, value.y);
-	        }
-	        else if (item.type === props_desc_3.OptionsPropDesc.TYPE) {
-	            var value = item.value || { x: 0, y: 0 };
-	            var propDesc = item;
-	            titleValue = this.addComboBox(item.name, value);
-	            if (propDesc.options) {
-	                var comboBox = titleValue.valueWidget;
-	                comboBox.optionsJson = propDesc.options;
-	            }
-	        }
-	        else if (item.type === props_desc_3.Vector3PropDesc.TYPE) {
-	            var value = item.value || { x: 0, y: 0, z: 0 };
-	            titleValue = this.addVector3(item.name, value.x, value.y, value.z);
-	        }
-	        if (titleValue && item.path) {
-	            var valueWidget = titleValue.valueWidget;
-	            var bindRule = {
-	                value: {
-	                    path: item.path,
-	                    converter: item.converter,
-	                    validationRule: item.validationRule
-	                }
-	            };
-	            valueWidget.dataBindingRule = bindRule;
-	        }
-	    };
-	    PropertyPage.prototype.initWithPropsDesc = function (propsDesc) {
-	        var _this = this;
-	        this.removeAllChildren();
-	        propsDesc.forEach(function (item) {
-	            _this.addWithPropDesc(item);
-	        });
-	        propsDesc.once(Events.CHANGE, function (evt) {
-	            console.log("reload changed");
-	            _this.initWithPropsDesc(propsDesc);
-	        });
-	        var viewModal = this._viewModal;
-	        if (viewModal) {
-	            this.children.forEach(function (child) {
-	                child.bindData(viewModal);
-	            });
-	        }
-	        this.relayoutChildren();
-	    };
-	    PropertyPage.prototype.initWithJson = function (json) {
-	        var propsDesc = props_desc_2.PropsDesc.create(json);
-	        this.initWithPropsDesc(propsDesc);
-	    };
-	    PropertyPage.prototype.onAddChild = function (child) {
-	        this.reComputeH();
-	    };
-	    PropertyPage.prototype.onRemoveChild = function (child) {
-	        this.reComputeH();
-	    };
-	    PropertyPage.prototype.reComputeH = function () {
-	        var h = this.topPadding + this.bottomPadding;
-	        this.children.forEach(function (child) {
-	            h += child.h;
-	        });
-	        this.h = h;
-	        return this;
-	    };
-	    PropertyPage.prototype.relayoutChildren = function () {
-	        var r = this.getLayoutRect();
-	        var y = r.y;
-	        this.children.forEach(function (child) {
-	            child.moveResizeTo(r.x, y, r.w, child.h, 0);
-	            child.relayoutChildren();
-	            y += child.h;
-	        });
-	        this.h = this.bottomPadding + y;
-	        this.requestRedraw();
-	        return r;
-	    };
-	    PropertyPage.prototype.getDefProps = function () {
-	        return PropertyPage.defProps;
-	    };
-	    PropertyPage.create = function (options) {
-	        return PropertyPage.rBin.create().reset(PropertyPage.TYPE, options);
-	    };
-	    PropertyPage.defProps = Object.assign({}, widget_1.Widget.defProps, { _itemH: 30, _titleW: "60px", _valueW: "100%" });
-	    PropertyPage.TYPE = "property-page";
-	    PropertyPage.rBin = new recyclable_creator_1.RecyclableCreator(function () { return new PropertyPage(); });
-	    return PropertyPage;
-	}(widget_1.Widget));
-	exports.PropertyPage = PropertyPage;
-	;
-	widget_factory_1.WidgetFactory.register(PropertyPage.TYPE, PropertyPage.create);
-
-
-/***/ },
-/* 148 */
-/***/ function(module, exports, __webpack_require__) {
-
-	"use strict";
-	var __extends = (this && this.__extends) || function (d, b) {
-	    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
-	    function __() { this.constructor = d; }
-	    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-	};
-	var Events = __webpack_require__(8);
-	var label_1 = __webpack_require__(20);
-	var title_value_1 = __webpack_require__(140);
-	var widget_factory_1 = __webpack_require__(25);
-	var recyclable_creator_1 = __webpack_require__(84);
-	var TitleLink = (function (_super) {
-	    __extends(TitleLink, _super);
-	    function TitleLink(type) {
-	        _super.call(this, type || TitleLink.TYPE);
-	    }
-	    TitleLink.prototype.createValueWidget = function (options) {
-	        var link = label_1.Label.create(options);
-	        link.styleType = "link";
-	        link.on(Events.CLICK, function (evt) {
-	            window.open(this.text, "_blank");
-	        });
-	        link.on(Events.POINTER_ENTER, function (evt) {
-	            document.body.style.cursor = "pointer";
-	        });
-	        link.on(Events.POINTER_LEAVE, function (evt) {
-	            document.body.style.cursor = "default";
-	        });
-	        return link;
-	    };
-	    TitleLink.create = function (options) {
-	        return TitleLink.recycleBin.create().reset(TitleLink.TYPE, options);
-	    };
-	    TitleLink.TYPE = "title-link";
-	    TitleLink.recycleBin = new recyclable_creator_1.RecyclableCreator(function () { return new TitleLink(); });
-	    return TitleLink;
-	}(title_value_1.TitleValue));
-	exports.TitleLink = TitleLink;
-	;
-	widget_factory_1.WidgetFactory.register(TitleLink.TYPE, TitleLink.create);
-
-
-/***/ },
-/* 149 */
-/***/ function(module, exports, __webpack_require__) {
-
-	"use strict";
-	var __extends = (this && this.__extends) || function (d, b) {
-	    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
-	    function __() { this.constructor = d; }
-	    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-	};
-	var title_value_1 = __webpack_require__(140);
-	var color_tile_1 = __webpack_require__(134);
-	var widget_factory_1 = __webpack_require__(25);
-	var recyclable_creator_1 = __webpack_require__(84);
-	var TitleLine = (function (_super) {
-	    __extends(TitleLine, _super);
-	    function TitleLine(type) {
-	        _super.call(this, type || TitleLine.TYPE);
-	    }
-	    TitleLine.prototype.createValueWidget = function (options) {
-	        return color_tile_1.ColorLine.create({ styleType: "title.line" });
-	    };
-	    TitleLine.create = function (options) {
-	        return TitleLine.recycleBin.create().reset(TitleLine.TYPE, options);
-	    };
-	    TitleLine.TYPE = "title-line";
-	    TitleLine.recycleBin = new recyclable_creator_1.RecyclableCreator(function () { return new TitleLine(); });
-	    return TitleLine;
-	}(title_value_1.TitleValue));
-	exports.TitleLine = TitleLine;
-	;
-	widget_factory_1.WidgetFactory.register(TitleLine.TYPE, TitleLine.create);
-
-
-/***/ },
-/* 150 */
-/***/ function(module, exports, __webpack_require__) {
-
-	"use strict";
-	var __extends = (this && this.__extends) || function (d, b) {
-	    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
-	    function __() { this.constructor = d; }
-	    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-	};
-	var edit_1 = __webpack_require__(19);
-	var title_value_1 = __webpack_require__(140);
-	var widget_factory_1 = __webpack_require__(25);
-	var recyclable_creator_1 = __webpack_require__(84);
-	var TitleTextArea = (function (_super) {
-	    __extends(TitleTextArea, _super);
-	    function TitleTextArea(type) {
-	        _super.call(this, type || TitleTextArea.TYPE);
-	    }
-	    Object.defineProperty(TitleTextArea.prototype, "inputTips", {
-	        get: function () {
-	            return this._inputTips;
-	        },
-	        set: function (value) {
-	            this._inputTips = value;
-	            if (this._valueWidget) {
-	                this._valueWidget.set({ inputTips: value });
-	            }
-	        },
-	        enumerable: true,
-	        configurable: true
-	    });
-	    TitleTextArea.prototype.createValueWidget = function (options) {
-	        var opts = options || {};
-	        if (this._inputTips) {
-	            opts.inputTips = this._inputTips;
-	        }
-	        opts.multiLines = true;
-	        return edit_1.Edit.create(opts);
-	    };
-	    TitleTextArea.create = function (options) {
-	        return TitleTextArea.recycleBin.create().reset(TitleTextArea.TYPE, options);
-	    };
-	    TitleTextArea.TYPE = "title-text-area";
-	    TitleTextArea.recycleBin = new recyclable_creator_1.RecyclableCreator(function () { return new TitleTextArea(); });
-	    return TitleTextArea;
-	}(title_value_1.TitleValue));
-	exports.TitleTextArea = TitleTextArea;
-	;
-	widget_factory_1.WidgetFactory.register(TitleTextArea.TYPE, TitleTextArea.create);
-
-
-/***/ },
-/* 151 */
-/***/ function(module, exports, __webpack_require__) {
-
-	"use strict";
-	var __extends = (this && this.__extends) || function (d, b) {
-	    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
-	    function __() { this.constructor = d; }
-	    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-	};
-	var Events = __webpack_require__(8);
-	var emitter_1 = __webpack_require__(6);
-	var PropDesc = (function () {
-	    function PropDesc(type) {
-	        this.type = type;
-	    }
-	    PropDesc.prototype.setBasic = function (name, value, desc) {
-	        this.name = name;
-	        this.desc = desc;
-	        this.value = value;
-	    };
-	    PropDesc.prototype.setDataBindingRule = function (path, converter, validationRule) {
-	        this.path = path;
-	        this.converter = converter;
-	        this.validationRule = validationRule;
-	        return this;
-	    };
-	    return PropDesc;
-	}());
-	exports.PropDesc = PropDesc;
-	;
-	var NumberPropDesc = (function (_super) {
-	    __extends(NumberPropDesc, _super);
-	    function NumberPropDesc(min, max) {
-	        _super.call(this, NumberPropDesc.TYPE);
-	        this.min = min;
-	        this.max = max;
-	    }
-	    NumberPropDesc.create = function (min, max) {
-	        return new NumberPropDesc(min, max);
-	    };
-	    NumberPropDesc.TYPE = "number";
-	    return NumberPropDesc;
-	}(PropDesc));
-	exports.NumberPropDesc = NumberPropDesc;
-	;
-	var TextPropDesc = (function (_super) {
-	    __extends(TextPropDesc, _super);
-	    function TextPropDesc() {
-	        _super.call(this, TextPropDesc.TYPE);
-	    }
-	    TextPropDesc.create = function () {
-	        return new TextPropDesc();
-	    };
-	    TextPropDesc.TYPE = "text";
-	    return TextPropDesc;
-	}(PropDesc));
-	exports.TextPropDesc = TextPropDesc;
-	var LinkPropDesc = (function (_super) {
-	    __extends(LinkPropDesc, _super);
-	    function LinkPropDesc() {
-	        _super.call(this, LinkPropDesc.TYPE);
-	    }
-	    LinkPropDesc.create = function () {
-	        return new LinkPropDesc();
-	    };
-	    LinkPropDesc.TYPE = "link";
-	    return LinkPropDesc;
-	}(PropDesc));
-	exports.LinkPropDesc = LinkPropDesc;
-	var ReadonlyTextPropDesc = (function (_super) {
-	    __extends(ReadonlyTextPropDesc, _super);
-	    function ReadonlyTextPropDesc() {
-	        _super.call(this, ReadonlyTextPropDesc.TYPE);
-	    }
-	    ReadonlyTextPropDesc.create = function () {
-	        return new ReadonlyTextPropDesc();
-	    };
-	    ReadonlyTextPropDesc.TYPE = "text-readonly";
-	    return ReadonlyTextPropDesc;
-	}(PropDesc));
-	exports.ReadonlyTextPropDesc = ReadonlyTextPropDesc;
-	var SliderPropDesc = (function (_super) {
-	    __extends(SliderPropDesc, _super);
-	    function SliderPropDesc() {
-	        _super.call(this, SliderPropDesc.TYPE);
-	    }
-	    SliderPropDesc.create = function () {
-	        return new SliderPropDesc();
-	    };
-	    SliderPropDesc.TYPE = "slider";
-	    return SliderPropDesc;
-	}(PropDesc));
-	exports.SliderPropDesc = SliderPropDesc;
-	var RangePropDesc = (function (_super) {
-	    __extends(RangePropDesc, _super);
-	    function RangePropDesc() {
-	        _super.call(this, RangePropDesc.TYPE);
-	    }
-	    RangePropDesc.create = function () {
-	        return new RangePropDesc();
-	    };
-	    RangePropDesc.TYPE = "range";
-	    return RangePropDesc;
-	}(PropDesc));
-	exports.RangePropDesc = RangePropDesc;
-	var Vector2PropDesc = (function (_super) {
-	    __extends(Vector2PropDesc, _super);
-	    function Vector2PropDesc() {
-	        _super.call(this, Vector2PropDesc.TYPE);
-	    }
-	    Vector2PropDesc.create = function () {
-	        return new Vector2PropDesc();
-	    };
-	    Vector2PropDesc.TYPE = "vector2";
-	    return Vector2PropDesc;
-	}(PropDesc));
-	exports.Vector2PropDesc = Vector2PropDesc;
-	var Vector3PropDesc = (function (_super) {
-	    __extends(Vector3PropDesc, _super);
-	    function Vector3PropDesc() {
-	        _super.call(this, Vector3PropDesc.TYPE);
-	    }
-	    Vector3PropDesc.create = function () {
-	        return new Vector3PropDesc();
-	    };
-	    Vector3PropDesc.TYPE = "vector3";
-	    return Vector3PropDesc;
-	}(PropDesc));
-	exports.Vector3PropDesc = Vector3PropDesc;
-	var LinePropDesc = (function (_super) {
-	    __extends(LinePropDesc, _super);
-	    function LinePropDesc() {
-	        _super.call(this, LinePropDesc.TYPE);
-	    }
-	    LinePropDesc.create = function () {
-	        return new LinePropDesc();
-	    };
-	    LinePropDesc.TYPE = "line";
-	    return LinePropDesc;
-	}(PropDesc));
-	exports.LinePropDesc = LinePropDesc;
-	var OptionsPropDesc = (function (_super) {
-	    __extends(OptionsPropDesc, _super);
-	    function OptionsPropDesc(options) {
-	        _super.call(this, OptionsPropDesc.TYPE);
-	        this.options = options;
-	    }
-	    OptionsPropDesc.create = function (options) {
-	        return new OptionsPropDesc(options);
-	    };
-	    OptionsPropDesc.TYPE = "options";
-	    return OptionsPropDesc;
-	}(PropDesc));
-	exports.OptionsPropDesc = OptionsPropDesc;
-	var PropsDesc = (function (_super) {
-	    __extends(PropsDesc, _super);
-	    function PropsDesc() {
-	        _super.apply(this, arguments);
-	    }
-	    PropsDesc.prototype.notifyChange = function () {
-	        var e = Events.ChangeEvent.create().init(Events.CHANGE, { value: null });
-	        this.dispatchEvent(e);
-	        e.dispose();
-	        return this;
-	    };
-	    PropsDesc.prototype.forEach = function (func) {
-	        var items = this._items;
-	        items.forEach(function (item) {
-	            func(item);
-	        });
-	    };
-	    PropsDesc.prototype.parse = function (json) {
-	        var items = [];
-	        json.forEach(function (data) {
-	            var desc = null;
-	            var type = data.type;
-	            if (type === NumberPropDesc.TYPE) {
-	                desc = NumberPropDesc.create(data.min, data.max);
-	            }
-	            else if (type === SliderPropDesc.TYPE) {
-	                desc = SliderPropDesc.create();
-	            }
-	            else if (type === TextPropDesc.TYPE) {
-	                desc = TextPropDesc.create();
-	            }
-	            else if (type === LinkPropDesc.TYPE) {
-	                desc = LinkPropDesc.create();
-	            }
-	            else if (type === ReadonlyTextPropDesc.TYPE) {
-	                desc = ReadonlyTextPropDesc.create();
-	            }
-	            else if (type === RangePropDesc.TYPE) {
-	                desc = RangePropDesc.create();
-	            }
-	            else if (type === Vector2PropDesc.TYPE) {
-	                desc = Vector2PropDesc.create();
-	            }
-	            else if (type === Vector3PropDesc.TYPE) {
-	                desc = Vector3PropDesc.create();
-	            }
-	            else if (type === OptionsPropDesc.TYPE) {
-	                desc = OptionsPropDesc.create(data.options);
-	            }
-	            else if (type === LinePropDesc.TYPE) {
-	                desc = LinePropDesc.create();
-	            }
-	            else {
-	                console.log("not supported:" + type);
-	                return;
-	            }
-	            items.push(desc);
-	            desc.setBasic(data.name, data.value, data.desc);
-	            desc.setDataBindingRule(data.path, data.converter, data.validationRule);
-	        });
-	        this._items = items;
-	        return this;
-	    };
-	    PropsDesc.create = function (json) {
-	        var propsDesc = new PropsDesc();
-	        return propsDesc.parse(json);
-	    };
-	    return PropsDesc;
-	}(emitter_1.Emitter));
-	exports.PropsDesc = PropsDesc;
-	;
-	var PagePropsDesc = (function () {
-	    function PagePropsDesc(title, propsDesc) {
-	        this.title = title;
-	        this.propsDesc = propsDesc;
-	    }
-	    PagePropsDesc.create = function (title, json) {
-	        var propsDesc = PropsDesc.create(json);
-	        var pagePropsDesc = new PagePropsDesc(title, propsDesc);
-	        return pagePropsDesc;
-	    };
-	    return PagePropsDesc;
-	}());
-	exports.PagePropsDesc = PagePropsDesc;
-	;
-
-
-/***/ },
-/* 152 */
-/***/ function(module, exports, __webpack_require__) {
-
-	"use strict";
-	var __extends = (this && this.__extends) || function (d, b) {
-	    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
-	    function __() { this.constructor = d; }
-	    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-	};
-	var title_value_1 = __webpack_require__(140);
-	var widget_factory_1 = __webpack_require__(25);
-	var recyclable_creator_1 = __webpack_require__(84);
-	var combo_box_1 = __webpack_require__(112);
-	var TitleComboBoxBase = (function (_super) {
-	    __extends(TitleComboBoxBase, _super);
-	    function TitleComboBoxBase(type) {
-	        _super.call(this, type);
-	    }
-	    Object.defineProperty(TitleComboBoxBase.prototype, "itemH", {
-	        get: function () {
-	            var comboBox = this._valueWidget;
-	            return comboBox.itemH;
-	        },
-	        set: function (value) {
-	            var comboBox = this._valueWidget;
-	            comboBox.itemH = value;
-	        },
-	        enumerable: true,
-	        configurable: true
-	    });
-	    TitleComboBoxBase.prototype.resetOptions = function () {
-	        var comboBox = this._valueWidget;
-	        comboBox.resetOptions();
-	        return this;
-	    };
-	    TitleComboBoxBase.prototype.addOption = function (text, value, imageURL, color) {
-	        var comboBox = this._valueWidget;
-	        comboBox.addOption(text, value, imageURL, color);
-	        return this;
-	    };
-	    return TitleComboBoxBase;
-	}(title_value_1.TitleValue));
-	exports.TitleComboBoxBase = TitleComboBoxBase;
-	var TitleComboBox = (function (_super) {
-	    __extends(TitleComboBox, _super);
-	    function TitleComboBox(type) {
-	        _super.call(this, type || TitleComboBox.TYPE);
-	    }
-	    TitleComboBox.prototype.createValueWidget = function (options) {
-	        return combo_box_1.ComboBox.create(options);
-	    };
-	    TitleComboBox.create = function (options) {
-	        return TitleComboBox.recycleBin.create().reset(TitleComboBox.TYPE, options);
-	    };
-	    TitleComboBox.TYPE = "title-combo-box";
-	    TitleComboBox.recycleBin = new recyclable_creator_1.RecyclableCreator(function () { return new TitleComboBox(); });
-	    return TitleComboBox;
-	}(TitleComboBoxBase));
-	exports.TitleComboBox = TitleComboBox;
-	;
-	widget_factory_1.WidgetFactory.register(TitleComboBox.TYPE, TitleComboBox.create);
-	var TitleComboBoxEditable = (function (_super) {
-	    __extends(TitleComboBoxEditable, _super);
-	    function TitleComboBoxEditable(type) {
-	        _super.call(this, type || TitleComboBoxEditable.TYPE);
-	    }
-	    TitleComboBoxEditable.prototype.createValueWidget = function (options) {
-	        return combo_box_1.ComboBoxEditable.create(options);
-	    };
-	    TitleComboBoxEditable.create = function (options) {
-	        return TitleComboBoxEditable.recycleBin.create().reset(TitleComboBoxEditable.TYPE, options);
-	    };
-	    TitleComboBoxEditable.TYPE = "title-combo-box-editable";
-	    TitleComboBoxEditable.recycleBin = new recyclable_creator_1.RecyclableCreator(function () { return new TitleComboBoxEditable(); });
-	    return TitleComboBoxEditable;
-	}(TitleComboBoxBase));
-	exports.TitleComboBoxEditable = TitleComboBoxEditable;
-	;
-	widget_factory_1.WidgetFactory.register(TitleComboBoxEditable.TYPE, TitleComboBoxEditable.create);
-
-
-/***/ },
-/* 153 */
-/***/ function(module, exports, __webpack_require__) {
-
-	"use strict";
-	var __extends = (this && this.__extends) || function (d, b) {
-	    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
-	    function __() { this.constructor = d; }
-	    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-	};
-	var title_value_1 = __webpack_require__(140);
-	var choosable_edit_1 = __webpack_require__(154);
-	var widget_factory_1 = __webpack_require__(25);
-	var recyclable_creator_1 = __webpack_require__(84);
-	var TitleChoosableEdit = (function (_super) {
-	    __extends(TitleChoosableEdit, _super);
-	    function TitleChoosableEdit(type) {
-	        _super.call(this, type || TitleChoosableEdit.TYPE);
-	    }
-	    Object.defineProperty(TitleChoosableEdit.prototype, "onChoose", {
-	        get: function () {
-	            var edit = this._valueWidget;
-	            return edit.onChoose;
-	        },
-	        set: function (value) {
-	            var edit = this._valueWidget;
-	            edit.onChoose = value;
-	        },
-	        enumerable: true,
-	        configurable: true
-	    });
-	    Object.defineProperty(TitleChoosableEdit.prototype, "inputTips", {
-	        get: function () {
-	            return this._inputTips;
-	        },
-	        set: function (value) {
-	            this._inputTips = value;
-	            if (this._valueWidget) {
-	                this._valueWidget.set({ inputTips: value });
-	            }
-	        },
-	        enumerable: true,
-	        configurable: true
-	    });
-	    TitleChoosableEdit.prototype.createValueWidget = function (options) {
-	        return choosable_edit_1.ChoosableEdit.create();
-	    };
-	    TitleChoosableEdit.create = function (options) {
-	        return TitleChoosableEdit.recycleBin.create().reset(TitleChoosableEdit.TYPE, options);
-	    };
-	    TitleChoosableEdit.TYPE = "title-choosable-edit";
-	    TitleChoosableEdit.recycleBin = new recyclable_creator_1.RecyclableCreator(function () { return new TitleChoosableEdit(); });
-	    return TitleChoosableEdit;
-	}(title_value_1.TitleValue));
-	exports.TitleChoosableEdit = TitleChoosableEdit;
-	;
-	widget_factory_1.WidgetFactory.register(TitleChoosableEdit.TYPE, TitleChoosableEdit.create);
-
-
-/***/ },
-/* 154 */
-/***/ function(module, exports, __webpack_require__) {
-
-	"use strict";
-	var __extends = (this && this.__extends) || function (d, b) {
-	    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
-	    function __() { this.constructor = d; }
-	    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-	};
-	var edit_1 = __webpack_require__(19);
-	var button_1 = __webpack_require__(95);
-	var widget_1 = __webpack_require__(21);
-	var Events = __webpack_require__(8);
-	var widget_factory_1 = __webpack_require__(25);
-	var recyclable_creator_1 = __webpack_require__(84);
-	/**
-	 * 编辑器+选择按钮。
-	 */
-	var ChoosableEdit = (function (_super) {
-	    __extends(ChoosableEdit, _super);
-	    function ChoosableEdit() {
-	        _super.call(this, ChoosableEdit.TYPE);
-	    }
-	    Object.defineProperty(ChoosableEdit.prototype, "inputTips", {
-	        get: function () {
-	            return this._inputTips;
-	        },
-	        set: function (value) {
-	            this._inputTips = value;
-	            if (this._edit) {
-	                this._edit.set({ inputTips: value });
-	            }
-	        },
-	        enumerable: true,
-	        configurable: true
-	    });
-	    Object.defineProperty(ChoosableEdit.prototype, "value", {
-	        get: function () {
-	            return this._edit ? this._edit.text : this._value;
-	        },
-	        set: function (value) {
-	            this._value = value;
-	            if (this._edit) {
-	                this._edit.text = value;
-	            }
-	        },
-	        enumerable: true,
-	        configurable: true
-	    });
-	    ChoosableEdit.prototype.relayoutChildren = function () {
-	        this.requestRedraw();
-	        if (this._edit && this._button) {
-	            var x = this.leftPadding;
-	            var y = this.topPadding;
-	            var h = this.clientH;
-	            var w = this.clientW - this.h - 6;
-	            this._edit.moveResizeTo(x, y, w, h, 0);
-	            w = this.h;
-	            x = this.w - w - 4;
-	            this._button.moveResizeTo(x, y, w, h, 0);
-	        }
-	        return this.getLayoutRect();
-	    };
-	    ChoosableEdit.prototype.dispose = function () {
-	        this._edit = null;
-	        this._button = null;
-	        _super.prototype.dispose.call(this);
-	    };
-	    ChoosableEdit.prototype.onReset = function () {
-	        var _this = this;
-	        _super.prototype.onReset.call(this);
-	        this.padding = 0;
-	        this.onChoose = null;
-	        this._edit = edit_1.Edit.create();
-	        this.addChild(this._edit);
-	        this._edit.on(Events.CHANGE, function (evt) {
-	            _this.dispatchEvent(evt);
-	        });
-	        this._button = button_1.Button.create({ text: "..." });
-	        this.addChild(this._button);
-	        this._button.on(Events.CLICK, function (evt) {
-	            if (_this.onChoose) {
-	                _this.onChoose();
-	            }
-	        });
-	    };
-	    ChoosableEdit.create = function (options) {
-	        return ChoosableEdit.rBin.create().reset(ChoosableEdit.TYPE, options);
-	    };
-	    ChoosableEdit.TYPE = "choosable.edit";
-	    ChoosableEdit.rBin = new recyclable_creator_1.RecyclableCreator(function () {
-	        return new ChoosableEdit();
-	    });
-	    return ChoosableEdit;
-	}(widget_1.Widget));
-	exports.ChoosableEdit = ChoosableEdit;
-	;
-	widget_factory_1.WidgetFactory.register(ChoosableEdit.TYPE, ChoosableEdit.create);
-
-
-/***/ },
-/* 155 */
-/***/ function(module, exports, __webpack_require__) {
-
-	"use strict";
-	var __extends = (this && this.__extends) || function (d, b) {
-	    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
-	    function __() { this.constructor = d; }
-	    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-	};
-	var application_1 = __webpack_require__(122);
-	var property_page_1 = __webpack_require__(147);
-	var view_modal_1 = __webpack_require__(156);
-	var recyclable_creator_1 = __webpack_require__(84);
-	var widget_factory_1 = __webpack_require__(25);
-	var message_box_1 = __webpack_require__(161);
-	var simple_layouter_1 = __webpack_require__(116);
-	/**
-	 * 属性对话框。
-	 */
-	var PropertyDialog = (function (_super) {
-	    __extends(PropertyDialog, _super);
-	    function PropertyDialog() {
-	        _super.apply(this, arguments);
-	    }
-	    PropertyDialog.prototype.createChildren = function (titleOptions, buttonsOptions, content) {
-	        _super.prototype.createChildren.call(this, titleOptions, buttonsOptions, content);
-	    };
-	    PropertyDialog.show = function (pagePropsDesc, data, onYes, onNo, w) {
-	        var app = application_1.Application.get();
-	        var vp = app.getViewPort();
-	        var rw = Math.min(vp.w, w || 300);
-	        var dataCopy = onNo ? JSON.parse(JSON.stringify(data)) : data;
-	        var page = property_page_1.PropertyPage.create({ layoutParam: simple_layouter_1.SimpleLayouterParam.create({ w: "100%", h: "100%" }) });
-	        page.initWithPropsDesc(pagePropsDesc.propsDesc);
-	        var h = page.h + message_box_1.MessageBox.TITLE_H + message_box_1.MessageBox.BUTTONS_H + 20;
-	        var messageBox = PropertyDialog.create({ app: app, styleType: message_box_1.MessageBox.TYPE, w: rw, h: h });
-	        var titleOptions = new message_box_1.TitleOptions(pagePropsDesc.title, "messagebox.info.icon", false);
-	        var buttonsOption = new message_box_1.ButtonsOptions();
-	        if (onNo) {
-	            buttonsOption.buttons.push({ styleType: "button.cancel", text: "Cancel", onClick: function () {
-	                    if (onNo) {
-	                        onNo(data);
-	                    }
-	                } });
-	        }
-	        buttonsOption.buttons.push({ styleType: "button.ok", text: onNo ? "Yes" : "OK", onClick: function () {
-	                if (onYes) {
-	                    onYes(dataCopy);
-	                }
-	            } });
-	        messageBox.createChildren(titleOptions, buttonsOption, null);
-	        var group = messageBox.content.set({ padding: 5, childrenLayouter: simple_layouter_1.SimpleLayouter.create() });
-	        group.addChild(page);
-	        var vm = view_modal_1.ViewModal.create(dataCopy);
-	        page.bindData(vm);
-	        messageBox.open();
-	    };
-	    PropertyDialog.create = function (options) {
-	        return PropertyDialog.rb.create().reset(PropertyDialog.TYPE, options);
-	    };
-	    PropertyDialog.TYPE = "property-dialog";
-	    PropertyDialog.rb = new recyclable_creator_1.RecyclableCreator(function () { return new PropertyDialog(); });
-	    return PropertyDialog;
-	}(message_box_1.MessageBox));
-	exports.PropertyDialog = PropertyDialog;
-	widget_factory_1.WidgetFactory.register(PropertyDialog.TYPE, PropertyDialog.create);
-
-
-/***/ },
-/* 156 */
-/***/ function(module, exports, __webpack_require__) {
-
-	"use strict";
-	var __extends = (this && this.__extends) || function (d, b) {
-	    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
-	    function __() { this.constructor = d; }
-	    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-	};
-	var view_modal_default_1 = __webpack_require__(157);
-	/**
-	 * IViewModal的基本实现。如果不能满足要求，可以重载部分函数。
-	 */
-	var ViewModal = (function (_super) {
-	    __extends(ViewModal, _super);
-	    function ViewModal() {
-	        _super.apply(this, arguments);
-	    }
-	    ViewModal.create = function (data) {
-	        var viewModal = new ViewModal(data);
-	        return viewModal;
-	    };
-	    return ViewModal;
-	}(view_modal_default_1.ViewModalDefault));
-	exports.ViewModal = ViewModal;
-	;
-
-
-/***/ },
-/* 157 */
-/***/ function(module, exports, __webpack_require__) {
-
-	"use strict";
-	var __extends = (this && this.__extends) || function (d, b) {
-	    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
-	    function __() { this.constructor = d; }
-	    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-	};
-	var pointer = __webpack_require__(158);
-	var emitter_1 = __webpack_require__(6);
-	var Events = __webpack_require__(8);
-	var ivalidation_rule_1 = __webpack_require__(160);
-	var iview_modal_1 = __webpack_require__(83);
-	var ViewModalDefault = (function (_super) {
-	    __extends(ViewModalDefault, _super);
-	    function ViewModalDefault(data) {
-	        _super.call(this);
-	        this._commands = {};
-	        this._converters = {};
-	        this._data = data || {};
-	        this._validationRules = {};
-	        this.isCollection = false;
-	        this._ePropChange = Events.PropChangeEvent.create();
-	    }
-	    Object.defineProperty(ViewModalDefault.prototype, "data", {
-	        get: function () {
-	            return this._data;
-	        },
-	        set: function (value) {
-	            this._data = value;
-	        },
-	        enumerable: true,
-	        configurable: true
-	    });
-	    ViewModalDefault.prototype.getBindingMode = function () {
-	        return iview_modal_1.BindingMode.TWO_WAY;
-	    };
-	    ViewModalDefault.prototype.onChange = function (callback) {
-	        this.on(Events.PROP_DELETE, callback);
-	        this.on(Events.PROP_CHANGE, callback);
-	        return this;
-	    };
-	    ViewModalDefault.prototype.offChange = function (callback) {
-	        this.off(Events.PROP_DELETE, callback);
-	        this.off(Events.PROP_CHANGE, callback);
-	        return this;
-	    };
-	    ViewModalDefault.prototype.notifyChange = function (type, path, value) {
-	        this.dispatchEvent(this._ePropChange.init(type, { prop: path, value: value }));
-	    };
-	    ViewModalDefault.prototype.fixPath = function (path) {
-	        if (path && path.charAt(0) !== '/') {
-	            return '/' + path;
-	        }
-	        else {
-	            return path;
-	        }
-	    };
-	    ViewModalDefault.prototype.getProp = function (path, converterName) {
-	        var value = pointer.get(this._data, this.fixPath(path));
-	        return this.convert(converterName, value);
-	    };
-	    ViewModalDefault.prototype.delProp = function (path) {
-	        pointer.remove(this._data, path);
-	        this.notifyChange(Events.PROP_DELETE, this.fixPath(path), null);
-	        return this;
-	    };
-	    ViewModalDefault.prototype.setPropEx = function (source, value, oldValue) {
-	        var path = source.path;
-	        var converterName = source.converter;
-	        var validationRule = source.validationRule;
-	        return this.setProp(path, value, converterName, validationRule);
-	    };
-	    ViewModalDefault.prototype.setProp = function (path, v, converterName, validationRule) {
-	        var value = this.convertBack(converterName, v);
-	        var validateResult = this.isValueValid(validationRule, value);
-	        if (!validateResult.code) {
-	            pointer.set(this._data, path, value);
-	            this.notifyChange(Events.PROP_CHANGE, this.fixPath(path), value);
-	        }
-	        else {
-	            console.log("invalid value");
-	        }
-	        return validateResult;
-	        ;
-	    };
-	    ViewModalDefault.prototype.getCommand = function (name) {
-	        return this._commands[name];
-	    };
-	    ViewModalDefault.prototype.canExecute = function (name) {
-	        var ret = false;
-	        var cmd = this.getCommand(name);
-	        if (cmd && cmd.canExecute()) {
-	            ret = true;
-	        }
-	        return ret;
-	    };
-	    ViewModalDefault.prototype.execCommand = function (name, args) {
-	        var ret = false;
-	        var cmd = this.getCommand(name);
-	        if (cmd && cmd.canExecute()) {
-	            ret = cmd.execute(args);
-	        }
-	        return ret;
-	    };
-	    ViewModalDefault.prototype.registerCommand = function (name, cmd) {
-	        this._commands[name] = cmd;
-	        return this;
-	    };
-	    ViewModalDefault.prototype.unregisterCommand = function (name, cmd) {
-	        this._commands[name] = null;
-	        return this;
-	    };
-	    ViewModalDefault.prototype.getValueConverter = function (name) {
-	        return this._converters[name];
-	    };
-	    ViewModalDefault.prototype.registerValueConverter = function (name, converter) {
-	        this._converters[name] = converter;
-	        return this;
-	    };
-	    ViewModalDefault.prototype.unregisterValueConverter = function (name, converter) {
-	        this._converters[name] = null;
-	        return this;
-	    };
-	    ViewModalDefault.prototype.convert = function (converterName, value) {
-	        var converter = converterName ? this.getValueConverter(converterName) : null;
-	        return converter ? converter.convert(value) : value;
-	    };
-	    ViewModalDefault.prototype.convertBack = function (converterName, value) {
-	        var converter = converterName ? this.getValueConverter(converterName) : null;
-	        return converter ? converter.convertBack(value) : value;
-	    };
-	    ViewModalDefault.prototype.getValidationRule = function (name) {
-	        return this._validationRules[name];
-	    };
-	    ViewModalDefault.prototype.registerValidationRule = function (name, validationRule) {
-	        this._validationRules[name] = validationRule;
-	        return this;
-	    };
-	    ViewModalDefault.prototype.unregisterValidationRule = function (name, validationRule) {
-	        this._validationRules[name] = null;
-	        return this;
-	    };
-	    ViewModalDefault.prototype.isValueValid = function (ruleName, value) {
-	        var validationRule = ruleName ? this.getValidationRule(ruleName) : null;
-	        return validationRule ? validationRule.validate(value) : ivalidation_rule_1.ValidationResult.validResult;
-	    };
-	    ViewModalDefault.prototype.sendViewRequest = function (name, callback, payload) {
-	        var detail = { name: name, callback: callback, payload: payload };
-	        var e = Events.ViewRequestEvent.create(Events.SHOW_VIEW, detail);
-	        this.dispatchEvent(e);
-	        e.dispose();
-	    };
-	    return ViewModalDefault;
-	}(emitter_1.Emitter));
-	exports.ViewModalDefault = ViewModalDefault;
-	;
-
-
-/***/ },
-/* 158 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	var each = __webpack_require__(159);
-	module.exports = api;
-
-
-	/**
-	 * Convenience wrapper around the api.
-	 * Calls `.get` when called with an `object` and a `pointer`.
-	 * Calls `.set` when also called with `value`.
-	 * If only supplied `object`, returns a partially applied function, mapped to the object.
-	 *
-	 * @param {Object} obj
-	 * @param {String|Array} pointer
-	 * @param value
-	 * @returns {*}
-	 */
-
-	function api (obj, pointer, value) {
-	    // .set()
-	    if (arguments.length === 3) {
-	        return api.set(obj, pointer, value);
-	    }
-	    // .get()
-	    if (arguments.length === 2) {
-	        return api.get(obj, pointer);
-	    }
-	    // Return a partially applied function on `obj`.
-	    var wrapped = api.bind(api, obj);
-
-	    // Support for oo style
-	    for (var name in api) {
-	        if (api.hasOwnProperty(name)) {
-	            wrapped[name] = api[name].bind(wrapped, obj);
-	        }
-	    }
-	    return wrapped;
-	}
-
-
-	/**
-	 * Lookup a json pointer in an object
-	 *
-	 * @param {Object} obj
-	 * @param {String|Array} pointer
-	 * @returns {*}
-	 */
-	api.get = function get (obj, pointer) {
-	    var refTokens = Array.isArray(pointer) ? pointer : api.parse(pointer);
-
-	    for (var i = 0; i < refTokens.length; ++i) {
-	        var tok = refTokens[i];
-	        if (!(typeof obj == 'object' && tok in obj)) {
-	            throw new Error('Invalid reference token: ' + tok);
-	        }
-	        obj = obj[tok];
-	    }
-	    return obj;
-	};
-
-	/**
-	 * Sets a value on an object
-	 *
-	 * @param {Object} obj
-	 * @param {String|Array} pointer
-	 * @param value
-	 */
-	api.set = function set (obj, pointer, value) {
-	    var refTokens = Array.isArray(pointer) ? pointer : api.parse(pointer),
-	      nextTok = refTokens[0];
-
-	    for (var i = 0; i < refTokens.length - 1; ++i) {
-	        var tok = refTokens[i];
-	        if (tok === '-' && Array.isArray(obj)) {
-	          tok = obj.length;
-	        }
-	        nextTok = refTokens[i + 1];
-
-	        if (!(tok in obj)) {
-	            if (nextTok.match(/^(\d+|-)$/)) {
-	                obj[tok] = [];
-	            } else {
-	                obj[tok] = {};
-	            }
-	        }
-	        obj = obj[tok];
-	    }
-	    if (nextTok === '-' && Array.isArray(obj)) {
-	      nextTok = obj.length;
-	    }
-	    obj[nextTok] = value;
-	    return this;
-	};
-
-	/**
-	 * Removes an attribute
-	 *
-	 * @param {Object} obj
-	 * @param {String|Array} pointer
-	 */
-	api.remove = function (obj, pointer) {
-	    var refTokens = Array.isArray(pointer) ? pointer : api.parse(pointer);
-	    var finalToken = refTokens[refTokens.length -1];
-	    if (finalToken === undefined) {
-	        throw new Error('Invalid JSON pointer for remove: "' + pointer + '"');
-	    }
-	    delete api.get(obj, refTokens.slice(0, -1))[finalToken];
-	};
-
-	/**
-	 * Returns a (pointer -> value) dictionary for an object
-	 *
-	 * @param obj
-	 * @param {function} descend
-	 * @returns {}
-	 */
-	api.dict = function dict (obj, descend) {
-	    var results = {};
-	    api.walk(obj, function (value, pointer) {
-	        results[pointer] = value;
-	    }, descend);
-	    return results;
-	};
-
-	/**
-	 * Iterates over an object
-	 * Iterator: function (value, pointer) {}
-	 *
-	 * @param obj
-	 * @param {function} iterator
-	 * @param {function} descend
-	 */
-	api.walk = function walk (obj, iterator, descend) {
-	    var refTokens = [];
-
-	    descend = descend || function (value) {
-	        var type = Object.prototype.toString.call(value);
-	        return type === '[object Object]' || type === '[object Array]';
-	    };
-
-	    (function next (cur) {
-	        each(cur, function (value, key) {
-	            refTokens.push(String(key));
-	            if (descend(value)) {
-	                next(value);
-	            } else {
-	                iterator(value, api.compile(refTokens));
-	            }
-	            refTokens.pop();
-	        });
-	    }(obj));
-	};
-
-	/**
-	 * Tests if an object has a value for a json pointer
-	 *
-	 * @param obj
-	 * @param pointer
-	 * @returns {boolean}
-	 */
-	api.has = function has (obj, pointer) {
-	    try {
-	        api.get(obj, pointer);
-	    } catch (e) {
-	        return false;
-	    }
-	    return true;
-	};
-
-	/**
-	 * Escapes a reference token
-	 *
-	 * @param str
-	 * @returns {string}
-	 */
-	api.escape = function escape (str) {
-	    return str.toString().replace(/~/g, '~0').replace(/\//g, '~1');
-	};
-
-	/**
-	 * Unescapes a reference token
-	 *
-	 * @param str
-	 * @returns {string}
-	 */
-	api.unescape = function unescape (str) {
-	    return str.replace(/~1/g, '/').replace(/~0/g, '~');
-	};
-
-	/**
-	 * Converts a json pointer into a array of reference tokens
-	 *
-	 * @param pointer
-	 * @returns {Array}
-	 */
-	api.parse = function parse (pointer) {
-	    if (pointer === '') { return []; }
-	    if (pointer.charAt(0) !== '/') { throw new Error('Invalid JSON pointer: ' + pointer); }
-	    return pointer.substring(1).split(/\//).map(api.unescape);
-	};
-
-	/**
-	 * Builds a json pointer from a array of reference tokens
-	 *
-	 * @param refTokens
-	 * @returns {string}
-	 */
-	api.compile = function compile (refTokens) {
-	    if (refTokens.length === 0) { return ''; }
-	    return '/' + refTokens.map(api.escape).join('/');
-	};
-
-
-/***/ },
-/* 159 */
-/***/ function(module, exports) {
-
-	
-	var hasOwn = Object.prototype.hasOwnProperty;
-	var toString = Object.prototype.toString;
-
-	module.exports = function forEach (obj, fn, ctx) {
-	    if (toString.call(fn) !== '[object Function]') {
-	        throw new TypeError('iterator must be a function');
-	    }
-	    var l = obj.length;
-	    if (l === +l) {
-	        for (var i = 0; i < l; i++) {
-	            fn.call(ctx, obj[i], i, obj);
-	        }
-	    } else {
-	        for (var k in obj) {
-	            if (hasOwn.call(obj, k)) {
-	                fn.call(ctx, obj[k], k, obj);
-	            }
-	        }
-	    }
-	};
-
-
-
-/***/ },
-/* 160 */
-/***/ function(module, exports) {
-
-	"use strict";
-	/**
-	 * 数据有效性检查的结果。
-	 */
-	var ValidationResult = (function () {
-	    function ValidationResult(code, message) {
-	        this.code = code;
-	        this.message = message;
-	    }
-	    /**
-	     * 创建函数。
-	     */
-	    ValidationResult.create = function (code, message) {
-	        return new ValidationResult(code, message);
-	    };
-	    /**
-	     * 数据有效时，可以共用的结果，不能在运行时修改。
-	     */
-	    ValidationResult.validResult = ValidationResult.create(0, "valid");
-	    /**
-	     * 数据无效时，可以共用的结果，不能在运行时修改。
-	     */
-	    ValidationResult.invalidResult = ValidationResult.create(-1, "invalid");
-	    return ValidationResult;
-	}());
-	exports.ValidationResult = ValidationResult;
-	;
-
-
-/***/ },
-/* 161 */
-/***/ function(module, exports, __webpack_require__) {
-
-	"use strict";
-	var __extends = (this && this.__extends) || function (d, b) {
-	    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
-	    function __() { this.constructor = d; }
-	    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-	};
-	var group_1 = __webpack_require__(92);
-	var dialog_1 = __webpack_require__(93);
-	var label_1 = __webpack_require__(20);
-	var edit_1 = __webpack_require__(19);
-	var button_1 = __webpack_require__(95);
-	var Events = __webpack_require__(8);
-	var graphics_1 = __webpack_require__(27);
-	var list_view_1 = __webpack_require__(113);
-	var progress_bar_1 = __webpack_require__(97);
-	var application_1 = __webpack_require__(122);
-	var widget_1 = __webpack_require__(21);
-	var widget_factory_1 = __webpack_require__(25);
-	var consts_1 = __webpack_require__(106);
-	var recyclable_creator_1 = __webpack_require__(84);
-	var list_item_1 = __webpack_require__(115);
-	var dock_layouter_1 = __webpack_require__(162);
-	var linear_layouter_1 = __webpack_require__(133);
-	var grid_layouter_1 = __webpack_require__(118);
-	var simple_layouter_1 = __webpack_require__(116);
-	var TitleOptions = (function () {
-	    function TitleOptions(text, iconStyleType, hasCloseButton) {
-	        this.h = 0;
-	        this.text = text;
-	        this.draggable = true;
-	        this.iconStyleType = iconStyleType;
-	        this.hasCloseButton = hasCloseButton;
-	    }
-	    return TitleOptions;
-	}());
-	exports.TitleOptions = TitleOptions;
-	;
-	var ButtonOption = (function () {
-	    function ButtonOption() {
-	    }
-	    return ButtonOption;
-	}());
-	exports.ButtonOption = ButtonOption;
-	var ButtonsOptions = (function () {
-	    function ButtonsOptions() {
-	        this.buttons = [];
-	    }
-	    Object.defineProperty(ButtonsOptions.prototype, "buttonCount", {
-	        get: function () {
-	            return this.buttons.length;
-	        },
-	        enumerable: true,
-	        configurable: true
-	    });
-	    return ButtonsOptions;
-	}());
-	exports.ButtonsOptions = ButtonsOptions;
-	;
-	var MessageBox = (function (_super) {
-	    __extends(MessageBox, _super);
-	    function MessageBox(type) {
-	        _super.call(this, type || MessageBox.TYPE);
-	        this._contentPadding = 10;
-	    }
-	    Object.defineProperty(MessageBox.prototype, "title", {
-	        get: function () {
-	            return this._title;
-	        },
-	        enumerable: true,
-	        configurable: true
-	    });
-	    Object.defineProperty(MessageBox.prototype, "content", {
-	        get: function () {
-	            return this._content;
-	        },
-	        enumerable: true,
-	        configurable: true
-	    });
-	    Object.defineProperty(MessageBox.prototype, "buttons", {
-	        get: function () {
-	            return this._buttons;
-	        },
-	        enumerable: true,
-	        configurable: true
-	    });
-	    MessageBox.prototype.initTitle = function (titleOptions) {
-	        var w = this.w;
-	        var win = this;
-	        if (titleOptions) {
-	            var title = group_1.Group.create({ styleType: "dialog.title-bg" });
-	            var titleH = titleOptions.h || MessageBox.TITLE_H;
-	            title.layoutParam = dock_layouter_1.DockLayouterParam.create({ position: consts_1.Direction.TOP, size: titleH });
-	            title.childrenLayouter = linear_layouter_1.LinearLayouter.createH();
-	            this.addChild(title);
-	            if (titleOptions.draggable) {
-	                title.useBehavior("movable", { moveParent: true });
-	            }
-	            if (titleOptions.iconStyleType) {
-	                var icon = button_1.Button.create({ name: "icon", styleType: titleOptions.iconStyleType });
-	                icon.layoutParam = linear_layouter_1.LinearLayouterParam.create({ position: 1, h: "100%", w: title.h });
-	                title.addChild(icon);
-	            }
-	            if (titleOptions.text) {
-	                var label = label_1.Label.create({ name: "text", text: titleOptions.text, styleType: "dialog.title-text" });
-	                label.layoutParam = linear_layouter_1.LinearLayouterParam.create({ position: 2, h: "100%", w: w - titleH * 2 });
-	                title.addChild(label);
-	            }
-	            if (titleOptions.hasCloseButton) {
-	                var button = button_1.Button.create({ name: "close", styleType: "messagebox.button.close" });
-	                button.layoutParam = linear_layouter_1.LinearLayouterParam.create({ position: -1, h: "100%", w: titleH });
-	                title.addChild(button);
-	                button.on(Events.CLICK, function (evt) {
-	                    win.animateClose();
-	                });
-	            }
-	            this._title = title;
-	        }
-	    };
-	    MessageBox.prototype.initButtons = function (buttonsOptions) {
-	        var w = this.w;
-	        var win = this;
-	        if (buttonsOptions && buttonsOptions.buttons) {
-	            var buttons = group_1.Group.create();
-	            var n = buttonsOptions.buttons.length;
-	            var buttonsH = buttonsOptions.h || MessageBox.BUTTONS_H;
-	            var margin = n < 2 ? w / (4 * n) : w / (8 * n);
-	            buttons.layoutParam = dock_layouter_1.DockLayouterParam.create({ position: consts_1.Direction.BOTTOM, size: buttonsH });
-	            buttons.childrenLayouter = grid_layouter_1.GridLayouter.create({
-	                topMargin: 5,
-	                bottomMargin: 5,
-	                leftMargin: margin,
-	                rightMargin: margin,
-	                rows: 1,
-	                cols: n
-	            });
-	            this.addChild(buttons);
-	            buttonsOptions.buttons.forEach(function (iter) {
-	                var b = button_1.Button.create({ text: iter.text, styleType: iter.styleType });
-	                b.on(Events.CLICK, function (evt) {
-	                    if (iter.onClick) {
-	                        iter.onClick();
-	                    }
-	                    win.animateClose();
-	                });
-	                buttons.addChild(b);
-	            });
-	            this._buttons = buttons;
-	        }
-	        return this;
-	    };
-	    MessageBox.prototype.initContent = function (data) {
-	        var content = group_1.Group.create();
-	        content.layoutParam = dock_layouter_1.DockLayouterParam.create({ position: consts_1.Direction.BOTTOM, size: "100%" });
-	        this.addChild(content);
-	        if (data) {
-	            content.childrenLayouter = simple_layouter_1.SimpleLayouter.create();
-	            var label = label_1.Label.create({ text: data, multiLineMode: true, padding: this._contentPadding });
-	            label.layoutParam = simple_layouter_1.SimpleLayouterParam.create({ w: "100%", h: "100%" });
-	            content.addChild(label);
-	        }
-	        this._content = content;
-	    };
-	    MessageBox.prototype.createChildren = function (titleOptions, buttonsOptions, content) {
-	        var vp = this.app.getViewPort();
-	        var style = this._themeManager.get("messagebox.content", this.stateToString(widget_1.WidgetState.NORMAL));
-	        if (this.w <= 10) {
-	            var textW = graphics_1.Graphics.measureText(content, style.font);
-	            var padding = this.leftPadding + this.rightPadding + this._contentPadding * 2;
-	            var w = Math.min(vp.width, Math.max(60, textW + padding));
-	            if (buttonsOptions) {
-	                w = Math.max(w, buttonsOptions.buttonCount * 128);
-	            }
-	            this.w = w;
-	        }
-	        if (this.h < 10) {
-	            var lines = graphics_1.Graphics.layoutText(content, this.w, style.font);
-	            var n = lines ? lines.length : 0;
-	            var padding = this.topPadding + this.bottomPadding + this._contentPadding * 2;
-	            var h = n * style.fontSize * 1.5 + padding;
-	            if (titleOptions) {
-	                h += titleOptions.h || MessageBox.TITLE_H;
-	            }
-	            if (buttonsOptions) {
-	                h += buttonsOptions.h || MessageBox.BUTTONS_H;
-	            }
-	            this.h = h;
-	        }
-	        this.initTitle(titleOptions);
-	        this.initButtons(buttonsOptions);
-	        this.initContent(content);
-	    };
-	    MessageBox.prototype.onReset = function () {
-	        _super.prototype.onReset.call(this);
-	        this.padding = 1;
-	        this.childrenLayouter = dock_layouter_1.DockLayouter.create();
-	    };
-	    MessageBox.prototype.dispose = function () {
-	        _super.prototype.dispose.call(this);
-	        this._title = null;
-	        this._content = null;
-	        this._buttons = null;
-	    };
-	    MessageBox.prototype.open = function () {
-	        _super.prototype.open.call(this);
-	        this.grab();
-	        this.moveToCenter();
-	        return this;
-	    };
-	    MessageBox.prototype.animateClose = function () {
-	        var _this = this;
-	        this.opacityTo(0, 300).onComplete(function (evt) {
-	            _this.close();
-	        });
-	    };
-	    MessageBox.showMessage = function (msg, onClose, w) {
-	        var app = application_1.Application.get();
-	        var vp = app.getViewPort();
-	        var rw = Math.min(vp.w, w || 0);
-	        var messageBox = MessageBox.create({ app: app, w: rw, h: 0 });
-	        var buttonsOption = new ButtonsOptions();
-	        buttonsOption.buttons.push({ styleType: "button.ok", text: "Close", onClick: null });
-	        var titleOptions = new TitleOptions("Infomation", "messagebox.info.icon", true);
-	        messageBox.createChildren(titleOptions, buttonsOption, msg);
-	        messageBox.on(Events.CLOSE, onClose);
-	        messageBox.open();
-	    };
-	    MessageBox.showConfirm = function (msg, onYes, onNo, w) {
-	        var app = application_1.Application.get();
-	        var vp = app.getViewPort();
-	        var rw = Math.min(vp.w, w || 0);
-	        var messageBox = MessageBox.create({ app: app, w: rw, h: 0 });
-	        var buttonsOption = new ButtonsOptions();
-	        buttonsOption.buttons.push({ styleType: "button.cancel", text: "Cancel", onClick: onNo });
-	        buttonsOption.buttons.push({ styleType: "button.ok", text: "Yes", onClick: onYes });
-	        var titleOptions = new TitleOptions("Question", "messagebox.question.icon", false);
-	        messageBox.createChildren(titleOptions, buttonsOption, msg);
-	        messageBox.open();
-	    };
-	    MessageBox.showToast = function (msg, duration, w) {
-	        var app = application_1.Application.get();
-	        var vp = app.getViewPort();
-	        var rw = Math.min(vp.w, w || 0);
-	        var messageBox = MessageBox.create({ app: app, styleType: "messagebox.toast", w: rw, h: 0 });
-	        messageBox.createChildren(null, null, msg);
-	        messageBox.on(Events.POINTER_UP, function (evt) {
-	            if (messageBox) {
-	                this.animateClose();
-	                messageBox = null;
-	            }
-	        });
-	        setTimeout(function (evt) {
-	            if (messageBox) {
-	                messageBox.animateClose();
-	                messageBox = null;
-	            }
-	        }, duration || 3000);
-	        messageBox.open();
-	    };
-	    MessageBox.showProgress = function (msg, taskStart, onDone, w) {
-	        var app = application_1.Application.get();
-	        var vp = app.getViewPort();
-	        var rw = Math.min(vp.w, w || 0) || 200;
-	        var rh = MessageBox.TITLE_H + MessageBox.BUTTONS_H + 50;
-	        var messageBox = MessageBox.create({ app: app, w: rw, h: rh });
-	        var buttonsOption = new ButtonsOptions();
-	        buttonsOption.buttons.push({ styleType: "button.ok", text: "Close", onClick: null });
-	        var titleOptions = new TitleOptions(msg, "messagebox.info.icon", false);
-	        messageBox.createChildren(titleOptions, buttonsOption, null);
-	        var group = messageBox.content;
-	        var progressBar = progress_bar_1.ProgressBar.create();
-	        group.padding = 10;
-	        group.topPadding = 20;
-	        group.childrenLayouter = simple_layouter_1.SimpleLayouter.create();
-	        progressBar.layoutParam = simple_layouter_1.SimpleLayouterParam.create({ x: "center", y: "middle", w: "100%", h: "20px" });
-	        var closeButton = messageBox.buttons.children[0];
-	        closeButton.enable = false;
-	        function onProgress(value) {
-	            progressBar.value = value;
-	            progressBar.requestRedraw();
-	            if (value >= 1) {
-	                onDone();
-	                closeButton.enable = true;
-	            }
-	        }
-	        group.addChild(progressBar);
-	        messageBox.open();
-	        taskStart(onProgress);
-	    };
-	    MessageBox.showInput = function (title, inputTips, value, isValueValid, onDone, inputType, w) {
-	        var app = application_1.Application.get();
-	        var vp = app.getViewPort();
-	        var rw = Math.min(vp.w, w || 0) || 200;
-	        var rh = MessageBox.TITLE_H + MessageBox.BUTTONS_H + 50;
-	        var messageBox = MessageBox.create({ app: app, w: rw, h: rh });
-	        var buttonsOption = new ButtonsOptions();
-	        buttonsOption.buttons.push({ styleType: "button.cancel", text: "Cancel", onClick: null });
-	        buttonsOption.buttons.push({ styleType: "button.ok", text: "OK", onClick: onOK });
-	        var titleOptions = new TitleOptions(title, "messagebox.info.icon", false);
-	        messageBox.createChildren(titleOptions, buttonsOption, null);
-	        var group = messageBox.content;
-	        var edit = edit_1.Edit.create({ inputTips: inputTips, value: value, inputType: inputType || "text" });
-	        group.padding = 10;
-	        group.topPadding = 15;
-	        group.childrenLayouter = simple_layouter_1.SimpleLayouter.create();
-	        edit.layoutParam = simple_layouter_1.SimpleLayouterParam.create({ x: "center", y: "middle", w: "100%", h: "25px" });
-	        function onOK() {
-	            onDone(edit.text);
-	        }
-	        edit.on(Events.CHANGING, function (evt) {
-	            okButton.enable = isValueValid(evt.value);
-	        });
-	        var okButton = messageBox.buttons.children[1];
-	        okButton.enable = isValueValid(value);
-	        group.addChild(edit);
-	        messageBox.open();
-	    };
-	    MessageBox.showChoice = function (title, data, multiple, onDone, w, h) {
-	        var itemH = 30;
-	        var app = application_1.Application.get();
-	        var vp = app.getViewPort();
-	        var contentH = Math.min(8, data.length) * itemH;
-	        var rw = Math.min(vp.w, w || 0) || 300;
-	        var rh = Math.min(vp.h, h || 0) || MessageBox.TITLE_H + MessageBox.BUTTONS_H + contentH + 30;
-	        var messageBox = MessageBox.create({ app: app, w: rw, h: rh });
-	        var buttonsOption = new ButtonsOptions();
-	        buttonsOption.buttons.push({ styleType: "button.cancel", text: "Cancel", onClick: null });
-	        buttonsOption.buttons.push({ styleType: "button.ok", text: "OK", onClick: onOK });
-	        var titleOptions = new TitleOptions(title, "messagebox.info.icon", false);
-	        messageBox.createChildren(titleOptions, buttonsOption, null);
-	        var group = messageBox.content;
-	        var listView = list_view_1.ListView.create({ itemH: itemH, dragToScroll: true });
-	        group.padding = 5;
-	        group.topPadding = 5;
-	        group.childrenLayouter = simple_layouter_1.SimpleLayouter.create();
-	        listView.layoutParam = simple_layouter_1.SimpleLayouterParam.create({ x: "center", y: "middle", w: "100%", h: "100%" });
-	        data.forEach(function (iter) {
-	            var item = list_item_1.ListItemCheckable.create({
-	                multiCheckable: multiple,
-	                iconURL: iter.iconURL,
-	                text: iter.text,
-	                userData: iter,
-	                leftPadding: 2
-	            });
-	            listView.addChild(item, true);
-	        });
-	        listView.relayoutChildren();
-	        function onOK() {
-	            var ret = [];
-	            listView.children.forEach(function (iter) {
-	                if (iter.value) {
-	                    ret.push(iter.userData);
-	                }
-	            });
-	            onDone(ret);
-	        }
-	        group.addChild(listView);
-	        messageBox.open();
-	    };
-	    MessageBox.create = function (options) {
-	        return MessageBox.rBin.create().reset(MessageBox.TYPE, options);
-	    };
-	    MessageBox.TITLE_H = 25;
-	    MessageBox.BUTTONS_H = 40;
-	    MessageBox.MSG_FONT_SIZE = 12;
-	    MessageBox.TYPE = "messagebox";
-	    MessageBox.rBin = new recyclable_creator_1.RecyclableCreator(function () { return new MessageBox(); });
-	    return MessageBox;
-	}(dialog_1.Dialog));
-	exports.MessageBox = MessageBox;
-	;
-	widget_factory_1.WidgetFactory.register(MessageBox.TYPE, MessageBox.create);
-
-
-/***/ },
-/* 162 */
-/***/ function(module, exports, __webpack_require__) {
-
-	"use strict";
-	var __extends = (this && this.__extends) || function (d, b) {
-	    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
-	    function __() { this.constructor = d; }
-	    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-	};
-	var consts_1 = __webpack_require__(106);
-	var layouter_1 = __webpack_require__(80);
-	var TYPE = "dock";
-	/**
-	 * Dock布局器。
-	 */
-	var DockLayouter = (function (_super) {
-	    __extends(DockLayouter, _super);
-	    function DockLayouter() {
-	        _super.apply(this, arguments);
-	    }
-	    Object.defineProperty(DockLayouter.prototype, "type", {
-	        get: function () {
-	            return TYPE;
-	        },
-	        enumerable: true,
-	        configurable: true
-	    });
-	    DockLayouter.prototype.layoutChildren = function (widget, children, rect) {
-	        var _this = this;
-	        var r = rect.clone();
-	        var arr = widget.children.forEach(function (child) {
-	            if (r.w > 0 && r.h > 0) {
-	                _this.layoutChild(child, r);
-	            }
-	        });
-	        r.dispose();
-	        return rect;
-	    };
-	    DockLayouter.prototype.layoutChild = function (child, r) {
-	        var x = 0;
-	        var y = 0;
-	        var w = 0;
-	        var h = 0;
-	        var param = child.layoutParam;
-	        if (param && param.type === TYPE && child.visible) {
-	            switch (param.position) {
-	                case consts_1.Direction.LEFT: {
-	                    x = r.x;
-	                    y = r.y;
-	                    h = r.h;
-	                    w = Math.min(r.w, param.size ? layouter_1.Layouter.evalValue(param.size, r.w) : child.w);
-	                    r.x += w;
-	                    r.w -= w;
-	                    break;
-	                }
-	                case consts_1.Direction.RIGHT: {
-	                    y = r.y;
-	                    h = r.h;
-	                    w = Math.min(r.w, param.size ? layouter_1.Layouter.evalValue(param.size, r.w) : child.w);
-	                    x = r.x + r.w - w;
-	                    r.w -= w;
-	                    break;
-	                }
-	                case consts_1.Direction.BOTTOM: {
-	                    x = r.x;
-	                    w = r.w;
-	                    h = Math.min(r.h, param.size ? layouter_1.Layouter.evalValue(param.size, r.h) : child.h);
-	                    y = r.y + r.h - h;
-	                    r.h -= h;
-	                    break;
-	                }
-	                default: {
-	                    x = r.x;
-	                    y = r.y;
-	                    w = r.w;
-	                    h = Math.min(r.h, param.size ? layouter_1.Layouter.evalValue(param.size, r.h) : child.h);
-	                    r.h -= h;
-	                    r.y += h;
-	                    break;
-	                }
-	            }
-	            child.moveResizeTo(x, y, w, h);
-	            child.relayoutChildren();
-	        }
-	    };
-	    DockLayouter.prototype.createParam = function (options) {
-	        return DockLayouterParam.create(options);
-	    };
-	    DockLayouter.create = function (options) {
-	        var layouter = new DockLayouter();
-	        return layouter.setOptions(options);
-	    };
-	    return DockLayouter;
-	}(layouter_1.Layouter));
-	exports.DockLayouter = DockLayouter;
-	;
-	layouter_1.LayouterFactory.register(TYPE, DockLayouter.create);
-	/**
-	 * Dock布局器的参数。
-	 *
-	 * 如果父控件使用DockLayouter布局器，则子控件需要把layoutParam设置为DockLayouterParam。
-	 *
-	 * 对于size参数：
-	 * *.如果以px结尾，则直接取它的值。
-	 * *.如果以%结尾，则表示剩余空间的宽度/高度的百分比。
-	 *
-	 */
-	var DockLayouterParam = (function (_super) {
-	    __extends(DockLayouterParam, _super);
-	    function DockLayouterParam(position, size) {
-	        _super.call(this, TYPE);
-	        this.size = size;
-	        this.position = position;
-	    }
-	    DockLayouterParam.create = function (opts) {
-	        var options = opts || {};
-	        return new DockLayouterParam(options.position, options.size || "");
-	    };
-	    return DockLayouterParam;
-	}(layouter_1.LayouterParam));
-	exports.DockLayouterParam = DockLayouterParam;
-	;
-	layouter_1.LayouterParamFactory.register(TYPE, DockLayouterParam.create);
-
-
-/***/ },
-/* 163 */
+/* 173 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -29095,9 +29558,9 @@ var editor =
 	};
 	var scroll_view_1 = __webpack_require__(101);
 	var widget_factory_1 = __webpack_require__(25);
-	var title_content_1 = __webpack_require__(136);
+	var title_content_1 = __webpack_require__(170);
 	var recyclable_creator_1 = __webpack_require__(84);
-	var collapsable_title_1 = __webpack_require__(137);
+	var collapsable_title_1 = __webpack_require__(171);
 	/**
 	 * 管理多个页面，每个页面可以展开或折叠。
 	 */
@@ -29195,7 +29658,7 @@ var editor =
 
 
 /***/ },
-/* 164 */
+/* 174 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -29220,7 +29683,7 @@ var editor =
 
 
 /***/ },
-/* 165 */
+/* 175 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -29230,9 +29693,9 @@ var editor =
 	    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 	};
 	var Events = __webpack_require__(8);
-	var delegate_command_1 = __webpack_require__(164);
-	var ivalidation_rule_1 = __webpack_require__(160);
-	var view_modal_default_1 = __webpack_require__(157);
+	var delegate_command_1 = __webpack_require__(174);
+	var ivalidation_rule_1 = __webpack_require__(157);
+	var view_modal_default_1 = __webpack_require__(154);
 	/**
 	 * 集合ViewModal。delProp/getProp/setProp操作当前的项。
 	 */
@@ -29432,7 +29895,7 @@ var editor =
 
 
 /***/ },
-/* 166 */
+/* 176 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -29457,7 +29920,7 @@ var editor =
 
 
 /***/ },
-/* 167 */
+/* 177 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -29478,7 +29941,218 @@ var editor =
 
 
 /***/ },
-/* 168 */
+/* 178 */
+/***/ function(module, exports) {
+
+	"use strict";
+	var ToastInfo = (function () {
+	    function ToastInfo(text, duration, w) {
+	        this.text = text;
+	        this.duration = duration || 2000;
+	        this.w = w;
+	    }
+	    ToastInfo.create = function (text, duration, w) {
+	        return new ToastInfo(text, duration, w);
+	    };
+	    return ToastInfo;
+	}());
+	exports.ToastInfo = ToastInfo;
+	;
+
+
+/***/ },
+/* 179 */
+/***/ function(module, exports) {
+
+	"use strict";
+	var InputInfo = (function () {
+	    function InputInfo(title, value, inputTips, inputType, w) {
+	        this.w = w;
+	        this.value = value;
+	        this.title = title;
+	        this.inputTips = inputTips;
+	        this.inputType = inputType;
+	        this.isValueValid = function (value) {
+	            return !!value;
+	        };
+	    }
+	    InputInfo.create = function (title, value, inputTips, inputType, w) {
+	        return new InputInfo(title, value, inputTips, inputType, w);
+	    };
+	    return InputInfo;
+	}());
+	exports.InputInfo = InputInfo;
+	;
+
+
+/***/ },
+/* 180 */
+/***/ function(module, exports) {
+
+	"use strict";
+	var PropsInfo = (function () {
+	    function PropsInfo(pagePropsDesc, data, mutable, w) {
+	        this.w = w;
+	        this.data = data;
+	        this.mutable = mutable;
+	        this.pagePropsDesc = pagePropsDesc;
+	    }
+	    PropsInfo.create = function (pagePropsDesc, data, mutable, w) {
+	        return new PropsInfo(pagePropsDesc, data, mutable, w);
+	    };
+	    return PropsInfo;
+	}());
+	exports.PropsInfo = PropsInfo;
+	;
+
+
+/***/ },
+/* 181 */
+/***/ function(module, exports) {
+
+	"use strict";
+	var ChoiceOption = (function () {
+	    function ChoiceOption(text, iconURL) {
+	        this.text = text;
+	        this.iconURL = iconURL || null;
+	    }
+	    ChoiceOption.create = function (text, iconURL) {
+	        return new ChoiceOption(text, iconURL);
+	    };
+	    return ChoiceOption;
+	}());
+	exports.ChoiceOption = ChoiceOption;
+	;
+	var ChoiceInfo = (function () {
+	    function ChoiceInfo(title, multiple, w, h) {
+	        this.w = w;
+	        this.h = h;
+	        this.title = title;
+	        this.multiple = multiple;
+	        this.resetOptions();
+	    }
+	    ChoiceInfo.prototype.resetOptions = function () {
+	        this.options = [];
+	    };
+	    ChoiceInfo.prototype.addOption = function (text, iconURL) {
+	        this.options.push(ChoiceOption.create(text, iconURL));
+	    };
+	    ChoiceInfo.create = function (title, multiple, w, h) {
+	        return new ChoiceInfo(title, multiple, w, h);
+	    };
+	    return ChoiceInfo;
+	}());
+	exports.ChoiceInfo = ChoiceInfo;
+	;
+
+
+/***/ },
+/* 182 */
+/***/ function(module, exports) {
+
+	"use strict";
+	var ProgressInfo = (function () {
+	    function ProgressInfo(title, runTask, w) {
+	        this.w = w;
+	        this.title = title;
+	        this.runTask = runTask;
+	    }
+	    ProgressInfo.create = function (title, runTask, w) {
+	        return new ProgressInfo(title, runTask, w);
+	    };
+	    return ProgressInfo;
+	}());
+	exports.ProgressInfo = ProgressInfo;
+	;
+
+
+/***/ },
+/* 183 */
+/***/ function(module, exports) {
+
+	"use strict";
+	var ConfirmationInfo = (function () {
+	    function ConfirmationInfo(content, w) {
+	        this.w = w;
+	        this.content = content;
+	        this.confirmed = false;
+	    }
+	    ConfirmationInfo.create = function (content, w) {
+	        return new ConfirmationInfo(content, w);
+	    };
+	    return ConfirmationInfo;
+	}());
+	exports.ConfirmationInfo = ConfirmationInfo;
+	;
+
+
+/***/ },
+/* 184 */
+/***/ function(module, exports) {
+
+	"use strict";
+	var NotificationInfo = (function () {
+	    function NotificationInfo(content, w) {
+	        this.w = w;
+	        this.content = content;
+	    }
+	    NotificationInfo.create = function (content, w) {
+	        return new NotificationInfo(content, w);
+	    };
+	    return NotificationInfo;
+	}());
+	exports.NotificationInfo = NotificationInfo;
+	;
+
+
+/***/ },
+/* 185 */
+/***/ function(module, exports) {
+
+	"use strict";
+	var ItemsStorage = (function () {
+	    function ItemsStorage(prefix) {
+	        this._prefix = prefix + ".";
+	    }
+	    ItemsStorage.prototype.getKey = function (name) {
+	        return this._prefix + name;
+	    };
+	    ItemsStorage.prototype.set = function (name, data) {
+	        var key = this.getKey(name);
+	        localStorage.setItem(key, data);
+	    };
+	    ItemsStorage.prototype.remove = function (name) {
+	        var key = this.getKey(name);
+	        localStorage.removeItem(key);
+	        return true;
+	    };
+	    ItemsStorage.prototype.get = function (name) {
+	        var key = this.getKey(name);
+	        return localStorage.getItem(key);
+	    };
+	    ItemsStorage.prototype.getItems = function () {
+	        var n = localStorage.length;
+	        var items = [];
+	        var prefix = this._prefix;
+	        for (var i = 0; i < n; i++) {
+	            var key = localStorage.key(i);
+	            if (key.indexOf(prefix) === 0) {
+	                items.push(key.substr(prefix.length));
+	            }
+	        }
+	        return items;
+	    };
+	    ItemsStorage.create = function (prefix) {
+	        return new ItemsStorage(prefix);
+	    };
+	    return ItemsStorage;
+	}());
+	exports.ItemsStorage = ItemsStorage;
+	;
+
+
+/***/ },
+/* 186 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -29488,9 +30162,9 @@ var editor =
 	    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 	};
 	var qtk_1 = __webpack_require__(2);
-	var main_menu_bar_1 = __webpack_require__(169);
-	var particles_view_1 = __webpack_require__(171);
-	var particle_properties_1 = __webpack_require__(173);
+	var main_menu_bar_1 = __webpack_require__(187);
+	var particles_view_1 = __webpack_require__(188);
+	var particle_properties_1 = __webpack_require__(190);
 	var qtk_2 = __webpack_require__(2);
 	var MainWindow = (function (_super) {
 	    __extends(MainWindow, _super);
@@ -29524,7 +30198,7 @@ var editor =
 
 
 /***/ },
-/* 169 */
+/* 187 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -29534,8 +30208,6 @@ var editor =
 	    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 	};
 	var qtk_1 = __webpack_require__(2);
-	var qtk_2 = __webpack_require__(2);
-	var about_dialog_1 = __webpack_require__(170);
 	var MainMenuBar = (function (_super) {
 	    __extends(MainMenuBar, _super);
 	    function MainMenuBar() {
@@ -29546,6 +30218,7 @@ var editor =
 	        menu.addItem("New", null).set({ dataBindingRule: { click: { command: "new" } } });
 	        menu.addItem("Open", null).set({ dataBindingRule: { click: { command: "open" } } });
 	        menu.addItem("Save", null).set({ dataBindingRule: { click: { command: "save" } } });
+	        menu.addItem("Remove", null).set({ dataBindingRule: { click: { command: "remove" } } });
 	        menu.addSpace();
 	        menu.addItem("Export", null).set({ dataBindingRule: { click: { command: "export" } } });
 	        menu.bindData(this.viewModal);
@@ -29562,33 +30235,12 @@ var editor =
 	        menu.addItem("Redo", null).set({ dataBindingRule: { click: { command: "redo" } } });
 	        menu.bindData(this.viewModal);
 	    };
-	    MainMenuBar.prototype.showAbout = function (evt) {
-	        about_dialog_1.AboutDialog.show(evt.payload, evt.returnResult.bind(evt));
-	    };
-	    MainMenuBar.prototype.showContent = function (evt) {
-	        var helpURL = evt.payload;
-	        window.open(helpURL, "_blank");
-	    };
 	    MainMenuBar.prototype.onCreated = function () {
-	        var _this = this;
 	        _super.prototype.onCreated.call(this);
 	        this.addLogo("https://qtoolkit.github.io/demos/assets/icons/@density/apple.png");
 	        this.addItem("File", this.onFileMenu.bind(this));
 	        this.addItem("Edit", this.onEditMenu.bind(this));
 	        this.addItem("Help", this.onHelpMenu.bind(this));
-	        this.viewModal.on(qtk_1.Events.SHOW_VIEW, function (evt) {
-	            var name = evt.name;
-	            switch (name) {
-	                case "help.about": {
-	                    _this.showAbout(evt);
-	                    break;
-	                }
-	                case "help.content": {
-	                    _this.showContent(evt);
-	                    break;
-	                }
-	            }
-	        });
 	    };
 	    MainMenuBar.create = function (options) {
 	        var menuBar = new MainMenuBar();
@@ -29596,37 +30248,13 @@ var editor =
 	        return menuBar;
 	    };
 	    return MainMenuBar;
-	}(qtk_2.MenuBar));
+	}(qtk_1.MenuBar));
 	exports.MainMenuBar = MainMenuBar;
 	;
 
 
 /***/ },
-/* 170 */
-/***/ function(module, exports, __webpack_require__) {
-
-	"use strict";
-	var qtk_1 = __webpack_require__(2);
-	var AboutDialog = (function () {
-	    function AboutDialog() {
-	    }
-	    AboutDialog.show = function (aboutInfo, onOK) {
-	        var json = [
-	            { type: "text-readonly", name: "Author", path: "author" },
-	            { type: "link", name: "Email", path: "email" },
-	            { type: "link", name: "Home", path: "home" },
-	            { type: "link", name: "Engine", path: "engine" },
-	        ];
-	        var propsDesc = qtk_1.PagePropsDesc.create("About", json);
-	        qtk_1.PropertyDialog.show(propsDesc, aboutInfo, onOK);
-	    };
-	    return AboutDialog;
-	}());
-	exports.AboutDialog = AboutDialog;
-
-
-/***/ },
-/* 171 */
+/* 188 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -29635,7 +30263,7 @@ var editor =
 	    function __() { this.constructor = d; }
 	    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 	};
-	var draw_info_1 = __webpack_require__(172);
+	var draw_info_1 = __webpack_require__(189);
 	var qtk_1 = __webpack_require__(2);
 	var ParticlesView = (function (_super) {
 	    __extends(ParticlesView, _super);
@@ -29667,7 +30295,7 @@ var editor =
 
 
 /***/ },
-/* 172 */
+/* 189 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -29688,7 +30316,7 @@ var editor =
 
 
 /***/ },
-/* 173 */
+/* 190 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -29731,7 +30359,7 @@ var editor =
 
 
 /***/ },
-/* 174 */
+/* 191 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -29740,25 +30368,60 @@ var editor =
 	    function __() { this.constructor = d; }
 	    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 	};
-	var proton = __webpack_require__(175);
-	var template_1 = __webpack_require__(176);
-	var converters_1 = __webpack_require__(177);
-	var command_draw_1 = __webpack_require__(178);
-	var command_about_1 = __webpack_require__(179);
-	var command_content_1 = __webpack_require__(181);
-	var particles_view_modal_1 = __webpack_require__(182);
-	var iparticles_view_modal_1 = __webpack_require__(183);
+	var proton = __webpack_require__(192);
+	var document_1 = __webpack_require__(193);
+	var converters_1 = __webpack_require__(194);
+	var command_draw_1 = __webpack_require__(195);
+	var command_new_1 = __webpack_require__(196);
+	var command_open_1 = __webpack_require__(197);
+	var command_save_1 = __webpack_require__(198);
+	var command_export_1 = __webpack_require__(199);
+	var command_about_1 = __webpack_require__(200);
+	var command_remove_1 = __webpack_require__(201);
+	var command_content_1 = __webpack_require__(202);
+	var proton_wrapper_1 = __webpack_require__(203);
+	var qtk_1 = __webpack_require__(2);
+	var particles_view_modal_1 = __webpack_require__(204);
+	var iparticles_view_modal_1 = __webpack_require__(205);
 	var ProtonViewModal = (function (_super) {
 	    __extends(ProtonViewModal, _super);
-	    function ProtonViewModal(template) {
-	        _super.call(this, template.data);
+	    function ProtonViewModal(doc, storage) {
+	        _super.call(this, doc.data);
 	        this.createEmitter();
-	        this.template = template;
+	        this.storage = storage;
+	        this.doc = doc;
 	        converters_1.Converters.init(this);
 	        this.registerCommands();
 	    }
+	    ProtonViewModal.prototype.getDocList = function () {
+	        return this.storage.getItems();
+	    };
+	    ProtonViewModal.prototype.saveDoc = function (fileName) {
+	        var data = JSON.stringify(this.doc.toJson(), null, "\t");
+	        this.storage.set(fileName, data);
+	        this.fileName = fileName;
+	    };
+	    ProtonViewModal.prototype.createDoc = function (templateName) {
+	        var doc = document_1.Document.createFromTemplate("default");
+	        this.doc = doc;
+	        this.data = this.doc.data;
+	        this.createEmitter();
+	        this.notifyChange(qtk_1.Events.PROP_CHANGE, "/", null);
+	    };
+	    ProtonViewModal.prototype.removeDoc = function (fileName) {
+	        this.storage.remove(fileName);
+	    };
+	    ProtonViewModal.prototype.openDoc = function (fileName) {
+	        var data = this.storage.get(fileName);
+	        var json = JSON.parse(data);
+	        this.doc.fromJson(json);
+	        this.data = this.doc.data;
+	        this.createEmitter();
+	        this.fileName = fileName;
+	        this.notifyChange(qtk_1.Events.PROP_CHANGE, "/", null);
+	    };
 	    ProtonViewModal.prototype.getPropsDesc = function () {
-	        return this.template.propsDesc;
+	        return this.doc.propsDesc;
 	    };
 	    ProtonViewModal.prototype.setProp = function (path, value, converter, validationRule) {
 	        var result = _super.prototype.setProp.call(this, path, value, converter, validationRule);
@@ -29769,55 +30432,35 @@ var editor =
 	        this.registerCommand("draw", command_draw_1.CommandDraw.create(this));
 	        this.registerCommand("about", command_about_1.CommandAbout.create(this, "https://github.com/a-jie/Proton"));
 	        this.registerCommand("content", command_content_1.CommandContent.create(this, "http://proton.jpeer.at/index.html"));
+	        this.registerCommand("new", command_new_1.CommandNew.create(this, this.getDocumentList()));
+	        this.registerCommand("open", command_open_1.CommandOpen.create(this));
+	        this.registerCommand("remove", command_remove_1.CommandRemove.create(this));
+	        this.registerCommand("save", command_save_1.CommandSave.create(this));
+	        this.registerCommand("export", command_export_1.CommandExport.create(this));
 	    };
 	    ProtonViewModal.prototype.createEmitter = function () {
 	        var data = this.data;
 	        var proton = ProtonViewModal.proton;
-	        var life = new Proton.Life(data.life.first, data.life.second);
-	        var radius = new Proton.Radius(data.radius.first, data.radius.second);
-	        var alpha = new Proton.Alpha(data.alpha.first, data.alpha.second);
-	        var scale = new Proton.Scale(data.scale.first, data.scale.second);
-	        var velocity = new Proton.Velocity(3, Proton.getSpan(0, 360), 'polar');
-	        var rate = new Proton.Rate(new Proton.Span(data.rateNum.first, data.rateNum.second), new Proton.Span(data.rateTime.first, data.rateTime.second));
-	        var mass = new Proton.Mass(data.mass.first, data.mass.second);
-	        var velocity = new Proton.Velocity(new Proton.Span(data.vRpan.first, data.vRpan.second), new Proton.Span(data.vThapan.first, data.vThapan.second), data.vType);
-	        var randomDrift = new Proton.RandomDrift(data.driftPoint.x, data.driftPoint.y, data.driftDelay);
-	        var color = new Proton.Color('ff0000', 'random', Infinity, Proton.easeOutQuart);
 	        if (!this.canvas) {
 	            this.canvas = document.createElement('canvas');
 	            this.canvas.width = 400;
 	            this.canvas.height = 400;
-	            var renderer = new Proton.Renderer('canvas', proton, this.canvas);
-	            renderer.start();
 	        }
-	        var canvas = this.canvas;
 	        if (this.protonEmitter) {
 	            proton.removeEmitter(this.protonEmitter);
 	        }
-	        var emitter = new Proton.Emitter();
-	        emitter.rate = rate;
-	        emitter.addInitialize(mass);
-	        emitter.addInitialize(radius);
-	        emitter.addInitialize(life);
-	        emitter.addInitialize(velocity);
-	        emitter.addBehaviour(randomDrift);
-	        emitter.addBehaviour(color);
-	        emitter.addBehaviour(scale);
-	        emitter.addBehaviour(alpha);
-	        emitter.p.x = data.position.x;
-	        emitter.p.y = data.position.y;
-	        emitter.emit();
-	        proton.addEmitter(emitter);
-	        this.protonEmitter = emitter;
+	        this.protonEmitter = proton_wrapper_1.createProtonEmitter(proton, this.canvas, data);
+	    };
+	    ProtonViewModal.prototype.getDocumentList = function () {
+	        return document_1.Document.templateNames;
 	    };
 	    ProtonViewModal.create = function (options) {
 	        if (!ProtonViewModal.proton) {
 	            ProtonViewModal.proton = new Proton();
 	            requestAnimationFrame(ProtonViewModal.update);
 	        }
-	        var name = options ? (options.template || "default") : "default";
-	        var template = template_1.Template.create(name);
-	        var viewModal = new ProtonViewModal(template);
+	        var doc = document_1.Document.createFromTemplate("default");
+	        var viewModal = new ProtonViewModal(doc, options.storage);
 	        return viewModal;
 	    };
 	    ProtonViewModal.update = function () {
@@ -29834,7 +30477,7 @@ var editor =
 
 
 /***/ },
-/* 175 */
+/* 192 */
 /***/ function(module, exports) {
 
 	/*!
@@ -34005,43 +34648,62 @@ var editor =
 		}()); 
 
 /***/ },
-/* 176 */
+/* 193 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
 	var qtk_1 = __webpack_require__(2);
-	var Template = (function () {
-	    function Template() {
+	var Document = (function () {
+	    function Document() {
 	    }
-	    Template.prototype.parse = function (json) {
+	    Document.prototype.toJson = function () {
+	        var json = {
+	            data: this.data,
+	            propsDesc: this.propsDesc.map(function (item) {
+	                return item.toJson();
+	            })
+	        };
+	        return json;
+	    };
+	    Document.prototype.fromJson = function (json) {
+	        this.data = json.data;
+	        this.propsDesc = json.propsDesc.map(function (item) {
+	            return qtk_1.PagePropsDesc.create(item.title, item.propsDesc.items);
+	        });
+	        return this;
+	    };
+	    Document.prototype.fromTemplate = function (json) {
 	        var data = {};
-	        var propsDesc = [];
-	        json.forEach(function (item) {
+	        this.propsDesc = json.map(function (item) {
 	            var pagePropsDesc = qtk_1.PagePropsDesc.create(item.title, item.propsDesc);
 	            item.propsDesc.forEach(function (desc) {
 	                if (desc.path) {
 	                    data[desc.path] = desc.value;
 	                }
 	            });
-	            propsDesc.push(pagePropsDesc);
+	            return pagePropsDesc;
 	        });
 	        this.data = data;
-	        this.propsDesc = propsDesc;
+	        return this;
 	    };
-	    Template.register = function (name, json) {
-	        Template.templates[name] = json;
+	    Document.createFromJson = function (json) {
+	        var doc = new Document();
+	        return doc.fromJson(json);
 	    };
-	    Template.create = function (name) {
-	        var json = Template.templates[name];
-	        var template = new Template();
-	        template.parse(json);
-	        return template;
+	    Document.registerTemplate = function (name, json) {
+	        Document.templates[name] = json;
+	        Document.templateNames.push(name);
 	    };
-	    Template.templates = {};
-	    return Template;
+	    Document.createFromTemplate = function (name) {
+	        var doc = new Document();
+	        return doc.fromTemplate(Document.templates[name]);
+	    };
+	    Document.templates = {};
+	    Document.templateNames = [];
+	    return Document;
 	}());
-	exports.Template = Template;
-	var defaultTemplateJson = [
+	exports.Document = Document;
+	var defaultTemplate = [
 	    {
 	        title: "Initialize",
 	        propsDesc: [
@@ -34072,11 +34734,11 @@ var editor =
 	        ]
 	    }
 	];
-	Template.register("default", defaultTemplateJson);
+	Document.registerTemplate("default", defaultTemplate);
 
 
 /***/ },
-/* 177 */
+/* 194 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -34118,7 +34780,7 @@ var editor =
 
 
 /***/ },
-/* 178 */
+/* 195 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -34156,29 +34818,194 @@ var editor =
 
 
 /***/ },
-/* 179 */
+/* 196 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
-	var about_info_1 = __webpack_require__(180);
-	var CommandAbout = (function () {
-	    function CommandAbout(viewModal, aboutInfo) {
+	var qtk_1 = __webpack_require__(2);
+	var CommandNew = (function () {
+	    function CommandNew(viewModal, choiceInfo) {
 	        this._viewModal = viewModal;
-	        this._aboutInfo = aboutInfo;
+	        this._choiceInfo = choiceInfo;
+	    }
+	    CommandNew.prototype.canExecute = function () {
+	        return true;
+	    };
+	    CommandNew.prototype.execute = function (args) {
+	        var viewModal = this._viewModal;
+	        qtk_1.InteractionRequest.choice(this._choiceInfo, function (ret) {
+	            var arr = ret.value;
+	            if (arr && arr.length) {
+	                var template = arr[0].text;
+	                viewModal.createDoc(template);
+	            }
+	        });
+	        return true;
+	    };
+	    CommandNew.create = function (viewModal, templates) {
+	        var choiceInfo = qtk_1.ChoiceInfo.create("Please choose a template", false, 300, 300);
+	        templates.forEach(function (item) {
+	            choiceInfo.addOption(item);
+	        });
+	        return new CommandNew(viewModal, choiceInfo);
+	    };
+	    return CommandNew;
+	}());
+	exports.CommandNew = CommandNew;
+	;
+
+
+/***/ },
+/* 197 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+	var qtk_1 = __webpack_require__(2);
+	var CommandOpen = (function () {
+	    function CommandOpen(viewModal, choiceInfo) {
+	        this._viewModal = viewModal;
+	        this._choiceInfo = choiceInfo;
+	    }
+	    CommandOpen.prototype.canExecute = function () {
+	        return true;
+	    };
+	    CommandOpen.prototype.execute = function (args) {
+	        var viewModal = this._viewModal;
+	        qtk_1.InteractionRequest.choice(this._choiceInfo, function (ret) {
+	            var arr = ret.value;
+	            if (arr && arr.length) {
+	                var fileName = arr[0].text;
+	                viewModal.openDoc(fileName);
+	            }
+	        });
+	        return true;
+	    };
+	    CommandOpen.create = function (viewModal) {
+	        var docList = viewModal.getDocList();
+	        var choiceInfo = qtk_1.ChoiceInfo.create("Open...", false, 300, 300);
+	        docList.forEach(function (item) {
+	            choiceInfo.addOption(item);
+	        });
+	        return new CommandOpen(viewModal, choiceInfo);
+	    };
+	    return CommandOpen;
+	}());
+	exports.CommandOpen = CommandOpen;
+	;
+
+
+/***/ },
+/* 198 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+	var qtk_1 = __webpack_require__(2);
+	var CommandSave = (function () {
+	    function CommandSave(viewModal) {
+	        this._viewModal = viewModal;
+	        this._inputInfo = qtk_1.InputInfo.create("Please input file name:", null);
+	    }
+	    CommandSave.prototype.canExecute = function () {
+	        return true;
+	    };
+	    CommandSave.prototype.execute = function (args) {
+	        var viewModal = this._viewModal;
+	        var fileName = viewModal.fileName;
+	        if (!fileName) {
+	            qtk_1.InteractionRequest.input(this._inputInfo, function (ret) {
+	                if (ret.value) {
+	                    viewModal.saveDoc(ret.value);
+	                }
+	            });
+	        }
+	        else {
+	            viewModal.saveDoc(fileName);
+	            qtk_1.InteractionRequest.toast(qtk_1.ToastInfo.create("Save done."));
+	        }
+	        return true;
+	    };
+	    CommandSave.create = function (viewModal) {
+	        return new CommandSave(viewModal);
+	    };
+	    return CommandSave;
+	}());
+	exports.CommandSave = CommandSave;
+	;
+
+
+/***/ },
+/* 199 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+	var qtk_1 = __webpack_require__(2);
+	var CommandExport = (function () {
+	    function CommandExport(viewModal, choiceInfo) {
+	        this._viewModal = viewModal;
+	        this._choiceInfo = choiceInfo;
+	    }
+	    CommandExport.prototype.canExecute = function () {
+	        return true;
+	    };
+	    CommandExport.prototype.execute = function (args) {
+	        var viewModal = this._viewModal;
+	        qtk_1.InteractionRequest.choice(this._choiceInfo, function (ret) {
+	            var arr = ret.value;
+	            if (arr && arr.length) {
+	                var format = arr[0].text;
+	            }
+	        });
+	        return true;
+	    };
+	    CommandExport.create = function (viewModal) {
+	        var formatList = viewModal.getFormatList();
+	        var choiceInfo = qtk_1.ChoiceInfo.create("Export as...", false, 300, 200);
+	        formatList.forEach(function (item) {
+	            choiceInfo.addOption(item);
+	        });
+	        return new CommandExport(viewModal, choiceInfo);
+	    };
+	    return CommandExport;
+	}());
+	exports.CommandExport = CommandExport;
+	;
+
+
+/***/ },
+/* 200 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+	var qtk_1 = __webpack_require__(2);
+	var CommandAbout = (function () {
+	    function CommandAbout(viewModal, propsInfo) {
+	        this._viewModal = viewModal;
+	        this._propsInfo = propsInfo;
 	    }
 	    CommandAbout.prototype.canExecute = function () {
 	        return true;
 	    };
 	    CommandAbout.prototype.execute = function (args) {
-	        console.log("CommandAbout");
-	        this._viewModal.sendViewRequest("help.about", function (aboutInfo) {
-	            console.log("About Closed");
-	        }, this._aboutInfo);
+	        qtk_1.InteractionRequest.props(this._propsInfo, function (ret) {
+	        });
 	        return true;
 	    };
 	    CommandAbout.create = function (viewModal, engine) {
-	        var aboutInfo = about_info_1.AboutInfo.create("Li XianJing", "xianjimli@hotmail.com", "https://github.com/qtoolkit/qtk", engine);
-	        return new CommandAbout(viewModal, aboutInfo);
+	        var data = {
+	            author: "Li XianJing",
+	            email: "xianjimli@hotmail.com",
+	            home: "https://github.com/qtoolkit/qtk",
+	            engine: engine
+	        };
+	        var descJson = [
+	            { type: "text-readonly", name: "Author", path: "author" },
+	            { type: "link", name: "Email", path: "email" },
+	            { type: "link", name: "Home", path: "home" },
+	            { type: "link", name: "Engine", path: "engine" },
+	        ];
+	        var pagePropsDesc = qtk_1.PagePropsDesc.create("About", descJson);
+	        var propsInfo = qtk_1.PropsInfo.create(pagePropsDesc, data, false, 300);
+	        return new CommandAbout(viewModal, propsInfo);
 	    };
 	    return CommandAbout;
 	}());
@@ -34187,27 +35014,46 @@ var editor =
 
 
 /***/ },
-/* 180 */
-/***/ function(module, exports) {
+/* 201 */
+/***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
-	var AboutInfo = (function () {
-	    function AboutInfo(author, email, home, engine) {
-	        this.author = author;
-	        this.email = email;
-	        this.home = home;
-	        this.engine = engine;
+	var qtk_1 = __webpack_require__(2);
+	var CommandRemove = (function () {
+	    function CommandRemove(viewModal, choiceInfo) {
+	        this._viewModal = viewModal;
+	        this._choiceInfo = choiceInfo;
 	    }
-	    AboutInfo.create = function (author, email, home, engine) {
-	        return new AboutInfo(author, email, home, engine);
+	    CommandRemove.prototype.canExecute = function () {
+	        return true;
 	    };
-	    return AboutInfo;
+	    CommandRemove.prototype.execute = function (args) {
+	        var viewModal = this._viewModal;
+	        qtk_1.InteractionRequest.choice(this._choiceInfo, function (ret) {
+	            var arr = ret.value;
+	            if (arr && arr.length) {
+	                var fileName = arr[0].text;
+	                viewModal.removeDoc(fileName);
+	            }
+	        });
+	        return true;
+	    };
+	    CommandRemove.create = function (viewModal) {
+	        var docList = viewModal.getDocList();
+	        var choiceInfo = qtk_1.ChoiceInfo.create("Remove...", false, 300, 300);
+	        docList.forEach(function (item) {
+	            choiceInfo.addOption(item);
+	        });
+	        return new CommandRemove(viewModal, choiceInfo);
+	    };
+	    return CommandRemove;
 	}());
-	exports.AboutInfo = AboutInfo;
+	exports.CommandRemove = CommandRemove;
+	;
 
 
 /***/ },
-/* 181 */
+/* 202 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -34221,7 +35067,6 @@ var editor =
 	    };
 	    CommandContent.prototype.execute = function (args) {
 	        console.log("CommandContent");
-	        this._viewModal.sendViewRequest("help.content", null, this._helpURL);
 	        return true;
 	    };
 	    CommandContent.create = function (viewModal, helpURL) {
@@ -34234,7 +35079,45 @@ var editor =
 
 
 /***/ },
-/* 182 */
+/* 203 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+	var proton = __webpack_require__(192);
+	function createProtonEmitter(proton, canvas, data) {
+	    var life = new Proton.Life(data.life.first, data.life.second);
+	    var radius = new Proton.Radius(data.radius.first, data.radius.second);
+	    var alpha = new Proton.Alpha(data.alpha.first, data.alpha.second);
+	    var scale = new Proton.Scale(data.scale.first, data.scale.second);
+	    var velocity = new Proton.Velocity(3, Proton.getSpan(0, 360), 'polar');
+	    var rate = new Proton.Rate(new Proton.Span(data.rateNum.first, data.rateNum.second), new Proton.Span(data.rateTime.first, data.rateTime.second));
+	    var mass = new Proton.Mass(data.mass.first, data.mass.second);
+	    var velocity = new Proton.Velocity(new Proton.Span(data.vRpan.first, data.vRpan.second), new Proton.Span(data.vThapan.first, data.vThapan.second), data.vType);
+	    var randomDrift = new Proton.RandomDrift(data.driftPoint.x, data.driftPoint.y, data.driftDelay);
+	    var color = new Proton.Color('ff0000', 'random', Infinity, Proton.easeOutQuart);
+	    var renderer = new Proton.Renderer('canvas', proton, canvas);
+	    renderer.start();
+	    var emitter = new Proton.Emitter();
+	    emitter.rate = rate;
+	    emitter.addInitialize(mass);
+	    emitter.addInitialize(radius);
+	    emitter.addInitialize(life);
+	    emitter.addInitialize(velocity);
+	    emitter.addBehaviour(randomDrift);
+	    emitter.addBehaviour(color);
+	    emitter.addBehaviour(scale);
+	    emitter.addBehaviour(alpha);
+	    emitter.p.x = data.position.x;
+	    emitter.p.y = data.position.y;
+	    emitter.emit();
+	    proton.addEmitter(emitter);
+	    return emitter;
+	}
+	exports.createProtonEmitter = createProtonEmitter;
+
+
+/***/ },
+/* 204 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -34249,6 +35132,22 @@ var editor =
 	    function ParticlesViewModal() {
 	        _super.apply(this, arguments);
 	    }
+	    ParticlesViewModal.prototype.getDocList = function () {
+	        return null;
+	    };
+	    ParticlesViewModal.prototype.getFormatList = function () {
+	        return ["json", "plist", "javascript"];
+	    };
+	    ParticlesViewModal.prototype.saveDoc = function (fileName) {
+	    };
+	    ParticlesViewModal.prototype.createDoc = function (templateName) {
+	    };
+	    ParticlesViewModal.prototype.openDoc = function (fileName) {
+	    };
+	    ParticlesViewModal.prototype.removeDoc = function (fileName) {
+	    };
+	    ParticlesViewModal.prototype.newWithTemplate = function (name) {
+	    };
 	    ParticlesViewModal.prototype.getPropsDesc = function () {
 	        return null;
 	    };
@@ -34259,7 +35158,7 @@ var editor =
 
 
 /***/ },
-/* 183 */
+/* 205 */
 /***/ function(module, exports) {
 
 	"use strict";
