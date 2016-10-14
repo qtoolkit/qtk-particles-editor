@@ -1,5 +1,5 @@
-import { Document } from "./document";
 import { PagePropsDesc } from "qtk";
+import { Document } from "../../modals/proton/document";
 import { ParticlesViewModal } from "../particles-view-modal";
 import { ItemsStorage, ValidationResult } from "qtk";
 import { IParticlesViewModal } from "../iparticles-view-modal";

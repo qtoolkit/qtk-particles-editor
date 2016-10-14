@@ -1,7 +1,6 @@
 
 var proton = require("proton");
 
-import {Document} from "./document";
 import {Converters} from "./converters";
 import {CommandDraw} from "./command-draw";
 import {CommandNew} from "../command-new";
@@ -13,6 +12,7 @@ import {CommandRemove} from "../command-remove";
 import {CommandContent} from "../command-content";
 import {createProtonEmitter} from "./proton-wrapper";
 import {PropsDesc, PagePropsDesc, Events} from "qtk";
+import {Document} from "../../modals/proton/document";
 import {ParticlesViewModal} from "../particles-view-modal";
 import {ViewModal, IViewModal, ItemsStorage, ValidationResult} from "qtk"
 import {IParticlesViewModal, ParticlesViewModalFactory} from "../iparticles-view-modal";

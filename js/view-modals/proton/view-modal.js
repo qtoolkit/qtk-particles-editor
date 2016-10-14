@@ -5,7 +5,6 @@ var __extends = (this && this.__extends) || function (d, b) {
     d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 };
 var proton = require("proton");
-var document_1 = require("./document");
 var converters_1 = require("./converters");
 var command_draw_1 = require("./command-draw");
 var command_new_1 = require("../command-new");
@@ -17,6 +16,7 @@ var command_remove_1 = require("../command-remove");
 var command_content_1 = require("../command-content");
 var proton_wrapper_1 = require("./proton-wrapper");
 var qtk_1 = require("qtk");
+var document_1 = require("../../modals/proton/document");
 var particles_view_modal_1 = require("../particles-view-modal");
 var iparticles_view_modal_1 = require("../iparticles-view-modal");
 var ProtonViewModal = (function (_super) {
