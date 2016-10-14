@@ -44,12 +44,17 @@ export class ProtonViewModal extends ParticlesViewModal {
 	}
 
 	protected registerConverters() {
-		this.registerValueConverter("life", RangeFixer.create(0, 1000, 0, 1000, true));
 		this.registerValueConverter("radius", RangeFixer.create(0, 1000, 0, 1000, true));
+		this.registerValueConverter("life", RangeFixer.create(0, 1000, 0, 1000, true));
 		this.registerValueConverter("mass", RangeFixer.create(0, 1000, 0, 1000, true));
 		this.registerValueConverter("point", Vector2Fixer.create(0, 1000, 0, 1000));
 		this.registerValueConverter("scale", RangeFixer.create(0, 10, 0, 10, false));
 		this.registerValueConverter("alpha", RangeFixer.create(0, 1, 0, 1, false));
+		this.registerValueConverter("rate-num", RangeFixer.create(0, 1000, 0, 1000, true));
+		this.registerValueConverter("rate-time", RangeFixer.create(0, 1000, 0, 1000, true));
+		this.registerValueConverter("v-rpan", RangeFixer.create(0, 1000, 0, 1000, true));
+		this.registerValueConverter("v-thapath", RangeFixer.create(-1000, 1000, -1000, 1000, true));
+		this.registerValueConverter("delay", NumberFixer.create(0, 10));
 	}
 
 	protected registerCommands() {

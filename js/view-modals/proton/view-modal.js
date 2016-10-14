@@ -34,12 +34,17 @@ var ProtonViewModal = (function (_super) {
         this.updateDocList();
     }
     ProtonViewModal.prototype.registerConverters = function () {
-        this.registerValueConverter("life", qtk_1.RangeFixer.create(0, 1000, 0, 1000, true));
         this.registerValueConverter("radius", qtk_1.RangeFixer.create(0, 1000, 0, 1000, true));
+        this.registerValueConverter("life", qtk_1.RangeFixer.create(0, 1000, 0, 1000, true));
         this.registerValueConverter("mass", qtk_1.RangeFixer.create(0, 1000, 0, 1000, true));
         this.registerValueConverter("point", qtk_1.Vector2Fixer.create(0, 1000, 0, 1000));
         this.registerValueConverter("scale", qtk_1.RangeFixer.create(0, 10, 0, 10, false));
         this.registerValueConverter("alpha", qtk_1.RangeFixer.create(0, 1, 0, 1, false));
+        this.registerValueConverter("rate-num", qtk_1.RangeFixer.create(0, 1000, 0, 1000, true));
+        this.registerValueConverter("rate-time", qtk_1.RangeFixer.create(0, 1000, 0, 1000, true));
+        this.registerValueConverter("v-rpan", qtk_1.RangeFixer.create(0, 1000, 0, 1000, true));
+        this.registerValueConverter("v-thapath", qtk_1.RangeFixer.create(-1000, 1000, -1000, 1000, true));
+        this.registerValueConverter("delay", qtk_1.NumberFixer.create(0, 10));
     };
     ProtonViewModal.prototype.registerCommands = function () {
         this.registerCommand("draw", command_draw_1.CommandDraw.create(this.canvas));

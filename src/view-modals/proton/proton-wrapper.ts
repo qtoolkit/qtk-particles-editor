@@ -3,35 +3,49 @@ var proton = require("proton");
 
 declare var Proton : any;
 export function createProtonEmitter(proton:any, data:any) {
-	var life   = new Proton.Life(data.life.first, data.life.second);
-	var radius = new Proton.Radius(data.radius.first, data.radius.second);
-	var alpha  = new Proton.Alpha(data.alpha.first, data.alpha.second);
-	var scale  = new Proton.Scale(data.scale.first, data.scale.second);	
-	var rate   = new Proton.Rate(new Proton.Span(data.rateNum.first, data.rateNum.second), 
-					new Proton.Span(data.rateTime.first, data.rateTime.second));
-	var mass     = new Proton.Mass(data.mass.first, data.mass.second);
-	var velocity = new Proton.Velocity(new Proton.Span(data.vRpan.first, data.vRpan.second), 
-				new Proton.Span(data.vThapan.first, data.vThapan.second), data.vType);
-
-	var color = new Proton.Color('ff0000', 'random', Infinity, Proton.easeOutQuart);
-	var randomDrift = new Proton.RandomDrift(data.driftPoint.x, data.driftPoint.y, data.driftDelay);
-	
 	var emitter = new Proton.Emitter();
-	emitter.rate = rate;
-	emitter.addInitialize(mass);
-	emitter.addInitialize(radius);
-	emitter.addInitialize(life);
-	emitter.addInitialize(velocity);
+	
+	if(data.rateNum && data.rateTime) {
+		emitter.rate = new Proton.Rate(new Proton.Span(data.rateNum.first, data.rateNum.second), 
+			new Proton.Span(data.rateTime.first, data.rateTime.second));
+	}
+	if(data.mass) {
+		emitter.addInitialize(new Proton.Mass(data.mass.first, data.mass.second));
+	}
+	if(data.radius) {
+		emitter.addInitialize(new Proton.Radius(data.radius.first, data.radius.second));
+	}
+	if(data.life) {
+		emitter.addInitialize(new Proton.Life(data.life.first, data.life.second));
+	}
+	if(data.vRpan && data.vType && data.vThapan) {
+		var velocity = new Proton.Velocity(new Proton.Span(data.vRpan.first, data.vRpan.second), 
+				new Proton.Span(data.vThapan.first, data.vThapan.second), data.vType);
+		emitter.addInitialize(velocity);
+	}
 
-	emitter.addBehaviour(randomDrift);
-	emitter.addBehaviour(color);
-	emitter.addBehaviour(scale);
-	emitter.addBehaviour(alpha);
-	
-	emitter.p.x = data.position.x;
-	emitter.p.y = data.position.y;
+	if(data.driftPoint) {
+		emitter.addBehaviour(new Proton.RandomDrift(data.driftPoint.x, data.driftPoint.y, data.driftDelay));
+	}
+	if(data.colorBegin && data.colorEnd) {
+		emitter.addBehaviour(new Proton.Color(data.colorBegin, data.colorEnd, Infinity, Proton.easeOutQuart));
+	}
+	if(data.scale) {
+		emitter.addBehaviour(new Proton.Scale(data.scale.first, data.scale.second));
+	}
+	if(data.alpha) {
+		emitter.addBehaviour(new Proton.Alpha(data.alpha.first, data.alpha.second));
+	}
+
+	if(data.position) {
+		emitter.p.x = data.position.x;
+		emitter.p.y = data.position.y;
+	}else{
+		emitter.p.x = 100;
+		emitter.p.y = 100;
+	}
+
 	emitter.emit();
-	
 	proton.addEmitter(emitter);
 
 	return emitter;
