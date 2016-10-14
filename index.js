@@ -66,7 +66,7 @@ var editor =
 	var qtk_1 = __webpack_require__(2);
 	var main_window_1 = __webpack_require__(186);
 	var view_modal_1 = __webpack_require__(191);
-	var iparticles_view_modal_1 = __webpack_require__(206);
+	var iparticles_view_modal_1 = __webpack_require__(207);
 	var themeDataURL = "https://qtoolkit.github.io/demos/assets/theme/default/theme.json";
 	var ParticlesEditor = (function (_super) {
 	    __extends(ParticlesEditor, _super);
@@ -30397,8 +30397,9 @@ var editor =
 	var command_content_1 = __webpack_require__(202);
 	var proton_wrapper_1 = __webpack_require__(203);
 	var document_1 = __webpack_require__(204);
-	var particles_view_modal_1 = __webpack_require__(205);
-	var iparticles_view_modal_1 = __webpack_require__(206);
+	__webpack_require__(205);
+	var particles_view_modal_1 = __webpack_require__(206);
+	var iparticles_view_modal_1 = __webpack_require__(207);
 	var ProtonViewModal = (function (_super) {
 	    __extends(ProtonViewModal, _super);
 	    function ProtonViewModal(storage) {
@@ -30409,7 +30410,7 @@ var editor =
 	        this.storage = storage;
 	        converters_1.Converters.init(this);
 	        this.registerCommands();
-	        this.doc = document_1.Document.createFromTemplate(null);
+	        this.doc = document_1.Document.create();
 	        this.createDoc("default");
 	        this.updateDocList();
 	    }
@@ -35340,15 +35341,11 @@ var editor =
 	        this.data = data;
 	        return this;
 	    };
-	    Document.createFromJson = function (json) {
-	        var doc = new Document();
-	        if (json) {
-	            doc.fromJson(json);
-	        }
-	        return doc;
-	    };
 	    Document.prototype.getTemplateList = function () {
 	        return Document.templateNames;
+	    };
+	    Document.create = function () {
+	        return new Document();
 	    };
 	    Document.registerTemplate = function (name, json) {
 	        Document.templates[name] = json;
@@ -35357,18 +35354,19 @@ var editor =
 	    Document.getTemplateList = function () {
 	        return Document.templateNames;
 	    };
-	    Document.createFromTemplate = function (name) {
-	        var doc = new Document();
-	        if (name) {
-	            doc.fromTemplate(name);
-	        }
-	        return doc;
-	    };
 	    Document.templates = {};
 	    Document.templateNames = [];
 	    return Document;
 	}());
 	exports.Document = Document;
+	//# sourceMappingURL=document.js.map
+
+/***/ },
+/* 205 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+	var document_1 = __webpack_require__(204);
 	var defaultTemplate = [
 	    {
 	        title: "Initialize",
@@ -35400,11 +35398,11 @@ var editor =
 	        ]
 	    }
 	];
-	Document.registerTemplate("default", defaultTemplate);
-	//# sourceMappingURL=document.js.map
+	document_1.Document.registerTemplate("default", defaultTemplate);
+	//# sourceMappingURL=templates.js.map
 
 /***/ },
-/* 205 */
+/* 206 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -35485,7 +35483,7 @@ var editor =
 	//# sourceMappingURL=particles-view-modal.js.map
 
 /***/ },
-/* 206 */
+/* 207 */
 /***/ function(module, exports) {
 
 	"use strict";

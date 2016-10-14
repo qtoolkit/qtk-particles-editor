@@ -15,7 +15,8 @@ var command_about_1 = require("../command-about");
 var command_remove_1 = require("../command-remove");
 var command_content_1 = require("../command-content");
 var proton_wrapper_1 = require("./proton-wrapper");
-var document_1 = require("../../modals/proton/document");
+var document_1 = require("../../modals/document");
+require("../../modals/proton/templates");
 var particles_view_modal_1 = require("../particles-view-modal");
 var iparticles_view_modal_1 = require("../iparticles-view-modal");
 var ProtonViewModal = (function (_super) {
@@ -28,7 +29,7 @@ var ProtonViewModal = (function (_super) {
         this.storage = storage;
         converters_1.Converters.init(this);
         this.registerCommands();
-        this.doc = document_1.Document.createFromTemplate(null);
+        this.doc = document_1.Document.create();
         this.createDoc("default");
         this.updateDocList();
     }

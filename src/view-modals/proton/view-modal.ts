@@ -12,8 +12,9 @@ import {CommandRemove} from "../command-remove";
 import {CommandContent} from "../command-content";
 import {createProtonEmitter} from "./proton-wrapper";
 import {PropsDesc, PagePropsDesc, Events} from "qtk";
+import {Document} from "../../modals/document";
 import {IDocument} from "../../modals/idocument";
-import {Document} from "../../modals/proton/document";
+import "../../modals/proton/templates";
 import {ParticlesViewModal} from "../particles-view-modal";
 import {ViewModal, IViewModal, ItemsStorage, ValidationResult} from "qtk"
 import {IParticlesViewModal, ParticlesViewModalFactory} from "../iparticles-view-modal";
@@ -37,7 +38,7 @@ export class ProtonViewModal extends ParticlesViewModal {
 		Converters.init(this);
 		this.registerCommands();
 		
-		this.doc = Document.createFromTemplate(null);
+		this.doc = Document.create();
 		this.createDoc("default");
 		this.updateDocList();
 	}

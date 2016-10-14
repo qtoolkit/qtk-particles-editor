@@ -1,3 +1,4 @@
+import "../../modals/proton/templates";
 import { ParticlesViewModal } from "../particles-view-modal";
 import { ItemsStorage } from "qtk";
 import { IParticlesViewModal } from "../iparticles-view-modal";
