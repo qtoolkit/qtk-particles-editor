@@ -1,10 +1,11 @@
+import { IDocument } from "../idocument";
 import { PagePropsDesc } from "qtk";
-export declare class Document {
+export declare class Document implements IDocument {
     data: any;
     propsDesc: Array<PagePropsDesc>;
     toJson(): any;
     fromJson(json: any): Document;
-    fromTemplate(json: Array<any>): Document;
+    fromTemplate(name: string): Document;
     static createFromJson(json: any): Document;
     static templates: {};
     static templateNames: any[];

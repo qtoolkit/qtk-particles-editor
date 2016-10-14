@@ -15,7 +15,6 @@ var command_about_1 = require("../command-about");
 var command_remove_1 = require("../command-remove");
 var command_content_1 = require("../command-content");
 var proton_wrapper_1 = require("./proton-wrapper");
-var qtk_1 = require("qtk");
 var document_1 = require("../../modals/proton/document");
 var particles_view_modal_1 = require("../particles-view-modal");
 var iparticles_view_modal_1 = require("../iparticles-view-modal");
@@ -29,8 +28,9 @@ var ProtonViewModal = (function (_super) {
         this.storage = storage;
         converters_1.Converters.init(this);
         this.registerCommands();
-        this.createDoc("default");
+        this.doc = document_1.Document.createFromTemplate(null);
         this.docList = this.storage.getItems();
+        this.createDoc("default");
     }
     ProtonViewModal.prototype.getFormatList = function () {
         return ["json"];
@@ -45,10 +45,9 @@ var ProtonViewModal = (function (_super) {
         this.docList = this.storage.getItems();
     };
     ProtonViewModal.prototype.createDoc = function (templateName) {
-        this.doc = document_1.Document.createFromTemplate("default");
+        this.doc.fromTemplate(templateName);
         this.data = this.doc.data;
         this.createEmitter();
-        this.notifyChange(qtk_1.Events.PROP_CHANGE, "/", null);
         this.docList = this.storage.getItems();
     };
     ProtonViewModal.prototype.removeDoc = function (fileName) {
@@ -62,7 +61,6 @@ var ProtonViewModal = (function (_super) {
         this.data = this.doc.data;
         this.createEmitter();
         this.fileName = fileName;
-        this.notifyChange(qtk_1.Events.PROP_CHANGE, "/", null);
         this.docList = this.storage.getItems();
     };
     ProtonViewModal.prototype.exportDoc = function (format) {

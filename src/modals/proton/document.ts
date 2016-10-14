@@ -1,7 +1,8 @@
 
+import {IDocument} from "../idocument";
 import {PropsDesc, PagePropsDesc, Events} from "qtk";
 
-export class Document {
+export class Document implements IDocument {
 	public data:any;
 	public propsDesc : Array<PagePropsDesc>;
 
@@ -25,7 +26,8 @@ export class Document {
 		return this;
 	}
 
-	public fromTemplate(json:Array<any>) : Document {
+	public fromTemplate(name:string) : Document {
+		var json = Document.templates[name];
 		var data = {};
 		this.propsDesc = json.map(item => {
 			var pagePropsDesc = PagePropsDesc.create(item.title, item.propsDesc);
@@ -46,8 +48,10 @@ export class Document {
 
 	public static createFromJson(json:any) {
 		var doc = new Document();
-
-		return doc.fromJson(json);
+		if(json){
+			doc.fromJson(json);
+		}
+		return doc;
 	}
 
 	public static templates = {};
@@ -59,7 +63,11 @@ export class Document {
 	
 	public static createFromTemplate(name:string) {
 		var doc = new Document();
-		return doc.fromTemplate(Document.templates[name]);
+		if(name) {
+			doc.fromTemplate(name);
+		}
+
+		return doc;
 	}
 }
 

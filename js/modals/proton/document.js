@@ -19,7 +19,8 @@ var Document = (function () {
         });
         return this;
     };
-    Document.prototype.fromTemplate = function (json) {
+    Document.prototype.fromTemplate = function (name) {
+        var json = Document.templates[name];
         var data = {};
         this.propsDesc = json.map(function (item) {
             var pagePropsDesc = qtk_1.PagePropsDesc.create(item.title, item.propsDesc);
@@ -35,7 +36,10 @@ var Document = (function () {
     };
     Document.createFromJson = function (json) {
         var doc = new Document();
-        return doc.fromJson(json);
+        if (json) {
+            doc.fromJson(json);
+        }
+        return doc;
     };
     Document.registerTemplate = function (name, json) {
         Document.templates[name] = json;
@@ -43,7 +47,10 @@ var Document = (function () {
     };
     Document.createFromTemplate = function (name) {
         var doc = new Document();
-        return doc.fromTemplate(Document.templates[name]);
+        if (name) {
+            doc.fromTemplate(name);
+        }
+        return doc;
     };
     Document.templates = {};
     Document.templateNames = [];

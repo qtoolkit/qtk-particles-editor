@@ -46,11 +46,10 @@ export class ProtonViewModal extends ParticlesViewModal {
 	}
 	
 	public createDoc(templateName:string) {
-		this.doc = Document.createFromTemplate("default");
+		this.doc.fromTemplate(templateName);
 		this.data = this.doc.data;
 		
 		this.createEmitter();
-		this.notifyChange(Events.PROP_CHANGE, "/", null);
 		this.docList = this.storage.getItems();
 	}
 	
@@ -68,7 +67,6 @@ export class ProtonViewModal extends ParticlesViewModal {
 
 		this.createEmitter();
 		this.fileName = fileName;
-		this.notifyChange(Events.PROP_CHANGE, "/", null);
 		this.docList = this.storage.getItems();
 	}
 
@@ -106,8 +104,9 @@ export class ProtonViewModal extends ParticlesViewModal {
 		Converters.init(this);
 		this.registerCommands();
 		
-		this.createDoc("default");
+		this.doc = Document.createFromTemplate(null);
 		this.docList = this.storage.getItems();
+		this.createDoc("default");
 	}
 
 	protected registerCommands() {

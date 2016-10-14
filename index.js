@@ -27283,6 +27283,7 @@ var editor =
 	        },
 	        set: function (value) {
 	            this._data = value;
+	            this.notifyChange(Events.PROP_CHANGE, "/", null);
 	        },
 	        enumerable: true,
 	        configurable: true
@@ -30395,7 +30396,6 @@ var editor =
 	var command_remove_1 = __webpack_require__(201);
 	var command_content_1 = __webpack_require__(202);
 	var proton_wrapper_1 = __webpack_require__(203);
-	var qtk_1 = __webpack_require__(2);
 	var document_1 = __webpack_require__(204);
 	var particles_view_modal_1 = __webpack_require__(205);
 	var iparticles_view_modal_1 = __webpack_require__(206);
@@ -30409,8 +30409,9 @@ var editor =
 	        this.storage = storage;
 	        converters_1.Converters.init(this);
 	        this.registerCommands();
-	        this.createDoc("default");
+	        this.doc = document_1.Document.createFromTemplate(null);
 	        this.docList = this.storage.getItems();
+	        this.createDoc("default");
 	    }
 	    ProtonViewModal.prototype.getFormatList = function () {
 	        return ["json"];
@@ -30425,10 +30426,9 @@ var editor =
 	        this.docList = this.storage.getItems();
 	    };
 	    ProtonViewModal.prototype.createDoc = function (templateName) {
-	        this.doc = document_1.Document.createFromTemplate("default");
+	        this.doc.fromTemplate(templateName);
 	        this.data = this.doc.data;
 	        this.createEmitter();
-	        this.notifyChange(qtk_1.Events.PROP_CHANGE, "/", null);
 	        this.docList = this.storage.getItems();
 	    };
 	    ProtonViewModal.prototype.removeDoc = function (fileName) {
@@ -30442,7 +30442,6 @@ var editor =
 	        this.data = this.doc.data;
 	        this.createEmitter();
 	        this.fileName = fileName;
-	        this.notifyChange(qtk_1.Events.PROP_CHANGE, "/", null);
 	        this.docList = this.storage.getItems();
 	    };
 	    ProtonViewModal.prototype.exportDoc = function (format) {
@@ -35377,7 +35376,8 @@ var editor =
 	        });
 	        return this;
 	    };
-	    Document.prototype.fromTemplate = function (json) {
+	    Document.prototype.fromTemplate = function (name) {
+	        var json = Document.templates[name];
 	        var data = {};
 	        this.propsDesc = json.map(function (item) {
 	            var pagePropsDesc = qtk_1.PagePropsDesc.create(item.title, item.propsDesc);
@@ -35393,7 +35393,10 @@ var editor =
 	    };
 	    Document.createFromJson = function (json) {
 	        var doc = new Document();
-	        return doc.fromJson(json);
+	        if (json) {
+	            doc.fromJson(json);
+	        }
+	        return doc;
 	    };
 	    Document.registerTemplate = function (name, json) {
 	        Document.templates[name] = json;
@@ -35401,7 +35404,10 @@ var editor =
 	    };
 	    Document.createFromTemplate = function (name) {
 	        var doc = new Document();
-	        return doc.fromTemplate(Document.templates[name]);
+	        if (name) {
+	            doc.fromTemplate(name);
+	        }
+	        return doc;
 	    };
 	    Document.templates = {};
 	    Document.templateNames = [];
