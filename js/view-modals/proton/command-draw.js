@@ -1,7 +1,8 @@
 "use strict";
 var CommandDraw = (function () {
-    function CommandDraw(protonData) {
-        this._protonData = protonData;
+    function CommandDraw(canvas) {
+        this._canvas = canvas;
+        return this;
     }
     CommandDraw.prototype.canExecute = function () {
         return true;
@@ -10,8 +11,7 @@ var CommandDraw = (function () {
         var drawInfo = args;
         var ctx = drawInfo.ctx;
         var rect = drawInfo.rect;
-        var canvas = this._protonData.canvas;
-        var emitter = this._protonData.protonEmitter;
+        var canvas = this._canvas;
         if (canvas) {
             var w = rect.w >> 0;
             var h = rect.h >> 0;
@@ -23,8 +23,8 @@ var CommandDraw = (function () {
         }
         return true;
     };
-    CommandDraw.create = function (protonData) {
-        return new CommandDraw(protonData);
+    CommandDraw.create = function (canvas) {
+        return new CommandDraw(canvas);
     };
     return CommandDraw;
 }());

@@ -21,8 +21,9 @@ var ParticleProperties = (function (_super) {
         propsDesc.forEach(function (pageDesc) {
             var page = qtk_1.PropertyPage.create({ h: 400 });
             page.initWithPropsDesc(pageDesc.propsDesc);
-            _this.addPage(pageDesc.title, page);
+            var titlePage = _this.addPage(pageDesc.title, page);
             page.bindData(viewModal);
+            titlePage.collapsed = false;
         });
     };
     ParticleProperties.create = function (options) {

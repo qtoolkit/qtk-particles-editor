@@ -1,7 +1,7 @@
 
 var proton = require("proton");
+
 import {Document} from "./document";
-import {IProtonData} from "./iproton-data";
 import {Converters} from "./converters";
 import {CommandDraw} from "./command-draw";
 import {CommandNew} from "../command-new";
@@ -13,19 +13,19 @@ import {CommandRemove} from "../command-remove";
 import {CommandContent} from "../command-content";
 import {createProtonEmitter} from "./proton-wrapper";
 import {PropsDesc, PagePropsDesc, Events} from "qtk";
-import {ViewModal, IViewModal, ItemsStorage, ValidationResult} from "qtk"
 import {ParticlesViewModal} from "../particles-view-modal";
+import {ViewModal, IViewModal, ItemsStorage, ValidationResult} from "qtk"
 import {IParticlesViewModal, ParticlesViewModalFactory} from "../iparticles-view-modal";
 
 declare var Proton : any;
 
-export class ProtonViewModal extends ParticlesViewModal implements IProtonData{
+export class ProtonViewModal extends ParticlesViewModal {
 	public canvas : any;
-	public fileName : string;
-	public protonEmitter : any;
-	public storage : ItemsStorage;
-	protected docList : Array<string>;
 
+	protected fileName : string;
+	protected protonEmitter : any;
+	protected storage : ItemsStorage;
+	protected docList : Array<string>;
 	protected renderer : any;
 	protected doc : Document;
 	
@@ -39,15 +39,16 @@ export class ProtonViewModal extends ParticlesViewModal implements IProtonData{
 	
 	public saveDoc(fileName:string) {
 		var data = JSON.stringify(this.doc.toJson(), null, "\t"); 
-		this.storage.set(fileName, data);
+		
 		this.fileName = fileName;
+		this.storage.set(fileName, data);
 		this.docList = this.storage.getItems();
 	}
 	
 	public createDoc(templateName:string) {
-		var doc = Document.createFromTemplate("default");
-		this.doc = doc;
+		this.doc = Document.createFromTemplate("default");
 		this.data = this.doc.data;
+		
 		this.createEmitter();
 		this.notifyChange(Events.PROP_CHANGE, "/", null);
 		this.docList = this.storage.getItems();
@@ -72,7 +73,11 @@ export class ProtonViewModal extends ParticlesViewModal implements IProtonData{
 	}
 
 	public exportDoc(format:string) : string {
-		return "";
+		if(format.indexOf("json") >= 0) {
+			return JSON.stringify(this.data, null, "\t");
+		}
+
+		return null; 
 	}
 
 	public getDocName() : string {
@@ -90,23 +95,26 @@ export class ProtonViewModal extends ParticlesViewModal implements IProtonData{
 		return result;
 	}
 	
-	constructor(doc:Document, storage:ItemsStorage) {
-		super(doc.data);
-
-		this.createEmitter();
+	constructor(storage:ItemsStorage) {
+		super(null);
+		
+		this.canvas = document.createElement('canvas');
+		this.canvas.width = 400;
+		this.canvas.height = 400;
+		
 		this.storage = storage;
-		this.doc = doc;
-	
 		Converters.init(this);
 		this.registerCommands();
+		
+		this.createDoc("default");
 		this.docList = this.storage.getItems();
 	}
 
 	protected registerCommands() {
-		this.registerCommand("draw", CommandDraw.create(this));
+		this.registerCommand("draw", CommandDraw.create(this.canvas));
 		this.registerCommand("about", CommandAbout.create(this, "https://github.com/a-jie/Proton"));
 		this.registerCommand("content", CommandContent.create(this, "http://proton.jpeer.at/index.html"));
-		this.registerCommand("new", CommandNew.create(this, this.getDocumentList()));
+		this.registerCommand("new", CommandNew.create(this, this.getTemplateList()));
 		this.registerCommand("open", CommandOpen.create(this));
 		this.registerCommand("remove", CommandRemove.create(this));
 		this.registerCommand("save", CommandSave.create(this, false));
@@ -118,13 +126,6 @@ export class ProtonViewModal extends ParticlesViewModal implements IProtonData{
 		var data = this.data;
 		var proton = ProtonViewModal.proton;
 		
-		if(!this.canvas) {
-			this.canvas = document.createElement('canvas');
-			this.canvas.width = 400;
-			this.canvas.height = 400;
-			
-		}
-
 		if(!this.renderer) {
 			var renderer = new Proton.Renderer('canvas', proton, this.canvas);
 			this.renderer = renderer;
@@ -137,30 +138,27 @@ export class ProtonViewModal extends ParticlesViewModal implements IProtonData{
 			emitter.destroy();
 		}
 
-		this.protonEmitter = createProtonEmitter(proton, this.canvas, data);
+		this.protonEmitter = createProtonEmitter(proton, data);
 	}
 
-	public getDocumentList() : Array<string> {
+	public getTemplateList() : Array<string> {
 		return Document.templateNames;
 	}
 	
 	public static TYPE = "proton";
+	public static proton = null;
+	public static update() {
+		ProtonViewModal.proton.update();
+		requestAnimationFrame(ProtonViewModal.update);
+	}
+
 	public static create(options:any) : IParticlesViewModal {
 		if(!ProtonViewModal.proton) {
 			ProtonViewModal.proton = new Proton();			
 			requestAnimationFrame(ProtonViewModal.update);
 		}
 
-		var doc = Document.createFromTemplate("default");
-		var viewModal = new ProtonViewModal(doc, options.storage);
-
-		return viewModal;
-	}
-	
-	public static proton = null;
-	public static update() {
-		ProtonViewModal.proton.update();
-		requestAnimationFrame(ProtonViewModal.update);
+		return new ProtonViewModal(options.storage);
 	}
 };
 

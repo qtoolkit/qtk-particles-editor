@@ -1,3 +1,5 @@
+var saveAs = require('save-as').default;
+
 import {ParticlesViewModal} from "./particles-view-modal";
 import {ICommand, InteractionRequest, ChoiceInfo} from "qtk";
 
@@ -20,6 +22,11 @@ export class CommandExport implements ICommand {
 			var arr = ret.value;
 			if(arr && arr.length) {
 				var format = arr[0].text;
+				var result = viewModal.exportDoc(format);
+				if(result) {
+					let blob = new Blob([result], { type: 'text/plain;charset=utf-8' })
+					saveAs(blob, 'particles.json')
+				}
 			}
 		});
 		return true;

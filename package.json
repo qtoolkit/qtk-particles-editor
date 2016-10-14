@@ -39,7 +39,8 @@
   },
   "dependencies": {
     "json-pointer": "^0.5.0",
+    "proton": "git+https://github.com/a-jie/Proton.git",
     "qtk": "git+https://github.com/qtoolkit/qtk.git",
-    "proton": "git+https://github.com/a-jie/Proton.git"
+    "save-as": "^0.1.7"
   }
 }

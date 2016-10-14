@@ -61,8 +61,6 @@ export class Document {
 		var doc = new Document();
 		return doc.fromTemplate(Document.templates[name]);
 	}
-
-
 }
 
 const defaultTemplate = [

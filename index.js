@@ -66,7 +66,7 @@ var editor =
 	var qtk_1 = __webpack_require__(2);
 	var main_window_1 = __webpack_require__(186);
 	var view_modal_1 = __webpack_require__(191);
-	var iparticles_view_modal_1 = __webpack_require__(205);
+	var iparticles_view_modal_1 = __webpack_require__(206);
 	var themeDataURL = "https://qtoolkit.github.io/demos/assets/theme/default/theme.json";
 	var ParticlesEditor = (function (_super) {
 	    __extends(ParticlesEditor, _super);
@@ -30357,8 +30357,9 @@ var editor =
 	        propsDesc.forEach(function (pageDesc) {
 	            var page = qtk_1.PropertyPage.create({ h: 400 });
 	            page.initWithPropsDesc(pageDesc.propsDesc);
-	            _this.addPage(pageDesc.title, page);
+	            var titlePage = _this.addPage(pageDesc.title, page);
 	            page.bindData(viewModal);
+	            titlePage.collapsed = false;
 	        });
 	    };
 	    ParticleProperties.create = function (options) {
@@ -30391,22 +30392,24 @@ var editor =
 	var command_open_1 = __webpack_require__(197);
 	var command_save_1 = __webpack_require__(198);
 	var command_export_1 = __webpack_require__(199);
-	var command_about_1 = __webpack_require__(200);
-	var command_remove_1 = __webpack_require__(201);
-	var command_content_1 = __webpack_require__(202);
-	var proton_wrapper_1 = __webpack_require__(203);
+	var command_about_1 = __webpack_require__(201);
+	var command_remove_1 = __webpack_require__(202);
+	var command_content_1 = __webpack_require__(203);
+	var proton_wrapper_1 = __webpack_require__(204);
 	var qtk_1 = __webpack_require__(2);
-	var particles_view_modal_1 = __webpack_require__(204);
-	var iparticles_view_modal_1 = __webpack_require__(205);
+	var particles_view_modal_1 = __webpack_require__(205);
+	var iparticles_view_modal_1 = __webpack_require__(206);
 	var ProtonViewModal = (function (_super) {
 	    __extends(ProtonViewModal, _super);
-	    function ProtonViewModal(doc, storage) {
-	        _super.call(this, doc.data);
-	        this.createEmitter();
+	    function ProtonViewModal(storage) {
+	        _super.call(this, null);
+	        this.canvas = document.createElement('canvas');
+	        this.canvas.width = 400;
+	        this.canvas.height = 400;
 	        this.storage = storage;
-	        this.doc = doc;
 	        converters_1.Converters.init(this);
 	        this.registerCommands();
+	        this.createDoc("default");
 	        this.docList = this.storage.getItems();
 	    }
 	    ProtonViewModal.prototype.getFormatList = function () {
@@ -30417,13 +30420,12 @@ var editor =
 	    };
 	    ProtonViewModal.prototype.saveDoc = function (fileName) {
 	        var data = JSON.stringify(this.doc.toJson(), null, "\t");
-	        this.storage.set(fileName, data);
 	        this.fileName = fileName;
+	        this.storage.set(fileName, data);
 	        this.docList = this.storage.getItems();
 	    };
 	    ProtonViewModal.prototype.createDoc = function (templateName) {
-	        var doc = document_1.Document.createFromTemplate("default");
-	        this.doc = doc;
+	        this.doc = document_1.Document.createFromTemplate("default");
 	        this.data = this.doc.data;
 	        this.createEmitter();
 	        this.notifyChange(qtk_1.Events.PROP_CHANGE, "/", null);
@@ -30444,7 +30446,10 @@ var editor =
 	        this.docList = this.storage.getItems();
 	    };
 	    ProtonViewModal.prototype.exportDoc = function (format) {
-	        return "";
+	        if (format.indexOf("json") >= 0) {
+	            return JSON.stringify(this.data, null, "\t");
+	        }
+	        return null;
 	    };
 	    ProtonViewModal.prototype.getDocName = function () {
 	        return this.fileName;
@@ -30458,10 +30463,10 @@ var editor =
 	        return result;
 	    };
 	    ProtonViewModal.prototype.registerCommands = function () {
-	        this.registerCommand("draw", command_draw_1.CommandDraw.create(this));
+	        this.registerCommand("draw", command_draw_1.CommandDraw.create(this.canvas));
 	        this.registerCommand("about", command_about_1.CommandAbout.create(this, "https://github.com/a-jie/Proton"));
 	        this.registerCommand("content", command_content_1.CommandContent.create(this, "http://proton.jpeer.at/index.html"));
-	        this.registerCommand("new", command_new_1.CommandNew.create(this, this.getDocumentList()));
+	        this.registerCommand("new", command_new_1.CommandNew.create(this, this.getTemplateList()));
 	        this.registerCommand("open", command_open_1.CommandOpen.create(this));
 	        this.registerCommand("remove", command_remove_1.CommandRemove.create(this));
 	        this.registerCommand("save", command_save_1.CommandSave.create(this, false));
@@ -30471,11 +30476,6 @@ var editor =
 	    ProtonViewModal.prototype.createEmitter = function () {
 	        var data = this.data;
 	        var proton = ProtonViewModal.proton;
-	        if (!this.canvas) {
-	            this.canvas = document.createElement('canvas');
-	            this.canvas.width = 400;
-	            this.canvas.height = 400;
-	        }
 	        if (!this.renderer) {
 	            var renderer = new Proton.Renderer('canvas', proton, this.canvas);
 	            this.renderer = renderer;
@@ -30486,23 +30486,21 @@ var editor =
 	            proton.removeEmitter(emitter);
 	            emitter.destroy();
 	        }
-	        this.protonEmitter = proton_wrapper_1.createProtonEmitter(proton, this.canvas, data);
+	        this.protonEmitter = proton_wrapper_1.createProtonEmitter(proton, data);
 	    };
-	    ProtonViewModal.prototype.getDocumentList = function () {
+	    ProtonViewModal.prototype.getTemplateList = function () {
 	        return document_1.Document.templateNames;
+	    };
+	    ProtonViewModal.update = function () {
+	        ProtonViewModal.proton.update();
+	        requestAnimationFrame(ProtonViewModal.update);
 	    };
 	    ProtonViewModal.create = function (options) {
 	        if (!ProtonViewModal.proton) {
 	            ProtonViewModal.proton = new Proton();
 	            requestAnimationFrame(ProtonViewModal.update);
 	        }
-	        var doc = document_1.Document.createFromTemplate("default");
-	        var viewModal = new ProtonViewModal(doc, options.storage);
-	        return viewModal;
-	    };
-	    ProtonViewModal.update = function () {
-	        ProtonViewModal.proton.update();
-	        requestAnimationFrame(ProtonViewModal.update);
+	        return new ProtonViewModal(options.storage);
 	    };
 	    ProtonViewModal.TYPE = "proton";
 	    ProtonViewModal.proton = null;
@@ -34822,8 +34820,9 @@ var editor =
 
 	"use strict";
 	var CommandDraw = (function () {
-	    function CommandDraw(protonData) {
-	        this._protonData = protonData;
+	    function CommandDraw(canvas) {
+	        this._canvas = canvas;
+	        return this;
 	    }
 	    CommandDraw.prototype.canExecute = function () {
 	        return true;
@@ -34832,8 +34831,7 @@ var editor =
 	        var drawInfo = args;
 	        var ctx = drawInfo.ctx;
 	        var rect = drawInfo.rect;
-	        var canvas = this._protonData.canvas;
-	        var emitter = this._protonData.protonEmitter;
+	        var canvas = this._canvas;
 	        if (canvas) {
 	            var w = rect.w >> 0;
 	            var h = rect.h >> 0;
@@ -34845,8 +34843,8 @@ var editor =
 	        }
 	        return true;
 	    };
-	    CommandDraw.create = function (protonData) {
-	        return new CommandDraw(protonData);
+	    CommandDraw.create = function (canvas) {
+	        return new CommandDraw(canvas);
 	    };
 	    return CommandDraw;
 	}());
@@ -34978,6 +34976,7 @@ var editor =
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
+	var saveAs = __webpack_require__(200).default;
 	var qtk_1 = __webpack_require__(2);
 	var CommandExport = (function () {
 	    function CommandExport(viewModal, choiceInfo) {
@@ -34993,6 +34992,11 @@ var editor =
 	            var arr = ret.value;
 	            if (arr && arr.length) {
 	                var format = arr[0].text;
+	                var result = viewModal.exportDoc(format);
+	                if (result) {
+	                    var blob = new Blob([result], { type: 'text/plain;charset=utf-8' });
+	                    saveAs(blob, 'particles.json');
+	                }
 	            }
 	        });
 	        return true;
@@ -35013,6 +35017,275 @@ var editor =
 
 /***/ },
 /* 200 */
+/***/ function(module, exports) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	/* FileSaver.js
+	 * A saveAs() FileSaver implementation.
+	 *
+	 * By Eli Grey, http://eligrey.com
+	 * ES6ified by Cole Chamberlain, https://github.com/cchamberlain
+	 *
+	 * License: MIT
+	 *   See https://github.com/eligrey/FileSaver.js/blob/master/LICENSE.md
+	 */
+
+	/*global self */
+	/*jslint bitwise: true, indent: 4, laxbreak: true, laxcomma: true, smarttabs: true, plusplus: true */
+
+	/*! @source http://purl.eligrey.com/github/FileSaver.js/blob/master/FileSaver.js */
+
+	var saveAs = window.saveAs || function (view) {
+	  // IE <10 is explicitly unsupported
+	  if (typeof navigator !== 'undefined' && /MSIE [1-9]\./.test(navigator.userAgent)) return;
+	  var doc = view.document;
+	  // only get URL when necessary in case Blob.js hasn't overridden it yet
+	  var get_URL = function get_URL() {
+	    return view.URL || view.webkitURL || view;
+	  };
+	  var save_link = doc.createElementNS('http://www.w3.org/1999/xhtml', 'a');
+	  var can_use_save_link = 'download' in save_link;
+	  var click = function click(node) {
+	    var event = new MouseEvent('click');
+	    node.dispatchEvent(event);
+	  };
+	  var is_safari = /Version\/[\d\.]+.*Safari/.test(navigator.userAgent);
+	  var webkit_req_fs = view.webkitRequestFileSystem;
+	  var req_fs = view.requestFileSystem || webkit_req_fs || view.mozRequestFileSystem;
+	  var throw_outside = function throw_outside(ex) {
+	    (view.setImmediate || view.setTimeout)(function () {
+	      throw ex;
+	    }, 0);
+	  };
+	  var force_saveable_type = 'application/octet-stream';
+	  var fs_min_size = 0;
+	  // the Blob API is fundamentally broken as there is no "downloadfinished" event to subscribe to
+	  var arbitrary_revoke_timeout = 1000 * 40; // in ms
+	  var revoke = function revoke(file) {
+	    var revoker = function revoker() {
+	      if (typeof file === 'string') // file is an object URL
+	        get_URL().revokeObjectURL(file);else // file is a File
+	        file.remove();
+	    };
+	    /* // Take note W3C:
+	    var
+	      uri = typeof file === "string" ? file : file.toURL()
+	    , revoker = function(evt) {
+	      // idealy DownloadFinishedEvent.data would be the URL requested
+	      if (evt.data === uri) {
+	        if (typeof file === "string") { // file is an object URL
+	          get_URL().revokeObjectURL(file);
+	        } else { // file is a File
+	          file.remove();
+	        }
+	      }
+	    }
+	    ;
+	    view.addEventListener("downloadfinished", revoker);
+	    */
+	    setTimeout(revoker, arbitrary_revoke_timeout);
+	  };
+	  var dispatch = function dispatch(filesaver, event_types, event) {
+	    event_types = [].concat(event_types);
+	    var i = event_types.length;
+	    while (i--) {
+	      var listener = filesaver['on' + event_types[i]];
+	      if (typeof listener === 'function') {
+	        try {
+	          listener.call(filesaver, event || filesaver);
+	        } catch (ex) {
+	          throw_outside(ex);
+	        }
+	      }
+	    }
+	  };
+	  var auto_bom = function auto_bom(blob) {
+	    // prepend BOM for UTF-8 XML and text/* types (including HTML)
+	    if (/^\s*(?:text\/\S*|application\/xml|\S*\/\S*\+xml)\s*;.*charset\s*=\s*utf-8/i.test(blob.type)) return new Blob(['﻿', blob], { type: blob.type });
+	    return blob;
+	  };
+
+	  var FileSaver = function FileSaver(blob, name, no_auto_bom) {
+	    _classCallCheck(this, FileSaver);
+
+	    if (!no_auto_bom) blob = auto_bom(blob);
+	    // First try a.download, then web filesystem, then object URLs
+	    var filesaver = this,
+	        type = blob.type,
+	        blob_changed = false,
+	        object_url,
+	        target_view,
+	        dispatch_all = function dispatch_all() {
+	      dispatch(filesaver, 'writestart progress write writeend'.split(' '));
+	    }
+	    // on any filesys errors revert to saving with object URLs
+	    ,
+	        fs_error = function fs_error() {
+	      if (target_view && is_safari && typeof FileReader !== 'undefined') {
+	        // Safari doesn't allow downloading of blob urls
+	        var reader = new FileReader();
+	        reader.onloadend = function () {
+	          var base64Data = reader.result;
+	          target_view.location.href = 'data:attachment/file' + base64Data.slice(base64Data.search(/[,;]/));
+	          filesaver.readyState = filesaver.DONE;
+	          dispatch_all();
+	        };
+	        reader.readAsDataURL(blob);
+	        filesaver.readyState = filesaver.INIT;
+	        return;
+	      }
+	      // don't create more object URLs than needed
+	      if (blob_changed || !object_url) {
+	        object_url = get_URL().createObjectURL(blob);
+	      }
+	      if (target_view) {
+	        target_view.location.href = object_url;
+	      } else {
+	        var new_tab = view.open(object_url, '_blank');
+	        if (new_tab === undefined && is_safari) {
+	          //Apple do not allow window.open, see http://bit.ly/1kZffRI
+	          view.location.href = object_url;
+	        }
+	      }
+	      filesaver.readyState = filesaver.DONE;
+	      dispatch_all();
+	      revoke(object_url);
+	    },
+	        abortable = function abortable(func) {
+	      return function () {
+	        if (filesaver.readyState !== filesaver.DONE) {
+	          return func.apply(this, arguments);
+	        }
+	      };
+	    },
+	        create_if_not_found = { create: true, exclusive: false },
+	        slice;
+
+	    filesaver.readyState = filesaver.INIT;
+	    if (!name) {
+	      name = 'download';
+	    }
+	    if (can_use_save_link) {
+	      object_url = get_URL().createObjectURL(blob);
+	      setTimeout(function () {
+	        save_link.href = object_url;
+	        save_link.download = name;
+	        click(save_link);
+	        dispatch_all();
+	        revoke(object_url);
+	        filesaver.readyState = filesaver.DONE;
+	      });
+	      return;
+	    }
+	    // Object and web filesystem URLs have a problem saving in Google Chrome when
+	    // viewed in a tab, so I force save with application/octet-stream
+	    // http://code.google.com/p/chromium/issues/detail?id=91158
+	    // Update: Google errantly closed 91158, I submitted it again:
+	    // https://code.google.com/p/chromium/issues/detail?id=389642
+	    if (view.chrome && type && type !== force_saveable_type) {
+	      slice = blob.slice || blob.webkitSlice;
+	      blob = slice.call(blob, 0, blob.size, force_saveable_type);
+	      blob_changed = true;
+	    }
+	    // Since I can't be sure that the guessed media type will trigger a download
+	    // in WebKit, I append .download to the filename.
+	    // https://bugs.webkit.org/show_bug.cgi?id=65440
+	    if (webkit_req_fs && name !== 'download') {
+	      name += '.download';
+	    }
+	    if (type === force_saveable_type || webkit_req_fs) {
+	      target_view = view;
+	    }
+	    if (!req_fs) {
+	      fs_error();
+	      return;
+	    }
+	    fs_min_size += blob.size;
+	    req_fs(view.TEMPORARY, fs_min_size, abortable(function (fs) {
+	      fs.root.getDirectory('saved', create_if_not_found, abortable(function (dir) {
+	        var save = function save() {
+	          dir.getFile(name, create_if_not_found, abortable(function (file) {
+	            file.createWriter(abortable(function (writer) {
+	              writer.onwriteend = function (event) {
+	                target_view.location.href = file.toURL();
+	                filesaver.readyState = filesaver.DONE;
+	                dispatch(filesaver, 'writeend', event);
+	                revoke(file);
+	              };
+	              writer.onerror = function () {
+	                var error = writer.error;
+	                if (error.code !== error.ABORT_ERR) {
+	                  fs_error();
+	                }
+	              };
+	              'writestart progress write abort'.split(' ').forEach(function (event) {
+	                writer['on' + event] = filesaver['on' + event];
+	              });
+	              writer.write(blob);
+	              filesaver.abort = function () {
+	                writer.abort();
+	                filesaver.readyState = filesaver.DONE;
+	              };
+	              filesaver.readyState = filesaver.WRITING;
+	            }), fs_error);
+	          }), fs_error);
+	        };
+	        dir.getFile(name, { create: false }, abortable(function (file) {
+	          // delete file if it already exists
+	          file.remove();
+	          save();
+	        }), abortable(function (ex) {
+	          if (ex.code === ex.NOT_FOUND_ERR) {
+	            save();
+	          } else {
+	            fs_error();
+	          }
+	        }));
+	      }), fs_error);
+	    }), fs_error);
+	  };
+
+	  var FS_proto = FileSaver.prototype;
+	  var saveAs = function saveAs(blob, name, no_auto_bom) {
+	    return new FileSaver(blob, name, no_auto_bom);
+	  };
+
+	  // IE 10+ (native saveAs)
+	  if (typeof navigator !== 'undefined' && navigator.msSaveOrOpenBlob) {
+	    return function (blob, name, no_auto_bom) {
+	      if (!no_auto_bom) blob = auto_bom(blob);
+	      return navigator.msSaveOrOpenBlob(blob, name || 'download');
+	    };
+	  }
+
+	  FS_proto.abort = function () {
+	    var filesaver = this;
+	    filesaver.readyState = filesaver.DONE;
+	    dispatch(filesaver, 'abort');
+	  };
+	  FS_proto.readyState = FS_proto.INIT = 0;
+	  FS_proto.WRITING = 1;
+	  FS_proto.DONE = 2;
+
+	  FS_proto.error = FS_proto.onwritestart = FS_proto.onprogress = FS_proto.onwrite = FS_proto.onabort = FS_proto.onerror = FS_proto.onwriteend = null;
+
+	  return saveAs;
+	}(typeof self !== 'undefined' && self || typeof window !== 'undefined' && window || undefined.content);
+	// `self` is undefined in Firefox for Android content script context
+	// while `this` is nsIContentFrameMessageManager
+	// with an attribute `content` that corresponds to the window
+
+	exports.default = saveAs;
+
+/***/ },
+/* 201 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -35054,7 +35327,7 @@ var editor =
 	//# sourceMappingURL=command-about.js.map
 
 /***/ },
-/* 201 */
+/* 202 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -35108,7 +35381,7 @@ var editor =
 	//# sourceMappingURL=command-remove.js.map
 
 /***/ },
-/* 202 */
+/* 203 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -35135,22 +35408,21 @@ var editor =
 	//# sourceMappingURL=command-content.js.map
 
 /***/ },
-/* 203 */
+/* 204 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
 	var proton = __webpack_require__(192);
-	function createProtonEmitter(proton, renderer, data) {
+	function createProtonEmitter(proton, data) {
 	    var life = new Proton.Life(data.life.first, data.life.second);
 	    var radius = new Proton.Radius(data.radius.first, data.radius.second);
 	    var alpha = new Proton.Alpha(data.alpha.first, data.alpha.second);
 	    var scale = new Proton.Scale(data.scale.first, data.scale.second);
-	    var velocity = new Proton.Velocity(3, Proton.getSpan(0, 360), 'polar');
 	    var rate = new Proton.Rate(new Proton.Span(data.rateNum.first, data.rateNum.second), new Proton.Span(data.rateTime.first, data.rateTime.second));
 	    var mass = new Proton.Mass(data.mass.first, data.mass.second);
 	    var velocity = new Proton.Velocity(new Proton.Span(data.vRpan.first, data.vRpan.second), new Proton.Span(data.vThapan.first, data.vThapan.second), data.vType);
-	    var randomDrift = new Proton.RandomDrift(data.driftPoint.x, data.driftPoint.y, data.driftDelay);
 	    var color = new Proton.Color('ff0000', 'random', Infinity, Proton.easeOutQuart);
+	    var randomDrift = new Proton.RandomDrift(data.driftPoint.x, data.driftPoint.y, data.driftDelay);
 	    var emitter = new Proton.Emitter();
 	    emitter.rate = rate;
 	    emitter.addInitialize(mass);
@@ -35171,7 +35443,7 @@ var editor =
 	//# sourceMappingURL=proton-wrapper.js.map
 
 /***/ },
-/* 204 */
+/* 205 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -35216,7 +35488,7 @@ var editor =
 	//# sourceMappingURL=particles-view-modal.js.map
 
 /***/ },
-/* 205 */
+/* 206 */
 /***/ function(module, exports) {
 
 	"use strict";

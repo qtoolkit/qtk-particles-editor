@@ -1,14 +1,13 @@
 import { Document } from "./document";
-import { IProtonData } from "./iproton-data";
 import { PagePropsDesc } from "qtk";
-import { ItemsStorage, ValidationResult } from "qtk";
 import { ParticlesViewModal } from "../particles-view-modal";
+import { ItemsStorage, ValidationResult } from "qtk";
 import { IParticlesViewModal } from "../iparticles-view-modal";
-export declare class ProtonViewModal extends ParticlesViewModal implements IProtonData {
+export declare class ProtonViewModal extends ParticlesViewModal {
     canvas: any;
-    fileName: string;
-    protonEmitter: any;
-    storage: ItemsStorage;
+    protected fileName: string;
+    protected protonEmitter: any;
+    protected storage: ItemsStorage;
     protected docList: Array<string>;
     protected renderer: any;
     protected doc: Document;
@@ -22,12 +21,12 @@ export declare class ProtonViewModal extends ParticlesViewModal implements IProt
     getDocName(): string;
     getPropsDesc(): Array<PagePropsDesc>;
     setProp(path: string, value: any, converter?: string, validationRule?: string): ValidationResult;
-    constructor(doc: Document, storage: ItemsStorage);
+    constructor(storage: ItemsStorage);
     protected registerCommands(): void;
     protected createEmitter(): void;
-    getDocumentList(): Array<string>;
+    getTemplateList(): Array<string>;
     static TYPE: string;
-    static create(options: any): IParticlesViewModal;
     static proton: any;
     static update(): void;
+    static create(options: any): IParticlesViewModal;
 }

@@ -1,4 +1,5 @@
 "use strict";
+var saveAs = require('save-as').default;
 var qtk_1 = require("qtk");
 var CommandExport = (function () {
     function CommandExport(viewModal, choiceInfo) {
@@ -14,6 +15,11 @@ var CommandExport = (function () {
             var arr = ret.value;
             if (arr && arr.length) {
                 var format = arr[0].text;
+                var result = viewModal.exportDoc(format);
+                if (result) {
+                    var blob = new Blob([result], { type: 'text/plain;charset=utf-8' });
+                    saveAs(blob, 'particles.json');
+                }
             }
         });
         return true;

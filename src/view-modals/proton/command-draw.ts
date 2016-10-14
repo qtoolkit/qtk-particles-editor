@@ -1,13 +1,14 @@
 
 import {ICommand} from "qtk";
-import {IProtonData} from "./iproton-data";
 import {DrawInfo} from "../../modals/draw-info"
 
 export class CommandDraw implements ICommand {
-	protected _protonData : IProtonData;
+	protected _canvas : any;
 
-	constructor(protonData:IProtonData) {
-		this._protonData = protonData;
+	constructor(canvas:any) {
+		this._canvas = canvas;
+
+		return this;
 	}
 
 	public canExecute() : boolean {
@@ -19,8 +20,7 @@ export class CommandDraw implements ICommand {
 
 		var ctx = drawInfo.ctx;
 		var rect = drawInfo.rect;
-		var canvas = this._protonData.canvas;
-		var emitter = this._protonData.protonEmitter;
+		var canvas = this._canvas;
 		
 		if(canvas) {
 			var w = rect.w >> 0;
@@ -32,10 +32,11 @@ export class CommandDraw implements ICommand {
 
 			ctx.drawImage(canvas, 0, 0);
 		}
+
 		return true;
 	}
 
-	public static create(protonData:IProtonData) : ICommand {
-		return new CommandDraw(protonData);
+	public static create(canvas:any) : ICommand {
+		return new CommandDraw(canvas);
 	}
 };

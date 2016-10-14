@@ -1,4 +1,4 @@
-import {PagePropsDesc, PropertyPage, PropertySheets, Style} from "qtk";
+import {TitleContent, PagePropsDesc, PropertyPage, PropertySheets, Style} from "qtk";
 import {IParticlesViewModal} from "../view-modals/iparticles-view-modal";
 
 export class ParticleProperties extends PropertySheets {
@@ -17,8 +17,9 @@ export class ParticleProperties extends PropertySheets {
 		propsDesc.forEach((pageDesc:PagePropsDesc) => {
 			var page = PropertyPage.create({h:400});
 			page.initWithPropsDesc(pageDesc.propsDesc);
-			this.addPage(pageDesc.title, page);
+			var titlePage = this.addPage(pageDesc.title, page);
 			page.bindData(viewModal);
+			titlePage.collapsed = false;
 		});
 	}
 

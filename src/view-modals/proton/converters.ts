@@ -29,7 +29,6 @@ export class Converters {
 		viewModal.registerValueConverter("radius", DelegateValueConverter.create(noChange, fixRange));
 		viewModal.registerValueConverter("mass", DelegateValueConverter.create(noChange, fixRange));
 		viewModal.registerValueConverter("point", DelegateValueConverter.create(noChange, convertPoint));
-		
 		viewModal.registerValueConverter("scale", DelegateValueConverter.create(noChange, convertRange));
 		viewModal.registerValueConverter("alpha", DelegateValueConverter.create(noChange, convertRange));
 	}

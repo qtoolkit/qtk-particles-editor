@@ -21,13 +21,15 @@ var particles_view_modal_1 = require("../particles-view-modal");
 var iparticles_view_modal_1 = require("../iparticles-view-modal");
 var ProtonViewModal = (function (_super) {
     __extends(ProtonViewModal, _super);
-    function ProtonViewModal(doc, storage) {
-        _super.call(this, doc.data);
-        this.createEmitter();
+    function ProtonViewModal(storage) {
+        _super.call(this, null);
+        this.canvas = document.createElement('canvas');
+        this.canvas.width = 400;
+        this.canvas.height = 400;
         this.storage = storage;
-        this.doc = doc;
         converters_1.Converters.init(this);
         this.registerCommands();
+        this.createDoc("default");
         this.docList = this.storage.getItems();
     }
     ProtonViewModal.prototype.getFormatList = function () {
@@ -38,13 +40,12 @@ var ProtonViewModal = (function (_super) {
     };
     ProtonViewModal.prototype.saveDoc = function (fileName) {
         var data = JSON.stringify(this.doc.toJson(), null, "\t");
-        this.storage.set(fileName, data);
         this.fileName = fileName;
+        this.storage.set(fileName, data);
         this.docList = this.storage.getItems();
     };
     ProtonViewModal.prototype.createDoc = function (templateName) {
-        var doc = document_1.Document.createFromTemplate("default");
-        this.doc = doc;
+        this.doc = document_1.Document.createFromTemplate("default");
         this.data = this.doc.data;
         this.createEmitter();
         this.notifyChange(qtk_1.Events.PROP_CHANGE, "/", null);
@@ -65,7 +66,10 @@ var ProtonViewModal = (function (_super) {
         this.docList = this.storage.getItems();
     };
     ProtonViewModal.prototype.exportDoc = function (format) {
-        return "";
+        if (format.indexOf("json") >= 0) {
+            return JSON.stringify(this.data, null, "\t");
+        }
+        return null;
     };
     ProtonViewModal.prototype.getDocName = function () {
         return this.fileName;
@@ -79,10 +83,10 @@ var ProtonViewModal = (function (_super) {
         return result;
     };
     ProtonViewModal.prototype.registerCommands = function () {
-        this.registerCommand("draw", command_draw_1.CommandDraw.create(this));
+        this.registerCommand("draw", command_draw_1.CommandDraw.create(this.canvas));
         this.registerCommand("about", command_about_1.CommandAbout.create(this, "https://github.com/a-jie/Proton"));
         this.registerCommand("content", command_content_1.CommandContent.create(this, "http://proton.jpeer.at/index.html"));
-        this.registerCommand("new", command_new_1.CommandNew.create(this, this.getDocumentList()));
+        this.registerCommand("new", command_new_1.CommandNew.create(this, this.getTemplateList()));
         this.registerCommand("open", command_open_1.CommandOpen.create(this));
         this.registerCommand("remove", command_remove_1.CommandRemove.create(this));
         this.registerCommand("save", command_save_1.CommandSave.create(this, false));
@@ -92,11 +96,6 @@ var ProtonViewModal = (function (_super) {
     ProtonViewModal.prototype.createEmitter = function () {
         var data = this.data;
         var proton = ProtonViewModal.proton;
-        if (!this.canvas) {
-            this.canvas = document.createElement('canvas');
-            this.canvas.width = 400;
-            this.canvas.height = 400;
-        }
         if (!this.renderer) {
             var renderer = new Proton.Renderer('canvas', proton, this.canvas);
             this.renderer = renderer;
@@ -107,23 +106,21 @@ var ProtonViewModal = (function (_super) {
             proton.removeEmitter(emitter);
             emitter.destroy();
         }
-        this.protonEmitter = proton_wrapper_1.createProtonEmitter(proton, this.canvas, data);
+        this.protonEmitter = proton_wrapper_1.createProtonEmitter(proton, data);
     };
-    ProtonViewModal.prototype.getDocumentList = function () {
+    ProtonViewModal.prototype.getTemplateList = function () {
         return document_1.Document.templateNames;
+    };
+    ProtonViewModal.update = function () {
+        ProtonViewModal.proton.update();
+        requestAnimationFrame(ProtonViewModal.update);
     };
     ProtonViewModal.create = function (options) {
         if (!ProtonViewModal.proton) {
             ProtonViewModal.proton = new Proton();
             requestAnimationFrame(ProtonViewModal.update);
         }
-        var doc = document_1.Document.createFromTemplate("default");
-        var viewModal = new ProtonViewModal(doc, options.storage);
-        return viewModal;
-    };
-    ProtonViewModal.update = function () {
-        ProtonViewModal.proton.update();
-        requestAnimationFrame(ProtonViewModal.update);
+        return new ProtonViewModal(options.storage);
     };
     ProtonViewModal.TYPE = "proton";
     ProtonViewModal.proton = null;
