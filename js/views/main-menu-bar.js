@@ -15,6 +15,7 @@ var MainMenuBar = (function (_super) {
         menu.addItem("New", null).set({ dataBindingRule: { click: { command: "new" } } });
         menu.addItem("Open", null).set({ dataBindingRule: { click: { command: "open" } } });
         menu.addItem("Save", null).set({ dataBindingRule: { click: { command: "save" } } });
+        menu.addItem("Save As", null).set({ dataBindingRule: { click: { command: "save-as" } } });
         menu.addItem("Remove", null).set({ dataBindingRule: { click: { command: "remove" } } });
         menu.addSpace();
         menu.addItem("Export", null).set({ dataBindingRule: { click: { command: "export" } } });
@@ -26,17 +27,10 @@ var MainMenuBar = (function (_super) {
         menu.addItem("About", null).set({ dataBindingRule: { click: { command: "about" } } });
         menu.bindData(this.viewModal);
     };
-    MainMenuBar.prototype.onEditMenu = function (menu) {
-        menu.w = 128;
-        menu.addItem("Undo", null).set({ dataBindingRule: { click: { command: "undo" } } });
-        menu.addItem("Redo", null).set({ dataBindingRule: { click: { command: "redo" } } });
-        menu.bindData(this.viewModal);
-    };
     MainMenuBar.prototype.onCreated = function () {
         _super.prototype.onCreated.call(this);
         this.addLogo("https://qtoolkit.github.io/demos/assets/icons/@density/apple.png");
         this.addItem("File", this.onFileMenu.bind(this));
-        this.addItem("Edit", this.onEditMenu.bind(this));
         this.addItem("Help", this.onHelpMenu.bind(this));
     };
     MainMenuBar.create = function (options) {

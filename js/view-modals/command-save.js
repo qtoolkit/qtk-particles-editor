@@ -1,7 +1,8 @@
 "use strict";
 var qtk_1 = require("qtk");
 var CommandSave = (function () {
-    function CommandSave(viewModal) {
+    function CommandSave(viewModal, isSaveAs) {
+        this._isSaveAs = isSaveAs;
         this._viewModal = viewModal;
         this._inputInfo = qtk_1.InputInfo.create("Please input file name:", null);
     }
@@ -10,8 +11,8 @@ var CommandSave = (function () {
     };
     CommandSave.prototype.execute = function (args) {
         var viewModal = this._viewModal;
-        var fileName = viewModal.fileName;
-        if (!fileName) {
+        var fileName = viewModal.getDocName();
+        if (!fileName || this._isSaveAs) {
             qtk_1.InteractionRequest.input(this._inputInfo, function (ret) {
                 if (ret.value) {
                     viewModal.saveDoc(ret.value);
@@ -24,8 +25,8 @@ var CommandSave = (function () {
         }
         return true;
     };
-    CommandSave.create = function (viewModal) {
-        return new CommandSave(viewModal);
+    CommandSave.create = function (viewModal, isSaveAs) {
+        return new CommandSave(viewModal, isSaveAs);
     };
     return CommandSave;
 }());

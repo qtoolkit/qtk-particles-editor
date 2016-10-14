@@ -2,13 +2,13 @@ import { IParticlesViewModal } from "./iparticles-view-modal";
 import { PagePropsDesc } from "qtk";
 import { ViewModal } from "qtk";
 export declare abstract class ParticlesViewModal extends ViewModal implements IParticlesViewModal {
-    fileName: string;
+    getPropsDesc(): Array<PagePropsDesc>;
     getDocList(): Array<string>;
     getFormatList(): Array<string>;
+    getDocName(): string;
+    openDoc(fileName: string): void;
     saveDoc(fileName: string): void;
     createDoc(templateName: string): void;
-    openDoc(fileName: string): void;
     removeDoc(fileName: string): void;
-    newWithTemplate(name: string): void;
-    getPropsDesc(): Array<PagePropsDesc>;
+    exportDoc(format: string): string;
 }

@@ -2,21 +2,27 @@ import {ParticlesViewModal} from "./particles-view-modal";
 import {ICommand, InteractionRequest, ChoiceInfo} from "qtk";
 
 export class CommandOpen implements ICommand {
-	protected _choiceInfo : ChoiceInfo;
 	protected _viewModal : ParticlesViewModal;
 
-	constructor(viewModal:ParticlesViewModal, choiceInfo:ChoiceInfo) {
+	constructor(viewModal:ParticlesViewModal) {
 		this._viewModal = viewModal;
-		this._choiceInfo = choiceInfo;
 	}
 
 	public canExecute() : boolean {
-		return true;
+		var viewModal = this._viewModal;
+		var docList = viewModal.getDocList();
+		return docList && docList.length > 0;
 	}
 
 	public execute(args:any) : boolean {
 		var viewModal = this._viewModal;
-		InteractionRequest.choice(this._choiceInfo, (ret:ChoiceInfo) => {
+		var docList = viewModal.getDocList();
+		var choiceInfo = ChoiceInfo.create("Open...", false, 300, 300);
+		docList.forEach((item:string) => {
+			choiceInfo.addOption(item);
+		});
+
+		InteractionRequest.choice(choiceInfo, (ret:ChoiceInfo) => {
 			var arr = ret.value;
 			if(arr && arr.length) {
 				var fileName = arr[0].text;
@@ -28,12 +34,7 @@ export class CommandOpen implements ICommand {
 	}
 
 	public static create(viewModal:ParticlesViewModal) : ICommand {
-		var docList = viewModal.getDocList();
-		var choiceInfo = ChoiceInfo.create("Open...", false, 300, 300);
-		docList.forEach((item:string) => {
-			choiceInfo.addOption(item);
-		});
 
-		return new CommandOpen(viewModal, choiceInfo);
+		return new CommandOpen(viewModal);
 	}
 };

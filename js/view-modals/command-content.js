@@ -9,6 +9,7 @@ var CommandContent = (function () {
     };
     CommandContent.prototype.execute = function (args) {
         console.log("CommandContent");
+        window.open(this._helpURL, "_blank");
         return true;
     };
     CommandContent.create = function (viewModal, helpURL) {

@@ -3,8 +3,15 @@ import {PropsDesc, PagePropsDesc} from "qtk";
 
 export interface IParticlesViewModal extends IViewModal {
 	getPropsDesc() : Array<PagePropsDesc>;
+	getDocList() : Array<string>;
+	getFormatList() : Array<string>;
 
-	newWithTemplate(name:string);
+	getDocName() : string;
+	openDoc(fileName:string);
+	saveDoc(fileName:string);
+	createDoc(templateName:string);
+	removeDoc(fileName:string);
+	exportDoc(format:string) : string;
 };
 	
 export class ParticlesViewModalFactory {

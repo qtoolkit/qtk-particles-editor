@@ -24,18 +24,24 @@ export class ProtonViewModal extends ParticlesViewModal implements IProtonData{
 	public fileName : string;
 	public protonEmitter : any;
 	public storage : ItemsStorage;
+	protected docList : Array<string>;
 
 	protected renderer : any;
 	protected doc : Document;
 	
+	public getFormatList() : Array<string> {
+		return ["json"];
+	}
+
 	public getDocList() : Array<string> {
-		return this.storage.getItems();
+		return this.docList;
 	}
 	
 	public saveDoc(fileName:string) {
 		var data = JSON.stringify(this.doc.toJson(), null, "\t"); 
 		this.storage.set(fileName, data);
 		this.fileName = fileName;
+		this.docList = this.storage.getItems();
 	}
 	
 	public createDoc(templateName:string) {
@@ -44,10 +50,12 @@ export class ProtonViewModal extends ParticlesViewModal implements IProtonData{
 		this.data = this.doc.data;
 		this.createEmitter();
 		this.notifyChange(Events.PROP_CHANGE, "/", null);
+		this.docList = this.storage.getItems();
 	}
 	
 	public removeDoc(fileName:string) {
 		this.storage.remove(fileName);
+		this.docList = this.storage.getItems();
 	}
 
 	public openDoc(fileName:string) {
@@ -60,6 +68,15 @@ export class ProtonViewModal extends ParticlesViewModal implements IProtonData{
 		this.createEmitter();
 		this.fileName = fileName;
 		this.notifyChange(Events.PROP_CHANGE, "/", null);
+		this.docList = this.storage.getItems();
+	}
+
+	public exportDoc(format:string) : string {
+		return "";
+	}
+
+	public getDocName() : string {
+		return this.fileName;
 	}
 
 	public getPropsDesc() : Array<PagePropsDesc> {
@@ -82,6 +99,7 @@ export class ProtonViewModal extends ParticlesViewModal implements IProtonData{
 	
 		Converters.init(this);
 		this.registerCommands();
+		this.docList = this.storage.getItems();
 	}
 
 	protected registerCommands() {
@@ -91,7 +109,8 @@ export class ProtonViewModal extends ParticlesViewModal implements IProtonData{
 		this.registerCommand("new", CommandNew.create(this, this.getDocumentList()));
 		this.registerCommand("open", CommandOpen.create(this));
 		this.registerCommand("remove", CommandRemove.create(this));
-		this.registerCommand("save", CommandSave.create(this));
+		this.registerCommand("save", CommandSave.create(this, false));
+		this.registerCommand("save-as", CommandSave.create(this, true));
 		this.registerCommand("export", CommandExport.create(this));
 	}
 

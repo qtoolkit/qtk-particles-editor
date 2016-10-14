@@ -9,13 +9,17 @@ export declare class ProtonViewModal extends ParticlesViewModal implements IProt
     fileName: string;
     protonEmitter: any;
     storage: ItemsStorage;
+    protected docList: Array<string>;
     protected renderer: any;
     protected doc: Document;
+    getFormatList(): Array<string>;
     getDocList(): Array<string>;
     saveDoc(fileName: string): void;
     createDoc(templateName: string): void;
     removeDoc(fileName: string): void;
     openDoc(fileName: string): void;
+    exportDoc(format: string): string;
+    getDocName(): string;
     getPropsDesc(): Array<PagePropsDesc>;
     setProp(path: string, value: any, converter?: string, validationRule?: string): ValidationResult;
     constructor(doc: Document, storage: ItemsStorage);

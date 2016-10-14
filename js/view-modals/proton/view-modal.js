@@ -28,14 +28,19 @@ var ProtonViewModal = (function (_super) {
         this.doc = doc;
         converters_1.Converters.init(this);
         this.registerCommands();
+        this.docList = this.storage.getItems();
     }
+    ProtonViewModal.prototype.getFormatList = function () {
+        return ["json"];
+    };
     ProtonViewModal.prototype.getDocList = function () {
-        return this.storage.getItems();
+        return this.docList;
     };
     ProtonViewModal.prototype.saveDoc = function (fileName) {
         var data = JSON.stringify(this.doc.toJson(), null, "\t");
         this.storage.set(fileName, data);
         this.fileName = fileName;
+        this.docList = this.storage.getItems();
     };
     ProtonViewModal.prototype.createDoc = function (templateName) {
         var doc = document_1.Document.createFromTemplate("default");
@@ -43,9 +48,11 @@ var ProtonViewModal = (function (_super) {
         this.data = this.doc.data;
         this.createEmitter();
         this.notifyChange(qtk_1.Events.PROP_CHANGE, "/", null);
+        this.docList = this.storage.getItems();
     };
     ProtonViewModal.prototype.removeDoc = function (fileName) {
         this.storage.remove(fileName);
+        this.docList = this.storage.getItems();
     };
     ProtonViewModal.prototype.openDoc = function (fileName) {
         var data = this.storage.get(fileName);
@@ -55,6 +62,13 @@ var ProtonViewModal = (function (_super) {
         this.createEmitter();
         this.fileName = fileName;
         this.notifyChange(qtk_1.Events.PROP_CHANGE, "/", null);
+        this.docList = this.storage.getItems();
+    };
+    ProtonViewModal.prototype.exportDoc = function (format) {
+        return "";
+    };
+    ProtonViewModal.prototype.getDocName = function () {
+        return this.fileName;
     };
     ProtonViewModal.prototype.getPropsDesc = function () {
         return this.doc.propsDesc;
@@ -71,7 +85,8 @@ var ProtonViewModal = (function (_super) {
         this.registerCommand("new", command_new_1.CommandNew.create(this, this.getDocumentList()));
         this.registerCommand("open", command_open_1.CommandOpen.create(this));
         this.registerCommand("remove", command_remove_1.CommandRemove.create(this));
-        this.registerCommand("save", command_save_1.CommandSave.create(this));
+        this.registerCommand("save", command_save_1.CommandSave.create(this, false));
+        this.registerCommand("save-as", command_save_1.CommandSave.create(this, true));
         this.registerCommand("export", command_export_1.CommandExport.create(this));
     };
     ProtonViewModal.prototype.createEmitter = function () {

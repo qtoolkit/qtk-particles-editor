@@ -1,16 +1,22 @@
 "use strict";
 var qtk_1 = require("qtk");
 var CommandOpen = (function () {
-    function CommandOpen(viewModal, choiceInfo) {
+    function CommandOpen(viewModal) {
         this._viewModal = viewModal;
-        this._choiceInfo = choiceInfo;
     }
     CommandOpen.prototype.canExecute = function () {
-        return true;
+        var viewModal = this._viewModal;
+        var docList = viewModal.getDocList();
+        return docList && docList.length > 0;
     };
     CommandOpen.prototype.execute = function (args) {
         var viewModal = this._viewModal;
-        qtk_1.InteractionRequest.choice(this._choiceInfo, function (ret) {
+        var docList = viewModal.getDocList();
+        var choiceInfo = qtk_1.ChoiceInfo.create("Open...", false, 300, 300);
+        docList.forEach(function (item) {
+            choiceInfo.addOption(item);
+        });
+        qtk_1.InteractionRequest.choice(choiceInfo, function (ret) {
             var arr = ret.value;
             if (arr && arr.length) {
                 var fileName = arr[0].text;
@@ -20,12 +26,7 @@ var CommandOpen = (function () {
         return true;
     };
     CommandOpen.create = function (viewModal) {
-        var docList = viewModal.getDocList();
-        var choiceInfo = qtk_1.ChoiceInfo.create("Open...", false, 300, 300);
-        docList.forEach(function (item) {
-            choiceInfo.addOption(item);
-        });
-        return new CommandOpen(viewModal, choiceInfo);
+        return new CommandOpen(viewModal);
     };
     return CommandOpen;
 }());

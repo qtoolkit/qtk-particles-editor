@@ -4059,7 +4059,7 @@ var editor =
 	 * ungrab移出最后grab的target。
 	 */
 	function ungrab(target) {
-	    return grabs.pop();
+	    return grabs.remove(target);
 	}
 	exports.ungrab = ungrab;
 	/**
@@ -4626,6 +4626,13 @@ var editor =
 	        this.layoutRect = rect_1.Rect.create(0, 0, 0, 0);
 	        this.eChangeEvent = Events.ChangeEvent.create();
 	        this.ePropChangeEvent = Events.PropChangeEvent.create();
+	        this.viewModalChangeFunc = function (evt) {
+	            var viewModal = this._viewModal;
+	            var dataBindingRule = this._dataBindingRule;
+	            if (dataBindingRule && viewModal) {
+	                this.onBindData(viewModal, dataBindingRule);
+	            }
+	        }.bind(this);
 	        this.type = type;
 	    }
 	    /**
@@ -5436,6 +5443,9 @@ var editor =
 	        this._children = [];
 	        this._layoutParam = null;
 	        this._childrenLayouter = null;
+	        this._viewModal = null;
+	        this._dataBindingRule = null;
+	        this.removeBinding();
 	        if (this.recycle) {
 	            this.recycle();
 	        }
@@ -6249,6 +6259,15 @@ var editor =
 	            child.updateExplicit();
 	        });
 	    };
+	    Widget.prototype.removeBinding = function () {
+	        var viewModal = this._viewModal;
+	        var dataBindingRule = this._dataBindingRule;
+	        if (dataBindingRule && viewModal) {
+	            viewModal.offChange(this.viewModalChangeFunc);
+	        }
+	        this._viewModal = null;
+	        this._dataBindingRule = null;
+	    };
 	    /**
 	     * 绑定数据。
 	     */
@@ -6258,6 +6277,7 @@ var editor =
 	        this._viewModal = viewModal;
 	        if (dataBindingRule && viewModal) {
 	            var bindingMode = viewModal.getBindingMode();
+	            this.onBindCommand(viewModal, dataBindingRule);
 	            if (bindingMode !== iview_modal_1.BindingMode.ONE_WAY_TO_SOURCE) {
 	                this.onBindData(viewModal, dataBindingRule);
 	            }
@@ -6265,9 +6285,7 @@ var editor =
 	                this.watchTargetChange(dataBindingRule);
 	            }
 	            if (bindingMode !== iview_modal_1.BindingMode.ONE_TIME && bindingMode !== iview_modal_1.BindingMode.ONE_WAY_TO_SOURCE) {
-	                viewModal.onChange(function (evt) {
-	                    _this.onBindData(viewModal, dataBindingRule);
-	                });
+	                viewModal.onChange(this.viewModalChangeFunc);
 	            }
 	            this._isEnableFunc = function () {
 	                var enable = true;
@@ -6319,16 +6337,23 @@ var editor =
 	            });
 	        }
 	    };
-	    Widget.prototype.onBindCommand = function (viewModal, prop, commandSource) {
-	        if (prop === "click") {
-	            if (commandSource.eventHandler) {
-	                this.off(Events.CLICK, commandSource.eventHandler);
+	    Widget.prototype.onBindCommand = function (viewModal, dataBindingRule) {
+	        var _this = this;
+	        dataBindingRule.forEach(function (prop, item) {
+	            var source = item.source;
+	            if (source.type === binding_rule_1.BindingCommandSource.TYPE) {
+	                var commandSource = source;
+	                if (prop === "click") {
+	                    if (commandSource.eventHandler) {
+	                        _this.off(Events.CLICK, commandSource.eventHandler);
+	                    }
+	                    commandSource.eventHandler = function (evt) {
+	                        viewModal.execCommand(commandSource.command, commandSource.commandArgs);
+	                    };
+	                    _this.on(Events.CLICK, commandSource.eventHandler);
+	                }
 	            }
-	            commandSource.eventHandler = function (evt) {
-	                viewModal.execCommand(commandSource.command, commandSource.commandArgs);
-	            };
-	            this.on(Events.CLICK, commandSource.eventHandler);
-	        }
+	        });
 	    };
 	    /*
 	     * 把数据显示到界面上。
@@ -6337,11 +6362,7 @@ var editor =
 	        var _this = this;
 	        dataBindingRule.forEach(function (prop, item) {
 	            var source = item.source;
-	            if (source.type === binding_rule_1.BindingCommandSource.TYPE) {
-	                var commandSource = source;
-	                _this.onBindCommand(viewModal, prop, commandSource);
-	            }
-	            else {
+	            if (source.type === binding_rule_1.BindingDataSource.TYPE) {
 	                var dataSource = source;
 	                var value = dataSource.value;
 	                var bindingMode = dataSource.mode || iview_modal_1.BindingMode.TWO_WAY;
@@ -30218,6 +30239,7 @@ var editor =
 	        menu.addItem("New", null).set({ dataBindingRule: { click: { command: "new" } } });
 	        menu.addItem("Open", null).set({ dataBindingRule: { click: { command: "open" } } });
 	        menu.addItem("Save", null).set({ dataBindingRule: { click: { command: "save" } } });
+	        menu.addItem("Save As", null).set({ dataBindingRule: { click: { command: "save-as" } } });
 	        menu.addItem("Remove", null).set({ dataBindingRule: { click: { command: "remove" } } });
 	        menu.addSpace();
 	        menu.addItem("Export", null).set({ dataBindingRule: { click: { command: "export" } } });
@@ -30229,17 +30251,10 @@ var editor =
 	        menu.addItem("About", null).set({ dataBindingRule: { click: { command: "about" } } });
 	        menu.bindData(this.viewModal);
 	    };
-	    MainMenuBar.prototype.onEditMenu = function (menu) {
-	        menu.w = 128;
-	        menu.addItem("Undo", null).set({ dataBindingRule: { click: { command: "undo" } } });
-	        menu.addItem("Redo", null).set({ dataBindingRule: { click: { command: "redo" } } });
-	        menu.bindData(this.viewModal);
-	    };
 	    MainMenuBar.prototype.onCreated = function () {
 	        _super.prototype.onCreated.call(this);
 	        this.addLogo("https://qtoolkit.github.io/demos/assets/icons/@density/apple.png");
 	        this.addItem("File", this.onFileMenu.bind(this));
-	        this.addItem("Edit", this.onEditMenu.bind(this));
 	        this.addItem("Help", this.onHelpMenu.bind(this));
 	    };
 	    MainMenuBar.create = function (options) {
@@ -30392,14 +30407,19 @@ var editor =
 	        this.doc = doc;
 	        converters_1.Converters.init(this);
 	        this.registerCommands();
+	        this.docList = this.storage.getItems();
 	    }
+	    ProtonViewModal.prototype.getFormatList = function () {
+	        return ["json"];
+	    };
 	    ProtonViewModal.prototype.getDocList = function () {
-	        return this.storage.getItems();
+	        return this.docList;
 	    };
 	    ProtonViewModal.prototype.saveDoc = function (fileName) {
 	        var data = JSON.stringify(this.doc.toJson(), null, "\t");
 	        this.storage.set(fileName, data);
 	        this.fileName = fileName;
+	        this.docList = this.storage.getItems();
 	    };
 	    ProtonViewModal.prototype.createDoc = function (templateName) {
 	        var doc = document_1.Document.createFromTemplate("default");
@@ -30407,9 +30427,11 @@ var editor =
 	        this.data = this.doc.data;
 	        this.createEmitter();
 	        this.notifyChange(qtk_1.Events.PROP_CHANGE, "/", null);
+	        this.docList = this.storage.getItems();
 	    };
 	    ProtonViewModal.prototype.removeDoc = function (fileName) {
 	        this.storage.remove(fileName);
+	        this.docList = this.storage.getItems();
 	    };
 	    ProtonViewModal.prototype.openDoc = function (fileName) {
 	        var data = this.storage.get(fileName);
@@ -30419,6 +30441,13 @@ var editor =
 	        this.createEmitter();
 	        this.fileName = fileName;
 	        this.notifyChange(qtk_1.Events.PROP_CHANGE, "/", null);
+	        this.docList = this.storage.getItems();
+	    };
+	    ProtonViewModal.prototype.exportDoc = function (format) {
+	        return "";
+	    };
+	    ProtonViewModal.prototype.getDocName = function () {
+	        return this.fileName;
 	    };
 	    ProtonViewModal.prototype.getPropsDesc = function () {
 	        return this.doc.propsDesc;
@@ -30435,7 +30464,8 @@ var editor =
 	        this.registerCommand("new", command_new_1.CommandNew.create(this, this.getDocumentList()));
 	        this.registerCommand("open", command_open_1.CommandOpen.create(this));
 	        this.registerCommand("remove", command_remove_1.CommandRemove.create(this));
-	        this.registerCommand("save", command_save_1.CommandSave.create(this));
+	        this.registerCommand("save", command_save_1.CommandSave.create(this, false));
+	        this.registerCommand("save-as", command_save_1.CommandSave.create(this, true));
 	        this.registerCommand("export", command_export_1.CommandExport.create(this));
 	    };
 	    ProtonViewModal.prototype.createEmitter = function () {
@@ -34840,6 +34870,7 @@ var editor =
 	    };
 	    CommandNew.prototype.execute = function (args) {
 	        var viewModal = this._viewModal;
+	        console.log("CommandNew");
 	        qtk_1.InteractionRequest.choice(this._choiceInfo, function (ret) {
 	            var arr = ret.value;
 	            if (arr && arr.length) {
@@ -34869,16 +34900,22 @@ var editor =
 	"use strict";
 	var qtk_1 = __webpack_require__(2);
 	var CommandOpen = (function () {
-	    function CommandOpen(viewModal, choiceInfo) {
+	    function CommandOpen(viewModal) {
 	        this._viewModal = viewModal;
-	        this._choiceInfo = choiceInfo;
 	    }
 	    CommandOpen.prototype.canExecute = function () {
-	        return true;
+	        var viewModal = this._viewModal;
+	        var docList = viewModal.getDocList();
+	        return docList && docList.length > 0;
 	    };
 	    CommandOpen.prototype.execute = function (args) {
 	        var viewModal = this._viewModal;
-	        qtk_1.InteractionRequest.choice(this._choiceInfo, function (ret) {
+	        var docList = viewModal.getDocList();
+	        var choiceInfo = qtk_1.ChoiceInfo.create("Open...", false, 300, 300);
+	        docList.forEach(function (item) {
+	            choiceInfo.addOption(item);
+	        });
+	        qtk_1.InteractionRequest.choice(choiceInfo, function (ret) {
 	            var arr = ret.value;
 	            if (arr && arr.length) {
 	                var fileName = arr[0].text;
@@ -34888,12 +34925,7 @@ var editor =
 	        return true;
 	    };
 	    CommandOpen.create = function (viewModal) {
-	        var docList = viewModal.getDocList();
-	        var choiceInfo = qtk_1.ChoiceInfo.create("Open...", false, 300, 300);
-	        docList.forEach(function (item) {
-	            choiceInfo.addOption(item);
-	        });
-	        return new CommandOpen(viewModal, choiceInfo);
+	        return new CommandOpen(viewModal);
 	    };
 	    return CommandOpen;
 	}());
@@ -34908,7 +34940,8 @@ var editor =
 	"use strict";
 	var qtk_1 = __webpack_require__(2);
 	var CommandSave = (function () {
-	    function CommandSave(viewModal) {
+	    function CommandSave(viewModal, isSaveAs) {
+	        this._isSaveAs = isSaveAs;
 	        this._viewModal = viewModal;
 	        this._inputInfo = qtk_1.InputInfo.create("Please input file name:", null);
 	    }
@@ -34917,8 +34950,8 @@ var editor =
 	    };
 	    CommandSave.prototype.execute = function (args) {
 	        var viewModal = this._viewModal;
-	        var fileName = viewModal.fileName;
-	        if (!fileName) {
+	        var fileName = viewModal.getDocName();
+	        if (!fileName || this._isSaveAs) {
 	            qtk_1.InteractionRequest.input(this._inputInfo, function (ret) {
 	                if (ret.value) {
 	                    viewModal.saveDoc(ret.value);
@@ -34931,8 +34964,8 @@ var editor =
 	        }
 	        return true;
 	    };
-	    CommandSave.create = function (viewModal) {
-	        return new CommandSave(viewModal);
+	    CommandSave.create = function (viewModal, isSaveAs) {
+	        return new CommandSave(viewModal, isSaveAs);
 	    };
 	    return CommandSave;
 	}());
@@ -35027,31 +35060,46 @@ var editor =
 	"use strict";
 	var qtk_1 = __webpack_require__(2);
 	var CommandRemove = (function () {
-	    function CommandRemove(viewModal, choiceInfo) {
+	    function CommandRemove(viewModal) {
 	        this._viewModal = viewModal;
-	        this._choiceInfo = choiceInfo;
 	    }
 	    CommandRemove.prototype.canExecute = function () {
-	        return true;
+	        var viewModal = this._viewModal;
+	        var docList = viewModal.getDocList();
+	        return docList && docList.length > 0;
+	    };
+	    CommandRemove.prototype.confirmRemove = function (items) {
+	        var viewModal = this._viewModal;
+	        var fileNames = items.map(function (item) {
+	            return item.text;
+	        }).join(",");
+	        var info = qtk_1.ConfirmationInfo.create("Are you sure to remove " + fileNames + " ?", 300);
+	        qtk_1.InteractionRequest.confirm(info, function (ret) {
+	            if (info.confirmed) {
+	                items.forEach(function (item) {
+	                    viewModal.removeDoc(item.text);
+	                });
+	            }
+	        });
 	    };
 	    CommandRemove.prototype.execute = function (args) {
+	        var _this = this;
 	        var viewModal = this._viewModal;
-	        qtk_1.InteractionRequest.choice(this._choiceInfo, function (ret) {
+	        var docList = viewModal.getDocList();
+	        var choiceInfo = qtk_1.ChoiceInfo.create("Remove...", true, 300, 300);
+	        docList.forEach(function (item) {
+	            choiceInfo.addOption(item);
+	        });
+	        qtk_1.InteractionRequest.choice(choiceInfo, function (ret) {
 	            var arr = ret.value;
 	            if (arr && arr.length) {
-	                var fileName = arr[0].text;
-	                viewModal.removeDoc(fileName);
+	                _this.confirmRemove(arr);
 	            }
 	        });
 	        return true;
 	    };
 	    CommandRemove.create = function (viewModal) {
-	        var docList = viewModal.getDocList();
-	        var choiceInfo = qtk_1.ChoiceInfo.create("Remove...", false, 300, 300);
-	        docList.forEach(function (item) {
-	            choiceInfo.addOption(item);
-	        });
-	        return new CommandRemove(viewModal, choiceInfo);
+	        return new CommandRemove(viewModal);
 	    };
 	    return CommandRemove;
 	}());
@@ -35074,6 +35122,7 @@ var editor =
 	    };
 	    CommandContent.prototype.execute = function (args) {
 	        console.log("CommandContent");
+	        window.open(this._helpURL, "_blank");
 	        return true;
 	    };
 	    CommandContent.create = function (viewModal, helpURL) {
@@ -35137,23 +35186,27 @@ var editor =
 	    function ParticlesViewModal() {
 	        _super.apply(this, arguments);
 	    }
+	    ParticlesViewModal.prototype.getPropsDesc = function () {
+	        return null;
+	    };
 	    ParticlesViewModal.prototype.getDocList = function () {
 	        return null;
 	    };
 	    ParticlesViewModal.prototype.getFormatList = function () {
-	        return ["json", "plist", "javascript"];
+	        return null;
+	    };
+	    ParticlesViewModal.prototype.getDocName = function () {
+	        return null;
+	    };
+	    ParticlesViewModal.prototype.openDoc = function (fileName) {
 	    };
 	    ParticlesViewModal.prototype.saveDoc = function (fileName) {
 	    };
 	    ParticlesViewModal.prototype.createDoc = function (templateName) {
 	    };
-	    ParticlesViewModal.prototype.openDoc = function (fileName) {
-	    };
 	    ParticlesViewModal.prototype.removeDoc = function (fileName) {
 	    };
-	    ParticlesViewModal.prototype.newWithTemplate = function (name) {
-	    };
-	    ParticlesViewModal.prototype.getPropsDesc = function () {
+	    ParticlesViewModal.prototype.exportDoc = function (format) {
 	        return null;
 	    };
 	    return ParticlesViewModal;

@@ -16,6 +16,7 @@ export class CommandNew implements ICommand {
 
 	public execute(args:any) : boolean {
 		var viewModal = this._viewModal;
+		console.log("CommandNew");
 		InteractionRequest.choice(this._choiceInfo, (ret:ChoiceInfo) => {
 			var arr = ret.value;
 			if(arr && arr.length) {

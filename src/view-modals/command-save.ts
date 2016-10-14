@@ -2,10 +2,12 @@ import {ParticlesViewModal} from "./particles-view-modal";
 import {ICommand, InteractionRequest, ToastInfo, InputInfo} from "qtk";
 
 export class CommandSave implements ICommand {
+	protected _isSaveAs : boolean;
 	protected _inputInfo : InputInfo;
 	protected _viewModal : ParticlesViewModal;
 
-	constructor(viewModal:ParticlesViewModal) {
+	constructor(viewModal:ParticlesViewModal, isSaveAs:boolean) {
+		this._isSaveAs = isSaveAs;
 		this._viewModal = viewModal;
 		this._inputInfo = InputInfo.create("Please input file name:", null);
 	}
@@ -16,8 +18,9 @@ export class CommandSave implements ICommand {
 
 	public execute(args:any) : boolean {
 		var viewModal = this._viewModal;
-		var fileName = viewModal.fileName;
-		if(!fileName) {
+		var fileName = viewModal.getDocName();
+
+		if(!fileName || this._isSaveAs) {
 			InteractionRequest.input(this._inputInfo, function(ret:InputInfo) {
 				if(ret.value) {
 					viewModal.saveDoc(ret.value);
@@ -31,7 +34,7 @@ export class CommandSave implements ICommand {
 		return true;
 	}
 
-	public static create(viewModal:ParticlesViewModal) : ICommand {
-		return new CommandSave(viewModal);
+	public static create(viewModal:ParticlesViewModal, isSaveAs:boolean) : ICommand {
+		return new CommandSave(viewModal, isSaveAs);
 	}
 };

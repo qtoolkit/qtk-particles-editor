@@ -5,32 +5,35 @@ import {PropsDesc, PagePropsDesc, Events} from "qtk";
 import {ViewModal, IViewModal, ValidationResult} from "qtk"
 
 export abstract class ParticlesViewModal extends ViewModal implements IParticlesViewModal {
-	public fileName : string;
+	public getPropsDesc() : Array<PagePropsDesc> {
+		return null;
+	}
 
 	public getDocList() : Array<string> {
 		return null;
 	}
-	
+
 	public getFormatList() : Array<string> {
-		return ["json", "plist", "javascript"];
+		return null;
 	}
 
-	public saveDoc(fileName:string) {
+	public getDocName() : string {
+		return null;
 	}
-	
-	public createDoc(templateName:string) {
-	}
-	
+
 	public openDoc(fileName:string) {
 	}
 	
+	public saveDoc(fileName:string) {
+	}
+	
+	public createDoc(templateName:string){
+	}
+
 	public removeDoc(fileName:string) {
 	}
 
-	public newWithTemplate(name:string) {
-	}
-
-	public getPropsDesc() : Array<PagePropsDesc> {
+	public exportDoc(format:string) : string {
 		return null;
 	}
 };

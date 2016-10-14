@@ -16,8 +16,8 @@ export class CommandContent implements ICommand {
 	}
 
 	public execute(args:any) : boolean {
-		console.log("CommandContent")
-
+		console.log("CommandContent");
+		window.open(this._helpURL, "_blank");
 		return true;
 	}
 

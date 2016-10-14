@@ -10,6 +10,7 @@ var CommandNew = (function () {
     };
     CommandNew.prototype.execute = function (args) {
         var viewModal = this._viewModal;
+        console.log("CommandNew");
         qtk_1.InteractionRequest.choice(this._choiceInfo, function (ret) {
             var arr = ret.value;
             if (arr && arr.length) {
