@@ -5,8 +5,8 @@ var __extends = (this && this.__extends) || function (d, b) {
     d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 };
 var proton = require("proton");
-var converters_1 = require("./converters");
-var command_draw_1 = require("./command-draw");
+require("../../modals/proton/templates");
+var command_draw_1 = require("../command-draw");
 var command_new_1 = require("../command-new");
 var command_open_1 = require("../command-open");
 var command_save_1 = require("../command-save");
@@ -16,8 +16,8 @@ var command_remove_1 = require("../command-remove");
 var command_content_1 = require("../command-content");
 var proton_wrapper_1 = require("./proton-wrapper");
 var document_1 = require("../../modals/document");
-require("../../modals/proton/templates");
 var particles_view_modal_1 = require("../particles-view-modal");
+var qtk_1 = require("qtk");
 var iparticles_view_modal_1 = require("../iparticles-view-modal");
 var ProtonViewModal = (function (_super) {
     __extends(ProtonViewModal, _super);
@@ -27,12 +27,20 @@ var ProtonViewModal = (function (_super) {
         this.canvas.width = 400;
         this.canvas.height = 400;
         this.storage = storage;
-        converters_1.Converters.init(this);
         this.registerCommands();
+        this.registerConverters();
         this.doc = document_1.Document.create();
         this.createDoc("default");
         this.updateDocList();
     }
+    ProtonViewModal.prototype.registerConverters = function () {
+        this.registerValueConverter("life", qtk_1.RangeFixer.create(0, 1000, 0, 1000, true));
+        this.registerValueConverter("radius", qtk_1.RangeFixer.create(0, 1000, 0, 1000, true));
+        this.registerValueConverter("mass", qtk_1.RangeFixer.create(0, 1000, 0, 1000, true));
+        this.registerValueConverter("point", qtk_1.Vector2Fixer.create(0, 1000, 0, 1000));
+        this.registerValueConverter("scale", qtk_1.RangeFixer.create(0, 10, 0, 10, false));
+        this.registerValueConverter("alpha", qtk_1.RangeFixer.create(0, 1, 0, 1, false));
+    };
     ProtonViewModal.prototype.registerCommands = function () {
         this.registerCommand("draw", command_draw_1.CommandDraw.create(this.canvas));
         this.registerCommand("about", command_about_1.CommandAbout.create(this, "https://github.com/a-jie/Proton"));

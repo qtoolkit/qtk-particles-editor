@@ -1,5 +1,4 @@
 import {ICommand} from "qtk";
-import {ContentInfo} from "../modals/content-info";
 import {ParticlesViewModal} from "./particles-view-modal";
 
 export class CommandContent implements ICommand {

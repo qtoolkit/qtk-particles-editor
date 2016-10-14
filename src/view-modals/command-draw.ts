@@ -1,6 +1,6 @@
 
 import {ICommand} from "qtk";
-import {DrawInfo} from "../../modals/draw-info"
+import {DrawInfo} from "../modals/draw-info"
 
 export class CommandDraw implements ICommand {
 	protected _canvas : any;

@@ -7,6 +7,7 @@ export declare class ProtonViewModal extends ParticlesViewModal {
     protected renderer: any;
     protected protonEmitter: any;
     constructor(storage: ItemsStorage);
+    protected registerConverters(): void;
     protected registerCommands(): void;
     protected createEmitter(): void;
     static TYPE: string;

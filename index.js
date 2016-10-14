@@ -64,9 +64,9 @@ var editor =
 	    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 	};
 	var qtk_1 = __webpack_require__(2);
-	var main_window_1 = __webpack_require__(186);
-	var view_modal_1 = __webpack_require__(191);
-	var iparticles_view_modal_1 = __webpack_require__(207);
+	var main_window_1 = __webpack_require__(190);
+	var view_modal_1 = __webpack_require__(195);
+	var iparticles_view_modal_1 = __webpack_require__(210);
 	var themeDataURL = "https://qtoolkit.github.io/demos/assets/theme/default/theme.json";
 	var ParticlesEditor = (function (_super) {
 	    __extends(ParticlesEditor, _super);
@@ -346,6 +346,14 @@ var editor =
 	exports.InteractionService = interaction_service_1.InteractionService;
 	var items_storage_1 = __webpack_require__(185);
 	exports.ItemsStorage = items_storage_1.ItemsStorage;
+	var range_fixer_1 = __webpack_require__(186);
+	exports.RangeFixer = range_fixer_1.RangeFixer;
+	var number_fixer_1 = __webpack_require__(187);
+	exports.NumberFixer = number_fixer_1.NumberFixer;
+	var vector2_fixer_1 = __webpack_require__(188);
+	exports.Vector2Fixer = vector2_fixer_1.Vector2Fixer;
+	var vector3_fixer_1 = __webpack_require__(189);
+	exports.Vector3Fixer = vector3_fixer_1.Vector3Fixer;
 
 
 /***/ },
@@ -30175,6 +30183,130 @@ var editor =
 
 /***/ },
 /* 186 */
+/***/ function(module, exports) {
+
+	"use strict";
+	var RangeFixer = (function () {
+	    function RangeFixer(firstMin, firstMax, secondMin, secondMax, secondMustGreater) {
+	        this._value = { first: 0, second: 0 };
+	        this._firstMin = firstMin;
+	        this._firstMax = firstMax;
+	        this._secondMin = secondMin;
+	        this._secondMax = secondMax;
+	        this._secondMustGreater = secondMustGreater || false;
+	    }
+	    RangeFixer.prototype.convertBack = function (value) {
+	        var first = Math.min(this._firstMax, Math.max(this._firstMin, +value.first));
+	        var second = Math.min(this._secondMax, Math.max(this._secondMin, +value.second));
+	        if (this._secondMustGreater) {
+	            this._value.first = Math.min(first, second);
+	            this._value.second = Math.max(first, second);
+	        }
+	        else {
+	            this._value.first = first;
+	            this._value.second = second;
+	        }
+	        return this._value;
+	    };
+	    RangeFixer.prototype.convert = function (value) {
+	        return value;
+	    };
+	    RangeFixer.create = function (firstMin, firstMax, secondMin, secondMax, secondMustGreater) {
+	        return new RangeFixer(firstMin, firstMax, secondMin, secondMax, secondMustGreater);
+	    };
+	    return RangeFixer;
+	}());
+	exports.RangeFixer = RangeFixer;
+	;
+
+
+/***/ },
+/* 187 */
+/***/ function(module, exports) {
+
+	"use strict";
+	var NumberFixer = (function () {
+	    function NumberFixer(vMin, vMax) {
+	        this.vMin = vMin;
+	        this.vMax = vMax;
+	    }
+	    NumberFixer.prototype.convertBack = function (value) {
+	        return Math.min(this.vMax, Math.max(this.vMin, +value));
+	    };
+	    NumberFixer.prototype.convert = function (value) {
+	        return value;
+	    };
+	    NumberFixer.create = function (vMin, vMax) {
+	        return new NumberFixer(vMin, vMax);
+	    };
+	    return NumberFixer;
+	}());
+	exports.NumberFixer = NumberFixer;
+
+
+/***/ },
+/* 188 */
+/***/ function(module, exports) {
+
+	"use strict";
+	var Vector2Fixer = (function () {
+	    function Vector2Fixer(xMin, xMax, yMin, yMax) {
+	        this._value = { x: 0, y: 0 };
+	        this._xMin = xMin;
+	        this._xMax = xMax;
+	        this._yMin = yMin;
+	        this._yMax = yMax;
+	    }
+	    Vector2Fixer.prototype.convertBack = function (value) {
+	        this._value.x = Math.min(this._xMax, Math.max(this._xMin, +value.x));
+	        this._value.y = Math.min(this._yMax, Math.max(this._yMin, +value.y));
+	        return this._value;
+	    };
+	    Vector2Fixer.prototype.convert = function (value) {
+	        return value;
+	    };
+	    Vector2Fixer.create = function (xMin, xMax, yMin, yMax) {
+	        return new Vector2Fixer(xMin, xMax, yMin, yMax);
+	    };
+	    return Vector2Fixer;
+	}());
+	exports.Vector2Fixer = Vector2Fixer;
+
+
+/***/ },
+/* 189 */
+/***/ function(module, exports) {
+
+	"use strict";
+	var Vector3Fixer = (function () {
+	    function Vector3Fixer(xMin, xMax, yMin, yMax, zMin, zMax) {
+	        this._value = { x: 0, y: 0, z: 0 };
+	        this._xMin = xMin;
+	        this._xMax = xMax;
+	        this._yMin = yMin;
+	        this._yMax = yMax;
+	        this._zMin = zMin;
+	        this._zMax = zMax;
+	    }
+	    Vector3Fixer.prototype.convertBack = function (value) {
+	        this._value.x = Math.min(this._xMax, Math.max(this._xMin, +value.x));
+	        this._value.y = Math.min(this._yMax, Math.max(this._yMin, +value.y));
+	        this._value.z = Math.min(this._zMax, Math.max(this._zMin, +value.z));
+	        return this._value;
+	    };
+	    Vector3Fixer.prototype.convert = function (value) {
+	        return value;
+	    };
+	    Vector3Fixer.create = function (xMin, xMax, yMin, yMax, zMin, zMax) {
+	        return new Vector3Fixer(xMin, xMax, yMin, yMax, zMin, zMax);
+	    };
+	    return Vector3Fixer;
+	}());
+	exports.Vector3Fixer = Vector3Fixer;
+
+
+/***/ },
+/* 190 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -30184,9 +30316,9 @@ var editor =
 	    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 	};
 	var qtk_1 = __webpack_require__(2);
-	var main_menu_bar_1 = __webpack_require__(187);
-	var particles_view_1 = __webpack_require__(188);
-	var particle_properties_1 = __webpack_require__(190);
+	var main_menu_bar_1 = __webpack_require__(191);
+	var particles_view_1 = __webpack_require__(192);
+	var particle_properties_1 = __webpack_require__(194);
 	var qtk_2 = __webpack_require__(2);
 	var MainWindow = (function (_super) {
 	    __extends(MainWindow, _super);
@@ -30220,7 +30352,7 @@ var editor =
 	//# sourceMappingURL=main-window.js.map
 
 /***/ },
-/* 187 */
+/* 191 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -30270,7 +30402,7 @@ var editor =
 	//# sourceMappingURL=main-menu-bar.js.map
 
 /***/ },
-/* 188 */
+/* 192 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -30279,7 +30411,7 @@ var editor =
 	    function __() { this.constructor = d; }
 	    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 	};
-	var draw_info_1 = __webpack_require__(189);
+	var draw_info_1 = __webpack_require__(193);
 	var qtk_1 = __webpack_require__(2);
 	var ParticlesView = (function (_super) {
 	    __extends(ParticlesView, _super);
@@ -30311,7 +30443,7 @@ var editor =
 	//# sourceMappingURL=particles-view.js.map
 
 /***/ },
-/* 189 */
+/* 193 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -30332,7 +30464,7 @@ var editor =
 	//# sourceMappingURL=draw-info.js.map
 
 /***/ },
-/* 190 */
+/* 194 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -30376,7 +30508,7 @@ var editor =
 	//# sourceMappingURL=particle-properties.js.map
 
 /***/ },
-/* 191 */
+/* 195 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -30385,21 +30517,21 @@ var editor =
 	    function __() { this.constructor = d; }
 	    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 	};
-	var proton = __webpack_require__(192);
-	var converters_1 = __webpack_require__(193);
-	var command_draw_1 = __webpack_require__(194);
-	var command_new_1 = __webpack_require__(195);
-	var command_open_1 = __webpack_require__(196);
-	var command_save_1 = __webpack_require__(197);
-	var command_export_1 = __webpack_require__(198);
-	var command_about_1 = __webpack_require__(200);
-	var command_remove_1 = __webpack_require__(201);
-	var command_content_1 = __webpack_require__(202);
-	var proton_wrapper_1 = __webpack_require__(203);
-	var document_1 = __webpack_require__(204);
-	__webpack_require__(205);
-	var particles_view_modal_1 = __webpack_require__(206);
-	var iparticles_view_modal_1 = __webpack_require__(207);
+	var proton = __webpack_require__(196);
+	__webpack_require__(197);
+	var command_draw_1 = __webpack_require__(199);
+	var command_new_1 = __webpack_require__(200);
+	var command_open_1 = __webpack_require__(201);
+	var command_save_1 = __webpack_require__(202);
+	var command_export_1 = __webpack_require__(203);
+	var command_about_1 = __webpack_require__(205);
+	var command_remove_1 = __webpack_require__(206);
+	var command_content_1 = __webpack_require__(207);
+	var proton_wrapper_1 = __webpack_require__(208);
+	var document_1 = __webpack_require__(198);
+	var particles_view_modal_1 = __webpack_require__(209);
+	var qtk_1 = __webpack_require__(2);
+	var iparticles_view_modal_1 = __webpack_require__(210);
 	var ProtonViewModal = (function (_super) {
 	    __extends(ProtonViewModal, _super);
 	    function ProtonViewModal(storage) {
@@ -30408,12 +30540,20 @@ var editor =
 	        this.canvas.width = 400;
 	        this.canvas.height = 400;
 	        this.storage = storage;
-	        converters_1.Converters.init(this);
 	        this.registerCommands();
+	        this.registerConverters();
 	        this.doc = document_1.Document.create();
 	        this.createDoc("default");
 	        this.updateDocList();
 	    }
+	    ProtonViewModal.prototype.registerConverters = function () {
+	        this.registerValueConverter("life", qtk_1.RangeFixer.create(0, 1000, 0, 1000, true));
+	        this.registerValueConverter("radius", qtk_1.RangeFixer.create(0, 1000, 0, 1000, true));
+	        this.registerValueConverter("mass", qtk_1.RangeFixer.create(0, 1000, 0, 1000, true));
+	        this.registerValueConverter("point", qtk_1.Vector2Fixer.create(0, 1000, 0, 1000));
+	        this.registerValueConverter("scale", qtk_1.RangeFixer.create(0, 10, 0, 10, false));
+	        this.registerValueConverter("alpha", qtk_1.RangeFixer.create(0, 1, 0, 1, false));
+	    };
 	    ProtonViewModal.prototype.registerCommands = function () {
 	        this.registerCommand("draw", command_draw_1.CommandDraw.create(this.canvas));
 	        this.registerCommand("about", command_about_1.CommandAbout.create(this, "https://github.com/a-jie/Proton"));
@@ -30461,7 +30601,7 @@ var editor =
 	//# sourceMappingURL=view-modal.js.map
 
 /***/ },
-/* 192 */
+/* 196 */
 /***/ function(module, exports) {
 
 	/*!
@@ -34632,49 +34772,107 @@ var editor =
 		}()); 
 
 /***/ },
-/* 193 */
+/* 197 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+	var document_1 = __webpack_require__(198);
+	var defaultTemplate = [
+	    {
+	        title: "Initialize",
+	        propsDesc: [
+	            { type: "range", name: "Radius", converter: "radius", path: "radius", value: { first: 1, second: 12 } },
+	            { type: "range", name: "Life", converter: "life", path: "life", value: { first: 2, second: 4 } },
+	            { type: "range", name: "Mass", converter: "mass", path: "mass", value: { first: 1, second: 1 } },
+	            { type: "vector2", name: "Position", path: "position", converter: "point", value: { x: 300, y: 300 } },
+	            { type: "line", name: "Rate" },
+	            { type: "range", name: "number", converter: "number", path: "rateNum", value: { first: 10, second: 20 } },
+	            { type: "range", name: "time", converter: "time", path: "rateTime", value: { first: .1, second: .25 } },
+	            { type: "line" },
+	            { type: "options", name: "Type", converter: "velocity", path: "vType", value: "polar",
+	                options: ["polar", "linear"] },
+	            { type: "range", name: "rpan", converter: "velocity", path: "vRpan", value: { first: 2, second: 4 } },
+	            { type: "range", name: "thapan", converter: "velocity", path: "vThapan", value: { first: -30, second: 30 } },
+	            { type: "line" }
+	        ]
+	    },
+	    {
+	        title: "Behaviour",
+	        propsDesc: [
+	            { type: "range", name: "Scale", path: "scale", converter: "scale", value: { first: 1, second: 0.7 } },
+	            { type: "range", name: "Alpha", path: "alpha", converter: "alpha", value: { first: 1, second: 0 } },
+	            { type: "line", name: "Drift" },
+	            { type: "vector2", name: "Point", path: "driftPoint", converter: "point", value: { x: 30, y: 30 } },
+	            { type: "number", name: "Delay", path: "driftDelay", converter: "delay", value: 0.05 },
+	            { type: "line" }
+	        ]
+	    }
+	];
+	document_1.Document.registerTemplate("default", defaultTemplate);
+	//# sourceMappingURL=templates.js.map
+
+/***/ },
+/* 198 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
 	var qtk_1 = __webpack_require__(2);
-	function convertPoint(value) {
-	    return { x: Math.max(0, +value.x), y: Math.max(0, +value.y) };
-	}
-	function convertRange(value, fix) {
-	    var first = Math.max(0, +value.first);
-	    var second = Math.max(0, +value.second);
-	    if (fix) {
-	        return { first: Math.min(first, second), second: Math.max(first, second) };
+	var Document = (function () {
+	    function Document() {
 	    }
-	    else {
-	        return { first: first, second: second };
-	    }
-	}
-	function fixRange(value) {
-	    return convertRange(value, true);
-	}
-	function noChange(value) {
-	    return value;
-	}
-	var Converters = (function () {
-	    function Converters() {
-	    }
-	    Converters.init = function (viewModal) {
-	        viewModal.registerValueConverter("life", qtk_1.DelegateValueConverter.create(noChange, fixRange));
-	        viewModal.registerValueConverter("radius", qtk_1.DelegateValueConverter.create(noChange, fixRange));
-	        viewModal.registerValueConverter("mass", qtk_1.DelegateValueConverter.create(noChange, fixRange));
-	        viewModal.registerValueConverter("point", qtk_1.DelegateValueConverter.create(noChange, convertPoint));
-	        viewModal.registerValueConverter("scale", qtk_1.DelegateValueConverter.create(noChange, convertRange));
-	        viewModal.registerValueConverter("alpha", qtk_1.DelegateValueConverter.create(noChange, convertRange));
+	    Document.prototype.toJson = function () {
+	        var json = {
+	            data: this.data,
+	            propsDesc: this.propsDesc.map(function (item) {
+	                return item.toJson();
+	            })
+	        };
+	        return json;
 	    };
-	    return Converters;
+	    Document.prototype.fromJson = function (json) {
+	        this.data = json.data;
+	        this.propsDesc = json.propsDesc.map(function (item) {
+	            return qtk_1.PagePropsDesc.create(item.title, item.propsDesc.items);
+	        });
+	        return this;
+	    };
+	    Document.prototype.fromTemplate = function (name) {
+	        var json = Document.templates[name];
+	        var data = {};
+	        this.propsDesc = json.map(function (item) {
+	            var pagePropsDesc = qtk_1.PagePropsDesc.create(item.title, item.propsDesc);
+	            item.propsDesc.forEach(function (desc) {
+	                if (desc.path) {
+	                    data[desc.path] = desc.value;
+	                }
+	            });
+	            return pagePropsDesc;
+	        });
+	        this.data = data;
+	        return this;
+	    };
+	    Document.prototype.getTemplateList = function () {
+	        return Document.templateNames;
+	    };
+	    Document.create = function () {
+	        return new Document();
+	    };
+	    Document.registerTemplate = function (name, json) {
+	        Document.templates[name] = json;
+	        Document.templateNames.push(name);
+	    };
+	    Document.getTemplateList = function () {
+	        return Document.templateNames;
+	    };
+	    Document.templates = {};
+	    Document.templateNames = [];
+	    return Document;
 	}());
-	exports.Converters = Converters;
-	;
-	//# sourceMappingURL=converters.js.map
+	exports.Document = Document;
+	//# sourceMappingURL=document.js.map
 
 /***/ },
-/* 194 */
+/* 199 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -34712,7 +34910,7 @@ var editor =
 	//# sourceMappingURL=command-draw.js.map
 
 /***/ },
-/* 195 */
+/* 200 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -34751,7 +34949,7 @@ var editor =
 	//# sourceMappingURL=command-new.js.map
 
 /***/ },
-/* 196 */
+/* 201 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -34791,7 +34989,7 @@ var editor =
 	//# sourceMappingURL=command-open.js.map
 
 /***/ },
-/* 197 */
+/* 202 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -34831,11 +35029,11 @@ var editor =
 	//# sourceMappingURL=command-save.js.map
 
 /***/ },
-/* 198 */
+/* 203 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
-	var saveAs = __webpack_require__(199).default;
+	var saveAs = __webpack_require__(204).default;
 	var qtk_1 = __webpack_require__(2);
 	var CommandExport = (function () {
 	    function CommandExport(viewModal, choiceInfo) {
@@ -34875,7 +35073,7 @@ var editor =
 	//# sourceMappingURL=command-export.js.map
 
 /***/ },
-/* 199 */
+/* 204 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -35144,7 +35342,7 @@ var editor =
 	exports.default = saveAs;
 
 /***/ },
-/* 200 */
+/* 205 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -35186,7 +35384,7 @@ var editor =
 	//# sourceMappingURL=command-about.js.map
 
 /***/ },
-/* 201 */
+/* 206 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -35240,7 +35438,7 @@ var editor =
 	//# sourceMappingURL=command-remove.js.map
 
 /***/ },
-/* 202 */
+/* 207 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -35267,11 +35465,11 @@ var editor =
 	//# sourceMappingURL=command-content.js.map
 
 /***/ },
-/* 203 */
+/* 208 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
-	var proton = __webpack_require__(192);
+	var proton = __webpack_require__(196);
 	function createProtonEmitter(proton, data) {
 	    var life = new Proton.Life(data.life.first, data.life.second);
 	    var radius = new Proton.Radius(data.radius.first, data.radius.second);
@@ -35302,107 +35500,7 @@ var editor =
 	//# sourceMappingURL=proton-wrapper.js.map
 
 /***/ },
-/* 204 */
-/***/ function(module, exports, __webpack_require__) {
-
-	"use strict";
-	var qtk_1 = __webpack_require__(2);
-	var Document = (function () {
-	    function Document() {
-	    }
-	    Document.prototype.toJson = function () {
-	        var json = {
-	            data: this.data,
-	            propsDesc: this.propsDesc.map(function (item) {
-	                return item.toJson();
-	            })
-	        };
-	        return json;
-	    };
-	    Document.prototype.fromJson = function (json) {
-	        this.data = json.data;
-	        this.propsDesc = json.propsDesc.map(function (item) {
-	            return qtk_1.PagePropsDesc.create(item.title, item.propsDesc.items);
-	        });
-	        return this;
-	    };
-	    Document.prototype.fromTemplate = function (name) {
-	        var json = Document.templates[name];
-	        var data = {};
-	        this.propsDesc = json.map(function (item) {
-	            var pagePropsDesc = qtk_1.PagePropsDesc.create(item.title, item.propsDesc);
-	            item.propsDesc.forEach(function (desc) {
-	                if (desc.path) {
-	                    data[desc.path] = desc.value;
-	                }
-	            });
-	            return pagePropsDesc;
-	        });
-	        this.data = data;
-	        return this;
-	    };
-	    Document.prototype.getTemplateList = function () {
-	        return Document.templateNames;
-	    };
-	    Document.create = function () {
-	        return new Document();
-	    };
-	    Document.registerTemplate = function (name, json) {
-	        Document.templates[name] = json;
-	        Document.templateNames.push(name);
-	    };
-	    Document.getTemplateList = function () {
-	        return Document.templateNames;
-	    };
-	    Document.templates = {};
-	    Document.templateNames = [];
-	    return Document;
-	}());
-	exports.Document = Document;
-	//# sourceMappingURL=document.js.map
-
-/***/ },
-/* 205 */
-/***/ function(module, exports, __webpack_require__) {
-
-	"use strict";
-	var document_1 = __webpack_require__(204);
-	var defaultTemplate = [
-	    {
-	        title: "Initialize",
-	        propsDesc: [
-	            { type: "range", name: "Radius", converter: "radius", path: "radius", value: { first: 1, second: 12 } },
-	            { type: "range", name: "Life", converter: "life", path: "life", value: { first: 2, second: 4 } },
-	            { type: "range", name: "Mass", converter: "mass", path: "mass", value: { first: 1, second: 1 } },
-	            { type: "vector2", name: "Position", path: "position", converter: "point", value: { x: 300, y: 300 } },
-	            { type: "line", name: "Rate" },
-	            { type: "range", name: "number", converter: "number", path: "rateNum", value: { first: 10, second: 20 } },
-	            { type: "range", name: "time", converter: "time", path: "rateTime", value: { first: .1, second: .25 } },
-	            { type: "line" },
-	            { type: "options", name: "Type", converter: "velocity", path: "vType", value: "polar",
-	                options: ["polar", "linear"] },
-	            { type: "range", name: "rpan", converter: "velocity", path: "vRpan", value: { first: 2, second: 4 } },
-	            { type: "range", name: "thapan", converter: "velocity", path: "vThapan", value: { first: -30, second: 30 } },
-	            { type: "line" }
-	        ]
-	    },
-	    {
-	        title: "Behaviour",
-	        propsDesc: [
-	            { type: "range", name: "Scale", path: "scale", converter: "scale", value: { first: 1, second: 0.7 } },
-	            { type: "range", name: "Alpha", path: "alpha", converter: "alpha", value: { first: 1, second: 0 } },
-	            { type: "line", name: "Drift" },
-	            { type: "vector2", name: "Point", path: "driftPoint", converter: "point", value: { x: 30, y: 30 } },
-	            { type: "number", name: "Delay", path: "driftDelay", converter: "delay", value: 0.05 },
-	            { type: "line" }
-	        ]
-	    }
-	];
-	document_1.Document.registerTemplate("default", defaultTemplate);
-	//# sourceMappingURL=templates.js.map
-
-/***/ },
-/* 206 */
+/* 209 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -35483,7 +35581,7 @@ var editor =
 	//# sourceMappingURL=particles-view-modal.js.map
 
 /***/ },
-/* 207 */
+/* 210 */
 /***/ function(module, exports) {
 
 	"use strict";

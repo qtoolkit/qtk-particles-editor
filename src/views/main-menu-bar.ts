@@ -1,4 +1,3 @@
-import {ContentInfo} from "../modals/content-info";
 import {Events, DockLayouterParam, Direction} from "qtk";
 import {Widget, MenuBar, MenuBarItem, Menu, MenuItem} from "qtk";
 import {ParticlesViewModal} from "../view-modals/particles-view-modal";

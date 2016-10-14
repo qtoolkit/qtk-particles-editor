@@ -1,8 +1,8 @@
 
 var proton = require("proton");
 
-import {Converters} from "./converters";
-import {CommandDraw} from "./command-draw";
+import "../../modals/proton/templates";
+import {CommandDraw} from "../command-draw";
 import {CommandNew} from "../command-new";
 import {CommandOpen} from "../command-open";
 import {CommandSave} from "../command-save";
@@ -14,8 +14,8 @@ import {createProtonEmitter} from "./proton-wrapper";
 import {PropsDesc, PagePropsDesc, Events} from "qtk";
 import {Document} from "../../modals/document";
 import {IDocument} from "../../modals/idocument";
-import "../../modals/proton/templates";
 import {ParticlesViewModal} from "../particles-view-modal";
+import {RangeFixer, Vector2Fixer, NumberFixer} from "qtk"
 import {ViewModal, IViewModal, ItemsStorage, ValidationResult} from "qtk"
 import {IParticlesViewModal, ParticlesViewModalFactory} from "../iparticles-view-modal";
 
@@ -35,12 +35,21 @@ export class ProtonViewModal extends ParticlesViewModal {
 		
 		this.storage = storage;
 		
-		Converters.init(this);
 		this.registerCommands();
-		
+		this.registerConverters();
+
 		this.doc = Document.create();
 		this.createDoc("default");
 		this.updateDocList();
+	}
+
+	protected registerConverters() {
+		this.registerValueConverter("life", RangeFixer.create(0, 1000, 0, 1000, true));
+		this.registerValueConverter("radius", RangeFixer.create(0, 1000, 0, 1000, true));
+		this.registerValueConverter("mass", RangeFixer.create(0, 1000, 0, 1000, true));
+		this.registerValueConverter("point", Vector2Fixer.create(0, 1000, 0, 1000));
+		this.registerValueConverter("scale", RangeFixer.create(0, 10, 0, 10, false));
+		this.registerValueConverter("alpha", RangeFixer.create(0, 1, 0, 1, false));
 	}
 
 	protected registerCommands() {
