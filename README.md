@@ -10,4 +10,4 @@
 *. 实现一个通用的粒子编辑器框架，基于此框架可以方便的集成不同的粒子发射器。
 
 
-[qtk-particles-editor](https://github.com/qtoolkit/qtk-particles-editor)是一个基于本项目为[Proton](qtk-particles-editor)开发的粒子编辑器。
+[qtk-proton-editor](https://github.com/qtoolkit/qtk-proton-editor)是一个基于本项目为[Proton](qtk-particles-editor)开发的粒子编辑器。
