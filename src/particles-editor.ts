@@ -2,6 +2,7 @@
 import {Application, ItemsStorage, Events} from "qtk";
 import {MainWindow} from "./views/main-window";
 import {ProtonViewModal} from "./view-modals/proton/view-modal";
+import {Cocos2dViewModal} from "./view-modals/cocos2d/view-modal";
 import {IParticlesViewModal, ParticlesViewModalFactory} from "./view-modals/iparticles-view-modal";
 
 var themeDataURL = "https://qtoolkit.github.io/demos/assets/theme/default/theme.json";
@@ -9,9 +10,14 @@ var themeDataURL = "https://qtoolkit.github.io/demos/assets/theme/default/theme.
 export class ParticlesEditor extends Application {
 	public mainWindow : MainWindow;
 
+	protected getViewModalName() : string {
+		return Cocos2dViewModal.TYPE;
+	}
+
 	protected createViewModal() : IParticlesViewModal {
-		var storage = ItemsStorage.create(ProtonViewModal.TYPE);
-		return ParticlesViewModalFactory.create(ProtonViewModal.TYPE, {storage:storage});
+		var name = this.getViewModalName();
+		var storage = ItemsStorage.create(name);
+		return ParticlesViewModalFactory.create(name, {storage:storage});
 	}
 
 	public onReady() {

@@ -19,7 +19,7 @@ var ParticleProperties = (function (_super) {
         var propsDesc = viewModal.getPropsDesc();
         this._style = qtk_1.Style.create();
         propsDesc.forEach(function (pageDesc) {
-            var page = qtk_1.PropertyPage.create({ h: 400 });
+            var page = qtk_1.PropertyPage.create({ titleW: "40%" });
             page.initWithPropsDesc(pageDesc.propsDesc);
             var titlePage = _this.addPage(pageDesc.title, page);
             page.bindData(viewModal);

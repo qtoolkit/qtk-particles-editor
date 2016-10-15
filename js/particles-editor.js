@@ -6,7 +6,7 @@ var __extends = (this && this.__extends) || function (d, b) {
 };
 var qtk_1 = require("qtk");
 var main_window_1 = require("./views/main-window");
-var view_modal_1 = require("./view-modals/proton/view-modal");
+var view_modal_1 = require("./view-modals/cocos2d/view-modal");
 var iparticles_view_modal_1 = require("./view-modals/iparticles-view-modal");
 var themeDataURL = "https://qtoolkit.github.io/demos/assets/theme/default/theme.json";
 var ParticlesEditor = (function (_super) {
@@ -14,9 +14,13 @@ var ParticlesEditor = (function (_super) {
     function ParticlesEditor() {
         _super.apply(this, arguments);
     }
+    ParticlesEditor.prototype.getViewModalName = function () {
+        return view_modal_1.Cocos2dViewModal.TYPE;
+    };
     ParticlesEditor.prototype.createViewModal = function () {
-        var storage = qtk_1.ItemsStorage.create(view_modal_1.ProtonViewModal.TYPE);
-        return iparticles_view_modal_1.ParticlesViewModalFactory.create(view_modal_1.ProtonViewModal.TYPE, { storage: storage });
+        var name = this.getViewModalName();
+        var storage = qtk_1.ItemsStorage.create(name);
+        return iparticles_view_modal_1.ParticlesViewModalFactory.create(name, { storage: storage });
     };
     ParticlesEditor.prototype.onReady = function () {
         var vp = this.getViewPort();

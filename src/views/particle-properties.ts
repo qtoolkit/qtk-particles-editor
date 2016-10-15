@@ -15,7 +15,7 @@ export class ParticleProperties extends PropertySheets {
 		
 		this._style = Style.create(); 
 		propsDesc.forEach((pageDesc:PagePropsDesc) => {
-			var page = PropertyPage.create({h:400});
+			var page = PropertyPage.create({titleW:"40%"});
 			page.initWithPropsDesc(pageDesc.propsDesc);
 			var titlePage = this.addPage(pageDesc.title, page);
 			page.bindData(viewModal);
