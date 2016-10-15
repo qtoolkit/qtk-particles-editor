@@ -10,11 +10,12 @@ var iparticles_view_modal_1 = require("./view-modals/iparticles-view-modal");
 var themeDataURL = "https://qtoolkit.github.io/demos/assets/theme/default/theme.json";
 var ParticlesEditor = (function (_super) {
     __extends(ParticlesEditor, _super);
-    function ParticlesEditor() {
-        _super.apply(this, arguments);
+    function ParticlesEditor(appName, viewModalName) {
+        _super.call(this, appName);
+        this._viewModalName = viewModalName;
     }
     ParticlesEditor.prototype.getViewModalName = function () {
-        return null;
+        return this._viewModalName;
     };
     ParticlesEditor.prototype.createViewModal = function () {
         var name = this.getViewModalName();
@@ -26,8 +27,8 @@ var ParticlesEditor = (function (_super) {
         var viewModal = this.createViewModal();
         this.mainWindow = main_window_1.MainWindow.create({ w: vp.w, h: vp.h, app: this, viewModal: viewModal });
     };
-    ParticlesEditor.run = function () {
-        var app = new ParticlesEditor("particles-editor");
+    ParticlesEditor.run = function (appName, viewModalName) {
+        var app = new ParticlesEditor(appName, viewModalName);
         app.init({ sysThemeDataURL: themeDataURL });
         app.run();
         return app;

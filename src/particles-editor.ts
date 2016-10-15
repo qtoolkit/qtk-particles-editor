@@ -7,9 +7,15 @@ var themeDataURL = "https://qtoolkit.github.io/demos/assets/theme/default/theme.
 
 export class ParticlesEditor extends Application {
 	public mainWindow : MainWindow;
+	protected _viewModalName : string;
+
+	constructor(appName:string, viewModalName:string) {
+		super(appName);
+		this._viewModalName = viewModalName;
+	}
 
 	protected getViewModalName() : string {
-		return null;
+		return this._viewModalName;
 	}
 
 	protected createViewModal() : IParticlesViewModal {
@@ -24,8 +30,8 @@ export class ParticlesEditor extends Application {
 		this.mainWindow = MainWindow.create({w:vp.w, h:vp.h, app:this, viewModal:viewModal});
 	}
 
-	public static run() : ParticlesEditor {
-		var app = new ParticlesEditor("particles-editor");
+	public static run(appName:string, viewModalName:string) : ParticlesEditor {
+		var app = new ParticlesEditor(appName, viewModalName);
 		app.init({sysThemeDataURL:themeDataURL});
 		app.run();
 
