@@ -4,9 +4,8 @@ var __extends = (this && this.__extends) || function (d, b) {
     function __() { this.constructor = d; }
     d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 };
-var qtk_1 = require("qtk");
 var main_window_1 = require("./views/main-window");
-var view_modal_1 = require("./view-modals/cocos2d/view-modal");
+var qtk_1 = require("qtk");
 var iparticles_view_modal_1 = require("./view-modals/iparticles-view-modal");
 var themeDataURL = "https://qtoolkit.github.io/demos/assets/theme/default/theme.json";
 var ParticlesEditor = (function (_super) {
@@ -15,7 +14,7 @@ var ParticlesEditor = (function (_super) {
         _super.apply(this, arguments);
     }
     ParticlesEditor.prototype.getViewModalName = function () {
-        return view_modal_1.Cocos2dViewModal.TYPE;
+        return null;
     };
     ParticlesEditor.prototype.createViewModal = function () {
         var name = this.getViewModalName();

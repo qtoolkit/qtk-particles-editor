@@ -63,10 +63,9 @@ var editor =
 	    function __() { this.constructor = d; }
 	    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 	};
-	var qtk_1 = __webpack_require__(2);
-	var main_window_1 = __webpack_require__(190);
-	var view_modal_1 = __webpack_require__(195);
-	var iparticles_view_modal_1 = __webpack_require__(211);
+	var main_window_1 = __webpack_require__(2);
+	var qtk_1 = __webpack_require__(3);
+	var iparticles_view_modal_1 = __webpack_require__(195);
 	var themeDataURL = "https://qtoolkit.github.io/demos/assets/theme/default/theme.json";
 	var ParticlesEditor = (function (_super) {
 	    __extends(ParticlesEditor, _super);
@@ -74,7 +73,7 @@ var editor =
 	        _super.apply(this, arguments);
 	    }
 	    ParticlesEditor.prototype.getViewModalName = function () {
-	        return view_modal_1.Cocos2dViewModal.TYPE;
+	        return null;
 	    };
 	    ParticlesEditor.prototype.createViewModal = function () {
 	        var name = this.getViewModalName();
@@ -103,265 +102,311 @@ var editor =
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
-	var rect_1 = __webpack_require__(3);
+	var __extends = (this && this.__extends) || function (d, b) {
+	    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
+	    function __() { this.constructor = d; }
+	    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+	};
+	var qtk_1 = __webpack_require__(3);
+	var main_menu_bar_1 = __webpack_require__(191);
+	var particles_view_1 = __webpack_require__(192);
+	var particle_properties_1 = __webpack_require__(194);
+	var qtk_2 = __webpack_require__(3);
+	var MainWindow = (function (_super) {
+	    __extends(MainWindow, _super);
+	    function MainWindow() {
+	        _super.apply(this, arguments);
+	    }
+	    MainWindow.prototype.onCreated = function () {
+	        _super.prototype.onCreated.call(this);
+	        var viewModal = this.viewModal;
+	        this.childrenLayouter = qtk_2.DockLayouter.create();
+	        this.addChild(main_menu_bar_1.MainMenuBar.create({ viewModal: viewModal,
+	            layoutParam: qtk_2.DockLayouterParam.create({ position: qtk_1.Direction.TOP, size: 30 })
+	        }));
+	        this.addChild(particles_view_1.ParticlesView.create({ viewModal: viewModal,
+	            layoutParam: qtk_2.DockLayouterParam.create({ position: qtk_1.Direction.LEFT, size: "70%" })
+	        }));
+	        this.addChild(particle_properties_1.ParticleProperties.create({ viewModal: viewModal,
+	            layoutParam: qtk_2.DockLayouterParam.create({ position: qtk_1.Direction.LEFT, size: "100%" })
+	        }));
+	    };
+	    MainWindow.create = function (options) {
+	        var win = new MainWindow();
+	        win.reset("main-window", options);
+	        win.open();
+	        return win;
+	    };
+	    return MainWindow;
+	}(qtk_2.WindowNormal));
+	exports.MainWindow = MainWindow;
+	;
+	//# sourceMappingURL=main-window.js.map
+
+/***/ },
+/* 3 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+	var rect_1 = __webpack_require__(4);
 	exports.Rect = rect_1.Rect;
-	var point_1 = __webpack_require__(4);
+	var point_1 = __webpack_require__(5);
 	exports.Point = point_1.Point;
-	var style_1 = __webpack_require__(5);
+	var style_1 = __webpack_require__(6);
 	exports.Style = style_1.Style;
-	var matrix_1 = __webpack_require__(14);
+	var matrix_1 = __webpack_require__(15);
 	exports.Matrix = matrix_1.Matrix;
-	var canvas_1 = __webpack_require__(15);
+	var canvas_1 = __webpack_require__(16);
 	exports.Canvas = canvas_1.Canvas;
-	var edit_1 = __webpack_require__(19);
+	var edit_1 = __webpack_require__(20);
 	exports.Edit = edit_1.Edit;
-	var label_1 = __webpack_require__(20);
+	var label_1 = __webpack_require__(21);
 	exports.Label = label_1.Label;
-	var emitter_1 = __webpack_require__(6);
+	var emitter_1 = __webpack_require__(7);
 	exports.Emitter = emitter_1.Emitter;
-	var page_1 = __webpack_require__(87);
+	var page_1 = __webpack_require__(88);
 	exports.Page = page_1.Page;
-	var key_event_1 = __webpack_require__(18);
+	var key_event_1 = __webpack_require__(19);
 	exports.KeyEvent = key_event_1.KeyEvent;
-	var view_port_1 = __webpack_require__(88);
+	var view_port_1 = __webpack_require__(89);
 	exports.ViewPort = view_port_1.ViewPort;
-	var pages_1 = __webpack_require__(89);
+	var pages_1 = __webpack_require__(90);
 	exports.Pages = pages_1.Pages;
-	var main_loop_1 = __webpack_require__(90);
+	var main_loop_1 = __webpack_require__(91);
 	exports.MainLoop = main_loop_1.MainLoop;
-	var image_1 = __webpack_require__(91);
+	var image_1 = __webpack_require__(92);
 	exports.Image = image_1.Image;
-	var group_1 = __webpack_require__(92);
+	var group_1 = __webpack_require__(93);
 	exports.Group = group_1.Group;
-	var dialog_1 = __webpack_require__(93);
+	var dialog_1 = __webpack_require__(94);
 	exports.Dialog = dialog_1.Dialog;
-	var button_1 = __webpack_require__(95);
+	var button_1 = __webpack_require__(96);
 	exports.Button = button_1.Button;
-	var slider_1 = __webpack_require__(96);
+	var slider_1 = __webpack_require__(97);
 	exports.Slider = slider_1.Slider;
-	var switch_1 = __webpack_require__(98);
+	var switch_1 = __webpack_require__(99);
 	exports.Switch = switch_1.Switch;
-	var matrix_stack_1 = __webpack_require__(24);
+	var matrix_stack_1 = __webpack_require__(25);
 	exports.MatrixStack = matrix_stack_1.MatrixStack;
-	var tab_page_1 = __webpack_require__(99);
+	var tab_page_1 = __webpack_require__(100);
 	exports.TabPage = tab_page_1.TabPage;
-	var rich_text_1 = __webpack_require__(100);
+	var rich_text_1 = __webpack_require__(101);
 	exports.RichText = rich_text_1.RichText;
-	var tab_button_1 = __webpack_require__(105);
+	var tab_button_1 = __webpack_require__(106);
 	exports.TabButton = tab_button_1.TabButton;
-	var tab_control_1 = __webpack_require__(109);
+	var tab_control_1 = __webpack_require__(110);
 	exports.TabControl = tab_control_1.TabControl;
-	var image_tile_1 = __webpack_require__(9);
+	var image_tile_1 = __webpack_require__(10);
 	exports.ImageDrawType = image_tile_1.ImageDrawType;
 	exports.ImageTile = image_tile_1.ImageTile;
-	var rich_text_edit_1 = __webpack_require__(111);
+	var rich_text_edit_1 = __webpack_require__(112);
 	exports.RichTextEdit = rich_text_edit_1.RichTextEdit;
-	var tab_button_group_1 = __webpack_require__(110);
+	var tab_button_group_1 = __webpack_require__(111);
 	exports.TabButtonGroup = tab_button_group_1.TabButtonGroup;
-	var combo_box_1 = __webpack_require__(112);
+	var combo_box_1 = __webpack_require__(113);
 	exports.ComboBox = combo_box_1.ComboBox;
 	exports.ComboBoxEditable = combo_box_1.ComboBoxEditable;
-	var grid_view_1 = __webpack_require__(117);
+	var grid_view_1 = __webpack_require__(118);
 	exports.GridView = grid_view_1.GridView;
-	var list_view_1 = __webpack_require__(113);
+	var list_view_1 = __webpack_require__(114);
 	exports.ListView = list_view_1.ListView;
-	var tree_item_1 = __webpack_require__(119);
+	var tree_item_1 = __webpack_require__(120);
 	exports.TreeItem = tree_item_1.TreeItem;
-	var tree_view_1 = __webpack_require__(120);
+	var tree_view_1 = __webpack_require__(121);
 	exports.TreeView = tree_view_1.TreeView;
-	var application_1 = __webpack_require__(122);
+	var application_1 = __webpack_require__(123);
 	exports.Application = application_1.Application;
-	var movable_1 = __webpack_require__(162);
+	var movable_1 = __webpack_require__(163);
 	exports.Movable = movable_1.Movable;
-	var theme_manager_1 = __webpack_require__(123);
+	var theme_manager_1 = __webpack_require__(124);
 	exports.ThemeManager = theme_manager_1.ThemeManager;
-	var draggable_1 = __webpack_require__(163);
+	var draggable_1 = __webpack_require__(164);
 	exports.Draggable = draggable_1.Draggable;
-	var droppable_1 = __webpack_require__(164);
+	var droppable_1 = __webpack_require__(165);
 	exports.Droppable = droppable_1.Droppable;
-	var resizable_1 = __webpack_require__(165);
+	var resizable_1 = __webpack_require__(166);
 	exports.Resizable = resizable_1.Resizable;
-	var menu_1 = __webpack_require__(166);
+	var menu_1 = __webpack_require__(167);
 	exports.Menu = menu_1.Menu;
 	exports.MenuItem = menu_1.MenuItem;
-	var radio_button_1 = __webpack_require__(107);
+	var radio_button_1 = __webpack_require__(108);
 	exports.RadioButton = radio_button_1.RadioButton;
-	var tree_item_data_1 = __webpack_require__(121);
+	var tree_item_data_1 = __webpack_require__(122);
 	exports.TreeItemData = tree_item_data_1.TreeItemData;
-	var check_button_1 = __webpack_require__(108);
+	var check_button_1 = __webpack_require__(109);
 	exports.CheckButton = check_button_1.CheckButton;
-	var window_normal_1 = __webpack_require__(167);
+	var window_normal_1 = __webpack_require__(168);
 	exports.WindowNormal = window_normal_1.WindowNormal;
-	var widget_factory_1 = __webpack_require__(25);
+	var widget_factory_1 = __webpack_require__(26);
 	exports.WidgetFactory = widget_factory_1.WidgetFactory;
-	var menu_bar_1 = __webpack_require__(168);
+	var menu_bar_1 = __webpack_require__(169);
 	exports.MenuBar = menu_bar_1.MenuBar;
 	exports.MenuBarItem = menu_bar_1.MenuBarItem;
-	var color_tile_1 = __webpack_require__(140);
+	var color_tile_1 = __webpack_require__(141);
 	exports.ColorTile = color_tile_1.ColorTile;
 	exports.ColorLine = color_tile_1.ColorLine;
-	var list_item_1 = __webpack_require__(115);
+	var list_item_1 = __webpack_require__(116);
 	exports.ListItem = list_item_1.ListItem;
 	exports.ListItemStyle = list_item_1.ListItemStyle;
-	var graphics_1 = __webpack_require__(27);
+	var graphics_1 = __webpack_require__(28);
 	exports.RoundType = graphics_1.RoundType;
 	exports.Graphics = graphics_1.Graphics;
-	var accordion_1 = __webpack_require__(169);
+	var accordion_1 = __webpack_require__(170);
 	exports.Accordion = accordion_1.Accordion;
-	var service_locator_1 = __webpack_require__(125);
+	var service_locator_1 = __webpack_require__(126);
 	exports.ServiceLocator = service_locator_1.ServiceLocator;
-	var ruler_1 = __webpack_require__(172);
+	var ruler_1 = __webpack_require__(173);
 	exports.VRuler = ruler_1.VRuler;
 	exports.HRuler = ruler_1.HRuler;
-	var title_content_1 = __webpack_require__(170);
+	var title_content_1 = __webpack_require__(171);
 	exports.TitleContent = title_content_1.TitleContent;
-	var title_label_1 = __webpack_require__(142);
+	var title_label_1 = __webpack_require__(143);
 	exports.TitleLabel = title_label_1.TitleLabel;
-	var title_range_1 = __webpack_require__(143);
+	var title_range_1 = __webpack_require__(144);
 	exports.TitleRange = title_range_1.TitleRange;
-	var title_vector_1 = __webpack_require__(145);
+	var title_vector_1 = __webpack_require__(146);
 	exports.TitleVector = title_vector_1.TitleVector;
-	var title_edit_1 = __webpack_require__(141);
+	var title_edit_1 = __webpack_require__(142);
 	exports.TitleEdit = title_edit_1.TitleEdit;
-	var title_slider_1 = __webpack_require__(147);
+	var title_slider_1 = __webpack_require__(148);
 	exports.TitleSlider = title_slider_1.TitleSlider;
-	var property_page_1 = __webpack_require__(136);
+	var property_page_1 = __webpack_require__(137);
 	exports.PropertyPage = property_page_1.PropertyPage;
-	var property_dialog_1 = __webpack_require__(135);
+	var property_dialog_1 = __webpack_require__(136);
 	exports.PropertyDialog = property_dialog_1.PropertyDialog;
-	var range_edit_1 = __webpack_require__(144);
+	var range_edit_1 = __webpack_require__(145);
 	exports.RangeEdit = range_edit_1.RangeEdit;
-	var vector_edit_1 = __webpack_require__(146);
+	var vector_edit_1 = __webpack_require__(147);
 	exports.VectorEdit = vector_edit_1.VectorEdit;
-	var choosable_edit_1 = __webpack_require__(152);
+	var choosable_edit_1 = __webpack_require__(153);
 	exports.ChoosableEdit = choosable_edit_1.ChoosableEdit;
-	var title_text_area_1 = __webpack_require__(148);
+	var title_text_area_1 = __webpack_require__(149);
 	exports.TitleTextArea = title_text_area_1.TitleTextArea;
-	var property_sheets_1 = __webpack_require__(173);
+	var property_sheets_1 = __webpack_require__(174);
 	exports.PropertySheets = property_sheets_1.PropertySheets;
-	var progress_bar_1 = __webpack_require__(97);
+	var progress_bar_1 = __webpack_require__(98);
 	exports.ProgressBarType = progress_bar_1.ProgressBarType;
 	exports.ProgressBar = progress_bar_1.ProgressBar;
-	var title_choosable_edit_1 = __webpack_require__(151);
+	var title_choosable_edit_1 = __webpack_require__(152);
 	exports.TitleChoosableEdit = title_choosable_edit_1.TitleChoosableEdit;
-	var dock_layouter_1 = __webpack_require__(131);
+	var dock_layouter_1 = __webpack_require__(132);
 	exports.DockLayouter = dock_layouter_1.DockLayouter;
 	exports.DockLayouterParam = dock_layouter_1.DockLayouterParam;
-	var grid_layouter_1 = __webpack_require__(118);
+	var grid_layouter_1 = __webpack_require__(119);
 	exports.GridLayouter = grid_layouter_1.GridLayouter;
 	exports.GridLayouterParam = grid_layouter_1.GridLayouterParam;
-	var list_layouter_1 = __webpack_require__(114);
+	var list_layouter_1 = __webpack_require__(115);
 	exports.ListLayouter = list_layouter_1.ListLayouter;
 	exports.ListLayouterParam = list_layouter_1.ListLayouterParam;
-	var simple_layouter_1 = __webpack_require__(116);
+	var simple_layouter_1 = __webpack_require__(117);
 	exports.SimpleLayouter = simple_layouter_1.SimpleLayouter;
 	exports.SimpleLayouterParam = simple_layouter_1.SimpleLayouterParam;
-	var linear_layouter_1 = __webpack_require__(132);
+	var linear_layouter_1 = __webpack_require__(133);
 	exports.LinearLayouter = linear_layouter_1.LinearLayouter;
 	exports.LinearLayouterParam = linear_layouter_1.LinearLayouterParam;
-	var widget_1 = __webpack_require__(21);
+	var widget_1 = __webpack_require__(22);
 	exports.Widget = widget_1.Widget;
 	exports.WidgetState = widget_1.WidgetState;
 	exports.WidgetMode = widget_1.WidgetMode;
 	exports.HitTestResult = widget_1.HitTestResult;
-	var consts_1 = __webpack_require__(106);
+	var consts_1 = __webpack_require__(107);
 	exports.Direction = consts_1.Direction;
 	exports.Align = consts_1.Align;
 	exports.AlignH = consts_1.AlignH;
 	exports.AlignV = consts_1.AlignV;
 	exports.Orientation = consts_1.Orientation;
 	exports.Services = consts_1.Services;
-	var title_combo_box_1 = __webpack_require__(150);
+	var title_combo_box_1 = __webpack_require__(151);
 	exports.TitleComboBox = title_combo_box_1.TitleComboBox;
 	exports.TitleComboBoxEditable = title_combo_box_1.TitleComboBoxEditable;
-	var message_box_1 = __webpack_require__(130);
+	var message_box_1 = __webpack_require__(131);
 	exports.ButtonOption = message_box_1.ButtonOption;
 	exports.ButtonsOptions = message_box_1.ButtonsOptions;
 	exports.TitleOptions = message_box_1.TitleOptions;
 	exports.MessageBox = message_box_1.MessageBox;
-	var scroll_view_1 = __webpack_require__(101);
+	var scroll_view_1 = __webpack_require__(102);
 	exports.ScrollerBarVisibility = scroll_view_1.ScrollerBarVisibility;
 	exports.ScrollBarStyle = scroll_view_1.ScrollBarStyle;
 	exports.ScrollView = scroll_view_1.ScrollView;
-	var device_info_1 = __webpack_require__(124);
+	var device_info_1 = __webpack_require__(125);
 	exports.DeviceInfo = device_info_1.DeviceInfo;
-	var view_modal_1 = __webpack_require__(153);
+	var view_modal_1 = __webpack_require__(154);
 	exports.ViewModal = view_modal_1.ViewModal;
-	var recyclable_creator_1 = __webpack_require__(84);
+	var recyclable_creator_1 = __webpack_require__(85);
 	exports.RecyclableCreator = recyclable_creator_1.RecyclableCreator;
-	var delegate_command_1 = __webpack_require__(174);
+	var delegate_command_1 = __webpack_require__(175);
 	exports.DelegateCommand = delegate_command_1.DelegateCommand;
-	var collection_view_modal_1 = __webpack_require__(175);
+	var collection_view_modal_1 = __webpack_require__(176);
 	exports.CollectionViewModal = collection_view_modal_1.CollectionViewModal;
-	var delegate_value_converter_1 = __webpack_require__(176);
+	var delegate_value_converter_1 = __webpack_require__(177);
 	exports.DelegateValueConverter = delegate_value_converter_1.DelegateValueConverter;
-	var ivalidation_rule_1 = __webpack_require__(157);
+	var ivalidation_rule_1 = __webpack_require__(158);
 	exports.ValidationResult = ivalidation_rule_1.ValidationResult;
-	var delegate_validation_rule_1 = __webpack_require__(177);
+	var delegate_validation_rule_1 = __webpack_require__(178);
 	exports.DelegateValidationRule = delegate_validation_rule_1.DelegateValidationRule;
-	var binding_rule_1 = __webpack_require__(81);
+	var binding_rule_1 = __webpack_require__(82);
 	exports.BindingRule = binding_rule_1.BindingRule;
 	exports.BindingDataSource = binding_rule_1.BindingDataSource;
 	exports.BindingCommandSource = binding_rule_1.BindingCommandSource;
 	exports.BindingRuleItem = binding_rule_1.BindingRuleItem;
-	var props_desc_1 = __webpack_require__(149);
+	var props_desc_1 = __webpack_require__(150);
 	exports.PagePropsDesc = props_desc_1.PagePropsDesc;
 	exports.PropsDesc = props_desc_1.PropsDesc;
 	exports.PropDesc = props_desc_1.PropDesc;
 	exports.NumberPropDesc = props_desc_1.NumberPropDesc;
 	exports.SliderPropDesc = props_desc_1.SliderPropDesc;
-	var props_desc_2 = __webpack_require__(149);
+	var props_desc_2 = __webpack_require__(150);
 	exports.TextPropDesc = props_desc_2.TextPropDesc;
 	exports.ReadonlyTextPropDesc = props_desc_2.ReadonlyTextPropDesc;
 	exports.OptionsPropDesc = props_desc_2.OptionsPropDesc;
 	exports.RangePropDesc = props_desc_2.RangePropDesc;
-	var props_desc_3 = __webpack_require__(149);
+	var props_desc_3 = __webpack_require__(150);
 	exports.Vector2PropDesc = props_desc_3.Vector2PropDesc;
 	exports.Vector3PropDesc = props_desc_3.Vector3PropDesc;
 	exports.LinePropDesc = props_desc_3.LinePropDesc;
 	/// <reference path="../typings/globals/tween.js/index.d.ts"/>
-	var TWEEN = __webpack_require__(22);
+	var TWEEN = __webpack_require__(23);
 	exports.TWEEN = TWEEN;
-	var Events = __webpack_require__(8);
+	var Events = __webpack_require__(9);
 	exports.Events = Events;
-	var Assets = __webpack_require__(13);
+	var Assets = __webpack_require__(14);
 	exports.Assets = Assets;
-	var inputEventAdapter = __webpack_require__(17);
+	var inputEventAdapter = __webpack_require__(18);
 	exports.inputEventAdapter = inputEventAdapter;
-	var toast_info_1 = __webpack_require__(178);
+	var toast_info_1 = __webpack_require__(179);
 	exports.ToastInfo = toast_info_1.ToastInfo;
-	var input_info_1 = __webpack_require__(179);
+	var input_info_1 = __webpack_require__(180);
 	exports.InputInfo = input_info_1.InputInfo;
-	var props_info_1 = __webpack_require__(180);
+	var props_info_1 = __webpack_require__(181);
 	exports.PropsInfo = props_info_1.PropsInfo;
-	var choice_info_1 = __webpack_require__(181);
+	var choice_info_1 = __webpack_require__(182);
 	exports.ChoiceInfo = choice_info_1.ChoiceInfo;
-	var progress_info_1 = __webpack_require__(182);
+	var progress_info_1 = __webpack_require__(183);
 	exports.ProgressInfo = progress_info_1.ProgressInfo;
-	var confirmation_info_1 = __webpack_require__(183);
+	var confirmation_info_1 = __webpack_require__(184);
 	exports.ConfirmationInfo = confirmation_info_1.ConfirmationInfo;
-	var notification_info_1 = __webpack_require__(184);
+	var notification_info_1 = __webpack_require__(185);
 	exports.NotificationInfo = notification_info_1.NotificationInfo;
-	var interaction_types_1 = __webpack_require__(127);
+	var interaction_types_1 = __webpack_require__(128);
 	exports.InteractionTypes = interaction_types_1.InteractionTypes;
-	var interaction_request_1 = __webpack_require__(126);
+	var interaction_request_1 = __webpack_require__(127);
 	exports.InteractionRequest = interaction_request_1.InteractionRequest;
-	var interaction_service_1 = __webpack_require__(128);
+	var interaction_service_1 = __webpack_require__(129);
 	exports.InteractionService = interaction_service_1.InteractionService;
-	var items_storage_1 = __webpack_require__(185);
+	var items_storage_1 = __webpack_require__(186);
 	exports.ItemsStorage = items_storage_1.ItemsStorage;
-	var range_fixer_1 = __webpack_require__(186);
+	var range_fixer_1 = __webpack_require__(187);
 	exports.RangeFixer = range_fixer_1.RangeFixer;
-	var number_fixer_1 = __webpack_require__(187);
+	var number_fixer_1 = __webpack_require__(188);
 	exports.NumberFixer = number_fixer_1.NumberFixer;
-	var vector2_fixer_1 = __webpack_require__(188);
+	var vector2_fixer_1 = __webpack_require__(189);
 	exports.Vector2Fixer = vector2_fixer_1.Vector2Fixer;
-	var vector3_fixer_1 = __webpack_require__(189);
+	var vector3_fixer_1 = __webpack_require__(190);
 	exports.Vector3Fixer = vector3_fixer_1.Vector3Fixer;
 
 
 /***/ },
-/* 3 */
+/* 4 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -408,7 +453,7 @@ var editor =
 
 
 /***/ },
-/* 4 */
+/* 5 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -448,7 +493,7 @@ var editor =
 
 
 /***/ },
-/* 5 */
+/* 6 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/// <reference path="../typings/globals/eventemitter3/index.d.ts"/>
@@ -458,9 +503,9 @@ var editor =
 	    function __() { this.constructor = d; }
 	    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 	};
-	var emitter_1 = __webpack_require__(6);
-	var Events = __webpack_require__(8);
-	var image_tile_1 = __webpack_require__(9);
+	var emitter_1 = __webpack_require__(7);
+	var Events = __webpack_require__(9);
+	var image_tile_1 = __webpack_require__(10);
 	/**
 	 * Style用来控制Widget的外观效果，如背景和字体等等。
 	 */
@@ -964,7 +1009,7 @@ var editor =
 
 
 /***/ },
-/* 6 */
+/* 7 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/// <reference path="../typings/globals/eventemitter3/index.d.ts"/>
@@ -974,7 +1019,7 @@ var editor =
 	    function __() { this.constructor = d; }
 	    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 	};
-	var EventEmitter = __webpack_require__(7);
+	var EventEmitter = __webpack_require__(8);
 	var EmitterImpl = (function (_super) {
 	    __extends(EmitterImpl, _super);
 	    function EmitterImpl() {
@@ -1088,7 +1133,7 @@ var editor =
 
 
 /***/ },
-/* 7 */
+/* 8 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -1383,7 +1428,7 @@ var editor =
 
 
 /***/ },
-/* 8 */
+/* 9 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -1834,7 +1879,7 @@ var editor =
 
 
 /***/ },
-/* 9 */
+/* 10 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/// <reference path="../typings/globals/node/index.d.ts"/>
@@ -1845,11 +1890,11 @@ var editor =
 	    function __() { this.constructor = d; }
 	    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 	};
-	__webpack_require__(10);
-	var path = __webpack_require__(11);
-	var emitter_1 = __webpack_require__(6);
-	var Assets = __webpack_require__(13);
-	var Events = __webpack_require__(8);
+	__webpack_require__(11);
+	var path = __webpack_require__(12);
+	var emitter_1 = __webpack_require__(7);
+	var Assets = __webpack_require__(14);
+	var Events = __webpack_require__(9);
 	(function (ImageDrawType) {
 	    /**
 	     * 画在填满指定的矩形区域。
@@ -2251,7 +2296,7 @@ var editor =
 
 
 /***/ },
-/* 10 */
+/* 11 */
 /***/ function(module, exports) {
 
 	(function(self) {
@@ -2690,7 +2735,7 @@ var editor =
 
 
 /***/ },
-/* 11 */
+/* 12 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {// Copyright Joyent, Inc. and other Node contributors.
@@ -2918,10 +2963,10 @@ var editor =
 	    }
 	;
 
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(12)))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(13)))
 
 /***/ },
-/* 12 */
+/* 13 */
 /***/ function(module, exports) {
 
 	// shim for using process in browser
@@ -3107,7 +3152,7 @@ var editor =
 
 
 /***/ },
-/* 13 */
+/* 14 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/// <reference path="../typings/globals/node/index.d.ts"/>
@@ -3119,10 +3164,10 @@ var editor =
 	    function __() { this.constructor = d; }
 	    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 	};
-	__webpack_require__(10);
-	var path = __webpack_require__(11);
-	var Events = __webpack_require__(8);
-	var emitter_1 = __webpack_require__(6);
+	__webpack_require__(11);
+	var path = __webpack_require__(12);
+	var Events = __webpack_require__(9);
+	var emitter_1 = __webpack_require__(7);
 	exports.AUDIO = "audio";
 	exports.IMAGE = "image";
 	exports.BLOB = "blob";
@@ -3364,11 +3409,11 @@ var editor =
 
 
 /***/ },
-/* 14 */
+/* 15 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
-	var point_1 = __webpack_require__(4);
+	var point_1 = __webpack_require__(5);
 	/**
 	 * 2维矩阵变换
 	 */
@@ -3495,7 +3540,7 @@ var editor =
 
 
 /***/ },
-/* 15 */
+/* 16 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -3504,10 +3549,10 @@ var editor =
 	    function __() { this.constructor = d; }
 	    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 	};
-	var emitter_1 = __webpack_require__(6);
-	var Events = __webpack_require__(8);
-	var event_detail_1 = __webpack_require__(16);
-	var inputEventAdapter = __webpack_require__(17);
+	var emitter_1 = __webpack_require__(7);
+	var Events = __webpack_require__(9);
+	var event_detail_1 = __webpack_require__(17);
+	var inputEventAdapter = __webpack_require__(18);
 	/**
 	 * Canvas是对HTMLCanvasElement的包装，主要解决两个问题：
 	 *
@@ -3728,7 +3773,7 @@ var editor =
 
 
 /***/ },
-/* 16 */
+/* 17 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -3826,14 +3871,14 @@ var editor =
 
 
 /***/ },
-/* 17 */
+/* 18 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
-	var Events = __webpack_require__(8);
-	var key_event_1 = __webpack_require__(18);
-	var emitter_1 = __webpack_require__(6);
-	var event_detail_1 = __webpack_require__(16);
+	var Events = __webpack_require__(9);
+	var key_event_1 = __webpack_require__(19);
+	var emitter_1 = __webpack_require__(7);
+	var event_detail_1 = __webpack_require__(17);
 	var grabs = [];
 	var keyGrabs = [];
 	var lastDetail;
@@ -4105,7 +4150,7 @@ var editor =
 
 
 /***/ },
-/* 18 */
+/* 19 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -4233,7 +4278,7 @@ var editor =
 
 
 /***/ },
-/* 19 */
+/* 20 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -4242,15 +4287,15 @@ var editor =
 	    function __() { this.constructor = d; }
 	    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 	};
-	var rect_1 = __webpack_require__(3);
-	var point_1 = __webpack_require__(4);
-	var label_1 = __webpack_require__(20);
-	var Events = __webpack_require__(8);
-	var html_edit_1 = __webpack_require__(85);
-	var widget_1 = __webpack_require__(21);
-	var widget_factory_1 = __webpack_require__(25);
-	var graphics_1 = __webpack_require__(27);
-	var recyclable_creator_1 = __webpack_require__(84);
+	var rect_1 = __webpack_require__(4);
+	var point_1 = __webpack_require__(5);
+	var label_1 = __webpack_require__(21);
+	var Events = __webpack_require__(9);
+	var html_edit_1 = __webpack_require__(86);
+	var widget_1 = __webpack_require__(22);
+	var widget_factory_1 = __webpack_require__(26);
+	var graphics_1 = __webpack_require__(28);
+	var recyclable_creator_1 = __webpack_require__(85);
 	/**
 	 * 编辑器。multiLineMode决定是多行编辑器还是单行编辑器。
 	 */
@@ -4454,7 +4499,7 @@ var editor =
 
 
 /***/ },
-/* 20 */
+/* 21 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -4463,10 +4508,10 @@ var editor =
 	    function __() { this.constructor = d; }
 	    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 	};
-	var widget_1 = __webpack_require__(21);
-	var graphics_1 = __webpack_require__(27);
-	var widget_factory_1 = __webpack_require__(25);
-	var recyclable_creator_1 = __webpack_require__(84);
+	var widget_1 = __webpack_require__(22);
+	var graphics_1 = __webpack_require__(28);
+	var widget_factory_1 = __webpack_require__(26);
+	var recyclable_creator_1 = __webpack_require__(85);
 	/**
 	 * 文本控件。
 	 */
@@ -4570,7 +4615,7 @@ var editor =
 
 
 /***/ },
-/* 21 */
+/* 22 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/// <reference path="../../typings/globals/tween.js/index.d.ts"/>
@@ -4581,22 +4626,22 @@ var editor =
 	    function __() { this.constructor = d; }
 	    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 	};
-	var rect_1 = __webpack_require__(3);
-	var style_1 = __webpack_require__(5);
-	var canvas_1 = __webpack_require__(15);
-	var TWEEN = __webpack_require__(22);
-	var emitter_1 = __webpack_require__(6);
-	var utils_1 = __webpack_require__(23);
-	var Events = __webpack_require__(8);
-	var matrix_stack_1 = __webpack_require__(24);
-	var widget_factory_1 = __webpack_require__(25);
-	var graphics_1 = __webpack_require__(27);
-	var dirty_rect_context_1 = __webpack_require__(78);
-	var image_tile_1 = __webpack_require__(9);
-	var behavior_1 = __webpack_require__(79);
-	var layouter_1 = __webpack_require__(80);
-	var binding_rule_1 = __webpack_require__(81);
-	var iview_modal_1 = __webpack_require__(83);
+	var rect_1 = __webpack_require__(4);
+	var style_1 = __webpack_require__(6);
+	var canvas_1 = __webpack_require__(16);
+	var TWEEN = __webpack_require__(23);
+	var emitter_1 = __webpack_require__(7);
+	var utils_1 = __webpack_require__(24);
+	var Events = __webpack_require__(9);
+	var matrix_stack_1 = __webpack_require__(25);
+	var widget_factory_1 = __webpack_require__(26);
+	var graphics_1 = __webpack_require__(28);
+	var dirty_rect_context_1 = __webpack_require__(79);
+	var image_tile_1 = __webpack_require__(10);
+	var behavior_1 = __webpack_require__(80);
+	var layouter_1 = __webpack_require__(81);
+	var binding_rule_1 = __webpack_require__(82);
+	var iview_modal_1 = __webpack_require__(84);
 	(function (WidgetMode) {
 	    WidgetMode[WidgetMode["RUNTIME"] = 0] = "RUNTIME";
 	    WidgetMode[WidgetMode["DESIGN"] = 1] = "DESIGN";
@@ -6496,7 +6541,7 @@ var editor =
 
 
 /***/ },
-/* 22 */
+/* 23 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/* WEBPACK VAR INJECTION */(function(process) {/**
@@ -7370,10 +7415,10 @@ var editor =
 
 	})(this);
 
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(12)))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(13)))
 
 /***/ },
-/* 23 */
+/* 24 */
 /***/ function(module, exports) {
 
 	//! stable.js 0.1.5, https://github.com/Two-Screen/stable
@@ -7510,11 +7555,11 @@ var editor =
 
 
 /***/ },
-/* 24 */
+/* 25 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
-	var matrix_1 = __webpack_require__(14);
+	var matrix_1 = __webpack_require__(15);
 	var MatrixStack = (function () {
 	    function MatrixStack() {
 	        this.stack = [];
@@ -7568,11 +7613,11 @@ var editor =
 
 
 /***/ },
-/* 25 */
+/* 26 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
-	var factory_1 = __webpack_require__(26);
+	var factory_1 = __webpack_require__(27);
 	/**
 	 * Widget工厂，注册控件的创建函数和根据控件的类型创建控件。
 	 * 主要用于根据UI编辑器生成的UI数据创建UI，每个控件都要向WidgetFactory注册。
@@ -7604,7 +7649,7 @@ var editor =
 
 
 /***/ },
-/* 26 */
+/* 27 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -7632,13 +7677,13 @@ var editor =
 
 
 /***/ },
-/* 27 */
+/* 28 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
-	var style_1 = __webpack_require__(5);
-	var carota = __webpack_require__(28);
-	var ut = __webpack_require__(49);
+	var style_1 = __webpack_require__(6);
+	var carota = __webpack_require__(29);
+	var ut = __webpack_require__(50);
 	var tokenizer = ut.createTokenizerStream();
 	var Token = ut.Token;
 	var Break = ut.Break;
@@ -7929,18 +7974,18 @@ var editor =
 
 
 /***/ },
-/* 28 */
+/* 29 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var node = __webpack_require__(29);
-	var editor = __webpack_require__(34);
-	var doc = __webpack_require__(35);
-	var dom = __webpack_require__(47);
-	var runs = __webpack_require__(31);
-	var html = __webpack_require__(48);
-	var frame = __webpack_require__(42);
-	var text = __webpack_require__(40);
-	var rect = __webpack_require__(32);
+	var node = __webpack_require__(30);
+	var editor = __webpack_require__(35);
+	var doc = __webpack_require__(36);
+	var dom = __webpack_require__(48);
+	var runs = __webpack_require__(32);
+	var html = __webpack_require__(49);
+	var frame = __webpack_require__(43);
+	var text = __webpack_require__(41);
+	var rect = __webpack_require__(33);
 
 	var bundle = {
 	    node: node,
@@ -7965,13 +8010,13 @@ var editor =
 
 
 /***/ },
-/* 29 */
+/* 30 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var per = __webpack_require__(30);
-	var runs = __webpack_require__(31);
-	var rect = __webpack_require__(32);
-	var util = __webpack_require__(33);
+	var per = __webpack_require__(31);
+	var runs = __webpack_require__(32);
+	var rect = __webpack_require__(33);
+	var util = __webpack_require__(34);
 
 	exports.prototype = {
 	    children: function() {
@@ -8118,7 +8163,7 @@ var editor =
 
 
 /***/ },
-/* 30 */
+/* 31 */
 /***/ function(module, exports, __webpack_require__) {
 
 	
@@ -8403,7 +8448,7 @@ var editor =
 
 
 /***/ },
-/* 31 */
+/* 32 */
 /***/ function(module, exports) {
 
 	exports.formattingKeys = [ 'bold', 'italic', 'underline', 'strikeout', 'color', 'font', 'size', 'align', 'script' ];
@@ -8580,7 +8625,7 @@ var editor =
 
 
 /***/ },
-/* 32 */
+/* 33 */
 /***/ function(module, exports) {
 
 	
@@ -8621,7 +8666,7 @@ var editor =
 
 
 /***/ },
-/* 33 */
+/* 34 */
 /***/ function(module, exports) {
 
 	exports.event = function() {
@@ -8650,13 +8695,13 @@ var editor =
 	};
 
 /***/ },
-/* 34 */
+/* 35 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var per = __webpack_require__(30);
-	var carotaDoc = __webpack_require__(35);
-	var dom = __webpack_require__(47);
-	var rect = __webpack_require__(32);
+	var per = __webpack_require__(31);
+	var carotaDoc = __webpack_require__(36);
+	var dom = __webpack_require__(48);
+	var rect = __webpack_require__(33);
 
 	setInterval(function() {
 	    var editors = document.querySelectorAll('.carotaEditorCanvas');
@@ -9142,20 +9187,20 @@ var editor =
 
 
 /***/ },
-/* 35 */
+/* 36 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var per = __webpack_require__(30);
-	var characters = __webpack_require__(36);
-	var split = __webpack_require__(37);
-	var word = __webpack_require__(38);
-	var node = __webpack_require__(29);
-	var runs = __webpack_require__(31);
-	var range = __webpack_require__(41);
-	var util = __webpack_require__(33);
-	var frame = __webpack_require__(42);
-	var codes = __webpack_require__(46);
-	var rect = __webpack_require__(32);
+	var per = __webpack_require__(31);
+	var characters = __webpack_require__(37);
+	var split = __webpack_require__(38);
+	var word = __webpack_require__(39);
+	var node = __webpack_require__(30);
+	var runs = __webpack_require__(32);
+	var range = __webpack_require__(42);
+	var util = __webpack_require__(34);
+	var frame = __webpack_require__(43);
+	var codes = __webpack_require__(47);
+	var rect = __webpack_require__(33);
 
 	var makeEditCommand = function(doc, start, count, words) {
 	    var selStart = doc.selection.start, selEnd = doc.selection.end;
@@ -9608,10 +9653,10 @@ var editor =
 
 
 /***/ },
-/* 36 */
+/* 37 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var runs = __webpack_require__(31);
+	var runs = __webpack_require__(32);
 
 	var compatible = function(a, b) {
 	    if (a._runs !== b._runs) {
@@ -9679,7 +9724,7 @@ var editor =
 	};
 
 /***/ },
-/* 37 */
+/* 38 */
 /***/ function(module, exports) {
 
 	/*  Creates a stateful transformer function that consumes Characters and produces "word coordinate"
@@ -9757,12 +9802,12 @@ var editor =
 
 
 /***/ },
-/* 38 */
+/* 39 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var per = __webpack_require__(30);
-	var part = __webpack_require__(39);
-	var runs = __webpack_require__(31);
+	var per = __webpack_require__(31);
+	var part = __webpack_require__(40);
+	var runs = __webpack_require__(32);
 
 	/*  A Word has the following properties:
 
@@ -9899,10 +9944,10 @@ var editor =
 
 
 /***/ },
-/* 39 */
+/* 40 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var text = __webpack_require__(40);
+	var text = __webpack_require__(41);
 
 	var defaultInline = {
 	    measure: function(formatting) {
@@ -9981,10 +10026,10 @@ var editor =
 
 
 /***/ },
-/* 40 */
+/* 41 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var runs = __webpack_require__(31);
+	var runs = __webpack_require__(32);
 
 	/*  Returns a font CSS/Canvas string based on the settings in a run
 	 */
@@ -10147,11 +10192,11 @@ var editor =
 	};
 
 /***/ },
-/* 41 */
+/* 42 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var per = __webpack_require__(30);
-	var runs = __webpack_require__(31);
+	var per = __webpack_require__(31);
+	var runs = __webpack_require__(32);
 
 	function Range(doc, start, end) {
 	    this.doc = doc;
@@ -10240,12 +10285,12 @@ var editor =
 	};
 
 /***/ },
-/* 42 */
+/* 43 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var node = __webpack_require__(29);
-	var wrap = __webpack_require__(43);
-	var rect = __webpack_require__(32);
+	var node = __webpack_require__(30);
+	var wrap = __webpack_require__(44);
+	var rect = __webpack_require__(33);
 
 	var prototype = node.derive({
 	    bounds: function() {
@@ -10329,10 +10374,10 @@ var editor =
 
 
 /***/ },
-/* 43 */
+/* 44 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var line = __webpack_require__(44);
+	var line = __webpack_require__(45);
 
 	/*  A stateful transformer function that accepts words and emits lines. If the first word
 	    is too wide, it will overhang; if width is zero or negative, there will be one word on
@@ -10430,13 +10475,13 @@ var editor =
 
 
 /***/ },
-/* 44 */
+/* 45 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var positionedWord = __webpack_require__(45);
-	var rect = __webpack_require__(32);
-	var node = __webpack_require__(29);
-	var runs = __webpack_require__(31);
+	var positionedWord = __webpack_require__(46);
+	var rect = __webpack_require__(33);
+	var node = __webpack_require__(30);
+	var runs = __webpack_require__(32);
 
 	/*  A Line is returned by the wrap function. It contains an array of PositionedWord objects that are
 	    all on the same physical line in the wrapped text.
@@ -10531,15 +10576,15 @@ var editor =
 
 
 /***/ },
-/* 45 */
+/* 46 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var rect = __webpack_require__(32);
-	var part = __webpack_require__(39);
-	var text = __webpack_require__(40);
-	var node = __webpack_require__(29);
-	var word = __webpack_require__(38);
-	var runs = __webpack_require__(31);
+	var rect = __webpack_require__(33);
+	var part = __webpack_require__(40);
+	var text = __webpack_require__(41);
+	var node = __webpack_require__(30);
+	var word = __webpack_require__(39);
+	var runs = __webpack_require__(32);
 
 	var newLineWidth = function(run) {
 	    return text.measure(text.enter, run).width;
@@ -10656,14 +10701,14 @@ var editor =
 
 
 /***/ },
-/* 46 */
+/* 47 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var text = __webpack_require__(40);
-	var frame = __webpack_require__(42);
-	var node = __webpack_require__(29);
-	var rect = __webpack_require__(32);
-	var util = __webpack_require__(33);
+	var text = __webpack_require__(41);
+	var frame = __webpack_require__(43);
+	var node = __webpack_require__(30);
+	var rect = __webpack_require__(33);
+	var util = __webpack_require__(34);
 
 	var inlineNodePrototype = node.derive({
 	    parent: function() {
@@ -10863,7 +10908,7 @@ var editor =
 
 
 /***/ },
-/* 47 */
+/* 48 */
 /***/ function(module, exports) {
 
 	
@@ -10906,11 +10951,11 @@ var editor =
 	};
 
 /***/ },
-/* 48 */
+/* 49 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var runs = __webpack_require__(31);
-	var per = __webpack_require__(30);
+	var runs = __webpack_require__(32);
+	var per = __webpack_require__(31);
 
 	var tag = function(name, formattingProperty) {
 	    return function(node, formatting) {
@@ -11107,15 +11152,15 @@ var editor =
 
 
 /***/ },
-/* 49 */
+/* 50 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var Stream = __webpack_require__(50).Stream,
-	    util = __webpack_require__(71),
-	    TokenType = __webpack_require__(73),
-	    BreakType = __webpack_require__(74),
-	    tokenizer = __webpack_require__(75),
-	    LineBreak = __webpack_require__(77);
+	var Stream = __webpack_require__(51).Stream,
+	    util = __webpack_require__(72),
+	    TokenType = __webpack_require__(74),
+	    BreakType = __webpack_require__(75),
+	    tokenizer = __webpack_require__(76),
+	    LineBreak = __webpack_require__(78);
 
 	function TokenizerStream() {
 	    Stream.call(this);
@@ -11171,7 +11216,7 @@ var editor =
 
 
 /***/ },
-/* 50 */
+/* 51 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// Copyright Joyent, Inc. and other Node contributors.
@@ -11197,15 +11242,15 @@ var editor =
 
 	module.exports = Stream;
 
-	var EE = __webpack_require__(51).EventEmitter;
-	var inherits = __webpack_require__(52);
+	var EE = __webpack_require__(52).EventEmitter;
+	var inherits = __webpack_require__(53);
 
 	inherits(Stream, EE);
-	Stream.Readable = __webpack_require__(53);
-	Stream.Writable = __webpack_require__(67);
-	Stream.Duplex = __webpack_require__(68);
-	Stream.Transform = __webpack_require__(69);
-	Stream.PassThrough = __webpack_require__(70);
+	Stream.Readable = __webpack_require__(54);
+	Stream.Writable = __webpack_require__(68);
+	Stream.Duplex = __webpack_require__(69);
+	Stream.Transform = __webpack_require__(70);
+	Stream.PassThrough = __webpack_require__(71);
 
 	// Backwards-compat with node 0.4.x
 	Stream.Stream = Stream;
@@ -11304,7 +11349,7 @@ var editor =
 
 
 /***/ },
-/* 51 */
+/* 52 */
 /***/ function(module, exports) {
 
 	// Copyright Joyent, Inc. and other Node contributors.
@@ -11612,7 +11657,7 @@ var editor =
 
 
 /***/ },
-/* 52 */
+/* 53 */
 /***/ function(module, exports) {
 
 	if (typeof Object.create === 'function') {
@@ -11641,24 +11686,24 @@ var editor =
 
 
 /***/ },
-/* 53 */
+/* 54 */
 /***/ function(module, exports, __webpack_require__) {
 
-	/* WEBPACK VAR INJECTION */(function(process) {exports = module.exports = __webpack_require__(54);
-	exports.Stream = __webpack_require__(50);
+	/* WEBPACK VAR INJECTION */(function(process) {exports = module.exports = __webpack_require__(55);
+	exports.Stream = __webpack_require__(51);
 	exports.Readable = exports;
-	exports.Writable = __webpack_require__(63);
-	exports.Duplex = __webpack_require__(62);
-	exports.Transform = __webpack_require__(65);
-	exports.PassThrough = __webpack_require__(66);
+	exports.Writable = __webpack_require__(64);
+	exports.Duplex = __webpack_require__(63);
+	exports.Transform = __webpack_require__(66);
+	exports.PassThrough = __webpack_require__(67);
 	if (!process.browser && process.env.READABLE_STREAM === 'disable') {
-	  module.exports = __webpack_require__(50);
+	  module.exports = __webpack_require__(51);
 	}
 
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(12)))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(13)))
 
 /***/ },
-/* 54 */
+/* 55 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {// Copyright Joyent, Inc. and other Node contributors.
@@ -11685,17 +11730,17 @@ var editor =
 	module.exports = Readable;
 
 	/*<replacement>*/
-	var isArray = __webpack_require__(55);
+	var isArray = __webpack_require__(56);
 	/*</replacement>*/
 
 
 	/*<replacement>*/
-	var Buffer = __webpack_require__(56).Buffer;
+	var Buffer = __webpack_require__(57).Buffer;
 	/*</replacement>*/
 
 	Readable.ReadableState = ReadableState;
 
-	var EE = __webpack_require__(51).EventEmitter;
+	var EE = __webpack_require__(52).EventEmitter;
 
 	/*<replacement>*/
 	if (!EE.listenerCount) EE.listenerCount = function(emitter, type) {
@@ -11703,18 +11748,18 @@ var editor =
 	};
 	/*</replacement>*/
 
-	var Stream = __webpack_require__(50);
+	var Stream = __webpack_require__(51);
 
 	/*<replacement>*/
-	var util = __webpack_require__(60);
-	util.inherits = __webpack_require__(52);
+	var util = __webpack_require__(61);
+	util.inherits = __webpack_require__(53);
 	/*</replacement>*/
 
 	var StringDecoder;
 
 
 	/*<replacement>*/
-	var debug = __webpack_require__(61);
+	var debug = __webpack_require__(62);
 	if (debug && debug.debuglog) {
 	  debug = debug.debuglog('stream');
 	} else {
@@ -11726,7 +11771,7 @@ var editor =
 	util.inherits(Readable, Stream);
 
 	function ReadableState(options, stream) {
-	  var Duplex = __webpack_require__(62);
+	  var Duplex = __webpack_require__(63);
 
 	  options = options || {};
 
@@ -11787,14 +11832,14 @@ var editor =
 	  this.encoding = null;
 	  if (options.encoding) {
 	    if (!StringDecoder)
-	      StringDecoder = __webpack_require__(64).StringDecoder;
+	      StringDecoder = __webpack_require__(65).StringDecoder;
 	    this.decoder = new StringDecoder(options.encoding);
 	    this.encoding = options.encoding;
 	  }
 	}
 
 	function Readable(options) {
-	  var Duplex = __webpack_require__(62);
+	  var Duplex = __webpack_require__(63);
 
 	  if (!(this instanceof Readable))
 	    return new Readable(options);
@@ -11897,7 +11942,7 @@ var editor =
 	// backwards compatibility.
 	Readable.prototype.setEncoding = function(enc) {
 	  if (!StringDecoder)
-	    StringDecoder = __webpack_require__(64).StringDecoder;
+	    StringDecoder = __webpack_require__(65).StringDecoder;
 	  this._readableState.decoder = new StringDecoder(enc);
 	  this._readableState.encoding = enc;
 	  return this;
@@ -12613,10 +12658,10 @@ var editor =
 	  return -1;
 	}
 
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(12)))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(13)))
 
 /***/ },
-/* 55 */
+/* 56 */
 /***/ function(module, exports) {
 
 	module.exports = Array.isArray || function (arr) {
@@ -12625,7 +12670,7 @@ var editor =
 
 
 /***/ },
-/* 56 */
+/* 57 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(Buffer, global) {/*!
@@ -12638,9 +12683,9 @@ var editor =
 
 	'use strict'
 
-	var base64 = __webpack_require__(57)
-	var ieee754 = __webpack_require__(58)
-	var isArray = __webpack_require__(59)
+	var base64 = __webpack_require__(58)
+	var ieee754 = __webpack_require__(59)
+	var isArray = __webpack_require__(60)
 
 	exports.Buffer = Buffer
 	exports.SlowBuffer = SlowBuffer
@@ -14418,10 +14463,10 @@ var editor =
 	  return val !== val // eslint-disable-line no-self-compare
 	}
 
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(56).Buffer, (function() { return this; }())))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(57).Buffer, (function() { return this; }())))
 
 /***/ },
-/* 57 */
+/* 58 */
 /***/ function(module, exports) {
 
 	'use strict'
@@ -14541,7 +14586,7 @@ var editor =
 
 
 /***/ },
-/* 58 */
+/* 59 */
 /***/ function(module, exports) {
 
 	exports.read = function (buffer, offset, isLE, mLen, nBytes) {
@@ -14631,7 +14676,7 @@ var editor =
 
 
 /***/ },
-/* 59 */
+/* 60 */
 /***/ function(module, exports) {
 
 	var toString = {}.toString;
@@ -14642,7 +14687,7 @@ var editor =
 
 
 /***/ },
-/* 60 */
+/* 61 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(Buffer) {// Copyright Joyent, Inc. and other Node contributors.
@@ -14753,16 +14798,16 @@ var editor =
 	  return Object.prototype.toString.call(o);
 	}
 
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(56).Buffer))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(57).Buffer))
 
 /***/ },
-/* 61 */
+/* 62 */
 /***/ function(module, exports) {
 
 	/* (ignored) */
 
 /***/ },
-/* 62 */
+/* 63 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {// Copyright Joyent, Inc. and other Node contributors.
@@ -14803,12 +14848,12 @@ var editor =
 
 
 	/*<replacement>*/
-	var util = __webpack_require__(60);
-	util.inherits = __webpack_require__(52);
+	var util = __webpack_require__(61);
+	util.inherits = __webpack_require__(53);
 	/*</replacement>*/
 
-	var Readable = __webpack_require__(54);
-	var Writable = __webpack_require__(63);
+	var Readable = __webpack_require__(55);
+	var Writable = __webpack_require__(64);
 
 	util.inherits(Duplex, Readable);
 
@@ -14855,10 +14900,10 @@ var editor =
 	  }
 	}
 
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(12)))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(13)))
 
 /***/ },
-/* 63 */
+/* 64 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {// Copyright Joyent, Inc. and other Node contributors.
@@ -14889,18 +14934,18 @@ var editor =
 	module.exports = Writable;
 
 	/*<replacement>*/
-	var Buffer = __webpack_require__(56).Buffer;
+	var Buffer = __webpack_require__(57).Buffer;
 	/*</replacement>*/
 
 	Writable.WritableState = WritableState;
 
 
 	/*<replacement>*/
-	var util = __webpack_require__(60);
-	util.inherits = __webpack_require__(52);
+	var util = __webpack_require__(61);
+	util.inherits = __webpack_require__(53);
 	/*</replacement>*/
 
-	var Stream = __webpack_require__(50);
+	var Stream = __webpack_require__(51);
 
 	util.inherits(Writable, Stream);
 
@@ -14911,7 +14956,7 @@ var editor =
 	}
 
 	function WritableState(options, stream) {
-	  var Duplex = __webpack_require__(62);
+	  var Duplex = __webpack_require__(63);
 
 	  options = options || {};
 
@@ -14999,7 +15044,7 @@ var editor =
 	}
 
 	function Writable(options) {
-	  var Duplex = __webpack_require__(62);
+	  var Duplex = __webpack_require__(63);
 
 	  // Writable ctor is applied to Duplexes, though they're not
 	  // instanceof Writable, they're instanceof Readable.
@@ -15339,10 +15384,10 @@ var editor =
 	  state.ended = true;
 	}
 
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(12)))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(13)))
 
 /***/ },
-/* 64 */
+/* 65 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// Copyright Joyent, Inc. and other Node contributors.
@@ -15366,7 +15411,7 @@ var editor =
 	// OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE
 	// USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-	var Buffer = __webpack_require__(56).Buffer;
+	var Buffer = __webpack_require__(57).Buffer;
 
 	var isBufferEncoding = Buffer.isEncoding
 	  || function(encoding) {
@@ -15569,7 +15614,7 @@ var editor =
 
 
 /***/ },
-/* 65 */
+/* 66 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// Copyright Joyent, Inc. and other Node contributors.
@@ -15638,11 +15683,11 @@ var editor =
 
 	module.exports = Transform;
 
-	var Duplex = __webpack_require__(62);
+	var Duplex = __webpack_require__(63);
 
 	/*<replacement>*/
-	var util = __webpack_require__(60);
-	util.inherits = __webpack_require__(52);
+	var util = __webpack_require__(61);
+	util.inherits = __webpack_require__(53);
 	/*</replacement>*/
 
 	util.inherits(Transform, Duplex);
@@ -15784,7 +15829,7 @@ var editor =
 
 
 /***/ },
-/* 66 */
+/* 67 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// Copyright Joyent, Inc. and other Node contributors.
@@ -15814,11 +15859,11 @@ var editor =
 
 	module.exports = PassThrough;
 
-	var Transform = __webpack_require__(65);
+	var Transform = __webpack_require__(66);
 
 	/*<replacement>*/
-	var util = __webpack_require__(60);
-	util.inherits = __webpack_require__(52);
+	var util = __webpack_require__(61);
+	util.inherits = __webpack_require__(53);
 	/*</replacement>*/
 
 	util.inherits(PassThrough, Transform);
@@ -15836,24 +15881,17 @@ var editor =
 
 
 /***/ },
-/* 67 */
-/***/ function(module, exports, __webpack_require__) {
-
-	module.exports = __webpack_require__(63)
-
-
-/***/ },
 /* 68 */
 /***/ function(module, exports, __webpack_require__) {
 
-	module.exports = __webpack_require__(62)
+	module.exports = __webpack_require__(64)
 
 
 /***/ },
 /* 69 */
 /***/ function(module, exports, __webpack_require__) {
 
-	module.exports = __webpack_require__(65)
+	module.exports = __webpack_require__(63)
 
 
 /***/ },
@@ -15865,6 +15903,13 @@ var editor =
 
 /***/ },
 /* 71 */
+/***/ function(module, exports, __webpack_require__) {
+
+	module.exports = __webpack_require__(67)
+
+
+/***/ },
+/* 72 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(global, process) {// Copyright Joyent, Inc. and other Node contributors.
@@ -16392,7 +16437,7 @@ var editor =
 	}
 	exports.isPrimitive = isPrimitive;
 
-	exports.isBuffer = __webpack_require__(72);
+	exports.isBuffer = __webpack_require__(73);
 
 	function objectToString(o) {
 	  return Object.prototype.toString.call(o);
@@ -16436,7 +16481,7 @@ var editor =
 	 *     prototype.
 	 * @param {function} superCtor Constructor function to inherit prototype from.
 	 */
-	exports.inherits = __webpack_require__(52);
+	exports.inherits = __webpack_require__(53);
 
 	exports._extend = function(origin, add) {
 	  // Don't do anything if add isn't an object
@@ -16454,10 +16499,10 @@ var editor =
 	  return Object.prototype.hasOwnProperty.call(obj, prop);
 	}
 
-	/* WEBPACK VAR INJECTION */}.call(exports, (function() { return this; }()), __webpack_require__(12)))
+	/* WEBPACK VAR INJECTION */}.call(exports, (function() { return this; }()), __webpack_require__(13)))
 
 /***/ },
-/* 72 */
+/* 73 */
 /***/ function(module, exports) {
 
 	module.exports = function isBuffer(arg) {
@@ -16468,7 +16513,7 @@ var editor =
 	}
 
 /***/ },
-/* 73 */
+/* 74 */
 /***/ function(module, exports) {
 
 	module.exports = {
@@ -16513,7 +16558,7 @@ var editor =
 
 
 /***/ },
-/* 74 */
+/* 75 */
 /***/ function(module, exports) {
 
 	module.exports = {
@@ -16545,13 +16590,13 @@ var editor =
 
 
 /***/ },
-/* 75 */
+/* 76 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var util = __webpack_require__(71),
-	    Stream = __webpack_require__(50).Stream,
-	    types = __webpack_require__(73),
-	    tokens = __webpack_require__(76),
+	var util = __webpack_require__(72),
+	    Stream = __webpack_require__(51).Stream,
+	    types = __webpack_require__(74),
+	    tokens = __webpack_require__(77),
 	    tokenClasses = Object.keys(tokens),
 	    tokenRegExp = {};
 
@@ -16651,7 +16696,7 @@ var editor =
 
 
 /***/ },
-/* 76 */
+/* 77 */
 /***/ function(module, exports) {
 
 	// This file is auto-generated. Do not modify.
@@ -16698,13 +16743,13 @@ var editor =
 
 
 /***/ },
-/* 77 */
+/* 78 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var EventEmitter = __webpack_require__(51).EventEmitter,
-	    TokenType = __webpack_require__(73),
-	    BreakType = __webpack_require__(74),
-	    util = __webpack_require__(71);
+	var EventEmitter = __webpack_require__(52).EventEmitter,
+	    TokenType = __webpack_require__(74),
+	    BreakType = __webpack_require__(75),
+	    util = __webpack_require__(72);
 
 	function LineBreak() {
 	    EventEmitter.call(this);
@@ -16827,7 +16872,7 @@ var editor =
 
 
 /***/ },
-/* 78 */
+/* 79 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -16836,9 +16881,9 @@ var editor =
 	    function __() { this.constructor = d; }
 	    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 	};
-	var rect_1 = __webpack_require__(3);
-	var point_1 = __webpack_require__(4);
-	var matrix_stack_1 = __webpack_require__(24);
+	var rect_1 = __webpack_require__(4);
+	var point_1 = __webpack_require__(5);
+	var matrix_stack_1 = __webpack_require__(25);
 	var DirtyRectContext = (function (_super) {
 	    __extends(DirtyRectContext, _super);
 	    function DirtyRectContext() {
@@ -16902,12 +16947,12 @@ var editor =
 
 
 /***/ },
-/* 79 */
+/* 80 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
-	var Events = __webpack_require__(8);
-	var inputEventAdapter = __webpack_require__(17);
+	var Events = __webpack_require__(9);
+	var inputEventAdapter = __webpack_require__(18);
 	/**
 	 * Behavior代表控件的一种行为特性，比如Resizable/Movable/Draggable/Droppable等。
 	 * 把这些行为特性抽象出来单独实现，一方面可以避免让Widget变得太复杂，另一方面可以最大限度的重用这些行为特性。
@@ -17056,7 +17101,7 @@ var editor =
 
 
 /***/ },
-/* 80 */
+/* 81 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -17065,7 +17110,7 @@ var editor =
 	    function __() { this.constructor = d; }
 	    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 	};
-	var factory_1 = __webpack_require__(26);
+	var factory_1 = __webpack_require__(27);
 	/**
 	 * 子控件布局算法。
 	 */
@@ -17227,7 +17272,7 @@ var editor =
 
 
 /***/ },
-/* 81 */
+/* 82 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -17236,9 +17281,9 @@ var editor =
 	    function __() { this.constructor = d; }
 	    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 	};
-	var json_serializer_1 = __webpack_require__(82);
-	var iview_modal_1 = __webpack_require__(83);
-	var iview_modal_2 = __webpack_require__(83);
+	var json_serializer_1 = __webpack_require__(83);
+	var iview_modal_1 = __webpack_require__(84);
+	var iview_modal_2 = __webpack_require__(84);
 	;
 	/**
 	 * 数据源。如果指定了value，直接从value获取数据。否则通过path从ViewModal中获取数据。
@@ -17391,7 +17436,7 @@ var editor =
 
 
 /***/ },
-/* 82 */
+/* 83 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -17422,7 +17467,7 @@ var editor =
 
 
 /***/ },
-/* 83 */
+/* 84 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -17487,7 +17532,7 @@ var editor =
 
 
 /***/ },
-/* 84 */
+/* 85 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -17530,7 +17575,7 @@ var editor =
 
 
 /***/ },
-/* 85 */
+/* 86 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -17539,8 +17584,8 @@ var editor =
 	    function __() { this.constructor = d; }
 	    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 	};
-	var Events = __webpack_require__(8);
-	var html_element_1 = __webpack_require__(86);
+	var Events = __webpack_require__(9);
+	var html_element_1 = __webpack_require__(87);
 	var HtmlEdit = (function (_super) {
 	    __extends(HtmlEdit, _super);
 	    function HtmlEdit() {
@@ -17642,7 +17687,7 @@ var editor =
 
 
 /***/ },
-/* 86 */
+/* 87 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -17651,7 +17696,7 @@ var editor =
 	    function __() { this.constructor = d; }
 	    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 	};
-	var emitter_1 = __webpack_require__(6);
+	var emitter_1 = __webpack_require__(7);
 	var HtmlElement = (function (_super) {
 	    __extends(HtmlElement, _super);
 	    function HtmlElement() {
@@ -17742,7 +17787,7 @@ var editor =
 
 
 /***/ },
-/* 87 */
+/* 88 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -17751,9 +17796,9 @@ var editor =
 	    function __() { this.constructor = d; }
 	    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 	};
-	var widget_1 = __webpack_require__(21);
-	var widget_factory_1 = __webpack_require__(25);
-	var recyclable_creator_1 = __webpack_require__(84);
+	var widget_1 = __webpack_require__(22);
+	var widget_factory_1 = __webpack_require__(26);
+	var recyclable_creator_1 = __webpack_require__(85);
 	var Page = (function (_super) {
 	    __extends(Page, _super);
 	    function Page(type) {
@@ -17772,7 +17817,7 @@ var editor =
 
 
 /***/ },
-/* 88 */
+/* 89 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/// <reference path="../typings/globals/eventemitter3/index.d.ts"/>
@@ -17782,8 +17827,8 @@ var editor =
 	    function __() { this.constructor = d; }
 	    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 	};
-	var emitter_1 = __webpack_require__(6);
-	var Events = __webpack_require__(8);
+	var emitter_1 = __webpack_require__(7);
+	var Events = __webpack_require__(9);
 	/**
 	 * 表示屏幕大小和密度。
 	 */
@@ -17873,7 +17918,7 @@ var editor =
 
 
 /***/ },
-/* 89 */
+/* 90 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -17882,9 +17927,9 @@ var editor =
 	    function __() { this.constructor = d; }
 	    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 	};
-	var widget_1 = __webpack_require__(21);
-	var widget_factory_1 = __webpack_require__(25);
-	var recyclable_creator_1 = __webpack_require__(84);
+	var widget_1 = __webpack_require__(22);
+	var widget_factory_1 = __webpack_require__(26);
+	var recyclable_creator_1 = __webpack_require__(85);
 	/**
 	 * 页面管理器。管理多个页面，只有一个页面处于活跃状态，仅该页面可见，可以处理事件。
 	 * value表示该活跃页面的索引。
@@ -17955,7 +18000,7 @@ var editor =
 
 
 /***/ },
-/* 90 */
+/* 91 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -17964,8 +18009,8 @@ var editor =
 	    function __() { this.constructor = d; }
 	    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 	};
-	var Events = __webpack_require__(8);
-	var emitter_1 = __webpack_require__(6);
+	var Events = __webpack_require__(9);
+	var emitter_1 = __webpack_require__(7);
 	/**
 	 * 负责渲染UI的主循环。为了省电，只有在调用requestRedraw之后，才会触发下一次渲染循环。
 	 * 每个渲染循环分为三个阶段：
@@ -18016,7 +18061,7 @@ var editor =
 
 
 /***/ },
-/* 91 */
+/* 92 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -18025,11 +18070,11 @@ var editor =
 	    function __() { this.constructor = d; }
 	    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 	};
-	var style_1 = __webpack_require__(5);
-	var widget_1 = __webpack_require__(21);
-	var widget_factory_1 = __webpack_require__(25);
-	var image_tile_1 = __webpack_require__(9);
-	var recyclable_creator_1 = __webpack_require__(84);
+	var style_1 = __webpack_require__(6);
+	var widget_1 = __webpack_require__(22);
+	var widget_factory_1 = __webpack_require__(26);
+	var image_tile_1 = __webpack_require__(10);
+	var recyclable_creator_1 = __webpack_require__(85);
 	/**
 	 * 图片控件。
 	 */
@@ -18110,7 +18155,7 @@ var editor =
 
 
 /***/ },
-/* 92 */
+/* 93 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -18119,9 +18164,9 @@ var editor =
 	    function __() { this.constructor = d; }
 	    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 	};
-	var widget_1 = __webpack_require__(21);
-	var widget_factory_1 = __webpack_require__(25);
-	var recyclable_creator_1 = __webpack_require__(84);
+	var widget_1 = __webpack_require__(22);
+	var widget_factory_1 = __webpack_require__(26);
+	var recyclable_creator_1 = __webpack_require__(85);
 	var Group = (function (_super) {
 	    __extends(Group, _super);
 	    function Group() {
@@ -18140,7 +18185,7 @@ var editor =
 
 
 /***/ },
-/* 93 */
+/* 94 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -18149,9 +18194,9 @@ var editor =
 	    function __() { this.constructor = d; }
 	    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 	};
-	var window_1 = __webpack_require__(94);
-	var widget_factory_1 = __webpack_require__(25);
-	var recyclable_creator_1 = __webpack_require__(84);
+	var window_1 = __webpack_require__(95);
+	var widget_factory_1 = __webpack_require__(26);
+	var recyclable_creator_1 = __webpack_require__(85);
 	/**
 	 * 对话框。
 	 */
@@ -18184,7 +18229,7 @@ var editor =
 
 
 /***/ },
-/* 94 */
+/* 95 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -18193,9 +18238,9 @@ var editor =
 	    function __() { this.constructor = d; }
 	    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 	};
-	var point_1 = __webpack_require__(4);
-	var widget_1 = __webpack_require__(21);
-	var Events = __webpack_require__(8);
+	var point_1 = __webpack_require__(5);
+	var widget_1 = __webpack_require__(22);
+	var Events = __webpack_require__(9);
 	(function (WindowType) {
 	    WindowType[WindowType["NORMAL"] = 0] = "NORMAL";
 	    WindowType[WindowType["POPUP"] = 1] = "POPUP";
@@ -18305,7 +18350,7 @@ var editor =
 
 
 /***/ },
-/* 95 */
+/* 96 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -18314,9 +18359,9 @@ var editor =
 	    function __() { this.constructor = d; }
 	    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 	};
-	var widget_1 = __webpack_require__(21);
-	var widget_factory_1 = __webpack_require__(25);
-	var recyclable_creator_1 = __webpack_require__(84);
+	var widget_1 = __webpack_require__(22);
+	var widget_factory_1 = __webpack_require__(26);
+	var recyclable_creator_1 = __webpack_require__(85);
 	var Button = (function (_super) {
 	    __extends(Button, _super);
 	    function Button() {
@@ -18335,7 +18380,7 @@ var editor =
 
 
 /***/ },
-/* 96 */
+/* 97 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -18344,12 +18389,12 @@ var editor =
 	    function __() { this.constructor = d; }
 	    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 	};
-	var Events = __webpack_require__(8);
-	var button_1 = __webpack_require__(95);
-	var graphics_1 = __webpack_require__(27);
-	var widget_factory_1 = __webpack_require__(25);
-	var recyclable_creator_1 = __webpack_require__(84);
-	var progress_bar_1 = __webpack_require__(97);
+	var Events = __webpack_require__(9);
+	var button_1 = __webpack_require__(96);
+	var graphics_1 = __webpack_require__(28);
+	var widget_factory_1 = __webpack_require__(26);
+	var recyclable_creator_1 = __webpack_require__(85);
+	var progress_bar_1 = __webpack_require__(98);
 	/**
 	 * 滑块控件。拖动滑块可以改变它的值。
 	 */
@@ -18495,7 +18540,7 @@ var editor =
 
 
 /***/ },
-/* 97 */
+/* 98 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -18504,10 +18549,10 @@ var editor =
 	    function __() { this.constructor = d; }
 	    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 	};
-	var widget_1 = __webpack_require__(21);
-	var graphics_1 = __webpack_require__(27);
-	var widget_factory_1 = __webpack_require__(25);
-	var recyclable_creator_1 = __webpack_require__(84);
+	var widget_1 = __webpack_require__(22);
+	var graphics_1 = __webpack_require__(28);
+	var widget_factory_1 = __webpack_require__(26);
+	var recyclable_creator_1 = __webpack_require__(85);
 	/**
 	 * 进度条的类型有三种：水平，垂直和圆形。
 	 */
@@ -18610,7 +18655,7 @@ var editor =
 
 
 /***/ },
-/* 98 */
+/* 99 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -18619,11 +18664,11 @@ var editor =
 	    function __() { this.constructor = d; }
 	    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 	};
-	var widget_1 = __webpack_require__(21);
-	var TWEEN = __webpack_require__(22);
-	var graphics_1 = __webpack_require__(27);
-	var widget_factory_1 = __webpack_require__(25);
-	var recyclable_creator_1 = __webpack_require__(84);
+	var widget_1 = __webpack_require__(22);
+	var TWEEN = __webpack_require__(23);
+	var graphics_1 = __webpack_require__(28);
+	var widget_factory_1 = __webpack_require__(26);
+	var recyclable_creator_1 = __webpack_require__(85);
 	/**
 	 * 开关控件。
 	 */
@@ -18717,7 +18762,7 @@ var editor =
 
 
 /***/ },
-/* 99 */
+/* 100 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -18726,9 +18771,9 @@ var editor =
 	    function __() { this.constructor = d; }
 	    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 	};
-	var page_1 = __webpack_require__(87);
-	var widget_factory_1 = __webpack_require__(25);
-	var recyclable_creator_1 = __webpack_require__(84);
+	var page_1 = __webpack_require__(88);
+	var widget_factory_1 = __webpack_require__(26);
+	var recyclable_creator_1 = __webpack_require__(85);
 	var TabPage = (function (_super) {
 	    __extends(TabPage, _super);
 	    function TabPage() {
@@ -18761,7 +18806,7 @@ var editor =
 
 
 /***/ },
-/* 100 */
+/* 101 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -18770,10 +18815,10 @@ var editor =
 	    function __() { this.constructor = d; }
 	    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 	};
-	var widget_factory_1 = __webpack_require__(25);
-	var recyclable_creator_1 = __webpack_require__(84);
-	var scroll_view_1 = __webpack_require__(101);
-	var carota = __webpack_require__(28);
+	var widget_factory_1 = __webpack_require__(26);
+	var recyclable_creator_1 = __webpack_require__(85);
+	var scroll_view_1 = __webpack_require__(102);
+	var carota = __webpack_require__(29);
 	var rect = carota.rect;
 	var createDoc = carota.document;
 	/**
@@ -18873,7 +18918,7 @@ var editor =
 
 
 /***/ },
-/* 101 */
+/* 102 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/// <reference path="../../typings/globals/scroller/index.d.ts"/>
@@ -18884,15 +18929,15 @@ var editor =
 	    function __() { this.constructor = d; }
 	    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 	};
-	var rect_1 = __webpack_require__(3);
-	var point_1 = __webpack_require__(4);
-	var scroller_1 = __webpack_require__(102);
-	var TWEEN = __webpack_require__(22);
-	var Events = __webpack_require__(8);
-	var graphics_1 = __webpack_require__(27);
-	var widget_factory_1 = __webpack_require__(25);
-	var recyclable_creator_1 = __webpack_require__(84);
-	var widget_1 = __webpack_require__(21);
+	var rect_1 = __webpack_require__(4);
+	var point_1 = __webpack_require__(5);
+	var scroller_1 = __webpack_require__(103);
+	var TWEEN = __webpack_require__(23);
+	var Events = __webpack_require__(9);
+	var graphics_1 = __webpack_require__(28);
+	var widget_factory_1 = __webpack_require__(26);
+	var recyclable_creator_1 = __webpack_require__(85);
+	var widget_1 = __webpack_require__(22);
 	/**
 	 * 滚动视图，同时支持PC和Mobile风格，通过dragToScroll和slideToScroll参数控制。
 	 */
@@ -19509,13 +19554,13 @@ var editor =
 
 
 /***/ },
-/* 102 */
+/* 103 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;(function (root, factory) {
 	    if (true) {
 	        // AMD
-	        !(__WEBPACK_AMD_DEFINE_ARRAY__ = [exports, __webpack_require__(103), __webpack_require__(104)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
+	        !(__WEBPACK_AMD_DEFINE_ARRAY__ = [exports, __webpack_require__(104), __webpack_require__(105)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
 	    } else if (typeof exports === 'object') {
 	        // CommonJS
 	        factory(exports, require('./lib/animate'), require('./lib/Scroller'));
@@ -19527,7 +19572,7 @@ var editor =
 
 
 /***/ },
-/* 103 */
+/* 104 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*
@@ -19764,7 +19809,7 @@ var editor =
 
 
 /***/ },
-/* 104 */
+/* 105 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*
@@ -19784,7 +19829,7 @@ var editor =
 	(function (root, factory) {
 	    if (true) {
 	        // AMD
-	        !(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(103)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
+	        !(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(104)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
 	    } else if (typeof module === 'object') {
 	        // CommonJS
 	        module.exports = factory(require('./animate'));
@@ -20922,7 +20967,7 @@ var editor =
 
 
 /***/ },
-/* 105 */
+/* 106 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -20931,15 +20976,15 @@ var editor =
 	    function __() { this.constructor = d; }
 	    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 	};
-	var rect_1 = __webpack_require__(3);
-	var widget_1 = __webpack_require__(21);
-	var button_1 = __webpack_require__(95);
-	var graphics_1 = __webpack_require__(27);
-	var consts_1 = __webpack_require__(106);
-	var radio_button_1 = __webpack_require__(107);
-	var widget_factory_1 = __webpack_require__(25);
-	var image_tile_1 = __webpack_require__(9);
-	var recyclable_creator_1 = __webpack_require__(84);
+	var rect_1 = __webpack_require__(4);
+	var widget_1 = __webpack_require__(22);
+	var button_1 = __webpack_require__(96);
+	var graphics_1 = __webpack_require__(28);
+	var consts_1 = __webpack_require__(107);
+	var radio_button_1 = __webpack_require__(108);
+	var widget_factory_1 = __webpack_require__(26);
+	var image_tile_1 = __webpack_require__(10);
+	var recyclable_creator_1 = __webpack_require__(85);
 	/**
 	 * 标签控件上的标签按钮。
 	 */
@@ -21133,7 +21178,7 @@ var editor =
 
 
 /***/ },
-/* 106 */
+/* 107 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -21212,7 +21257,7 @@ var editor =
 
 
 /***/ },
-/* 107 */
+/* 108 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -21221,9 +21266,9 @@ var editor =
 	    function __() { this.constructor = d; }
 	    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 	};
-	var check_button_1 = __webpack_require__(108);
-	var widget_factory_1 = __webpack_require__(25);
-	var recyclable_creator_1 = __webpack_require__(84);
+	var check_button_1 = __webpack_require__(109);
+	var widget_factory_1 = __webpack_require__(26);
+	var recyclable_creator_1 = __webpack_require__(85);
 	/**
 	 * 单选按钮。同一个父控件中，只有一个单选按钮被勾选。被勾选时value为true，否则为false。
 	 */
@@ -21255,7 +21300,7 @@ var editor =
 
 
 /***/ },
-/* 108 */
+/* 109 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -21264,10 +21309,10 @@ var editor =
 	    function __() { this.constructor = d; }
 	    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 	};
-	var widget_1 = __webpack_require__(21);
-	var widget_factory_1 = __webpack_require__(25);
-	var image_tile_1 = __webpack_require__(9);
-	var recyclable_creator_1 = __webpack_require__(84);
+	var widget_1 = __webpack_require__(22);
+	var widget_factory_1 = __webpack_require__(26);
+	var image_tile_1 = __webpack_require__(10);
+	var recyclable_creator_1 = __webpack_require__(85);
 	var CheckButton = (function (_super) {
 	    __extends(CheckButton, _super);
 	    function CheckButton(type) {
@@ -21373,7 +21418,7 @@ var editor =
 
 
 /***/ },
-/* 109 */
+/* 110 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -21382,15 +21427,15 @@ var editor =
 	    function __() { this.constructor = d; }
 	    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 	};
-	var rect_1 = __webpack_require__(3);
-	var pages_1 = __webpack_require__(89);
-	var widget_1 = __webpack_require__(21);
-	var tab_page_1 = __webpack_require__(99);
-	var Events = __webpack_require__(8);
-	var tab_button_1 = __webpack_require__(105);
-	var tab_button_group_1 = __webpack_require__(110);
-	var widget_factory_1 = __webpack_require__(25);
-	var recyclable_creator_1 = __webpack_require__(84);
+	var rect_1 = __webpack_require__(4);
+	var pages_1 = __webpack_require__(90);
+	var widget_1 = __webpack_require__(22);
+	var tab_page_1 = __webpack_require__(100);
+	var Events = __webpack_require__(9);
+	var tab_button_1 = __webpack_require__(106);
+	var tab_button_group_1 = __webpack_require__(111);
+	var widget_factory_1 = __webpack_require__(26);
+	var recyclable_creator_1 = __webpack_require__(85);
 	var TabControl = (function (_super) {
 	    __extends(TabControl, _super);
 	    function TabControl() {
@@ -21536,7 +21581,7 @@ var editor =
 
 
 /***/ },
-/* 110 */
+/* 111 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -21545,10 +21590,10 @@ var editor =
 	    function __() { this.constructor = d; }
 	    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 	};
-	var rect_1 = __webpack_require__(3);
-	var widget_1 = __webpack_require__(21);
-	var widget_factory_1 = __webpack_require__(25);
-	var recyclable_creator_1 = __webpack_require__(84);
+	var rect_1 = __webpack_require__(4);
+	var widget_1 = __webpack_require__(22);
+	var widget_factory_1 = __webpack_require__(26);
+	var recyclable_creator_1 = __webpack_require__(85);
 	var TabButtonGroup = (function (_super) {
 	    __extends(TabButtonGroup, _super);
 	    function TabButtonGroup() {
@@ -21645,7 +21690,7 @@ var editor =
 
 
 /***/ },
-/* 111 */
+/* 112 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -21654,10 +21699,10 @@ var editor =
 	    function __() { this.constructor = d; }
 	    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 	};
-	var rich_text_1 = __webpack_require__(100);
-	var widget_factory_1 = __webpack_require__(25);
-	var recyclable_creator_1 = __webpack_require__(84);
-	var carota = __webpack_require__(28);
+	var rich_text_1 = __webpack_require__(101);
+	var widget_factory_1 = __webpack_require__(26);
+	var recyclable_creator_1 = __webpack_require__(85);
+	var carota = __webpack_require__(29);
 	var createDoc = carota.document;
 	var dom = carota.dom;
 	var node = carota.node;
@@ -22170,7 +22215,7 @@ var editor =
 
 
 /***/ },
-/* 112 */
+/* 113 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -22179,20 +22224,20 @@ var editor =
 	    function __() { this.constructor = d; }
 	    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 	};
-	var rect_1 = __webpack_require__(3);
-	var point_1 = __webpack_require__(4);
-	var edit_1 = __webpack_require__(19);
-	var button_1 = __webpack_require__(95);
-	var widget_1 = __webpack_require__(21);
-	var dialog_1 = __webpack_require__(93);
-	var graphics_1 = __webpack_require__(27);
-	var Events = __webpack_require__(8);
-	var list_view_1 = __webpack_require__(113);
-	var list_item_1 = __webpack_require__(115);
-	var widget_factory_1 = __webpack_require__(25);
-	var recyclable_creator_1 = __webpack_require__(84);
-	var image_tile_1 = __webpack_require__(9);
-	var simple_layouter_1 = __webpack_require__(116);
+	var rect_1 = __webpack_require__(4);
+	var point_1 = __webpack_require__(5);
+	var edit_1 = __webpack_require__(20);
+	var button_1 = __webpack_require__(96);
+	var widget_1 = __webpack_require__(22);
+	var dialog_1 = __webpack_require__(94);
+	var graphics_1 = __webpack_require__(28);
+	var Events = __webpack_require__(9);
+	var list_view_1 = __webpack_require__(114);
+	var list_item_1 = __webpack_require__(116);
+	var widget_factory_1 = __webpack_require__(26);
+	var recyclable_creator_1 = __webpack_require__(85);
+	var image_tile_1 = __webpack_require__(10);
+	var simple_layouter_1 = __webpack_require__(117);
 	var ComboBoxOption = (function () {
 	    function ComboBoxOption(text, value, imageURL, color) {
 	        this.text = text;
@@ -22593,7 +22638,7 @@ var editor =
 
 
 /***/ },
-/* 113 */
+/* 114 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -22602,11 +22647,11 @@ var editor =
 	    function __() { this.constructor = d; }
 	    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 	};
-	var widget_1 = __webpack_require__(21);
-	var scroll_view_1 = __webpack_require__(101);
-	var widget_factory_1 = __webpack_require__(25);
-	var recyclable_creator_1 = __webpack_require__(84);
-	var list_layouter_1 = __webpack_require__(114);
+	var widget_1 = __webpack_require__(22);
+	var scroll_view_1 = __webpack_require__(102);
+	var widget_factory_1 = __webpack_require__(26);
+	var recyclable_creator_1 = __webpack_require__(85);
+	var list_layouter_1 = __webpack_require__(115);
 	var ListView = (function (_super) {
 	    __extends(ListView, _super);
 	    function ListView() {
@@ -22702,7 +22747,7 @@ var editor =
 
 
 /***/ },
-/* 114 */
+/* 115 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -22711,8 +22756,8 @@ var editor =
 	    function __() { this.constructor = d; }
 	    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 	};
-	var rect_1 = __webpack_require__(3);
-	var layouter_1 = __webpack_require__(80);
+	var rect_1 = __webpack_require__(4);
+	var layouter_1 = __webpack_require__(81);
 	var TYPE = "list";
 	/**
 	 * 列表布局器。
@@ -22804,7 +22849,7 @@ var editor =
 
 
 /***/ },
-/* 115 */
+/* 116 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -22813,12 +22858,12 @@ var editor =
 	    function __() { this.constructor = d; }
 	    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 	};
-	var rect_1 = __webpack_require__(3);
-	var widget_1 = __webpack_require__(21);
-	var widget_factory_1 = __webpack_require__(25);
-	var graphics_1 = __webpack_require__(27);
-	var recyclable_creator_1 = __webpack_require__(84);
-	var image_tile_1 = __webpack_require__(9);
+	var rect_1 = __webpack_require__(4);
+	var widget_1 = __webpack_require__(22);
+	var widget_factory_1 = __webpack_require__(26);
+	var graphics_1 = __webpack_require__(28);
+	var recyclable_creator_1 = __webpack_require__(85);
+	var image_tile_1 = __webpack_require__(10);
 	(function (ListItemStyle) {
 	    ListItemStyle[ListItemStyle["NORMAL"] = 0] = "NORMAL";
 	    ListItemStyle[ListItemStyle["FIRST"] = 1] = "FIRST";
@@ -22956,7 +23001,7 @@ var editor =
 
 
 /***/ },
-/* 116 */
+/* 117 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -22965,7 +23010,7 @@ var editor =
 	    function __() { this.constructor = d; }
 	    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 	};
-	var layouter_1 = __webpack_require__(80);
+	var layouter_1 = __webpack_require__(81);
 	var TYPE = "simple";
 	/**
 	 * 简单的布局器。
@@ -23076,7 +23121,7 @@ var editor =
 
 
 /***/ },
-/* 117 */
+/* 118 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -23085,10 +23130,10 @@ var editor =
 	    function __() { this.constructor = d; }
 	    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 	};
-	var widget_factory_1 = __webpack_require__(25);
-	var recyclable_creator_1 = __webpack_require__(84);
-	var grid_layouter_1 = __webpack_require__(118);
-	var scroll_view_1 = __webpack_require__(101);
+	var widget_factory_1 = __webpack_require__(26);
+	var recyclable_creator_1 = __webpack_require__(85);
+	var grid_layouter_1 = __webpack_require__(119);
+	var scroll_view_1 = __webpack_require__(102);
 	/**
 	 * 网格视图。
 	 */
@@ -23247,7 +23292,7 @@ var editor =
 
 
 /***/ },
-/* 118 */
+/* 119 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -23256,8 +23301,8 @@ var editor =
 	    function __() { this.constructor = d; }
 	    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 	};
-	var rect_1 = __webpack_require__(3);
-	var layouter_1 = __webpack_require__(80);
+	var rect_1 = __webpack_require__(4);
+	var layouter_1 = __webpack_require__(81);
 	var TYPE = "grid";
 	/**
 	 * 网格布局器。
@@ -23387,7 +23432,7 @@ var editor =
 
 
 /***/ },
-/* 119 */
+/* 120 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -23396,13 +23441,13 @@ var editor =
 	    function __() { this.constructor = d; }
 	    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 	};
-	var rect_1 = __webpack_require__(3);
-	var point_1 = __webpack_require__(4);
-	var widget_factory_1 = __webpack_require__(25);
-	var graphics_1 = __webpack_require__(27);
-	var image_tile_1 = __webpack_require__(9);
-	var recyclable_creator_1 = __webpack_require__(84);
-	var widget_1 = __webpack_require__(21);
+	var rect_1 = __webpack_require__(4);
+	var point_1 = __webpack_require__(5);
+	var widget_factory_1 = __webpack_require__(26);
+	var graphics_1 = __webpack_require__(28);
+	var image_tile_1 = __webpack_require__(10);
+	var recyclable_creator_1 = __webpack_require__(85);
+	var widget_1 = __webpack_require__(22);
 	/**
 	 * 树形视图中，显示的一个子项。
 	 */
@@ -23638,7 +23683,7 @@ var editor =
 
 
 /***/ },
-/* 120 */
+/* 121 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -23647,11 +23692,11 @@ var editor =
 	    function __() { this.constructor = d; }
 	    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 	};
-	var tree_item_1 = __webpack_require__(119);
-	var list_view_1 = __webpack_require__(113);
-	var tree_item_data_1 = __webpack_require__(121);
-	var widget_factory_1 = __webpack_require__(25);
-	var recyclable_creator_1 = __webpack_require__(84);
+	var tree_item_1 = __webpack_require__(120);
+	var list_view_1 = __webpack_require__(114);
+	var tree_item_data_1 = __webpack_require__(122);
+	var widget_factory_1 = __webpack_require__(26);
+	var recyclable_creator_1 = __webpack_require__(85);
 	/**
 	 * 树形视图。
 	 */
@@ -23793,7 +23838,7 @@ var editor =
 
 
 /***/ },
-/* 121 */
+/* 122 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -23802,9 +23847,9 @@ var editor =
 	    function __() { this.constructor = d; }
 	    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 	};
-	var utils_1 = __webpack_require__(23);
-	var emitter_1 = __webpack_require__(6);
-	var image_tile_1 = __webpack_require__(9);
+	var utils_1 = __webpack_require__(24);
+	var emitter_1 = __webpack_require__(7);
+	var image_tile_1 = __webpack_require__(10);
 	/**
 	 * TreeItem对应的数据信息。
 	 */
@@ -23882,7 +23927,7 @@ var editor =
 
 
 /***/ },
-/* 122 */
+/* 123 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -23891,21 +23936,21 @@ var editor =
 	    function __() { this.constructor = d; }
 	    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 	};
-	var path = __webpack_require__(11);
-	var TWEEN = __webpack_require__(22);
-	var Assets = __webpack_require__(13);
-	var Events = __webpack_require__(8);
-	var consts_1 = __webpack_require__(106);
-	var main_loop_1 = __webpack_require__(90);
-	var emitter_1 = __webpack_require__(6);
-	var view_port_1 = __webpack_require__(88);
-	var image_tile_1 = __webpack_require__(9);
-	var theme_manager_1 = __webpack_require__(123);
-	var device_info_1 = __webpack_require__(124);
-	var service_locator_1 = __webpack_require__(125);
-	var inputEventAdapter = __webpack_require__(17);
-	var interaction_request_1 = __webpack_require__(126);
-	var interaction_service_1 = __webpack_require__(128);
+	var path = __webpack_require__(12);
+	var TWEEN = __webpack_require__(23);
+	var Assets = __webpack_require__(14);
+	var Events = __webpack_require__(9);
+	var consts_1 = __webpack_require__(107);
+	var main_loop_1 = __webpack_require__(91);
+	var emitter_1 = __webpack_require__(7);
+	var view_port_1 = __webpack_require__(89);
+	var image_tile_1 = __webpack_require__(10);
+	var theme_manager_1 = __webpack_require__(124);
+	var device_info_1 = __webpack_require__(125);
+	var service_locator_1 = __webpack_require__(126);
+	var inputEventAdapter = __webpack_require__(18);
+	var interaction_request_1 = __webpack_require__(127);
+	var interaction_service_1 = __webpack_require__(129);
 	/**
 	 * 代表整个应用程序，可以通过Application获取各种服务。
 	 *
@@ -24072,12 +24117,12 @@ var editor =
 
 
 /***/ },
-/* 123 */
+/* 124 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
-	var style_1 = __webpack_require__(5);
-	var utils_1 = __webpack_require__(23);
+	var style_1 = __webpack_require__(6);
+	var utils_1 = __webpack_require__(24);
 	/**
 	 * 主题用来统一控制Widget的外观风格。
 	 */
@@ -24163,7 +24208,7 @@ var editor =
 
 
 /***/ },
-/* 124 */
+/* 125 */
 /***/ function(module, exports) {
 
 	/**
@@ -24197,7 +24242,7 @@ var editor =
 
 
 /***/ },
-/* 125 */
+/* 126 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -24222,11 +24267,11 @@ var editor =
 
 
 /***/ },
-/* 126 */
+/* 127 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
-	var interaction_types_1 = __webpack_require__(127);
+	var interaction_types_1 = __webpack_require__(128);
 	var InteractionRequest = (function () {
 	    function InteractionRequest(service) {
 	        this.service = service;
@@ -24289,7 +24334,7 @@ var editor =
 
 
 /***/ },
-/* 127 */
+/* 128 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -24310,20 +24355,20 @@ var editor =
 
 
 /***/ },
-/* 128 */
+/* 129 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
-	var emitter_1 = __webpack_require__(6);
-	var Events = __webpack_require__(8);
-	var toast_dialog_1 = __webpack_require__(129);
-	var input_dialog_1 = __webpack_require__(133);
-	var props_dialog_1 = __webpack_require__(134);
-	var choice_dialog_1 = __webpack_require__(158);
-	var progress_dialog_1 = __webpack_require__(159);
-	var confirmation_dialog_1 = __webpack_require__(160);
-	var notification_dialog_1 = __webpack_require__(161);
-	var interaction_types_1 = __webpack_require__(127);
+	var emitter_1 = __webpack_require__(7);
+	var Events = __webpack_require__(9);
+	var toast_dialog_1 = __webpack_require__(130);
+	var input_dialog_1 = __webpack_require__(134);
+	var props_dialog_1 = __webpack_require__(135);
+	var choice_dialog_1 = __webpack_require__(159);
+	var progress_dialog_1 = __webpack_require__(160);
+	var confirmation_dialog_1 = __webpack_require__(161);
+	var notification_dialog_1 = __webpack_require__(162);
+	var interaction_types_1 = __webpack_require__(128);
 	var InteractionService = (function () {
 	    function InteractionService() {
 	        this._emitter = new emitter_1.Emitter();
@@ -24398,11 +24443,11 @@ var editor =
 
 
 /***/ },
-/* 129 */
+/* 130 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
-	var message_box_1 = __webpack_require__(130);
+	var message_box_1 = __webpack_require__(131);
 	var ToastDialog = (function () {
 	    function ToastDialog() {
 	    }
@@ -24416,7 +24461,7 @@ var editor =
 
 
 /***/ },
-/* 130 */
+/* 131 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -24425,25 +24470,25 @@ var editor =
 	    function __() { this.constructor = d; }
 	    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 	};
-	var group_1 = __webpack_require__(92);
-	var dialog_1 = __webpack_require__(93);
-	var label_1 = __webpack_require__(20);
-	var edit_1 = __webpack_require__(19);
-	var button_1 = __webpack_require__(95);
-	var Events = __webpack_require__(8);
-	var graphics_1 = __webpack_require__(27);
-	var list_view_1 = __webpack_require__(113);
-	var progress_bar_1 = __webpack_require__(97);
-	var application_1 = __webpack_require__(122);
-	var widget_1 = __webpack_require__(21);
-	var widget_factory_1 = __webpack_require__(25);
-	var consts_1 = __webpack_require__(106);
-	var recyclable_creator_1 = __webpack_require__(84);
-	var list_item_1 = __webpack_require__(115);
-	var dock_layouter_1 = __webpack_require__(131);
-	var linear_layouter_1 = __webpack_require__(132);
-	var grid_layouter_1 = __webpack_require__(118);
-	var simple_layouter_1 = __webpack_require__(116);
+	var group_1 = __webpack_require__(93);
+	var dialog_1 = __webpack_require__(94);
+	var label_1 = __webpack_require__(21);
+	var edit_1 = __webpack_require__(20);
+	var button_1 = __webpack_require__(96);
+	var Events = __webpack_require__(9);
+	var graphics_1 = __webpack_require__(28);
+	var list_view_1 = __webpack_require__(114);
+	var progress_bar_1 = __webpack_require__(98);
+	var application_1 = __webpack_require__(123);
+	var widget_1 = __webpack_require__(22);
+	var widget_factory_1 = __webpack_require__(26);
+	var consts_1 = __webpack_require__(107);
+	var recyclable_creator_1 = __webpack_require__(85);
+	var list_item_1 = __webpack_require__(116);
+	var dock_layouter_1 = __webpack_require__(132);
+	var linear_layouter_1 = __webpack_require__(133);
+	var grid_layouter_1 = __webpack_require__(119);
+	var simple_layouter_1 = __webpack_require__(117);
 	var TitleOptions = (function () {
 	    function TitleOptions(text, iconStyleType, hasCloseButton) {
 	        this.h = 0;
@@ -24793,7 +24838,7 @@ var editor =
 
 
 /***/ },
-/* 131 */
+/* 132 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -24802,8 +24847,8 @@ var editor =
 	    function __() { this.constructor = d; }
 	    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 	};
-	var consts_1 = __webpack_require__(106);
-	var layouter_1 = __webpack_require__(80);
+	var consts_1 = __webpack_require__(107);
+	var layouter_1 = __webpack_require__(81);
 	var TYPE = "dock";
 	/**
 	 * Dock布局器。
@@ -24919,7 +24964,7 @@ var editor =
 
 
 /***/ },
-/* 132 */
+/* 133 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -24928,9 +24973,9 @@ var editor =
 	    function __() { this.constructor = d; }
 	    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 	};
-	var consts_1 = __webpack_require__(106);
-	var utils_1 = __webpack_require__(23);
-	var layouter_1 = __webpack_require__(80);
+	var consts_1 = __webpack_require__(107);
+	var utils_1 = __webpack_require__(24);
+	var layouter_1 = __webpack_require__(81);
 	var TYPE_H = "linear-h";
 	var TYPE_V = "linear-v";
 	/**
@@ -25130,11 +25175,11 @@ var editor =
 
 
 /***/ },
-/* 133 */
+/* 134 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
-	var message_box_1 = __webpack_require__(130);
+	var message_box_1 = __webpack_require__(131);
 	var InputDialog = (function () {
 	    function InputDialog() {
 	    }
@@ -25151,11 +25196,11 @@ var editor =
 
 
 /***/ },
-/* 134 */
+/* 135 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
-	var property_dialog_1 = __webpack_require__(135);
+	var property_dialog_1 = __webpack_require__(136);
 	var PropsDialog = (function () {
 	    function PropsDialog() {
 	    }
@@ -25173,7 +25218,7 @@ var editor =
 
 
 /***/ },
-/* 135 */
+/* 136 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -25182,13 +25227,13 @@ var editor =
 	    function __() { this.constructor = d; }
 	    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 	};
-	var application_1 = __webpack_require__(122);
-	var property_page_1 = __webpack_require__(136);
-	var view_modal_1 = __webpack_require__(153);
-	var recyclable_creator_1 = __webpack_require__(84);
-	var widget_factory_1 = __webpack_require__(25);
-	var message_box_1 = __webpack_require__(130);
-	var simple_layouter_1 = __webpack_require__(116);
+	var application_1 = __webpack_require__(123);
+	var property_page_1 = __webpack_require__(137);
+	var view_modal_1 = __webpack_require__(154);
+	var recyclable_creator_1 = __webpack_require__(85);
+	var widget_factory_1 = __webpack_require__(26);
+	var message_box_1 = __webpack_require__(131);
+	var simple_layouter_1 = __webpack_require__(117);
 	/**
 	 * 属性对话框。
 	 */
@@ -25242,7 +25287,7 @@ var editor =
 
 
 /***/ },
-/* 136 */
+/* 137 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -25251,23 +25296,23 @@ var editor =
 	    function __() { this.constructor = d; }
 	    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 	};
-	var Events = __webpack_require__(8);
-	var title_link_1 = __webpack_require__(137);
-	var title_line_1 = __webpack_require__(139);
-	var title_edit_1 = __webpack_require__(141);
-	var title_label_1 = __webpack_require__(142);
-	var title_range_1 = __webpack_require__(143);
-	var title_vector_1 = __webpack_require__(145);
-	var widget_1 = __webpack_require__(21);
-	var title_slider_1 = __webpack_require__(147);
-	var title_text_area_1 = __webpack_require__(148);
-	var props_desc_1 = __webpack_require__(149);
-	var props_desc_2 = __webpack_require__(149);
-	var props_desc_3 = __webpack_require__(149);
-	var title_combo_box_1 = __webpack_require__(150);
-	var title_choosable_edit_1 = __webpack_require__(151);
-	var widget_factory_1 = __webpack_require__(25);
-	var recyclable_creator_1 = __webpack_require__(84);
+	var Events = __webpack_require__(9);
+	var title_link_1 = __webpack_require__(138);
+	var title_line_1 = __webpack_require__(140);
+	var title_edit_1 = __webpack_require__(142);
+	var title_label_1 = __webpack_require__(143);
+	var title_range_1 = __webpack_require__(144);
+	var title_vector_1 = __webpack_require__(146);
+	var widget_1 = __webpack_require__(22);
+	var title_slider_1 = __webpack_require__(148);
+	var title_text_area_1 = __webpack_require__(149);
+	var props_desc_1 = __webpack_require__(150);
+	var props_desc_2 = __webpack_require__(150);
+	var props_desc_3 = __webpack_require__(150);
+	var title_combo_box_1 = __webpack_require__(151);
+	var title_choosable_edit_1 = __webpack_require__(152);
+	var widget_factory_1 = __webpack_require__(26);
+	var recyclable_creator_1 = __webpack_require__(85);
 	/**
 	 * 属性编辑页，包装了各种TitleValue。
 	 */
@@ -25605,7 +25650,7 @@ var editor =
 
 
 /***/ },
-/* 137 */
+/* 138 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -25614,11 +25659,11 @@ var editor =
 	    function __() { this.constructor = d; }
 	    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 	};
-	var Events = __webpack_require__(8);
-	var label_1 = __webpack_require__(20);
-	var title_value_1 = __webpack_require__(138);
-	var widget_factory_1 = __webpack_require__(25);
-	var recyclable_creator_1 = __webpack_require__(84);
+	var Events = __webpack_require__(9);
+	var label_1 = __webpack_require__(21);
+	var title_value_1 = __webpack_require__(139);
+	var widget_factory_1 = __webpack_require__(26);
+	var recyclable_creator_1 = __webpack_require__(85);
 	var TitleLink = (function (_super) {
 	    __extends(TitleLink, _super);
 	    function TitleLink(type) {
@@ -25651,7 +25696,7 @@ var editor =
 
 
 /***/ },
-/* 138 */
+/* 139 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -25660,10 +25705,10 @@ var editor =
 	    function __() { this.constructor = d; }
 	    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 	};
-	var Events = __webpack_require__(8);
-	var label_1 = __webpack_require__(20);
-	var widget_1 = __webpack_require__(21);
-	var linear_layouter_1 = __webpack_require__(132);
+	var Events = __webpack_require__(9);
+	var label_1 = __webpack_require__(21);
+	var widget_1 = __webpack_require__(22);
+	var linear_layouter_1 = __webpack_require__(133);
 	var TitleValue = (function (_super) {
 	    __extends(TitleValue, _super);
 	    function TitleValue(type) {
@@ -25787,7 +25832,7 @@ var editor =
 
 
 /***/ },
-/* 139 */
+/* 140 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -25796,10 +25841,10 @@ var editor =
 	    function __() { this.constructor = d; }
 	    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 	};
-	var title_value_1 = __webpack_require__(138);
-	var color_tile_1 = __webpack_require__(140);
-	var widget_factory_1 = __webpack_require__(25);
-	var recyclable_creator_1 = __webpack_require__(84);
+	var title_value_1 = __webpack_require__(139);
+	var color_tile_1 = __webpack_require__(141);
+	var widget_factory_1 = __webpack_require__(26);
+	var recyclable_creator_1 = __webpack_require__(85);
 	var TitleLine = (function (_super) {
 	    __extends(TitleLine, _super);
 	    function TitleLine(type) {
@@ -25821,7 +25866,7 @@ var editor =
 
 
 /***/ },
-/* 140 */
+/* 141 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -25830,12 +25875,12 @@ var editor =
 	    function __() { this.constructor = d; }
 	    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 	};
-	var style_1 = __webpack_require__(5);
-	var widget_1 = __webpack_require__(21);
-	var widget_factory_1 = __webpack_require__(25);
-	var graphics_1 = __webpack_require__(27);
-	var consts_1 = __webpack_require__(106);
-	var recyclable_creator_1 = __webpack_require__(84);
+	var style_1 = __webpack_require__(6);
+	var widget_1 = __webpack_require__(22);
+	var widget_factory_1 = __webpack_require__(26);
+	var graphics_1 = __webpack_require__(28);
+	var consts_1 = __webpack_require__(107);
+	var recyclable_creator_1 = __webpack_require__(85);
 	/**
 	 * 颜色控件。
 	 */
@@ -26081,7 +26126,7 @@ var editor =
 
 
 /***/ },
-/* 141 */
+/* 142 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -26090,10 +26135,10 @@ var editor =
 	    function __() { this.constructor = d; }
 	    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 	};
-	var edit_1 = __webpack_require__(19);
-	var title_value_1 = __webpack_require__(138);
-	var widget_factory_1 = __webpack_require__(25);
-	var recyclable_creator_1 = __webpack_require__(84);
+	var edit_1 = __webpack_require__(20);
+	var title_value_1 = __webpack_require__(139);
+	var widget_factory_1 = __webpack_require__(26);
+	var recyclable_creator_1 = __webpack_require__(85);
 	var TitleEdit = (function (_super) {
 	    __extends(TitleEdit, _super);
 	    function TitleEdit(type) {
@@ -26164,7 +26209,7 @@ var editor =
 
 
 /***/ },
-/* 142 */
+/* 143 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -26173,10 +26218,10 @@ var editor =
 	    function __() { this.constructor = d; }
 	    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 	};
-	var label_1 = __webpack_require__(20);
-	var title_value_1 = __webpack_require__(138);
-	var widget_factory_1 = __webpack_require__(25);
-	var recyclable_creator_1 = __webpack_require__(84);
+	var label_1 = __webpack_require__(21);
+	var title_value_1 = __webpack_require__(139);
+	var widget_factory_1 = __webpack_require__(26);
+	var recyclable_creator_1 = __webpack_require__(85);
 	var TitleLabel = (function (_super) {
 	    __extends(TitleLabel, _super);
 	    function TitleLabel(type) {
@@ -26198,7 +26243,7 @@ var editor =
 
 
 /***/ },
-/* 143 */
+/* 144 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -26207,10 +26252,10 @@ var editor =
 	    function __() { this.constructor = d; }
 	    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 	};
-	var range_edit_1 = __webpack_require__(144);
-	var title_value_1 = __webpack_require__(138);
-	var widget_factory_1 = __webpack_require__(25);
-	var recyclable_creator_1 = __webpack_require__(84);
+	var range_edit_1 = __webpack_require__(145);
+	var title_value_1 = __webpack_require__(139);
+	var widget_factory_1 = __webpack_require__(26);
+	var recyclable_creator_1 = __webpack_require__(85);
 	var TitleRange = (function (_super) {
 	    __extends(TitleRange, _super);
 	    function TitleRange(type) {
@@ -26232,7 +26277,7 @@ var editor =
 
 
 /***/ },
-/* 144 */
+/* 145 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -26241,12 +26286,12 @@ var editor =
 	    function __() { this.constructor = d; }
 	    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 	};
-	var label_1 = __webpack_require__(20);
-	var edit_1 = __webpack_require__(19);
-	var widget_1 = __webpack_require__(21);
-	var Events = __webpack_require__(8);
-	var widget_factory_1 = __webpack_require__(25);
-	var recyclable_creator_1 = __webpack_require__(84);
+	var label_1 = __webpack_require__(21);
+	var edit_1 = __webpack_require__(20);
+	var widget_1 = __webpack_require__(22);
+	var Events = __webpack_require__(9);
+	var widget_factory_1 = __webpack_require__(26);
+	var recyclable_creator_1 = __webpack_require__(85);
 	/**
 	 * 范围编辑器。
 	 */
@@ -26370,7 +26415,7 @@ var editor =
 
 
 /***/ },
-/* 145 */
+/* 146 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -26379,10 +26424,10 @@ var editor =
 	    function __() { this.constructor = d; }
 	    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 	};
-	var vector_edit_1 = __webpack_require__(146);
-	var title_value_1 = __webpack_require__(138);
-	var widget_factory_1 = __webpack_require__(25);
-	var recyclable_creator_1 = __webpack_require__(84);
+	var vector_edit_1 = __webpack_require__(147);
+	var title_value_1 = __webpack_require__(139);
+	var widget_factory_1 = __webpack_require__(26);
+	var recyclable_creator_1 = __webpack_require__(85);
 	var TitleVector = (function (_super) {
 	    __extends(TitleVector, _super);
 	    function TitleVector(type) {
@@ -26421,7 +26466,7 @@ var editor =
 
 
 /***/ },
-/* 146 */
+/* 147 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -26430,13 +26475,13 @@ var editor =
 	    function __() { this.constructor = d; }
 	    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 	};
-	var label_1 = __webpack_require__(20);
-	var edit_1 = __webpack_require__(19);
-	var widget_1 = __webpack_require__(21);
-	var Events = __webpack_require__(8);
-	var widget_factory_1 = __webpack_require__(25);
-	var recyclable_creator_1 = __webpack_require__(84);
-	var grid_layouter_1 = __webpack_require__(118);
+	var label_1 = __webpack_require__(21);
+	var edit_1 = __webpack_require__(20);
+	var widget_1 = __webpack_require__(22);
+	var Events = __webpack_require__(9);
+	var widget_factory_1 = __webpack_require__(26);
+	var recyclable_creator_1 = __webpack_require__(85);
+	var grid_layouter_1 = __webpack_require__(119);
 	/**
 	 * 范围编辑器。
 	 */
@@ -26603,7 +26648,7 @@ var editor =
 
 
 /***/ },
-/* 147 */
+/* 148 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -26612,10 +26657,10 @@ var editor =
 	    function __() { this.constructor = d; }
 	    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 	};
-	var slider_1 = __webpack_require__(96);
-	var title_value_1 = __webpack_require__(138);
-	var widget_factory_1 = __webpack_require__(25);
-	var recyclable_creator_1 = __webpack_require__(84);
+	var slider_1 = __webpack_require__(97);
+	var title_value_1 = __webpack_require__(139);
+	var widget_factory_1 = __webpack_require__(26);
+	var recyclable_creator_1 = __webpack_require__(85);
 	var TitleSlider = (function (_super) {
 	    __extends(TitleSlider, _super);
 	    function TitleSlider(type) {
@@ -26637,7 +26682,7 @@ var editor =
 
 
 /***/ },
-/* 148 */
+/* 149 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -26646,10 +26691,10 @@ var editor =
 	    function __() { this.constructor = d; }
 	    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 	};
-	var edit_1 = __webpack_require__(19);
-	var title_value_1 = __webpack_require__(138);
-	var widget_factory_1 = __webpack_require__(25);
-	var recyclable_creator_1 = __webpack_require__(84);
+	var edit_1 = __webpack_require__(20);
+	var title_value_1 = __webpack_require__(139);
+	var widget_factory_1 = __webpack_require__(26);
+	var recyclable_creator_1 = __webpack_require__(85);
 	var TitleTextArea = (function (_super) {
 	    __extends(TitleTextArea, _super);
 	    function TitleTextArea(type) {
@@ -26689,7 +26734,7 @@ var editor =
 
 
 /***/ },
-/* 149 */
+/* 150 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -26698,8 +26743,8 @@ var editor =
 	    function __() { this.constructor = d; }
 	    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 	};
-	var Events = __webpack_require__(8);
-	var emitter_1 = __webpack_require__(6);
+	var Events = __webpack_require__(9);
+	var emitter_1 = __webpack_require__(7);
 	var PropDesc = (function () {
 	    function PropDesc(type) {
 	        this.type = type;
@@ -26993,7 +27038,7 @@ var editor =
 
 
 /***/ },
-/* 150 */
+/* 151 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -27002,10 +27047,10 @@ var editor =
 	    function __() { this.constructor = d; }
 	    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 	};
-	var title_value_1 = __webpack_require__(138);
-	var widget_factory_1 = __webpack_require__(25);
-	var recyclable_creator_1 = __webpack_require__(84);
-	var combo_box_1 = __webpack_require__(112);
+	var title_value_1 = __webpack_require__(139);
+	var widget_factory_1 = __webpack_require__(26);
+	var recyclable_creator_1 = __webpack_require__(85);
+	var combo_box_1 = __webpack_require__(113);
 	var TitleComboBoxBase = (function (_super) {
 	    __extends(TitleComboBoxBase, _super);
 	    function TitleComboBoxBase(type) {
@@ -27075,7 +27120,7 @@ var editor =
 
 
 /***/ },
-/* 151 */
+/* 152 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -27084,10 +27129,10 @@ var editor =
 	    function __() { this.constructor = d; }
 	    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 	};
-	var title_value_1 = __webpack_require__(138);
-	var choosable_edit_1 = __webpack_require__(152);
-	var widget_factory_1 = __webpack_require__(25);
-	var recyclable_creator_1 = __webpack_require__(84);
+	var title_value_1 = __webpack_require__(139);
+	var choosable_edit_1 = __webpack_require__(153);
+	var widget_factory_1 = __webpack_require__(26);
+	var recyclable_creator_1 = __webpack_require__(85);
 	var TitleChoosableEdit = (function (_super) {
 	    __extends(TitleChoosableEdit, _super);
 	    function TitleChoosableEdit(type) {
@@ -27134,7 +27179,7 @@ var editor =
 
 
 /***/ },
-/* 152 */
+/* 153 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -27143,12 +27188,12 @@ var editor =
 	    function __() { this.constructor = d; }
 	    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 	};
-	var edit_1 = __webpack_require__(19);
-	var button_1 = __webpack_require__(95);
-	var widget_1 = __webpack_require__(21);
-	var Events = __webpack_require__(8);
-	var widget_factory_1 = __webpack_require__(25);
-	var recyclable_creator_1 = __webpack_require__(84);
+	var edit_1 = __webpack_require__(20);
+	var button_1 = __webpack_require__(96);
+	var widget_1 = __webpack_require__(22);
+	var Events = __webpack_require__(9);
+	var widget_factory_1 = __webpack_require__(26);
+	var recyclable_creator_1 = __webpack_require__(85);
 	/**
 	 * 编辑器+选择按钮。
 	 */
@@ -27235,7 +27280,7 @@ var editor =
 
 
 /***/ },
-/* 153 */
+/* 154 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -27244,7 +27289,7 @@ var editor =
 	    function __() { this.constructor = d; }
 	    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 	};
-	var view_modal_default_1 = __webpack_require__(154);
+	var view_modal_default_1 = __webpack_require__(155);
 	/**
 	 * IViewModal的基本实现。如果不能满足要求，可以重载部分函数。
 	 */
@@ -27264,7 +27309,7 @@ var editor =
 
 
 /***/ },
-/* 154 */
+/* 155 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -27273,11 +27318,11 @@ var editor =
 	    function __() { this.constructor = d; }
 	    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 	};
-	var pointer = __webpack_require__(155);
-	var emitter_1 = __webpack_require__(6);
-	var Events = __webpack_require__(8);
-	var ivalidation_rule_1 = __webpack_require__(157);
-	var iview_modal_1 = __webpack_require__(83);
+	var pointer = __webpack_require__(156);
+	var emitter_1 = __webpack_require__(7);
+	var Events = __webpack_require__(9);
+	var ivalidation_rule_1 = __webpack_require__(158);
+	var iview_modal_1 = __webpack_require__(84);
 	var ViewModalDefault = (function (_super) {
 	    __extends(ViewModalDefault, _super);
 	    function ViewModalDefault(data) {
@@ -27420,12 +27465,12 @@ var editor =
 
 
 /***/ },
-/* 155 */
+/* 156 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var each = __webpack_require__(156);
+	var each = __webpack_require__(157);
 	module.exports = api;
 
 
@@ -27637,7 +27682,7 @@ var editor =
 
 
 /***/ },
-/* 156 */
+/* 157 */
 /***/ function(module, exports) {
 
 	
@@ -27665,7 +27710,7 @@ var editor =
 
 
 /***/ },
-/* 157 */
+/* 158 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -27698,11 +27743,11 @@ var editor =
 
 
 /***/ },
-/* 158 */
+/* 159 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
-	var message_box_1 = __webpack_require__(130);
+	var message_box_1 = __webpack_require__(131);
 	var ChoiceDialog = (function () {
 	    function ChoiceDialog() {
 	    }
@@ -27719,11 +27764,11 @@ var editor =
 
 
 /***/ },
-/* 159 */
+/* 160 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
-	var message_box_1 = __webpack_require__(130);
+	var message_box_1 = __webpack_require__(131);
 	var ProgressDialog = (function () {
 	    function ProgressDialog() {
 	    }
@@ -27739,11 +27784,11 @@ var editor =
 
 
 /***/ },
-/* 160 */
+/* 161 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
-	var message_box_1 = __webpack_require__(130);
+	var message_box_1 = __webpack_require__(131);
 	var ConfirmationDialog = (function () {
 	    function ConfirmationDialog() {
 	    }
@@ -27763,11 +27808,11 @@ var editor =
 
 
 /***/ },
-/* 161 */
+/* 162 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
-	var message_box_1 = __webpack_require__(130);
+	var message_box_1 = __webpack_require__(131);
 	var NotificationDialog = (function () {
 	    function NotificationDialog() {
 	    }
@@ -27783,7 +27828,7 @@ var editor =
 
 
 /***/ },
-/* 162 */
+/* 163 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -27792,9 +27837,9 @@ var editor =
 	    function __() { this.constructor = d; }
 	    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 	};
-	var Events = __webpack_require__(8);
-	var key_event_1 = __webpack_require__(18);
-	var behavior_1 = __webpack_require__(79);
+	var Events = __webpack_require__(9);
+	var key_event_1 = __webpack_require__(19);
+	var behavior_1 = __webpack_require__(80);
 	/**
 	 * Movable Behavior的初始化参数。
 	 */
@@ -27906,7 +27951,7 @@ var editor =
 
 
 /***/ },
-/* 163 */
+/* 164 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -27915,9 +27960,9 @@ var editor =
 	    function __() { this.constructor = d; }
 	    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 	};
-	var Events = __webpack_require__(8);
-	var key_event_1 = __webpack_require__(18);
-	var behavior_1 = __webpack_require__(79);
+	var Events = __webpack_require__(9);
+	var key_event_1 = __webpack_require__(19);
+	var behavior_1 = __webpack_require__(80);
 	/**
 	 * 让Widget具有拖放功能的拖动功能。
 	 *
@@ -27991,7 +28036,7 @@ var editor =
 
 
 /***/ },
-/* 164 */
+/* 165 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -28000,8 +28045,8 @@ var editor =
 	    function __() { this.constructor = d; }
 	    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 	};
-	var Events = __webpack_require__(8);
-	var behavior_1 = __webpack_require__(79);
+	var Events = __webpack_require__(9);
+	var behavior_1 = __webpack_require__(80);
 	/**
 	 * 让Widget可作为拖放功能的Drop目标。
 	 *
@@ -28042,7 +28087,7 @@ var editor =
 
 
 /***/ },
-/* 165 */
+/* 166 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -28051,9 +28096,9 @@ var editor =
 	    function __() { this.constructor = d; }
 	    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 	};
-	var point_1 = __webpack_require__(4);
-	var key_event_1 = __webpack_require__(18);
-	var behavior_1 = __webpack_require__(79);
+	var point_1 = __webpack_require__(5);
+	var key_event_1 = __webpack_require__(19);
+	var behavior_1 = __webpack_require__(80);
 	/**
 	 * Resizable Behavior的初始化参数。
 	 */
@@ -28218,7 +28263,7 @@ var editor =
 
 
 /***/ },
-/* 166 */
+/* 167 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -28227,18 +28272,18 @@ var editor =
 	    function __() { this.constructor = d; }
 	    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 	};
-	var rect_1 = __webpack_require__(3);
-	var point_1 = __webpack_require__(4);
-	var dialog_1 = __webpack_require__(93);
-	var graphics_1 = __webpack_require__(27);
-	var list_view_1 = __webpack_require__(113);
-	var Events = __webpack_require__(8);
-	var widget_1 = __webpack_require__(21);
-	var widget_factory_1 = __webpack_require__(25);
-	var image_tile_1 = __webpack_require__(9);
-	var recyclable_creator_1 = __webpack_require__(84);
-	var list_layouter_1 = __webpack_require__(114);
-	var simple_layouter_1 = __webpack_require__(116);
+	var rect_1 = __webpack_require__(4);
+	var point_1 = __webpack_require__(5);
+	var dialog_1 = __webpack_require__(94);
+	var graphics_1 = __webpack_require__(28);
+	var list_view_1 = __webpack_require__(114);
+	var Events = __webpack_require__(9);
+	var widget_1 = __webpack_require__(22);
+	var widget_factory_1 = __webpack_require__(26);
+	var image_tile_1 = __webpack_require__(10);
+	var recyclable_creator_1 = __webpack_require__(85);
+	var list_layouter_1 = __webpack_require__(115);
+	var simple_layouter_1 = __webpack_require__(117);
 	var Menu = (function (_super) {
 	    __extends(Menu, _super);
 	    function Menu() {
@@ -28584,7 +28629,7 @@ var editor =
 
 
 /***/ },
-/* 167 */
+/* 168 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -28593,9 +28638,9 @@ var editor =
 	    function __() { this.constructor = d; }
 	    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 	};
-	var window_1 = __webpack_require__(94);
-	var widget_factory_1 = __webpack_require__(25);
-	var recyclable_creator_1 = __webpack_require__(84);
+	var window_1 = __webpack_require__(95);
+	var widget_factory_1 = __webpack_require__(26);
+	var recyclable_creator_1 = __webpack_require__(85);
 	var WindowNormal = (function (_super) {
 	    __extends(WindowNormal, _super);
 	    function WindowNormal() {
@@ -28614,7 +28659,7 @@ var editor =
 
 
 /***/ },
-/* 168 */
+/* 169 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -28623,14 +28668,14 @@ var editor =
 	    function __() { this.constructor = d; }
 	    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 	};
-	var menu_1 = __webpack_require__(166);
-	var point_1 = __webpack_require__(4);
-	var Events = __webpack_require__(8);
-	var widget_1 = __webpack_require__(21);
-	var widget_factory_1 = __webpack_require__(25);
-	var image_tile_1 = __webpack_require__(9);
-	var recyclable_creator_1 = __webpack_require__(84);
-	var linear_layouter_1 = __webpack_require__(132);
+	var menu_1 = __webpack_require__(167);
+	var point_1 = __webpack_require__(5);
+	var Events = __webpack_require__(9);
+	var widget_1 = __webpack_require__(22);
+	var widget_factory_1 = __webpack_require__(26);
+	var image_tile_1 = __webpack_require__(10);
+	var recyclable_creator_1 = __webpack_require__(85);
+	var linear_layouter_1 = __webpack_require__(133);
 	var MenuBar = (function (_super) {
 	    __extends(MenuBar, _super);
 	    function MenuBar() {
@@ -28839,7 +28884,7 @@ var editor =
 
 
 /***/ },
-/* 169 */
+/* 170 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -28848,11 +28893,11 @@ var editor =
 	    function __() { this.constructor = d; }
 	    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 	};
-	var widget_1 = __webpack_require__(21);
-	var widget_factory_1 = __webpack_require__(25);
-	var recyclable_creator_1 = __webpack_require__(84);
-	var title_content_1 = __webpack_require__(170);
-	var collapsable_title_1 = __webpack_require__(171);
+	var widget_1 = __webpack_require__(22);
+	var widget_factory_1 = __webpack_require__(26);
+	var recyclable_creator_1 = __webpack_require__(85);
+	var title_content_1 = __webpack_require__(171);
+	var collapsable_title_1 = __webpack_require__(172);
 	/**
 	 * 手风琴控件。它有多个页面，在每一时刻只展开一个。
 	 */
@@ -28955,7 +29000,7 @@ var editor =
 
 
 /***/ },
-/* 170 */
+/* 171 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -28964,10 +29009,10 @@ var editor =
 	    function __() { this.constructor = d; }
 	    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 	};
-	var widget_1 = __webpack_require__(21);
-	var Events = __webpack_require__(8);
-	var widget_factory_1 = __webpack_require__(25);
-	var recyclable_creator_1 = __webpack_require__(84);
+	var widget_1 = __webpack_require__(22);
+	var Events = __webpack_require__(9);
+	var widget_factory_1 = __webpack_require__(26);
+	var recyclable_creator_1 = __webpack_require__(85);
 	/**
 	 * 一个用来显示标题和内容的控件。通常用于Accordion和PropertySheets的子控件。
 	 */
@@ -29186,7 +29231,7 @@ var editor =
 
 
 /***/ },
-/* 171 */
+/* 172 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -29195,10 +29240,10 @@ var editor =
 	    function __() { this.constructor = d; }
 	    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 	};
-	var rect_1 = __webpack_require__(3);
-	var point_1 = __webpack_require__(4);
-	var widget_1 = __webpack_require__(21);
-	var recyclable_creator_1 = __webpack_require__(84);
+	var rect_1 = __webpack_require__(4);
+	var point_1 = __webpack_require__(5);
+	var widget_1 = __webpack_require__(22);
+	var recyclable_creator_1 = __webpack_require__(85);
 	/**
 	 * 可折叠的标题控件，点击折叠图片或双击时折叠或展开。
 	 * 只能用于TitleContent的titleWidget。
@@ -29272,7 +29317,7 @@ var editor =
 
 
 /***/ },
-/* 172 */
+/* 173 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -29281,9 +29326,9 @@ var editor =
 	    function __() { this.constructor = d; }
 	    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 	};
-	var widget_1 = __webpack_require__(21);
-	var widget_factory_1 = __webpack_require__(25);
-	var recyclable_creator_1 = __webpack_require__(84);
+	var widget_1 = __webpack_require__(22);
+	var widget_factory_1 = __webpack_require__(26);
+	var recyclable_creator_1 = __webpack_require__(85);
 	var Ruler = (function (_super) {
 	    __extends(Ruler, _super);
 	    function Ruler(type) {
@@ -29581,7 +29626,7 @@ var editor =
 
 
 /***/ },
-/* 173 */
+/* 174 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -29590,11 +29635,11 @@ var editor =
 	    function __() { this.constructor = d; }
 	    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 	};
-	var scroll_view_1 = __webpack_require__(101);
-	var widget_factory_1 = __webpack_require__(25);
-	var title_content_1 = __webpack_require__(170);
-	var recyclable_creator_1 = __webpack_require__(84);
-	var collapsable_title_1 = __webpack_require__(171);
+	var scroll_view_1 = __webpack_require__(102);
+	var widget_factory_1 = __webpack_require__(26);
+	var title_content_1 = __webpack_require__(171);
+	var recyclable_creator_1 = __webpack_require__(85);
+	var collapsable_title_1 = __webpack_require__(172);
 	/**
 	 * 管理多个页面，每个页面可以展开或折叠。
 	 */
@@ -29692,7 +29737,7 @@ var editor =
 
 
 /***/ },
-/* 174 */
+/* 175 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -29717,7 +29762,7 @@ var editor =
 
 
 /***/ },
-/* 175 */
+/* 176 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -29726,10 +29771,10 @@ var editor =
 	    function __() { this.constructor = d; }
 	    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 	};
-	var Events = __webpack_require__(8);
-	var delegate_command_1 = __webpack_require__(174);
-	var ivalidation_rule_1 = __webpack_require__(157);
-	var view_modal_default_1 = __webpack_require__(154);
+	var Events = __webpack_require__(9);
+	var delegate_command_1 = __webpack_require__(175);
+	var ivalidation_rule_1 = __webpack_require__(158);
+	var view_modal_default_1 = __webpack_require__(155);
 	/**
 	 * 集合ViewModal。delProp/getProp/setProp操作当前的项。
 	 */
@@ -29929,7 +29974,7 @@ var editor =
 
 
 /***/ },
-/* 176 */
+/* 177 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -29954,7 +29999,7 @@ var editor =
 
 
 /***/ },
-/* 177 */
+/* 178 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -29975,7 +30020,7 @@ var editor =
 
 
 /***/ },
-/* 178 */
+/* 179 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -29995,7 +30040,7 @@ var editor =
 
 
 /***/ },
-/* 179 */
+/* 180 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -30020,7 +30065,7 @@ var editor =
 
 
 /***/ },
-/* 180 */
+/* 181 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -30041,7 +30086,7 @@ var editor =
 
 
 /***/ },
-/* 181 */
+/* 182 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -30081,7 +30126,7 @@ var editor =
 
 
 /***/ },
-/* 182 */
+/* 183 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -30101,7 +30146,7 @@ var editor =
 
 
 /***/ },
-/* 183 */
+/* 184 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -30121,7 +30166,7 @@ var editor =
 
 
 /***/ },
-/* 184 */
+/* 185 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -30140,7 +30185,7 @@ var editor =
 
 
 /***/ },
-/* 185 */
+/* 186 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -30186,7 +30231,7 @@ var editor =
 
 
 /***/ },
-/* 186 */
+/* 187 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -30225,7 +30270,7 @@ var editor =
 
 
 /***/ },
-/* 187 */
+/* 188 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -30249,7 +30294,7 @@ var editor =
 
 
 /***/ },
-/* 188 */
+/* 189 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -30278,7 +30323,7 @@ var editor =
 
 
 /***/ },
-/* 189 */
+/* 190 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -30310,52 +30355,6 @@ var editor =
 
 
 /***/ },
-/* 190 */
-/***/ function(module, exports, __webpack_require__) {
-
-	"use strict";
-	var __extends = (this && this.__extends) || function (d, b) {
-	    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
-	    function __() { this.constructor = d; }
-	    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-	};
-	var qtk_1 = __webpack_require__(2);
-	var main_menu_bar_1 = __webpack_require__(191);
-	var particles_view_1 = __webpack_require__(192);
-	var particle_properties_1 = __webpack_require__(194);
-	var qtk_2 = __webpack_require__(2);
-	var MainWindow = (function (_super) {
-	    __extends(MainWindow, _super);
-	    function MainWindow() {
-	        _super.apply(this, arguments);
-	    }
-	    MainWindow.prototype.onCreated = function () {
-	        _super.prototype.onCreated.call(this);
-	        var viewModal = this.viewModal;
-	        this.childrenLayouter = qtk_2.DockLayouter.create();
-	        this.addChild(main_menu_bar_1.MainMenuBar.create({ viewModal: viewModal,
-	            layoutParam: qtk_2.DockLayouterParam.create({ position: qtk_1.Direction.TOP, size: 30 })
-	        }));
-	        this.addChild(particles_view_1.ParticlesView.create({ viewModal: viewModal,
-	            layoutParam: qtk_2.DockLayouterParam.create({ position: qtk_1.Direction.LEFT, size: "70%" })
-	        }));
-	        this.addChild(particle_properties_1.ParticleProperties.create({ viewModal: viewModal,
-	            layoutParam: qtk_2.DockLayouterParam.create({ position: qtk_1.Direction.LEFT, size: "100%" })
-	        }));
-	    };
-	    MainWindow.create = function (options) {
-	        var win = new MainWindow();
-	        win.reset("main-window", options);
-	        win.open();
-	        return win;
-	    };
-	    return MainWindow;
-	}(qtk_2.WindowNormal));
-	exports.MainWindow = MainWindow;
-	;
-	//# sourceMappingURL=main-window.js.map
-
-/***/ },
 /* 191 */
 /***/ function(module, exports, __webpack_require__) {
 
@@ -30365,7 +30364,7 @@ var editor =
 	    function __() { this.constructor = d; }
 	    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 	};
-	var qtk_1 = __webpack_require__(2);
+	var qtk_1 = __webpack_require__(3);
 	var MainMenuBar = (function (_super) {
 	    __extends(MainMenuBar, _super);
 	    function MainMenuBar() {
@@ -30416,7 +30415,7 @@ var editor =
 	    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 	};
 	var draw_info_1 = __webpack_require__(193);
-	var qtk_1 = __webpack_require__(2);
+	var qtk_1 = __webpack_require__(3);
 	var ParticlesView = (function (_super) {
 	    __extends(ParticlesView, _super);
 	    function ParticlesView() {
@@ -30477,7 +30476,7 @@ var editor =
 	    function __() { this.constructor = d; }
 	    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 	};
-	var qtk_1 = __webpack_require__(2);
+	var qtk_1 = __webpack_require__(3);
 	var ParticleProperties = (function (_super) {
 	    __extends(ParticleProperties, _super);
 	    function ParticleProperties() {
@@ -30513,1918 +30512,6 @@ var editor =
 
 /***/ },
 /* 195 */
-/***/ function(module, exports, __webpack_require__) {
-
-	"use strict";
-	var __extends = (this && this.__extends) || function (d, b) {
-	    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
-	    function __() { this.constructor = d; }
-	    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-	};
-	__webpack_require__(196);
-	__webpack_require__(197);
-	var command_draw_1 = __webpack_require__(200);
-	var command_new_1 = __webpack_require__(201);
-	var command_open_1 = __webpack_require__(202);
-	var command_save_1 = __webpack_require__(203);
-	var command_export_1 = __webpack_require__(204);
-	var command_about_1 = __webpack_require__(206);
-	var command_remove_1 = __webpack_require__(207);
-	var command_content_1 = __webpack_require__(208);
-	var cocos2d_wrapper_1 = __webpack_require__(209);
-	var document_1 = __webpack_require__(198);
-	var particles_view_modal_1 = __webpack_require__(210);
-	var qtk_1 = __webpack_require__(2);
-	var iparticles_view_modal_1 = __webpack_require__(211);
-	var Cocos2dViewModal = (function (_super) {
-	    __extends(Cocos2dViewModal, _super);
-	    function Cocos2dViewModal(storage) {
-	        _super.call(this, null);
-	        this.canvas = document.createElement('canvas');
-	        this.canvas.width = 400;
-	        this.canvas.height = 400;
-	        this.storage = storage;
-	        this.registerCommands();
-	        this.registerConverters();
-	        this.doc = document_1.Document.create();
-	        this.createDoc("default");
-	        this.updateDocList();
-	    }
-	    Cocos2dViewModal.prototype.registerConverters = function () {
-	        this.registerValueConverter("radius", qtk_1.RangeFixer.create(0, 1000, 0, 1000, true));
-	        this.registerValueConverter("life", qtk_1.RangeFixer.create(0, 1000, 0, 1000, true));
-	        this.registerValueConverter("mass", qtk_1.RangeFixer.create(0, 1000, 0, 1000, true));
-	        this.registerValueConverter("point", qtk_1.Vector2Fixer.create(0, 1000, 0, 1000));
-	        this.registerValueConverter("scale", qtk_1.RangeFixer.create(0, 10, 0, 10, false));
-	        this.registerValueConverter("alpha", qtk_1.RangeFixer.create(0, 1, 0, 1, false));
-	        this.registerValueConverter("rate-num", qtk_1.RangeFixer.create(0, 1000, 0, 1000, true));
-	        this.registerValueConverter("rate-time", qtk_1.RangeFixer.create(0, 1000, 0, 1000, true));
-	        this.registerValueConverter("v-rpan", qtk_1.RangeFixer.create(0, 1000, 0, 1000, true));
-	        this.registerValueConverter("v-thapath", qtk_1.RangeFixer.create(-1000, 1000, -1000, 1000, true));
-	        this.registerValueConverter("delay", qtk_1.NumberFixer.create(0, 10));
-	    };
-	    Cocos2dViewModal.prototype.registerCommands = function () {
-	        this.registerCommand("draw", command_draw_1.CommandDraw.create(this.canvas));
-	        this.registerCommand("about", command_about_1.CommandAbout.create(this, "https://github.com/a-jie/Cocos2d"));
-	        this.registerCommand("content", command_content_1.CommandContent.create(this, "http://cocos2d.jpeer.at/index.html"));
-	        this.registerCommand("new", command_new_1.CommandNew.create(this, document_1.Document.getTemplateList()));
-	        this.registerCommand("open", command_open_1.CommandOpen.create(this));
-	        this.registerCommand("remove", command_remove_1.CommandRemove.create(this));
-	        this.registerCommand("save", command_save_1.CommandSave.create(this, false));
-	        this.registerCommand("save-as", command_save_1.CommandSave.create(this, true));
-	        this.registerCommand("export", command_export_1.CommandExport.create(this));
-	    };
-	    Cocos2dViewModal.prototype.createEmitter = function () {
-	        var data = this.data;
-	        this.particlesEmitter = cocos2d_wrapper_1.createCocos2dEmitter(this.particlesEmitter, data);
-	    };
-	    Cocos2dViewModal.create = function (options) {
-	        var viewModal = new Cocos2dViewModal(options.storage);
-	        function update() {
-	            var canvas = viewModal.canvas;
-	            var emitter = viewModal.particlesEmitter;
-	            if (emitter) {
-	                emitter.update(1000 / 60);
-	                var ctx = canvas.getContext("2d");
-	                emitter.draw(ctx);
-	            }
-	            requestAnimationFrame(update);
-	        }
-	        requestAnimationFrame(update);
-	        return viewModal;
-	    };
-	    Cocos2dViewModal.TYPE = "cocos2d";
-	    return Cocos2dViewModal;
-	}(particles_view_modal_1.ParticlesViewModal));
-	exports.Cocos2dViewModal = Cocos2dViewModal;
-	;
-	iparticles_view_modal_1.ParticlesViewModalFactory.register(Cocos2dViewModal.TYPE, Cocos2dViewModal.create);
-	//# sourceMappingURL=view-modal.js.map
-
-/***/ },
-/* 196 */
-/***/ function(module, exports) {
-
-	void function () {
-	    'use strict';
-	    function pMultIn(point, factor) {
-	        point.x *= factor;
-	        point.y *= factor;
-	    }
-	    function pIn(p1, p2) {
-	        p1.x = p2.x;
-	        p1.y = p2.y;
-	    }
-	    function pAddIn(p1, p2) {
-	        p1.x += p2.x;
-	        p1.y += p2.y;
-	    }
-	    function pSubIn(p1, p2) {
-	        p1.x -= p2.x;
-	        p1.y -= p2.y;
-	    }
-	    function pNormalizeIn(p) {
-	        pMultIn(p, 1.0 / Math.sqrt(p.x * p.x + p.y * p.y));
-	    }
-	    function pZeroIn(p) {
-	        p.x = 0;
-	        p.y = 0;
-	    }
-	    function Point(x, y) {
-	        if (!(this instanceof Point)) {
-	            return new Point(x, y);
-	        }
-	        this.x = x;
-	        this.y = y;
-	    }
-	    function Color(r, g, b, a) {
-	        if (!(this instanceof Color)) {
-	            return new Color(r, g, b, a);
-	        }
-	        this.r = r;
-	        this.g = g;
-	        this.b = b;
-	        this.a = a;
-	    }
-	    function Rect(x, y, w, h) {
-	        if (!(this instanceof Rect)) {
-	            return new Rect(x, y, w, h);
-	        }
-	        this.x = x;
-	        this.y = y;
-	        this.w = w;
-	        this.h = h;
-	    }
-	    function pointInMatrix(point, transform) {
-	        var x = point.x, y = point.y, a = transform.a, b = transform.b, c = transform.c, d = transform.d, tx = transform.tx, ty = transform.ty;
-	        return { x: a * x + c * y + tx, y: b * x + d * y + ty };
-	    }
-	    var ONE_RAD = Math.PI / 180;
-	    function angleToRadians(angle) {
-	        return ONE_RAD * angle;
-	    }
-	    function randomMinus1To1() {
-	        return (Math.random() - 0.5) * 2;
-	    }
-	    function Clampf(val, min, max) {
-	        if (min > max) {
-	            var tmp = min;
-	            min = max;
-	            max = min;
-	        }
-	        return val < min ? min : val > max ? max : val;
-	    }
-	    var ONE = 1;
-	    var SRC_ALPHA = 0x0302;
-	    var BLEND_DST = 0x0303;
-	    function Particle() {
-	        //粒子坐标浮动值
-	        this.pos = Point(0, 0);
-	        //粒子起始坐标
-	        this.startPos = Point(0, 0);
-	        //粒子最终绘制的坐标
-	        this.drawPos = Point(0, 0);
-	        this.color = Color(0, 0, 0, 255);
-	        this.deltaColor = Color(0, 0, 0, 255);
-	        //重力模式
-	        this.modeA = new Particle.ParamsGravity();
-	        //半径模式
-	        this.modeB = new Particle.ParamsRadius();
-	        this.size = 0;
-	        this.deltaSize = 0;
-	        this.rotation = 0;
-	        this.deltaRotation = 0;
-	        this.timeToLive = 0;
-	        this.isChangeColor = false;
-	    }
-	    Particle.TemporaryPoints = [
-	        Point(0, 0),
-	        Point(0, 0),
-	        Point(0, 0),
-	        Point(0, 0)
-	    ];
-	    ////////////////////////////////////////////////////////////////////////////////
-	    Particle.ModeGravity = function (speed, speedVar, gravityX, gravityY, radialAccel, radialAccelVar, tangentialAccel, tangentialAccelVar, rotationIsDir) {
-	        //粒子初速度
-	        this.speed = speed;
-	        //粒子初速度浮值
-	        this.speedVar = speedVar;
-	        this.gravity = { x: gravityX, y: gravityY };
-	        this.radialAccel = radialAccel;
-	        this.radialAccelVar = radialAccelVar;
-	        this.tangentialAccel = tangentialAccel;
-	        this.tangentialAccelVar = tangentialAccelVar;
-	        this.rotationIsDir = rotationIsDir;
-	    };
-	    Particle.ModeGravity.prototype.randomFeatures = function (randians, particle) {
-	        var params = particle.modeA;
-	        //速度
-	        var speed = this.speed + this.speedVar * randomMinus1To1();
-	        //方向
-	        params.dir.x = Math.cos(randians);
-	        params.dir.y = Math.sin(randians);
-	        pMultIn(params.dir, speed);
-	        //径向加速度
-	        params.radialAccel = this.radialAccel + this.radialAccelVar * randomMinus1To1();
-	        //切向加速度
-	        params.tangentialAccel = this.tangentialAccel + this.tangentialAccelVar * randomMinus1To1();
-	    };
-	    Particle.ParamsGravity = function (p, radialAccel, tangentialAccel) {
-	        this.dir = p || Point(0, 0);
-	        this.radialAccel = radialAccel;
-	        this.tangentialAccel = tangentialAccel;
-	    };
-	    ///////////////////////////////////////////////////////////////////////////////
-	    Particle.ModeRadius = function (startRadius, startRadiusVar, endRadius, endRadiusVar, rotatePerSecond, rotatePerSecondVar) {
-	        this.startRadius = startRadius;
-	        this.startRadiusVar = startRadiusVar;
-	        this.endRadius = endRadius;
-	        this.endRadiusVar = endRadiusVar;
-	        this.rotatePerSecond = rotatePerSecond;
-	        this.rotatePerSecondVar = rotatePerSecondVar;
-	    };
-	    Particle.ModeRadius.prototype.randomFeatures = function (randians, particle) {
-	        var params = particle.modeB;
-	        var startRadius = this.startRadius + this.startRadiusVar * randomMinus1To1();
-	        var endRadius = this.endRadius + this.endRadiusVar * randomMinus1To1();
-	        params.angle = randians;
-	        params.radius = startRadius;
-	        params.deltaRadius = (endRadius - startRadius) / particle.timeToLive;
-	        params.anglePerSecond = angleToRadians(this.rotatePerSecond + this.rotatePerSecondVar * randomMinus1To1());
-	    };
-	    Particle.ParamsRadius = function (angle, anglePerSecond, radius, deltaRadius) {
-	        //粒子旋转角度
-	        this.angle = angle;
-	        //粒子运动半径
-	        this.radius = radius || 0;
-	        //粒子运动半径增量
-	        this.deltaRadius = deltaRadius || 0;
-	        //粒子旋转角速度
-	        this.anglePerSecond = anglePerSecond || 0;
-	    };
-	    ////////////////////////////////////////////////////////////////////////////////
-	    function ParticleEmitter(opts) {
-	        this.emitMode = 0;
-	        this.duration = 0;
-	        this.emitRate = 0;
-	        this.timeCounter = 0;
-	        //发射器原始坐标
-	        this.srcPos = Point(0, 0);
-	        //发射器坐标浮动值
-	        this.srcPosVar = Point(0, 0);
-	        this.angle = 0;
-	        this.angleVar = 0;
-	        this.maxParticles = 0;
-	        this.isRemoveOnFinish = false;
-	        this.particles = [];
-	        this.particleCounter = 0;
-	        this.positionType = ParticleEmitter.POS_TYPE_RELATIVE;
-	        this.srcBlendFunc = 0;
-	        this.dstBlendFunc = 0;
-	        this.life = 0;
-	        this.lifeVar = 0;
-	        this.startSize = 0;
-	        this.startSizeVar = 0;
-	        this.endSize = 0;
-	        this.endSizeVar = 0;
-	        this.startColor = Color(0, 0, 0, 0);
-	        this.startColorVar = Color(0, 0, 0, 0);
-	        this.endColor = Color(0, 0, 0, 0);
-	        this.endColorVar = Color(0, 0, 0, 0);
-	        this.startSpin = 0;
-	        this.startSpinVar = 0;
-	        this.endSpin = 0;
-	        this.endSpinVar = 0;
-	        this.tmpZeroPoint = Point(0, 0);
-	        this.elapsed = 0;
-	        this.timeScale = 1;
-	        this.active = true;
-	        this.texture = null;
-	        this.scaleX = 1;
-	        this.scaleY = 1;
-	        //this.tintCaches = [
-	        //	document.createElement("canvas"),
-	        //	document.createElement("canvas"),
-	        //	document.createElement("canvas"),
-	        //	document.createElement("canvas")
-	        //];
-	        this.tintCache = document.createElement("canvas");
-	        this.transform = { a: 1, b: 0, c: 0, d: 1, tx: 0, ty: 0 };
-	        this.worldTransform = { a: 1, b: 0, c: 0, d: 1, tx: 0, ty: 0 };
-	        this.anchorPointInPoints = Point(0, 0);
-	    }
-	    ParticleEmitter.POS_TYPE_FREE = 0;
-	    ParticleEmitter.POS_TYPE_RELATIVE = 1;
-	    ParticleEmitter.POS_TYPE_GROUPED = 2;
-	    ParticleEmitter.MODE_GRAVITY = 0;
-	    ParticleEmitter.MODE_RADIUS = 1;
-	    ParticleEmitter.MODE_WIND = 2;
-	    function fetchProperty(opts, key, def) {
-	        return opts[key] != void 0 ? opts[key] : def;
-	    }
-	    function renderToCache(image, cache) {
-	        var w = image.width;
-	        var h = image.height;
-	        cache[0].width = w;
-	        cache[0].height = h;
-	        cache[1].width = w;
-	        cache[1].height = h;
-	        cache[2].width = w;
-	        cache[2].height = h;
-	        cache[3].width = w;
-	        cache[3].height = h;
-	        var cacheCtx = cache[3].getContext("2d");
-	        cacheCtx.drawImage(image, 0, 0);
-	        var pixels = cacheCtx.getImageData(0, 0, w, h).data;
-	        var ctx;
-	        for (var rgbI = 0; rgbI < 4; rgbI++) {
-	            ctx = cache[rgbI].getContext("2d");
-	            var to = ctx.getImageData(0, 0, w, h);
-	            var data = to.data;
-	            for (var i = 0; i < pixels.length; i += 4) {
-	                data[i] = (rgbI === 0) ? pixels[i] : 0;
-	                data[i + 1] = (rgbI === 1) ? pixels[i + 1] : 0;
-	                data[i + 2] = (rgbI === 2) ? pixels[i + 2] : 0;
-	                data[i + 3] = pixels[i + 3];
-	            }
-	            ctx.putImageData(to, 0, 0);
-	        }
-	        image.onload = null;
-	    }
-	    ParticleEmitter.prototype.parseModeGravity = function (opts) {
-	        return new Particle.ModeGravity(parseFloat(fetchProperty(opts, "speed")), parseFloat(fetchProperty(opts, "speedVariance")), parseFloat(fetchProperty(opts, "gravityx")), parseFloat(fetchProperty(opts, "gravityy")), parseFloat(fetchProperty(opts, "radialAcceleration")), parseFloat(fetchProperty(opts, "radialAccelVariance")), parseFloat(fetchProperty(opts, "tangentialAcceleration")), parseFloat(fetchProperty(opts, "tangentialAccelVariance")), (fetchProperty(opts, "rotationIsDir", false)));
-	    };
-	    ParticleEmitter.prototype.parseModeRadius = function (opts) {
-	        return new Particle.ModeRadius(parseFloat(fetchProperty(opts, "maxRadius")), parseFloat(fetchProperty(opts, "maxRadiusVariance")), parseFloat(fetchProperty(opts, "minRadius")), 0, parseFloat(fetchProperty(opts, "rotatePerSecond")), parseFloat(fetchProperty(opts, "rotatePerSecondVariance")));
-	    };
-	    ParticleEmitter.prototype.init = function (opts) {
-	        this.maxParticles = parseInt(fetchProperty(opts, 'maxParticles', 0));
-	        for (var i = 0; i < this.maxParticles; i++) {
-	            this.particles.push(new Particle());
-	        }
-	        //emitter angle
-	        this.angle = parseInt(fetchProperty(opts, 'angle', 0));
-	        this.angleVar = parseInt(fetchProperty(opts, 'angleVariance', 0));
-	        //emitter duration
-	        this.duration = parseInt(fetchProperty(opts, 'duration', 0));
-	        this.backDuration = this.duration;
-	        //blend function
-	        this.srcBlendFunc = parseInt(fetchProperty(opts, 'blendFuncSource', 0));
-	        this.dstBlendFunc = parseInt(fetchProperty(opts, 'blendFuncDestination', 0));
-	        //particle color
-	        this.startColor.r = parseFloat(fetchProperty(opts, "startColorRed")) * 255;
-	        this.startColor.g = parseFloat(fetchProperty(opts, "startColorGreen")) * 255;
-	        this.startColor.b = parseFloat(fetchProperty(opts, "startColorBlue")) * 255;
-	        this.startColor.a = parseFloat(fetchProperty(opts, "startColorAlpha")) * 255;
-	        this.startColorVar.r = parseFloat(fetchProperty(opts, "startColorVarianceRed")) * 255;
-	        this.startColorVar.g = parseFloat(fetchProperty(opts, "startColorVarianceGreen")) * 255;
-	        this.startColorVar.b = parseFloat(fetchProperty(opts, "startColorVarianceBlue")) * 255;
-	        this.startColorVar.a = parseFloat(fetchProperty(opts, "startColorVarianceAlpha")) * 255;
-	        this.endColor.r = parseFloat(fetchProperty(opts, "finishColorRed")) * 255;
-	        this.endColor.g = parseFloat(fetchProperty(opts, "finishColorGreen")) * 255;
-	        this.endColor.b = parseFloat(fetchProperty(opts, "finishColorBlue")) * 255;
-	        this.endColor.a = parseFloat(fetchProperty(opts, "finishColorAlpha")) * 255;
-	        this.endColorVar.r = parseFloat(fetchProperty(opts, "finishColorVarianceRed")) * 255;
-	        this.endColorVar.g = parseFloat(fetchProperty(opts, "finishColorVarianceGreen")) * 255;
-	        this.endColorVar.b = parseFloat(fetchProperty(opts, "finishColorVarianceBlue")) * 255;
-	        this.endColorVar.a = parseFloat(fetchProperty(opts, "finishColorVarianceAlpha")) * 255;
-	        // particle size
-	        this.startSize = parseFloat(fetchProperty(opts, "startParticleSize"));
-	        this.startSizeVar = parseFloat(fetchProperty(opts, "startParticleSizeVariance"));
-	        this.endSize = parseFloat(fetchProperty(opts, "finishParticleSize"));
-	        this.endSizeVar = parseFloat(fetchProperty(opts, "finishParticleSizeVariance"));
-	        //emitter position
-	        this.srcPos.x = parseFloat(fetchProperty(opts, "sourcePositionx"));
-	        this.srcPos.y = parseFloat(fetchProperty(opts, "sourcePositiony"));
-	        this.srcPosVar.x = parseFloat(fetchProperty(opts, "sourcePositionVariancex"));
-	        this.srcPosVar.y = parseFloat(fetchProperty(opts, "sourcePositionVariancey"));
-	        //particle spining
-	        this.startSpin = parseFloat(fetchProperty(opts, "rotationStart"));
-	        this.startSpinVar = parseFloat(fetchProperty(opts, "rotationStartVariance"));
-	        this.endSpin = parseFloat(fetchProperty(opts, "rotationEnd"));
-	        this.endSpinVar = parseFloat(fetchProperty(opts, "rotationEndVariance"));
-	        //particle life span
-	        this.life = parseFloat(fetchProperty(opts, "particleLifespan"));
-	        this.lifeVar = parseFloat(fetchProperty(opts, "particleLifespanVariance"));
-	        //emitter rate
-	        this.emitRate = this.maxParticles / this.life;
-	        this.isRemoveOnFinish = fetchProperty(opts, "isAutoRemoveOnFinish", false);
-	        //emitter mode
-	        this.emitMode = parseFloat(fetchProperty(opts, "emitterType"));
-	        this.imageData = fetchProperty(opts, "imageData", null);
-	        if (this.imageData) {
-	            var image = new Image();
-	            image.src = this.imageData;
-	            this.setTexture(image);
-	        }
-	        if (this.emitMode === ParticleEmitter.MODE_GRAVITY) {
-	            this.mode = this.parseModeGravity(opts);
-	        }
-	        else {
-	            this.mode = this.parseModeRadius(opts);
-	        }
-	    };
-	    ParticleEmitter.prototype.setScaleX = function (scaleX) {
-	        this.scaleX = scaleX;
-	        return this;
-	    };
-	    ParticleEmitter.prototype.setScaleY = function (scaleY) {
-	        this.scaleY = scaleY;
-	        return this;
-	    };
-	    ParticleEmitter.prototype.emit = function (once) {
-	        this.reset();
-	        if (once) {
-	            if ("backDuration" in this) {
-	                this.duration = this.backDuration;
-	            }
-	            if (this.duration === -1) {
-	                this.duration = 1;
-	            }
-	        }
-	        else {
-	            if ("backDuration" in this) {
-	                this.backDuration = this.duration;
-	            }
-	            this.duration = -1;
-	        }
-	    };
-	    ParticleEmitter.prototype.reset = function () {
-	        this.active = true;
-	        this.elapsed = 0;
-	        if ("backDuration" in this) {
-	            this.duration = this.backDuration;
-	        }
-	        var particles = this.particles;
-	        for (var i = 0; i < particles.length; i++) {
-	            particles[i].timeToLive = 0;
-	        }
-	    };
-	    ParticleEmitter.prototype.reload = function (opts) {
-	        this.stop();
-	        this.init(opts);
-	        this.start();
-	    };
-	    ParticleEmitter.prototype.pause = function () {
-	        this.timeScale = 0;
-	        return this;
-	    };
-	    ParticleEmitter.prototype.resume = function () {
-	        this.timeScale = 1;
-	        return this;
-	    };
-	    ParticleEmitter.prototype.start = function () {
-	        this.reset();
-	        return this;
-	    };
-	    ParticleEmitter.prototype.stop = function () {
-	        if ("backDuration" in this) {
-	            this.duration = this.backDuration;
-	        }
-	        this.active = false;
-	        this.elapsed = this.duration;
-	        this.timeCounter = 0;
-	        return this;
-	    };
-	    ParticleEmitter.prototype.setTexture = function (texture) {
-	        if (texture === this.texture)
-	            return;
-	        this.texture = texture;
-	        //renderToCache(this.texture, this.tintCaches);
-	        this.textureRect = Rect(0, 0, texture.width, texture.height);
-	        return this;
-	    };
-	    ParticleEmitter.prototype.getWorldTransform = function () {
-	        var t = this.transform;
-	        var a = 1, b = 0, c = 0, d = 1;
-	        t.tx = this.srcPos.x;
-	        t.ty = this.srcPos.y;
-	        t.a = a;
-	        t.b = b;
-	        t.c = c;
-	        t.d = d;
-	        var scaleX = this.scaleX, scaleY = this.scaleY;
-	        var appX = this.anchorPointInPoints.x, appY = this.anchorPointInPoints.y;
-	        scaleX = (scaleX < 0.000001 && scaleX > -0.000001) ? 0.000001 : scaleX;
-	        scaleY = (scaleY < 0.000001 && scaleY > -0.000001) ? 0.000001 : scaleY;
-	        if (scaleX !== 1 || scaleY !== 1) {
-	            a = t.a *= scaleX;
-	            b = t.b *= scaleX;
-	            c = t.c *= scaleY;
-	            d = t.d *= scaleY;
-	        }
-	        t.tx -= a * appX + c * appY;
-	        t.ty -= b * appX + d * appY;
-	        return this.transform;
-	    };
-	    ParticleEmitter.prototype.convertToWorldSpace = function (point) {
-	        return pointInMatrix(point, this.getWorldTransform());
-	    };
-	    ParticleEmitter.prototype.initParticle = function (particle) {
-	        //timeToLive
-	        particle.timeToLive = this.life + this.lifeVar * randomMinus1To1();
-	        particle.timeToLive = Math.max(0, particle.timeToLive);
-	        //position
-	        particle.pos.x = this.srcPosVar.x * randomMinus1To1();
-	        particle.pos.y = this.srcPosVar.y * randomMinus1To1();
-	        //color
-	        var startColor = {
-	            r: Clampf(this.startColor.r + this.startColorVar.r * randomMinus1To1(), 0, 255),
-	            g: Clampf(this.startColor.g + this.startColorVar.g * randomMinus1To1(), 0, 255),
-	            b: Clampf(this.startColor.b + this.startColorVar.b * randomMinus1To1(), 0, 255),
-	            a: Clampf(this.startColor.a + this.startColorVar.a * randomMinus1To1(), 0, 255)
-	        };
-	        var endColor = {
-	            r: Clampf(this.endColor.r + this.endColorVar.r * randomMinus1To1(), 0, 255),
-	            g: Clampf(this.endColor.g + this.endColorVar.g * randomMinus1To1(), 0, 255),
-	            b: Clampf(this.endColor.b + this.endColorVar.b * randomMinus1To1(), 0, 255),
-	            a: Clampf(this.endColor.a + this.endColorVar.a * randomMinus1To1(), 0, 255)
-	        };
-	        particle.color = startColor;
-	        particle.deltaColor = {
-	            r: (endColor.r - startColor.r) / particle.timeToLive,
-	            g: (endColor.g - startColor.g) / particle.timeToLive,
-	            b: (endColor.b - startColor.b) / particle.timeToLive,
-	            a: (endColor.a - startColor.a) / particle.timeToLive
-	        };
-	        //size
-	        var startSize = this.startSize + this.startSizeVar * randomMinus1To1();
-	        var endSize = this.endSize + this.endSizeVar * randomMinus1To1();
-	        particle.size = Math.max(0, startSize);
-	        particle.deltaSize = (endSize - startSize) / particle.timeToLive;
-	        //rotation
-	        var startA = this.startSpin + this.startSpinVar * randomMinus1To1();
-	        var end = this.endSpin + this.endSpinVar * randomMinus1To1();
-	        particle.rotation = startA;
-	        particle.deltaRotation = (end - startA) / particle.timeToLive;
-	        //position
-	        if (this.positionType === ParticleEmitter.POS_TYPE_FREE) {
-	            particle.startPos = this.convertToWorldSpace(this.tmpZeroPoint);
-	        }
-	        else if (this.positionType === ParticleEmitter.POS_TYPE_RELATIVE) {
-	            particle.startPos.x = this.srcPos.x;
-	            particle.startPos.y = this.srcPos.y;
-	        }
-	        //direction
-	        var randians = angleToRadians(this.angle + this.angleVar * randomMinus1To1());
-	        this.mode.randomFeatures(randians, particle);
-	    };
-	    ParticleEmitter.prototype.isFull = function () {
-	        return this.particleCounter >= this.maxParticles;
-	    };
-	    ParticleEmitter.prototype.addParticle = function () {
-	        if (!this.isFull()) {
-	            var particle = null;
-	            if (this.particleCounter < this.particles.length) {
-	                particle = this.particles[this.particleCounter];
-	            }
-	            else {
-	                particle = new Particle();
-	                this.particles.push(particle);
-	            }
-	            this.initParticle(particle);
-	            ++this.particleCounter;
-	        }
-	    };
-	    ParticleEmitter.prototype.updateParticles = function (dt) {
-	        var currentPosition = Particle.TemporaryPoints[0];
-	        if (this.positionType === ParticleEmitter.POS_TYPE_FREE) {
-	            pIn(currentPosition, this.convertToWorldSpace(this.tmpZeroPoint));
-	        }
-	        else if (this.positionType === ParticleEmitter.TYPE_RELATIVE) {
-	            currentPosition.x = this.srcPos.x;
-	            currentPosition.y = this.srcPos.y;
-	        }
-	        var particle = null, particleIndex = 0, particles = this.particles, tpa = Particle.TemporaryPoints[1], tpb = Particle.TemporaryPoints[2], tpc = Particle.TemporaryPoints[3];
-	        while (particleIndex < this.particleCounter) {
-	            pZeroIn(tpa);
-	            pZeroIn(tpb);
-	            pZeroIn(tpc);
-	            particle = particles[particleIndex];
-	            particle.timeToLive -= dt;
-	            if (particle.timeToLive > 0) {
-	                if (this.emitMode === ParticleEmitter.MODE_GRAVITY) {
-	                    var tmp = tpc, radial = tpa, tangential = tpb;
-	                    //radial acceleration
-	                    if (particle.pos.x || particle.pos.y) {
-	                        pIn(radial, particle.pos);
-	                        //计算加速度
-	                        pNormalizeIn(radial);
-	                    }
-	                    else {
-	                        pZeroIn(radial);
-	                    }
-	                    pIn(tangential, radial);
-	                    pMultIn(radial, particle.modeA.radialAccel);
-	                    //tangential acceleration
-	                    var newy = tangential.x;
-	                    tangential.x = -tangential.y;
-	                    tangential.y = newy;
-	                    pMultIn(tangential, particle.modeA.tangentialAccel);
-	                    pIn(tmp, radial);
-	                    pAddIn(tmp, tangential);
-	                    pAddIn(tmp, this.mode.gravity);
-	                    pMultIn(tmp, dt);
-	                    pAddIn(particle.modeA.dir, tmp);
-	                    pIn(tmp, particle.modeA.dir);
-	                    pMultIn(tmp, dt);
-	                    pAddIn(particle.pos, tmp);
-	                }
-	                else {
-	                    var modeB = particle.modeB;
-	                    modeB.angle += modeB.anglePerSecond * dt;
-	                    modeB.radius += modeB.deltaRadius * dt;
-	                    particle.pos.x = -Math.cos(modeB.angle) * modeB.radius;
-	                    particle.pos.y = -Math.sin(modeB.angle) * modeB.radius;
-	                }
-	                //color
-	                particle.color.r += particle.deltaColor.r * dt;
-	                particle.color.g += particle.deltaColor.g * dt;
-	                particle.color.b += particle.deltaColor.b * dt;
-	                particle.color.a += particle.deltaColor.a * dt;
-	                particle.isChangeColor = false;
-	                //size
-	                particle.size += (particle.deltaSize * dt);
-	                particle.size = Math.max(0, particle.size);
-	                //rotation
-	                particle.rotation += (particle.deltaRotation * dt);
-	                //position
-	                var newPos = tpa;
-	                if (this.positionType === ParticleEmitter.POS_TYPE_FREE
-	                    || this.positionType === ParticleEmitter.POS_TYPE_RELATIVE) {
-	                    var diff = tpb;
-	                    pIn(diff, currentPosition);
-	                    pSubIn(diff, particle.startPos);
-	                    pIn(newPos, particle.pos);
-	                    pSubIn(newPos, diff);
-	                }
-	                else {
-	                    pIn(newPos, particle.pos);
-	                }
-	                pIn(particle.drawPos, newPos);
-	                ++particleIndex;
-	            }
-	            else {
-	                //life < 0
-	                if (particleIndex !== this.particleCounter - 1) {
-	                    var deadParticle = particles[particleIndex] = particles[this.particleCounter - 1];
-	                    particles[this.particleCounter - 1] = particle;
-	                }
-	                --this.particleCounter;
-	            }
-	        }
-	        return;
-	    };
-	    ParticleEmitter.prototype.update = function (dt) {
-	        var emitLimit = 1.0 / this.emitRate;
-	        dt *= this.timeScale;
-	        if (this.active) {
-	            if (this.particleCounter < this.maxParticles) {
-	                this.timeCounter += dt;
-	            }
-	            while (this.particleCounter < this.maxParticles
-	                && this.timeCounter > emitLimit) {
-	                this.addParticle();
-	                this.timeCounter -= emitLimit;
-	            }
-	            this.elapsed += dt;
-	            if (this.duration !== -1 && this.duration <= this.elapsed) {
-	                this.stop();
-	            }
-	        }
-	        this.updateParticles(dt);
-	    };
-	    ParticleEmitter.prototype.setTransform = function (context, t) {
-	        //why
-	        context.transform(t.a, -t.b, -t.c, t.d, t.tx * this.scaleX, -(t.ty * this.scaleY));
-	    };
-	    ParticleEmitter.prototype.isBlendAdditive = function () {
-	        return ((this.srcBlendFunc === SRC_ALPHA && this.dstBlendFunc === ONE)
-	            || (this.srcBlendFunc === ONE && this.dstBlendFunc === ONE));
-	    };
-	    ParticleEmitter.prototype.changeTextureColor = function (texture, color, rect) {
-	        var canvas = this.tintCache;
-	        var context = canvas.getContext("2d");
-	        canvas.width = texture.width;
-	        canvas.height = texture.height;
-	        context.globalCompositeOperation = "source-over";
-	        context.fillStyle = "rgb(" + (color.r | 0) + "," + (color.g | 0) + "," + (color.b | 0) + ")";
-	        context.fillRect(0, 0, rect.w, rect.h);
-	        context.globalCompositeOperation = "multiply";
-	        context.drawImage(texture, rect.x, rect.y, rect.w, rect.h, 0, 0, rect.w, rect.h);
-	        context.globalCompositeOperation = "destination-atop";
-	        context.drawImage(texture, rect.x, rect.y, rect.w, rect.h, 0, 0, rect.w, rect.h);
-	        return canvas;
-	    };
-	    ParticleEmitter.prototype.draw = function (context) {
-	        var texture = this.texture, particles = this.particles, textureRect = this.textureRect, particleCounter = this.particleCounter;
-	        context.save();
-	        this.setTransform(context, this.worldTransform);
-	        if (this.isBlendAdditive()) {
-	            context.globalCompositeOperation = 'lighter';
-	        }
-	        else {
-	            context.globalCompositeOperation = 'source-over';
-	        }
-	        //assert texture mode
-	        var particle, lpx, alpha, size, w = textureRect.w, h = textureRect.h;
-	        for (var i = 0; i < particleCounter; i++) {
-	            particle = particles[i];
-	            lpx = (0 | (particle.size * 0.5));
-	            alpha = particle.color.a / 255;
-	            if (alpha === 0)
-	                continue;
-	            context.globalAlpha = alpha;
-	            context.save();
-	            context.translate((0 | particle.drawPos.x), -(0 | particle.drawPos.y));
-	            size = Math.floor(particle.size / 4) * 4;
-	            context.scale(Math.max((1 / w) * size, 0.000001), Math.max((1 / h) * size, 0.000001));
-	            if (particle.rotation) {
-	                context.rotate(angleToRadians(particle.rotation));
-	            }
-	            var dstTexture = particle.isChangeColor ?
-	                this.changeTextureColor(texture, particle.color, textureRect) : texture;
-	            context.drawImage(dstTexture, -(0 | (w / 2)), -(0 | (h / 2)));
-	            context.restore();
-	        }
-	        context.restore();
-	    };
-	    window.ParticleEmitter = ParticleEmitter;
-	}();
-	//# sourceMappingURL=particles-latest.js.map
-
-/***/ },
-/* 197 */
-/***/ function(module, exports, __webpack_require__) {
-
-	"use strict";
-	var document_1 = __webpack_require__(198);
-	var small_sun_1 = __webpack_require__(199);
-	document_1.Document.registerTemplate("default", small_sun_1.smallSun);
-	//# sourceMappingURL=templates.js.map
-
-/***/ },
-/* 198 */
-/***/ function(module, exports, __webpack_require__) {
-
-	"use strict";
-	var qtk_1 = __webpack_require__(2);
-	var Document = (function () {
-	    function Document() {
-	    }
-	    Document.prototype.toJson = function () {
-	        var json = {
-	            data: this.data,
-	            propsDesc: this.propsDesc.map(function (item) {
-	                return item.toJson();
-	            })
-	        };
-	        return json;
-	    };
-	    Document.prototype.fromJson = function (json) {
-	        this.data = json.data;
-	        this.propsDesc = json.propsDesc.map(function (item) {
-	            return qtk_1.PagePropsDesc.create(item.title, item.propsDesc.items);
-	        });
-	        return this;
-	    };
-	    Document.prototype.fromTemplate = function (name) {
-	        var json = Document.templates[name];
-	        var data = {};
-	        this.propsDesc = json.map(function (item) {
-	            var pagePropsDesc = qtk_1.PagePropsDesc.create(item.title, item.propsDesc);
-	            item.propsDesc.forEach(function (desc) {
-	                if (desc.path) {
-	                    data[desc.path] = desc.value;
-	                }
-	            });
-	            return pagePropsDesc;
-	        });
-	        this.data = data;
-	        return this;
-	    };
-	    Document.prototype.getTemplateList = function () {
-	        return Document.templateNames;
-	    };
-	    Document.create = function () {
-	        return new Document();
-	    };
-	    Document.registerTemplate = function (name, json) {
-	        Document.templates[name] = json;
-	        Document.templateNames.push(name);
-	    };
-	    Document.getTemplateList = function () {
-	        return Document.templateNames;
-	    };
-	    Document.templates = {};
-	    Document.templateNames = [];
-	    return Document;
-	}());
-	exports.Document = Document;
-	//# sourceMappingURL=document.js.map
-
-/***/ },
-/* 199 */
-/***/ function(module, exports) {
-
-	"use strict";
-	exports.smallSun = [
-	    {
-	        "title": "Basic",
-	        "propsDesc": [
-	            {
-	                "type": "number",
-	                "name": "blendFuncDestination",
-	                "converter": "blendFuncDestination",
-	                "path": "blendFuncDestination",
-	                "value": 1
-	            },
-	            {
-	                "type": "number",
-	                "name": "blendFuncSource",
-	                "converter": "blendFuncSource",
-	                "path": "blendFuncSource",
-	                "value": 770
-	            },
-	            {
-	                "type": "number",
-	                "name": "duration",
-	                "converter": "duration",
-	                "path": "duration",
-	                "value": -1
-	            },
-	            {
-	                "type": "number",
-	                "name": "emitterType",
-	                "converter": "emitterType",
-	                "path": "emitterType",
-	                "value": 0
-	            },
-	            {
-	                "type": "number",
-	                "name": "maxParticles",
-	                "converter": "maxParticles",
-	                "path": "maxParticles",
-	                "value": 500
-	            },
-	            {
-	                "type": "number",
-	                "name": "gravityx",
-	                "converter": "gravityx",
-	                "path": "gravityx",
-	                "value": 0
-	            },
-	            {
-	                "type": "number",
-	                "name": "gravityy",
-	                "converter": "gravityy",
-	                "path": "gravityy",
-	                "value": 0
-	            },
-	            {
-	                "type": "number",
-	                "name": "sourcePositionVariancex",
-	                "converter": "sourcePositionVariancex",
-	                "path": "sourcePositionVariancex",
-	                "value": 7
-	            },
-	            {
-	                "type": "number",
-	                "name": "sourcePositionVariancey",
-	                "converter": "sourcePositionVariancey",
-	                "path": "sourcePositionVariancey",
-	                "value": 7
-	            },
-	            {
-	                "type": "number",
-	                "name": "sourcePositionx",
-	                "converter": "sourcePositionx",
-	                "path": "sourcePositionx",
-	                "value": 161.4199981689453
-	            },
-	            {
-	                "type": "number",
-	                "name": "sourcePositiony",
-	                "converter": "sourcePositiony",
-	                "path": "sourcePositiony",
-	                "value": 232.94000244140625
-	            }
-	        ]
-	    },
-	    {
-	        "title": "Start Color",
-	        "propsDesc": [
-	            {
-	                "type": "number",
-	                "name": "startColorAlpha",
-	                "converter": "color",
-	                "path": "startColorAlpha",
-	                "value": 1
-	            },
-	            {
-	                "type": "number",
-	                "name": "startColorBlue",
-	                "converter": "color",
-	                "path": "startColorBlue",
-	                "value": 0
-	            },
-	            {
-	                "type": "number",
-	                "name": "startColorGreen",
-	                "converter": "color",
-	                "path": "startColorGreen",
-	                "value": 0
-	            },
-	            {
-	                "type": "number",
-	                "name": "startColorRed",
-	                "converter": "color",
-	                "path": "startColorRed",
-	                "value": 1
-	            },
-	            {
-	                "type": "number",
-	                "name": "startColorVarianceAlpha",
-	                "converter": "color",
-	                "path": "startColorVarianceAlpha",
-	                "value": 0
-	            },
-	            {
-	                "type": "number",
-	                "name": "startColorVarianceBlue",
-	                "converter": "color",
-	                "path": "startColorVarianceBlue",
-	                "value": 0
-	            },
-	            {
-	                "type": "number",
-	                "name": "startColorVarianceGreen",
-	                "converter": "color",
-	                "path": "startColorVarianceGreen",
-	                "value": 0
-	            },
-	            {
-	                "type": "number",
-	                "name": "startColorVarianceRed",
-	                "converter": "color",
-	                "path": "startColorVarianceRed",
-	                "value": 0
-	            }
-	        ]
-	    },
-	    {
-	        "title": "End Color",
-	        "propsDesc": [
-	            {
-	                "type": "number",
-	                "name": "finishColorAlpha",
-	                "converter": "color",
-	                "path": "finishColorAlpha",
-	                "value": 1
-	            },
-	            {
-	                "type": "number",
-	                "name": "finishColorBlue",
-	                "converter": "color",
-	                "path": "finishColorBlue",
-	                "value": 0
-	            },
-	            {
-	                "type": "number",
-	                "name": "finishColorGreen",
-	                "converter": "color",
-	                "path": "finishColorGreen",
-	                "value": 1
-	            },
-	            {
-	                "type": "number",
-	                "name": "finishColorRed",
-	                "converter": "color",
-	                "path": "finishColorRed",
-	                "value": 1
-	            },
-	            {
-	                "type": "number",
-	                "name": "finishColorVarianceAlpha",
-	                "converter": "color",
-	                "path": "finishColorVarianceAlpha",
-	                "value": 0
-	            },
-	            {
-	                "type": "number",
-	                "name": "finishColorVarianceBlue",
-	                "converter": "color",
-	                "path": "finishColorVarianceBlue",
-	                "value": 0
-	            },
-	            {
-	                "type": "number",
-	                "name": "finishColorVarianceGreen",
-	                "converter": "color",
-	                "path": "finishColorVarianceGreen",
-	                "value": 0
-	            },
-	            {
-	                "type": "number",
-	                "name": "finishColorVarianceRed",
-	                "converter": "color",
-	                "path": "finishColorVarianceRed",
-	                "value": 0
-	            }
-	        ]
-	    },
-	    {
-	        "title": "Range",
-	        "propsDesc": [
-	            {
-	                "type": "range",
-	                "name": "startParticleSize",
-	                "converter": "startParticleSize",
-	                "path": "startParticleSize",
-	                "value": {
-	                    "first": 22,
-	                    "second": 14
-	                }
-	            },
-	            {
-	                "type": "range",
-	                "name": "angle",
-	                "converter": "angle",
-	                "path": "angle",
-	                "value": {
-	                    "first": 0,
-	                    "second": 360
-	                }
-	            },
-	            {
-	                "type": "range",
-	                "name": "minRadius",
-	                "converter": "minRadius",
-	                "path": "minRadius",
-	                "value": {
-	                    "first": 0
-	                }
-	            },
-	            {
-	                "type": "range",
-	                "name": "maxRadius",
-	                "converter": "maxRadius",
-	                "path": "maxRadius",
-	                "value": {
-	                    "first": 100,
-	                    "second": 0
-	                }
-	            },
-	            {
-	                "type": "range",
-	                "name": "particleLifespan",
-	                "converter": "particleLifespan",
-	                "path": "particleLifespan",
-	                "value": {
-	                    "first": 0.20000000298023224,
-	                    "second": 0.8553000092506409
-	                }
-	            },
-	            {
-	                "type": "range",
-	                "name": "radialAcceleration",
-	                "converter": "radialAcceleration",
-	                "path": "radialAcceleration",
-	                "value": {
-	                    "first": -380,
-	                    "second": 0
-	                }
-	            },
-	            {
-	                "type": "range",
-	                "name": "rotatePerSecond",
-	                "converter": "rotatePerSecond",
-	                "path": "rotatePerSecond",
-	                "value": {
-	                    "first": 0,
-	                    "second": 0
-	                }
-	            },
-	            {
-	                "type": "range",
-	                "name": "rotationEnd",
-	                "converter": "rotationEnd",
-	                "path": "rotationEnd",
-	                "value": {
-	                    "first": 0,
-	                    "second": 0
-	                }
-	            },
-	            {
-	                "type": "range",
-	                "name": "rotationStart",
-	                "converter": "rotationStart",
-	                "path": "rotationStart",
-	                "value": {
-	                    "first": 0,
-	                    "second": 0
-	                }
-	            },
-	            {
-	                "type": "range",
-	                "name": "speed",
-	                "converter": "speed",
-	                "path": "speed",
-	                "value": {
-	                    "first": 128,
-	                    "second": 6.579999923706055
-	                }
-	            },
-	            {
-	                "type": "range",
-	                "name": "tangentialAcceleration",
-	                "converter": "tangentialAcceleration",
-	                "path": "tangentialAcceleration",
-	                "value": {
-	                    "first": -144.74000549316406,
-	                    "second": 0
-	                }
-	            },
-	            {
-	                "type": "range",
-	                "name": "finishParticleSize",
-	                "converter": "finishParticleSize",
-	                "path": "finishParticleSize",
-	                "value": {
-	                    "first": 0,
-	                    "second": 0
-	                }
-	            }
-	        ]
-	    },
-	    {
-	        "title": "Image",
-	        "propsDesc": [
-	            {
-	                "type": "text",
-	                "name": "textureFileName",
-	                "converter": "textureFileName",
-	                "path": "textureFileName",
-	                "value": "particleTexture.png"
-	            },
-	            {
-	                "type": "text",
-	                "name": "textureImageData",
-	                "converter": "textureImageData",
-	                "path": "textureImageData",
-	                "value": "H4sIAAAAAAAAA+1bB1RURxd+byu9g1RZpINUpVtoKoiKIqJYorisdESqLRINkihGjSHEFo0EC/ZoRCRWLMRoFHuPEIMlNizY4/5z3fvic7MrmJic84vr+Tjj7My997tt5i1L796UE0UFqlD/wUsqldJvgv/CJrTr35KrjBunGfyn/nib/FvIldsMmvXJWzOYejv8X8OZzYsnB74c5N9X5pO36od/wl8Jb3m+DD8BQtgMmHXyfpH3xVvxw9/h3wLe8nxVCFQRaiyoI9hzzDoVBf546354U/4t5M3mzPDUINAk0CLQVgItXKPB8ou8L17rh3+TvxLu8rwZzgxf4KVDoEugR6BPYEBgKAcDfE8P1+rgXsYfjC8U+eFv+6Al/BXkOzvminhrof16yMuIwJjAhMCUwIzAnMACYY5zprjGGPcYoAwdlKnID/K58Eb10Bz/FsRcRY63LsaR4WyGHC0JrAisCWwIbOVgg+9Z4VoL3Mv4Qh9ls/2g8k9zoYX8FXFnYq6OOarD4m2CMbVETsDPgcCJoD2BK4EbgTvCDefa4xoH3GONMsxRJuMHHdSpzsoFhT74J/ylf815ee4QB23MUUMWbxHG0wE5AT9PAi8CXwJ/ggA5+ON7XrjWDfc6oCwRyw+GqFMbbVDmg2ZzQBn/Zrgz+a7NirkZxgpsdSRwQR7eyK0LQRBBKEF3gjCCcEQYzoXimi64xxtluKBMG9RhxsoFxgdqf8cHivi3kDuT78YYF6hbe4wZ2OxD0JkgmKAHQQRBJEEUQTRBDMFARAzOReGaCNwTjDJ8UGZ71GGFOo2lL+vhb/ngNfzZNS+f82zu0KesMT5uGLNOBCEY20jkFkswjCCOQEwgIRiFkOBcHK6JxT2RKCMEZXqjDkfUaaHAB+xaaLYXyPNXEnuB9NV6Z7i3lcpyEnqWh1RWv4EYuz4EAwiGEowkSCBIJcggyCLIIchF5OBcBq5JwD1DUUYflBmIOjxQpw3awPiA3Q/YZ6PSHFDCX547nDPqctwtUL+zVJabUK+Qr5C7/QmGYEyTCcYgzwkE+QQfE0wlKERMxbl8XJOLe5JRxhCUGYE6/FGnM9rAzgNttJU5G1/xwev4K4g9u+bhvIGeC30Has8aYwB2QP+G3tVbKqvl4QSJGM+xyAs4FhHMIphDUExQgijGuVm4ZiruGYsyElFmDOoIRZ2eaIM12mSENmpKX+0FSnNAAX9leQ/1BecO9F7oP1CDHhgLsAdydJBUlrcpUllOT8L4zkSO8wkWEZQSlBEsRZTh3CJcU4x7ClFGDsociTr6oE5/tMERbTJDG9m94LU5wPBvJvZw54LcgrPXUirrwdCHoBaDMSZgF+RqOsZtCsYSuCxEfisIVhOsJ9hAsBGxAedW45pS3FOMMqagzHTUMQh1BqMNbmiTJdqojzY3mwNy/JXFHu6dTN5DvcE5BL0Y+hHUZAzGBuwbR1CA8ZtLsISgHPltIqgi2Eawg2AnYgfOVeGa9bhnCcqYiTLHoY6RqDMCbfBGm2ykL+tAtyU5oIS/stjDHQxyDeoOziPoydCXhktl+TkW7ZwtleUx5PUa5LSVYBfBPoL9BAcIDiIO4Nw+XLMV96xBGfNRZgHqSEGd/dGGTmiTI9rYbA6w+UtfzX12z2fqnh17uIvBfQTOZKhD6M3Qn6BGp2CswF6o63UElRjjGuRaS3CM4CTBKcRJnKvFNTW4pxJlLEWZM1FHDuocgjaEoE0ucjnA9AH2WfBKDbD4K8p9pufD2WIpld3Fwc9wJ4N7CZzNUI/Qo6FPQa3OxZiB3VsIqgl+Qm4nCM4QnCe4SFCHuIhzZ3BNLe6pRhnrUOZc1DEJdYrRhnC0yRNttESbmbNAaQ0o4M/OfThL4Rkc+iqcMUzdQ9+BuxncT+CMhpyEXg39Cmp2DcYO7IfcPkpwmuACQT3BbwSXCa4gLuNcPa45jXsOoIxKlLkEdRSizmS0IRJtYvqANdpsgByU1oAS/sx9h8l9uF/A8yj0WThzoObgfgp9CO4p+VJZbkLPhr4FtbsTYwg8zmKMgeNVgt8JbhDcRNzAuau45iLuOYoydqLMctQxE3WOQRui0SZ/tNEWbWZqgLkPNcdfUd+Xz314NoO+C3d0uKfCXW0qxgXOLejd0L+ghmsxlsCnATkC39sEdwjuIu7g3E1c04B7TqOMGpS5HnUUo85ctCEWbeoi/WsNKDoH2J8TKePP1D70UrhbwD0Lns3h+RTyDZ5T4K4O91WoSehPKzBO0MOhj0EtX8CYAq9byPUeQZMc7uF7t3Dtb7j3BMrahbJXoK4i1J2KtkSibV5oqxXarqgHyPNn9z75cw8+k2NqH+4acO+C51R4VoMelC+V3Vvh7gb3FzjD92HcoJ9BTV/F2AK/+wQPCB4SPEI8xLn7uOYm7qlHGbUoswp1LEKd+WhDHNoUijYyPcBU+tdzUP6ZSBl/du+DMwU+n4L6gs8poN6g98IzGzy3wN2dyX24x8BZDufZeenL2N/GGD9Azo8JniAe49wDXHNb+jIHzqOs/SibqYE5qDsLbYlG2/zRVhup4h74Ov7yvR/u0nCWMr0Pnjngsxq4e8EzO5zDTO3D+QT32B1SWd+GM/2iVNbbb2BcmzDWDPenCMYHD3HNHdxzGWWcRJk7UEeZ9GUPyEFbYtC2AOnLHmiOHJSeAUr4M8+6sJfp/e4oG85a+MwGPreA/gNnETzDwR0F7vLQq6Fe4V4DZzucb5DPd5HbIznubB88wjV3cc8VlHEKZe5EHUtRZyHaMAptCkcb3aUvzwCGv/p7/i3m31rzv7X3v9Z6/rX2+8/7++/755/3z7+t+/OPVvv5V2v//PP959/vf//R2n//9f73n6/NgVbx+28lOdCqvv8glwPydfDOf//lNTnQar7/9AY+eCe//9ZCH7zT33+U8wG7F8j74J39/quCHJD3wTv//Wc5H7BrgX02vrPff1fiB2W58E7+/UMLfKDID+/c378o8EFzfnjn/v7pDf3A+ELeH//Xf//WQj+wfcH2h7xf5HnK8+XKyXwrvFm2vw0xjCz6Nb5Q5BNFULSHftu8WTa/TXFsufK+eJ1PlHL9NzjL2flviZbXo8wf/ylfBXZRlBZRxyX/oalA8oNmjTkvxjyKCqyguThPFtMCHHPID114H2YpFVqPtcYQx+Rd2oglsw2zPpCizVnro1gy+/+pd/snWZSQojTCyHjfC5NV8B+N/8h7vZLSR3N0KCotPTszqkewaFDsYJHwEJGkSgkoD4qKE2dl9O7fPRq2h3cLEWWRRYwHZK5+cFI2OOYS1lckekMn6oozMrOJpL5k3CFekiUm4wIyTs3LzoD5RjI2GJkCYw5wN8gkBpKxMYwTZOP2L9bIxoEwjk9LjydjsDkjPi0exnvI+NPcHAkZc3uRcWFukiSPjI+TsU1qTloSGT+CvWmSuCziPg2Yz5aIE8nYnYw1MqOjQsi4E3GiRgJrPJI1zpaMzQZSIaMzxmUmJSRmixzEjiIPPz9fUZgkL1WSne3SN06cEpcZLwoZnZYRlz6OomScX7z0wLci4mRvDz9vbxdPVw+Wo177ZgtfEFvZ6F6/FzGjjQ6+nFO0bnQpRfk2Ed/Mfjk3ch5FbZ5KUcZnX87ZfENR2iRuFYdZfIwgXxKzszP83dzy8vJckyRiV3Don69mF7TgxdLnCuL+dI8oVDIqLic1WwR+E49OHZ2TKcrKiBNLRC6vJPE/2ajYjvZRklGSTEk62RFDsiwpPYGEOz0+KTtpdLooKV1ZEP/mNrmXLK/JS7/sOWUw3JXSOWxAcW8epHj66hR36CLyDv1n3HqpxlBQeQMtr8jy/sVLQQflzIIfWUkJL/aFREWLxDmZubL3oCwpPqVGaVMGlAnVlrKmHCgXypPyoQJIo+pG9aQiqWgqlvqAElOJVBqVSeVRE6nJVCFVRM2mvqTmU4upMqqcWkttoDZTW6ld1D7qAFVLnaDOUXVUA3WdaqQeUE9pmhbSmrQ+bUJb0ra0M+1J+9Jd6G50LzqKjqVH0Al0Op1DT6Q/povoOfR8egldTn9Hb6F30fvpI/QZup6+Rt+ln3C4HA2OAceCY8dx4/hygjgRnGjOME4CZwxnPKeAM5Mzl1PKWc2p4OziHOCc4NRxrnOaSANX5xpxrbguXF9uCDeSO5g7ipvJncSdzi3hlnLXcqu4Ndxj3DruDe5jnoCnzxPxXHgBvDDeAJ6YN4Y3iTeDN5+3glfB28M7xqvnNfKe8zX55nxnvj8/nD+In8DP4xfyS/jL+Jv4e/kn+A38BwKBwEhgL/ARhAliBcmCCYIZgq8F6wQ7BUcElwRNQqHQROgs7CyMFMYJs4WFwnnC1cIdwqPCBuEjFXUVSxVPle4qg1XSVaaolKisVNmuclTlispTVR1VW1V/1UjVeNVxqrNUy1SrVA+rNqg+VdNVs1frrBatlqw2WW2u2lq1vWrn1e6pq6u3U/dT76eepP6R+lz19eo/qterP9bQ03DSCNEYqpGjMVNjucZOjTMa9zQ1Ne00AzUHa2ZrztQs19yt+YvmIy19LVetcK14rXytBVoVWke1bmmrattqB2l/oD1eu0R7o/Zh7Rs6qjp2OiE6cTqTdBbobNE5pdOkq6/roRupm6Y7Q3el7n7dq3pCPTu9bnrxegV63+rt1rukz9W31g/RF+t/rF+mv1e/wUBgYG8QbpBsUGSwxuCQQaOhnmFHwxjDsYYLDLcZ1hlxjeyMwo1SjWYZbTA6afSkjUWboDaSNtParG1ztM1DYzPjQGOJ8XTjdcYnjJ+YiEy6maSYfG6y2eSCKc/UybSfaZ7pItO9pjfMDMwCzMRm0802mJ0155g7mUeZTzD/1vygeZNFW4seFhkW8yx2W9xoa9Q2sG1y2+K229tes9S37GKZZFlsucPyd5GhKEiUKpor2iNqtDK3CrPKsVpidcjqaTv7dgPaTWm3rt0FazVrX+tR1sXW1daNNpY2vW0m2qyyOWurautrm2j7lW2N7UM7e7uBdp/Ybba7am9sH24/3n6V/XkHTYeuDmMcSh2OOwocfR1THL92rHXiOHk5JTotcDrszHH2dk5y/tr5SHt+e7/26e1L259y0XAJcsl1WeVS72rk2st1iutm11tuNm6D3T53q3F77u7lnupe5n7OQ8+jp8cUjyqPu55OnmLPBZ7HO2h26N4hv0NlhzsdnTtKOi7qeNpL36u31yde1V5/ePt4Z3qv9b7mY+MzwmehzylfA9++vjN8f/Tj+wX75ftt9Xvs7+2f7b/B/3aAS0BKwMqAq53sO0k6lXW61Lld57jOSzrXdRF1GdHlmy51Xa26xnUt7fproHVgfOCywCtBjkHJQauDbgW7B2cGbwp+GOIf8mHIzlBuaI/Q6aGHuul1G9BtfrdfurfrntB9VffGHl49JvTYGcYPiwj7POxUuEW4OLw8vLGnT88Pe+6J0IjoHzE/4tdeTr0ye1X15vTu2fuL3uf72PZJ77M5kooMj/wi8kJf+75j+v7QT9Cvb78F/S5HeURNjKrpr99/eP+V/R9EB0fPij43wGFAzoDqGO2YoTHlMQ8Hhg6cM7BukNugDwcdiDWNTYqtHCwcHDN42eCmId2GfDmkYajX0MKhJ4fZDxs7bP8Hph+kfrBtuPbwuOEbR/BHDByxcsSzuMi40rimkeEjF45sFIeIvxJfjw+ML46/JuksmSO5MqrzqDmjriZ0Tvgi4Vpi18SSxBtJIUnzk+4khyUvTn6YEpmyPEWaOjB1XZpK2oi0Lel66Snpe0a3HT129JEM54zCjLox/mO+HNOYGZG5LIvOGpZVmW1ALlMHcxxypubU53bJXZD7KC8mb+NY3bHpYw+Ocxo3bdyV8d3HL53AmyCeUD3RauLkifUfBn24ZBI9aeSk6nzr/IL8ho96fLRistrklMk/T3GfMmfK/Y8HflxVYFHwUcGlqT2mrirUKswsPPVJwCeLP+V9mvTpoWkdps2b9nx6/PSfityLSoqezRDP+Okzj8/mfiadOWrmoVnesxbNFsxOn33y866fr5ijO2f8nEtf9P6iolhUPL34/pfDv9xf0rFk8VdqX+V8VTe319zKeTbzZs97Nj9x/okFwQvWLTRfOG3hw6/jvz66KHDR2sUWi4sWP/km6ZvTS3osqSi1Ky35VvBt7reXy2LKapb6Li1fZrqsaNkfy9OX162IWrGn3Ke8fKX5ylmrOKtyVl1bPXR17ZrQNZVrXdYuWWe0rmg9tT5n/e/fjfju5IaIDdUbfTeu/d72+4Wb9DdNr6ArxlU0bk7cXFcZW3lkS88t1VUBVZt+cP1h+VarrQu2GW6btV1te8F26Y7xO5p2Zuy8sSth16Xq4dXndg/afXxPvz2H9kbs/XFf9327a4JqdvzY+cet+/33b/nJ96fNB7wPVBz0OrjpZ6+fNx3yPlRx2OdwZa1fbdWRTke2H+16dNex0GP7jocfP3Ciz4kjJwecPH1q6Km60/Gnr55JPXPnbO7Zp+c+Os8/P/2CzoWSX8x/Kb3oeHFdnXfdtvrQ+oO/9v/13CXxpeu/Zf32rKHgsublkiuWV8qvel7deq37tdrfh/zecD3j+tMbhTd1by685XDr+9uBtw82DmpsuJN5R3p3xj2Te8vvd7xf3dS36ZcHaQ+ePpz+yOTRise+j2ueDHxy5WneM+GzuX84/lH1POL5eWmaVPo/LX7Mrg5NAAA="
-	            }
-	        ]
-	    }
-	];
-	//# sourceMappingURL=small-sun.js.map
-
-/***/ },
-/* 200 */
-/***/ function(module, exports) {
-
-	"use strict";
-	var CommandDraw = (function () {
-	    function CommandDraw(canvas) {
-	        this._canvas = canvas;
-	        return this;
-	    }
-	    CommandDraw.prototype.canExecute = function () {
-	        return true;
-	    };
-	    CommandDraw.prototype.execute = function (args) {
-	        var drawInfo = args;
-	        var ctx = drawInfo.ctx;
-	        var rect = drawInfo.rect;
-	        var canvas = this._canvas;
-	        if (canvas) {
-	            var w = rect.w >> 0;
-	            var h = rect.h >> 0;
-	            if (canvas.width !== w || canvas.height !== h) {
-	                canvas.width = w;
-	                canvas.height = h;
-	            }
-	            ctx.drawImage(canvas, 0, 0);
-	        }
-	        return true;
-	    };
-	    CommandDraw.create = function (canvas) {
-	        return new CommandDraw(canvas);
-	    };
-	    return CommandDraw;
-	}());
-	exports.CommandDraw = CommandDraw;
-	;
-	//# sourceMappingURL=command-draw.js.map
-
-/***/ },
-/* 201 */
-/***/ function(module, exports, __webpack_require__) {
-
-	"use strict";
-	var qtk_1 = __webpack_require__(2);
-	var CommandNew = (function () {
-	    function CommandNew(viewModal, choiceInfo) {
-	        this._viewModal = viewModal;
-	        this._choiceInfo = choiceInfo;
-	    }
-	    CommandNew.prototype.canExecute = function () {
-	        return true;
-	    };
-	    CommandNew.prototype.execute = function (args) {
-	        var viewModal = this._viewModal;
-	        console.log("CommandNew");
-	        qtk_1.InteractionRequest.choice(this._choiceInfo, function (ret) {
-	            var arr = ret.value;
-	            if (arr && arr.length) {
-	                var template = arr[0].text;
-	                viewModal.createDoc(template);
-	            }
-	        });
-	        return true;
-	    };
-	    CommandNew.create = function (viewModal, templates) {
-	        var choiceInfo = qtk_1.ChoiceInfo.create("Please choose a template", false, 300, 300);
-	        templates.forEach(function (item) {
-	            choiceInfo.addOption(item);
-	        });
-	        return new CommandNew(viewModal, choiceInfo);
-	    };
-	    return CommandNew;
-	}());
-	exports.CommandNew = CommandNew;
-	;
-	//# sourceMappingURL=command-new.js.map
-
-/***/ },
-/* 202 */
-/***/ function(module, exports, __webpack_require__) {
-
-	"use strict";
-	var qtk_1 = __webpack_require__(2);
-	var CommandOpen = (function () {
-	    function CommandOpen(viewModal) {
-	        this._viewModal = viewModal;
-	    }
-	    CommandOpen.prototype.canExecute = function () {
-	        var viewModal = this._viewModal;
-	        var docList = viewModal.getDocList();
-	        return docList && docList.length > 0;
-	    };
-	    CommandOpen.prototype.execute = function (args) {
-	        var viewModal = this._viewModal;
-	        var docList = viewModal.getDocList();
-	        var choiceInfo = qtk_1.ChoiceInfo.create("Open...", false, 300, 300);
-	        docList.forEach(function (item) {
-	            choiceInfo.addOption(item);
-	        });
-	        qtk_1.InteractionRequest.choice(choiceInfo, function (ret) {
-	            var arr = ret.value;
-	            if (arr && arr.length) {
-	                var fileName = arr[0].text;
-	                viewModal.openDoc(fileName);
-	            }
-	        });
-	        return true;
-	    };
-	    CommandOpen.create = function (viewModal) {
-	        return new CommandOpen(viewModal);
-	    };
-	    return CommandOpen;
-	}());
-	exports.CommandOpen = CommandOpen;
-	;
-	//# sourceMappingURL=command-open.js.map
-
-/***/ },
-/* 203 */
-/***/ function(module, exports, __webpack_require__) {
-
-	"use strict";
-	var qtk_1 = __webpack_require__(2);
-	var CommandSave = (function () {
-	    function CommandSave(viewModal, isSaveAs) {
-	        this._isSaveAs = isSaveAs;
-	        this._viewModal = viewModal;
-	        this._inputInfo = qtk_1.InputInfo.create("Please input file name:", null);
-	    }
-	    CommandSave.prototype.canExecute = function () {
-	        return true;
-	    };
-	    CommandSave.prototype.execute = function (args) {
-	        var viewModal = this._viewModal;
-	        var fileName = viewModal.getDocName();
-	        if (!fileName || this._isSaveAs) {
-	            qtk_1.InteractionRequest.input(this._inputInfo, function (ret) {
-	                if (ret.value) {
-	                    viewModal.saveDoc(ret.value);
-	                }
-	            });
-	        }
-	        else {
-	            viewModal.saveDoc(fileName);
-	            qtk_1.InteractionRequest.toast(qtk_1.ToastInfo.create("Save done."));
-	        }
-	        return true;
-	    };
-	    CommandSave.create = function (viewModal, isSaveAs) {
-	        return new CommandSave(viewModal, isSaveAs);
-	    };
-	    return CommandSave;
-	}());
-	exports.CommandSave = CommandSave;
-	;
-	//# sourceMappingURL=command-save.js.map
-
-/***/ },
-/* 204 */
-/***/ function(module, exports, __webpack_require__) {
-
-	"use strict";
-	var saveAs = __webpack_require__(205).default;
-	var qtk_1 = __webpack_require__(2);
-	var CommandExport = (function () {
-	    function CommandExport(viewModal, choiceInfo) {
-	        this._viewModal = viewModal;
-	        this._choiceInfo = choiceInfo;
-	    }
-	    CommandExport.prototype.canExecute = function () {
-	        return true;
-	    };
-	    CommandExport.prototype.execute = function (args) {
-	        var viewModal = this._viewModal;
-	        qtk_1.InteractionRequest.choice(this._choiceInfo, function (ret) {
-	            var arr = ret.value;
-	            if (arr && arr.length) {
-	                var format = arr[0].text;
-	                var result = viewModal.exportDoc(format);
-	                if (result) {
-	                    var blob = new Blob([result], { type: 'text/plain;charset=utf-8' });
-	                    saveAs(blob, 'particles.json');
-	                }
-	            }
-	        });
-	        return true;
-	    };
-	    CommandExport.create = function (viewModal) {
-	        var formatList = viewModal.getFormatList();
-	        var choiceInfo = qtk_1.ChoiceInfo.create("Export as...", false, 300, 200);
-	        formatList.forEach(function (item) {
-	            choiceInfo.addOption(item);
-	        });
-	        return new CommandExport(viewModal, choiceInfo);
-	    };
-	    return CommandExport;
-	}());
-	exports.CommandExport = CommandExport;
-	;
-	//# sourceMappingURL=command-export.js.map
-
-/***/ },
-/* 205 */
-/***/ function(module, exports) {
-
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-	/* FileSaver.js
-	 * A saveAs() FileSaver implementation.
-	 *
-	 * By Eli Grey, http://eligrey.com
-	 * ES6ified by Cole Chamberlain, https://github.com/cchamberlain
-	 *
-	 * License: MIT
-	 *   See https://github.com/eligrey/FileSaver.js/blob/master/LICENSE.md
-	 */
-
-	/*global self */
-	/*jslint bitwise: true, indent: 4, laxbreak: true, laxcomma: true, smarttabs: true, plusplus: true */
-
-	/*! @source http://purl.eligrey.com/github/FileSaver.js/blob/master/FileSaver.js */
-
-	var saveAs = window.saveAs || function (view) {
-	  // IE <10 is explicitly unsupported
-	  if (typeof navigator !== 'undefined' && /MSIE [1-9]\./.test(navigator.userAgent)) return;
-	  var doc = view.document;
-	  // only get URL when necessary in case Blob.js hasn't overridden it yet
-	  var get_URL = function get_URL() {
-	    return view.URL || view.webkitURL || view;
-	  };
-	  var save_link = doc.createElementNS('http://www.w3.org/1999/xhtml', 'a');
-	  var can_use_save_link = 'download' in save_link;
-	  var click = function click(node) {
-	    var event = new MouseEvent('click');
-	    node.dispatchEvent(event);
-	  };
-	  var is_safari = /Version\/[\d\.]+.*Safari/.test(navigator.userAgent);
-	  var webkit_req_fs = view.webkitRequestFileSystem;
-	  var req_fs = view.requestFileSystem || webkit_req_fs || view.mozRequestFileSystem;
-	  var throw_outside = function throw_outside(ex) {
-	    (view.setImmediate || view.setTimeout)(function () {
-	      throw ex;
-	    }, 0);
-	  };
-	  var force_saveable_type = 'application/octet-stream';
-	  var fs_min_size = 0;
-	  // the Blob API is fundamentally broken as there is no "downloadfinished" event to subscribe to
-	  var arbitrary_revoke_timeout = 1000 * 40; // in ms
-	  var revoke = function revoke(file) {
-	    var revoker = function revoker() {
-	      if (typeof file === 'string') // file is an object URL
-	        get_URL().revokeObjectURL(file);else // file is a File
-	        file.remove();
-	    };
-	    /* // Take note W3C:
-	    var
-	      uri = typeof file === "string" ? file : file.toURL()
-	    , revoker = function(evt) {
-	      // idealy DownloadFinishedEvent.data would be the URL requested
-	      if (evt.data === uri) {
-	        if (typeof file === "string") { // file is an object URL
-	          get_URL().revokeObjectURL(file);
-	        } else { // file is a File
-	          file.remove();
-	        }
-	      }
-	    }
-	    ;
-	    view.addEventListener("downloadfinished", revoker);
-	    */
-	    setTimeout(revoker, arbitrary_revoke_timeout);
-	  };
-	  var dispatch = function dispatch(filesaver, event_types, event) {
-	    event_types = [].concat(event_types);
-	    var i = event_types.length;
-	    while (i--) {
-	      var listener = filesaver['on' + event_types[i]];
-	      if (typeof listener === 'function') {
-	        try {
-	          listener.call(filesaver, event || filesaver);
-	        } catch (ex) {
-	          throw_outside(ex);
-	        }
-	      }
-	    }
-	  };
-	  var auto_bom = function auto_bom(blob) {
-	    // prepend BOM for UTF-8 XML and text/* types (including HTML)
-	    if (/^\s*(?:text\/\S*|application\/xml|\S*\/\S*\+xml)\s*;.*charset\s*=\s*utf-8/i.test(blob.type)) return new Blob(['﻿', blob], { type: blob.type });
-	    return blob;
-	  };
-
-	  var FileSaver = function FileSaver(blob, name, no_auto_bom) {
-	    _classCallCheck(this, FileSaver);
-
-	    if (!no_auto_bom) blob = auto_bom(blob);
-	    // First try a.download, then web filesystem, then object URLs
-	    var filesaver = this,
-	        type = blob.type,
-	        blob_changed = false,
-	        object_url,
-	        target_view,
-	        dispatch_all = function dispatch_all() {
-	      dispatch(filesaver, 'writestart progress write writeend'.split(' '));
-	    }
-	    // on any filesys errors revert to saving with object URLs
-	    ,
-	        fs_error = function fs_error() {
-	      if (target_view && is_safari && typeof FileReader !== 'undefined') {
-	        // Safari doesn't allow downloading of blob urls
-	        var reader = new FileReader();
-	        reader.onloadend = function () {
-	          var base64Data = reader.result;
-	          target_view.location.href = 'data:attachment/file' + base64Data.slice(base64Data.search(/[,;]/));
-	          filesaver.readyState = filesaver.DONE;
-	          dispatch_all();
-	        };
-	        reader.readAsDataURL(blob);
-	        filesaver.readyState = filesaver.INIT;
-	        return;
-	      }
-	      // don't create more object URLs than needed
-	      if (blob_changed || !object_url) {
-	        object_url = get_URL().createObjectURL(blob);
-	      }
-	      if (target_view) {
-	        target_view.location.href = object_url;
-	      } else {
-	        var new_tab = view.open(object_url, '_blank');
-	        if (new_tab === undefined && is_safari) {
-	          //Apple do not allow window.open, see http://bit.ly/1kZffRI
-	          view.location.href = object_url;
-	        }
-	      }
-	      filesaver.readyState = filesaver.DONE;
-	      dispatch_all();
-	      revoke(object_url);
-	    },
-	        abortable = function abortable(func) {
-	      return function () {
-	        if (filesaver.readyState !== filesaver.DONE) {
-	          return func.apply(this, arguments);
-	        }
-	      };
-	    },
-	        create_if_not_found = { create: true, exclusive: false },
-	        slice;
-
-	    filesaver.readyState = filesaver.INIT;
-	    if (!name) {
-	      name = 'download';
-	    }
-	    if (can_use_save_link) {
-	      object_url = get_URL().createObjectURL(blob);
-	      setTimeout(function () {
-	        save_link.href = object_url;
-	        save_link.download = name;
-	        click(save_link);
-	        dispatch_all();
-	        revoke(object_url);
-	        filesaver.readyState = filesaver.DONE;
-	      });
-	      return;
-	    }
-	    // Object and web filesystem URLs have a problem saving in Google Chrome when
-	    // viewed in a tab, so I force save with application/octet-stream
-	    // http://code.google.com/p/chromium/issues/detail?id=91158
-	    // Update: Google errantly closed 91158, I submitted it again:
-	    // https://code.google.com/p/chromium/issues/detail?id=389642
-	    if (view.chrome && type && type !== force_saveable_type) {
-	      slice = blob.slice || blob.webkitSlice;
-	      blob = slice.call(blob, 0, blob.size, force_saveable_type);
-	      blob_changed = true;
-	    }
-	    // Since I can't be sure that the guessed media type will trigger a download
-	    // in WebKit, I append .download to the filename.
-	    // https://bugs.webkit.org/show_bug.cgi?id=65440
-	    if (webkit_req_fs && name !== 'download') {
-	      name += '.download';
-	    }
-	    if (type === force_saveable_type || webkit_req_fs) {
-	      target_view = view;
-	    }
-	    if (!req_fs) {
-	      fs_error();
-	      return;
-	    }
-	    fs_min_size += blob.size;
-	    req_fs(view.TEMPORARY, fs_min_size, abortable(function (fs) {
-	      fs.root.getDirectory('saved', create_if_not_found, abortable(function (dir) {
-	        var save = function save() {
-	          dir.getFile(name, create_if_not_found, abortable(function (file) {
-	            file.createWriter(abortable(function (writer) {
-	              writer.onwriteend = function (event) {
-	                target_view.location.href = file.toURL();
-	                filesaver.readyState = filesaver.DONE;
-	                dispatch(filesaver, 'writeend', event);
-	                revoke(file);
-	              };
-	              writer.onerror = function () {
-	                var error = writer.error;
-	                if (error.code !== error.ABORT_ERR) {
-	                  fs_error();
-	                }
-	              };
-	              'writestart progress write abort'.split(' ').forEach(function (event) {
-	                writer['on' + event] = filesaver['on' + event];
-	              });
-	              writer.write(blob);
-	              filesaver.abort = function () {
-	                writer.abort();
-	                filesaver.readyState = filesaver.DONE;
-	              };
-	              filesaver.readyState = filesaver.WRITING;
-	            }), fs_error);
-	          }), fs_error);
-	        };
-	        dir.getFile(name, { create: false }, abortable(function (file) {
-	          // delete file if it already exists
-	          file.remove();
-	          save();
-	        }), abortable(function (ex) {
-	          if (ex.code === ex.NOT_FOUND_ERR) {
-	            save();
-	          } else {
-	            fs_error();
-	          }
-	        }));
-	      }), fs_error);
-	    }), fs_error);
-	  };
-
-	  var FS_proto = FileSaver.prototype;
-	  var saveAs = function saveAs(blob, name, no_auto_bom) {
-	    return new FileSaver(blob, name, no_auto_bom);
-	  };
-
-	  // IE 10+ (native saveAs)
-	  if (typeof navigator !== 'undefined' && navigator.msSaveOrOpenBlob) {
-	    return function (blob, name, no_auto_bom) {
-	      if (!no_auto_bom) blob = auto_bom(blob);
-	      return navigator.msSaveOrOpenBlob(blob, name || 'download');
-	    };
-	  }
-
-	  FS_proto.abort = function () {
-	    var filesaver = this;
-	    filesaver.readyState = filesaver.DONE;
-	    dispatch(filesaver, 'abort');
-	  };
-	  FS_proto.readyState = FS_proto.INIT = 0;
-	  FS_proto.WRITING = 1;
-	  FS_proto.DONE = 2;
-
-	  FS_proto.error = FS_proto.onwritestart = FS_proto.onprogress = FS_proto.onwrite = FS_proto.onabort = FS_proto.onerror = FS_proto.onwriteend = null;
-
-	  return saveAs;
-	}(typeof self !== 'undefined' && self || typeof window !== 'undefined' && window || undefined.content);
-	// `self` is undefined in Firefox for Android content script context
-	// while `this` is nsIContentFrameMessageManager
-	// with an attribute `content` that corresponds to the window
-
-	exports.default = saveAs;
-
-/***/ },
-/* 206 */
-/***/ function(module, exports, __webpack_require__) {
-
-	"use strict";
-	var qtk_1 = __webpack_require__(2);
-	var CommandAbout = (function () {
-	    function CommandAbout(viewModal, propsInfo) {
-	        this._viewModal = viewModal;
-	        this._propsInfo = propsInfo;
-	    }
-	    CommandAbout.prototype.canExecute = function () {
-	        return true;
-	    };
-	    CommandAbout.prototype.execute = function (args) {
-	        qtk_1.InteractionRequest.props(this._propsInfo, function (ret) {
-	        });
-	        return true;
-	    };
-	    CommandAbout.create = function (viewModal, engine) {
-	        var data = {
-	            author: "Li XianJing",
-	            email: "xianjimli@hotmail.com",
-	            home: "https://github.com/qtoolkit/qtk",
-	            engine: engine
-	        };
-	        var descJson = [
-	            { type: "text-readonly", name: "Author", path: "author" },
-	            { type: "link", name: "Email", path: "email" },
-	            { type: "link", name: "Home", path: "home" },
-	            { type: "link", name: "Engine", path: "engine" },
-	        ];
-	        var pagePropsDesc = qtk_1.PagePropsDesc.create("About", descJson);
-	        var propsInfo = qtk_1.PropsInfo.create(pagePropsDesc, data, false, 300);
-	        return new CommandAbout(viewModal, propsInfo);
-	    };
-	    return CommandAbout;
-	}());
-	exports.CommandAbout = CommandAbout;
-	;
-	//# sourceMappingURL=command-about.js.map
-
-/***/ },
-/* 207 */
-/***/ function(module, exports, __webpack_require__) {
-
-	"use strict";
-	var qtk_1 = __webpack_require__(2);
-	var CommandRemove = (function () {
-	    function CommandRemove(viewModal) {
-	        this._viewModal = viewModal;
-	    }
-	    CommandRemove.prototype.canExecute = function () {
-	        var viewModal = this._viewModal;
-	        var docList = viewModal.getDocList();
-	        return docList && docList.length > 0;
-	    };
-	    CommandRemove.prototype.confirmRemove = function (items) {
-	        var viewModal = this._viewModal;
-	        var fileNames = items.map(function (item) {
-	            return item.text;
-	        }).join(",");
-	        var info = qtk_1.ConfirmationInfo.create("Are you sure to remove " + fileNames + " ?", 300);
-	        qtk_1.InteractionRequest.confirm(info, function (ret) {
-	            if (info.confirmed) {
-	                items.forEach(function (item) {
-	                    viewModal.removeDoc(item.text);
-	                });
-	            }
-	        });
-	    };
-	    CommandRemove.prototype.execute = function (args) {
-	        var _this = this;
-	        var viewModal = this._viewModal;
-	        var docList = viewModal.getDocList();
-	        var choiceInfo = qtk_1.ChoiceInfo.create("Remove...", true, 300, 300);
-	        docList.forEach(function (item) {
-	            choiceInfo.addOption(item);
-	        });
-	        qtk_1.InteractionRequest.choice(choiceInfo, function (ret) {
-	            var arr = ret.value;
-	            if (arr && arr.length) {
-	                _this.confirmRemove(arr);
-	            }
-	        });
-	        return true;
-	    };
-	    CommandRemove.create = function (viewModal) {
-	        return new CommandRemove(viewModal);
-	    };
-	    return CommandRemove;
-	}());
-	exports.CommandRemove = CommandRemove;
-	;
-	//# sourceMappingURL=command-remove.js.map
-
-/***/ },
-/* 208 */
-/***/ function(module, exports) {
-
-	"use strict";
-	var CommandContent = (function () {
-	    function CommandContent(viewModal, helpURL) {
-	        this._viewModal = viewModal;
-	        this._helpURL = helpURL;
-	    }
-	    CommandContent.prototype.canExecute = function () {
-	        return true;
-	    };
-	    CommandContent.prototype.execute = function (args) {
-	        console.log("CommandContent");
-	        window.open(this._helpURL, "_blank");
-	        return true;
-	    };
-	    CommandContent.create = function (viewModal, helpURL) {
-	        return new CommandContent(viewModal, helpURL);
-	    };
-	    return CommandContent;
-	}());
-	exports.CommandContent = CommandContent;
-	;
-	//# sourceMappingURL=command-content.js.map
-
-/***/ },
-/* 209 */
-/***/ function(module, exports, __webpack_require__) {
-
-	"use strict";
-	__webpack_require__(196);
-	function createCocos2dEmitter(emitter, data) {
-	    if (!emitter) {
-	        emitter = new ParticleEmitter();
-	    }
-	    var opts = {};
-	    opts.maxParticles = data.maxParticles;
-	    opts.angle = data.angle.first;
-	    opts.angleVar = data.angle.second;
-	    opts.duration = data.duration;
-	    opts.blendFuncSource = data.blendFuncSource;
-	    opts.blendFuncDestination = data.blendFuncDestination;
-	    opts.startColorRed = data.startColorRed;
-	    opts.startColorGreen = data.startColorGreen;
-	    opts.startColorBlue = data.startColorBlue;
-	    opts.startColorAlpha = data.startColorAlpha;
-	    opts.startColorVarianceRed = data.startColorVarianceRed;
-	    opts.startColorVarianceGreen = data.startColorVarianceGreen;
-	    opts.startColorVarianceBlue = data.startColorVarianceBlue;
-	    opts.startColorVarianceAlpha = data.startColorVarianceAlpha;
-	    opts.finishColorRed = data.finishColorRed;
-	    opts.finishColorGreen = data.finishColorGreen;
-	    opts.finishColorBlue = data.finishColorBlue;
-	    opts.finishColorAlpha = data.finishColorAlpha;
-	    opts.finishColorVarianceRed = data.finishColorVarianceRed;
-	    opts.finishColorVarianceGreen = data.finishColorVarianceGreen;
-	    opts.finishColorVarianceBlue = data.finishColorVarianceBlue;
-	    opts.finishColorVarianceAlpha = data.finishColorVarianceAlpha;
-	    opts.startParticleSize = data.startParticleSize.first;
-	    opts.startParticleSizeVariance = data.startParticleSize.second;
-	    opts.finishParticleSize = data.finishParticleSize.first;
-	    opts.finishParticleSizeVariance = data.finishParticleSize.second;
-	    opts.sourcePositionx = data.sourcePositionx;
-	    opts.sourcePositiony = data.sourcePositiony;
-	    opts.sourcePositionVariancex = data.sourcePositionVariancex;
-	    opts.sourcePositionVariancey = data.sourcePositionVariancey;
-	    opts.rotationStart = data.rotationStart.first;
-	    opts.rotationStartVariance = data.rotationStart.second;
-	    opts.rotationEnd = data.rotationEnd.first;
-	    opts.rotationEndVariance = data.rotationEnd.second;
-	    opts.particleLifespan = data.particleLifespan.first;
-	    opts.particleLifespanVariance = data.particleLifespan.second;
-	    opts.emitterType = data.emitterType;
-	    opts.imageData = data.textureImageData;
-	    opts.imageData = "https://qtoolkit.github.io/demos/assets/theme/default/images/x2/info.png";
-	    if (data.maxRadius) {
-	        opts.maxRadius = data.maxRadius.first;
-	        opts.maxRadiusVariance = data.maxRadius.second;
-	        opts.rotatePerSecond = data.rotatePerSecond.first;
-	        opts.rotatePerSecondVariance = data.rotatePerSecond.second;
-	    }
-	    opts.speed = data.speed.first;
-	    opts.speedVariance = data.speed.first;
-	    opts.gravityx = data.gravityx;
-	    opts.gravityy = data.gravityy;
-	    opts.radialAcceleration = data.radialAcceleration.first;
-	    opts.radialAccelVariance = data.radialAcceleration.second;
-	    opts.tangentialAcceleration = data.tangentialAcceleration.first;
-	    opts.tangentialAccelVariance = data.tangentialAcceleration.second;
-	    emitter.reload(opts);
-	    return emitter;
-	}
-	exports.createCocos2dEmitter = createCocos2dEmitter;
-	//# sourceMappingURL=cocos2d-wrapper.js.map
-
-/***/ },
-/* 210 */
-/***/ function(module, exports, __webpack_require__) {
-
-	"use strict";
-	var __extends = (this && this.__extends) || function (d, b) {
-	    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
-	    function __() { this.constructor = d; }
-	    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-	};
-	var qtk_1 = __webpack_require__(2);
-	var ParticlesViewModal = (function (_super) {
-	    __extends(ParticlesViewModal, _super);
-	    function ParticlesViewModal() {
-	        _super.apply(this, arguments);
-	    }
-	    ParticlesViewModal.prototype.getDocList = function () {
-	        return this.docList;
-	    };
-	    ParticlesViewModal.prototype.getDocName = function () {
-	        return this.fileName;
-	    };
-	    ParticlesViewModal.prototype.getPropsDesc = function () {
-	        return this.doc.propsDesc;
-	    };
-	    ParticlesViewModal.prototype.saveDoc = function (fileName) {
-	        var data = JSON.stringify(this.doc.toJson(), null, "\t");
-	        this.fileName = fileName;
-	        this.storage.set(fileName, data);
-	        this.updateDocList();
-	    };
-	    /*
-	     * subclass should implement it.
-	     */
-	    ParticlesViewModal.prototype.createEmitter = function () {
-	    };
-	    ParticlesViewModal.prototype.createDoc = function (templateName) {
-	        this.doc.fromTemplate(templateName);
-	        this.data = this.doc.data;
-	        this.createEmitter();
-	        this.updateDocList();
-	    };
-	    ParticlesViewModal.prototype.openDoc = function (fileName) {
-	        var data = this.storage.get(fileName);
-	        var json = JSON.parse(data);
-	        this.doc.fromJson(json);
-	        this.data = this.doc.data;
-	        this.createEmitter();
-	        this.fileName = fileName;
-	        this.updateDocList();
-	    };
-	    ParticlesViewModal.prototype.removeDoc = function (fileName) {
-	        this.storage.remove(fileName);
-	        this.updateDocList();
-	    };
-	    ParticlesViewModal.prototype.getFormatList = function () {
-	        return ["json"];
-	    };
-	    ParticlesViewModal.prototype.exportDoc = function (format) {
-	        if (format.indexOf("json") >= 0) {
-	            return JSON.stringify(this.data, null, "\t");
-	        }
-	        return null;
-	    };
-	    ParticlesViewModal.prototype.setProp = function (path, value, converter, validationRule) {
-	        var result = _super.prototype.setProp.call(this, path, value, converter, validationRule);
-	        this.createEmitter();
-	        return result;
-	    };
-	    ParticlesViewModal.prototype.getTemplateList = function () {
-	        return this.doc.getTemplateList();
-	    };
-	    ParticlesViewModal.prototype.updateDocList = function () {
-	        this.docList = this.storage.getItems();
-	    };
-	    return ParticlesViewModal;
-	}(qtk_1.ViewModal));
-	exports.ParticlesViewModal = ParticlesViewModal;
-	;
-	//# sourceMappingURL=particles-view-modal.js.map
-
-/***/ },
-/* 211 */
 /***/ function(module, exports) {
 
 	"use strict";

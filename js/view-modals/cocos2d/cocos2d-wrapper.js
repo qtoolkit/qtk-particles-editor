@@ -43,7 +43,7 @@ function createCocos2dEmitter(emitter, data) {
     opts.particleLifespanVariance = data.particleLifespan.second;
     opts.emitterType = data.emitterType;
     opts.imageData = data.textureImageData;
-    opts.imageData = "https://qtoolkit.github.io/demos/assets/theme/default/images/x2/info.png";
+    opts.imageData = "https://www.baidu.com/img/bd_logo1.png";
     if (data.maxRadius) {
         opts.maxRadius = data.maxRadius.first;
         opts.maxRadiusVariance = data.maxRadius.second;

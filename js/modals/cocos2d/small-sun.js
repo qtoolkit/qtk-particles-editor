@@ -252,8 +252,8 @@ exports.smallSun = [
                 "converter": "particleLifespan",
                 "path": "particleLifespan",
                 "value": {
-                    "first": 0.20000000298023224,
-                    "second": 0.8553000092506409
+                    "first": 200,
+                    "second": 100
                 }
             },
             {

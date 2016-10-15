@@ -63,11 +63,13 @@ var Cocos2dViewModal = (function (_super) {
     };
     Cocos2dViewModal.create = function (options) {
         var viewModal = new Cocos2dViewModal(options.storage);
+        var lastTime = Date.now();
         function update() {
+            var dt = (Date.now() - lastTime) / 1000;
             var canvas = viewModal.canvas;
             var emitter = viewModal.particlesEmitter;
             if (emitter) {
-                emitter.update(1000 / 60);
+                emitter.update(dt);
                 var ctx = canvas.getContext("2d");
                 emitter.draw(ctx);
             }
