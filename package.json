@@ -1,14 +1,14 @@
 {
   "name": "qtk-particles-editor",
   "version": "1.0.0",
-  "description": "A template project",
+  "description": "a particles editor framework implemented with qtk",
   "main": "js/index.js",
   "types": "js/index.d.ts",
   "scripts": {
     "start": "node app.js",
     "clean": "rm -rf doc index.js coverage/ src/*.js",
     "test": "tsc && webpack && ./node_modules/karma/bin/karma start",
-    "build": "tsc && webpack && cp -fv index.js www",
+    "build": "tsc && webpack",
     "gendoc": "./node_modules/typedoc/bin/typedoc --mode modules --out doc src/"
   },
   "repository": {

@@ -1,7 +1,28 @@
 "use strict";
+var document_1 = require("./modals/document");
+exports.Document = document_1.Document;
+var draw_info_1 = require("./modals/draw-info");
+exports.DrawInfo = draw_info_1.DrawInfo;
 var particles_editor_1 = require("./particles-editor");
-function run() {
-    particles_editor_1.ParticlesEditor.run();
-}
-exports.run = run;
+exports.ParticlesEditor = particles_editor_1.ParticlesEditor;
+var command_draw_1 = require("./view-modals/command-draw");
+exports.CommandDraw = command_draw_1.CommandDraw;
+var command_new_1 = require("./view-modals/command-new");
+exports.CommandNew = command_new_1.CommandNew;
+var command_open_1 = require("./view-modals/command-open");
+exports.CommandOpen = command_open_1.CommandOpen;
+var command_save_1 = require("./view-modals/command-save");
+exports.CommandSave = command_save_1.CommandSave;
+var command_export_1 = require("./view-modals/command-export");
+exports.CommandExport = command_export_1.CommandExport;
+var command_about_1 = require("./view-modals/command-about");
+exports.CommandAbout = command_about_1.CommandAbout;
+var command_remove_1 = require("./view-modals/command-remove");
+exports.CommandRemove = command_remove_1.CommandRemove;
+var command_content_1 = require("./view-modals/command-content");
+exports.CommandContent = command_content_1.CommandContent;
+var particles_view_modal_1 = require("./view-modals/particles-view-modal");
+exports.ParticlesViewModal = particles_view_modal_1.ParticlesViewModal;
+var iparticles_view_modal_1 = require("./view-modals/iparticles-view-modal");
+exports.ParticlesViewModalFactory = iparticles_view_modal_1.ParticlesViewModalFactory;
 //# sourceMappingURL=index.js.map
