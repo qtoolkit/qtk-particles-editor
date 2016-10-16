@@ -97,6 +97,9 @@ var editor =
 	        this.propsDesc = json.propsDesc.map(function (item) {
 	            return qtk_1.PagePropsDesc.create(item.title, item.propsDesc.items);
 	        });
+	        if (!this.data.backGroundColor) {
+	            this.data.backGroundColor = "#f6f6f6";
+	        }
 	        return this;
 	    };
 	    Document.prototype.fromTemplate = function (name) {
@@ -112,6 +115,9 @@ var editor =
 	            return pagePropsDesc;
 	        });
 	        this.data = data;
+	        if (!this.data.backGroundColor) {
+	            this.data.backGroundColor = "#f6f6f6";
+	        }
 	        return this;
 	    };
 	    Document.prototype.getTemplateList = function () {
@@ -30527,10 +30533,11 @@ var editor =
 	        this._style = qtk_1.Style.create();
 	    }
 	    ParticlesView.prototype.drawBackground = function (ctx, style) {
-	        ctx.fillStyle = "#F6F6F6";
+	        var viewModal = this.viewModal;
+	        ctx.fillStyle = viewModal.getProp("/backGroundColor") || "#F6F6F6";
 	        ctx.fillRect(0, 0, this.w, this.h);
 	        this._drawInfo.init(ctx, qtk_1.Rect.rect.init(0, 0, this.w, this.h));
-	        this.viewModal.execCommand("draw", this._drawInfo);
+	        viewModal.execCommand("draw", this._drawInfo);
 	        this.requestRedraw();
 	        return this;
 	    };
@@ -30572,9 +30579,10 @@ var editor =
 	        var viewModal = this.viewModal;
 	        var propsDesc = viewModal.getPropsDesc();
 	        this._style = qtk_1.Style.create();
+	        var titleW = viewModal.getPropTitleWidth();
 	        this.removeAllChildren();
 	        propsDesc.forEach(function (pageDesc) {
-	            var page = qtk_1.PropertyPage.create({ titleW: "40%" });
+	            var page = qtk_1.PropertyPage.create({ titleW: titleW });
 	            page.initWithPropsDesc(pageDesc.propsDesc);
 	            var titlePage = _this.addPage(pageDesc.title, page);
 	            page.bindData(viewModal);
@@ -31228,12 +31236,26 @@ var editor =
 	    function __() { this.constructor = d; }
 	    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 	};
+	var document_1 = __webpack_require__(1);
 	var qtk_1 = __webpack_require__(2);
 	var ParticlesViewModal = (function (_super) {
 	    __extends(ParticlesViewModal, _super);
-	    function ParticlesViewModal() {
-	        _super.apply(this, arguments);
+	    function ParticlesViewModal(data, type, storage) {
+	        _super.call(this, data);
+	        this.type = type;
+	        this.storage = storage;
+	        this.canvas = document.createElement('canvas');
+	        this.registerCommands();
+	        this.registerConverters();
+	        this.doc = document_1.Document.create();
+	        this.loadTemp();
+	        var me = this;
+	        window.onunload = function () {
+	            me.saveTemp();
+	        };
 	    }
+	    ParticlesViewModal.prototype.onDocReplaced = function () {
+	    };
 	    ParticlesViewModal.prototype.getDocList = function () {
 	        return this.docList;
 	    };
@@ -31249,25 +31271,26 @@ var editor =
 	        this.storage.set(fileName, data);
 	        this.updateDocList();
 	    };
-	    /*
-	     * subclass should implement it.
-	     */
-	    ParticlesViewModal.prototype.createEmitter = function () {
+	    ParticlesViewModal.prototype.syncData = function (data) {
+	        this.data = data;
+	        this.createEmitter();
+	        this.updateDocList();
+	        this.onDocReplaced();
 	    };
 	    ParticlesViewModal.prototype.createDoc = function (templateName) {
+	        this.fileName = null;
 	        this.doc.fromTemplate(templateName);
-	        this.data = this.doc.data;
-	        this.createEmitter();
-	        this.updateDocList();
+	        this.syncData(this.doc.data);
+	    };
+	    ParticlesViewModal.prototype.loadData = function (json) {
+	        this.doc.fromJson(json);
+	        this.syncData(this.doc.data);
 	    };
 	    ParticlesViewModal.prototype.openDoc = function (fileName) {
+	        this.fileName = fileName;
 	        var data = this.storage.get(fileName);
 	        var json = JSON.parse(data);
-	        this.doc.fromJson(json);
-	        this.data = this.doc.data;
-	        this.createEmitter();
-	        this.fileName = fileName;
-	        this.updateDocList();
+	        this.loadData(json);
 	    };
 	    ParticlesViewModal.prototype.removeDoc = function (fileName) {
 	        this.storage.remove(fileName);
@@ -31292,6 +31315,30 @@ var editor =
 	    };
 	    ParticlesViewModal.prototype.updateDocList = function () {
 	        this.docList = this.storage.getItems();
+	    };
+	    ParticlesViewModal.prototype.getPropTitleWidth = function () {
+	        return "30%";
+	    };
+	    ParticlesViewModal.prototype.saveTemp = function () {
+	        var docInfo = {
+	            fileName: this.fileName,
+	            doc: this.doc.toJson()
+	        };
+	        var data = JSON.stringify(docInfo, null, "\t");
+	        var key = "temp." + this.type;
+	        localStorage.setItem(key, data);
+	    };
+	    ParticlesViewModal.prototype.loadTemp = function () {
+	        var key = "temp." + this.type;
+	        var str = localStorage.getItem(key);
+	        if (str) {
+	            var data = JSON.parse(str);
+	            this.fileName = data.fileName;
+	            this.loadData(data.doc);
+	        }
+	        else {
+	            this.createDoc("default");
+	        }
 	    };
 	    return ParticlesViewModal;
 	}(qtk_1.ViewModal));

@@ -17,6 +17,9 @@ var Document = (function () {
         this.propsDesc = json.propsDesc.map(function (item) {
             return qtk_1.PagePropsDesc.create(item.title, item.propsDesc.items);
         });
+        if (!this.data.backGroundColor) {
+            this.data.backGroundColor = "#f6f6f6";
+        }
         return this;
     };
     Document.prototype.fromTemplate = function (name) {
@@ -32,6 +35,9 @@ var Document = (function () {
             return pagePropsDesc;
         });
         this.data = data;
+        if (!this.data.backGroundColor) {
+            this.data.backGroundColor = "#f6f6f6";
+        }
         return this;
     };
     Document.prototype.getTemplateList = function () {

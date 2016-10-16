@@ -14,10 +14,11 @@ var ParticlesView = (function (_super) {
         this._style = qtk_1.Style.create();
     }
     ParticlesView.prototype.drawBackground = function (ctx, style) {
-        ctx.fillStyle = "#F6F6F6";
+        var viewModal = this.viewModal;
+        ctx.fillStyle = viewModal.getProp("/backGroundColor") || "#F6F6F6";
         ctx.fillRect(0, 0, this.w, this.h);
         this._drawInfo.init(ctx, qtk_1.Rect.rect.init(0, 0, this.w, this.h));
-        this.viewModal.execCommand("draw", this._drawInfo);
+        viewModal.execCommand("draw", this._drawInfo);
         this.requestRedraw();
         return this;
     };

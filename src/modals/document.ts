@@ -23,6 +23,9 @@ export class Document implements IDocument {
 			return PagePropsDesc.create(item.title, item.propsDesc.items);
 		});
 
+		if(!this.data.backGroundColor) {
+			this.data.backGroundColor = "#f6f6f6";
+		}
 		return this;
 	}
 
@@ -42,6 +45,9 @@ export class Document implements IDocument {
 		});
 
 		this.data = data;
+		if(!this.data.backGroundColor) {
+			this.data.backGroundColor = "#f6f6f6";
+		}
 
 		return this;
 	}

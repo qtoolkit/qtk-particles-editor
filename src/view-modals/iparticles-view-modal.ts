@@ -12,6 +12,11 @@ export interface IParticlesViewModal extends IViewModal {
 	createDoc(templateName:string);
 	removeDoc(fileName:string);
 	exportDoc(format:string) : string;
+	
+	getPropTitleWidth() : string;
+
+	saveTemp();
+	loadTemp();
 };
 	
 export class ParticlesViewModalFactory {

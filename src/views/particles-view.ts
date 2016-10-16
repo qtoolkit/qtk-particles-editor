@@ -7,11 +7,13 @@ export class ParticlesView extends Widget {
 	protected _drawInfo = DrawInfo.create();
 
 	protected drawBackground(ctx:any, style:Style) : Widget {
-		ctx.fillStyle = "#F6F6F6";
+		var viewModal = this.viewModal;
+
+		ctx.fillStyle = viewModal.getProp("/backGroundColor") || "#F6F6F6";
 		ctx.fillRect(0, 0, this.w, this.h);
 
 		this._drawInfo.init(ctx, Rect.rect.init(0, 0, this.w, this.h));
-		this.viewModal.execCommand("draw", this._drawInfo);
+		viewModal.execCommand("draw", this._drawInfo);
 		this.requestRedraw();
 
 		return this;

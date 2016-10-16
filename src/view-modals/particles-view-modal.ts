@@ -1,16 +1,30 @@
 import {CommandOpen} from "./command-open";
 import {CommandSave} from "./command-save";
 import {IDocument} from "../modals/idocument";
+import {Document} from "../modals/document";
 import {IParticlesViewModal} from "./iparticles-view-modal";
 import {ViewModal, IViewModal, ValidationResult} from "qtk"
 import {PropsDesc, PagePropsDesc, Events, ItemsStorage} from "qtk";
 
 export abstract class ParticlesViewModal extends ViewModal implements IParticlesViewModal {
+	public canvas : any;
+	protected type : string;
 	protected doc : IDocument;
 	protected fileName : string;
 	protected storage : ItemsStorage;
 	protected docList : Array<string>;
 	
+	/*
+	 * subclass should implement it.
+	 */
+	protected abstract createEmitter();
+	protected abstract registerConverters();
+	protected abstract registerCommands();
+
+	protected onDocReplaced() {
+	}
+
+
 	public getDocList() : Array<string> {
 		return this.docList;
 	}
@@ -31,30 +45,30 @@ export abstract class ParticlesViewModal extends ViewModal implements IParticles
 		this.updateDocList();
 	}
 
-	/*
-	 * subclass should implement it.
-	 */
-	protected createEmitter() {
+	protected syncData(data:any) {
+		this.data = data;
+		this.createEmitter();
+		this.updateDocList();
+		this.onDocReplaced();
 	}
 
 	public createDoc(templateName:string) {
+		this.fileName = null;
 		this.doc.fromTemplate(templateName);
-		this.data = this.doc.data;
-		
-		this.createEmitter();
-		this.updateDocList();
+		this.syncData(this.doc.data);
 	}
-	
+
+	protected loadData(json:any) {
+		this.doc.fromJson(json);
+		this.syncData(this.doc.data);
+	}
+
 	public openDoc(fileName:string) {
+		this.fileName = fileName;
 		var data = this.storage.get(fileName);
 		var json = JSON.parse(data);
 
-		this.doc.fromJson(json);
-		this.data = this.doc.data;
-
-		this.createEmitter();
-		this.fileName = fileName;
-		this.updateDocList();
+		this.loadData(json);
 	}
 
 	public removeDoc(fileName:string) {
@@ -87,6 +101,50 @@ export abstract class ParticlesViewModal extends ViewModal implements IParticles
 
 	protected updateDocList() {
 		this.docList = this.storage.getItems();
+	}
+	
+	public getPropTitleWidth() : string {
+		return "30%";
+	}
+	
+	public saveTemp() {
+		var docInfo = {
+			fileName : this.fileName,
+			doc : this.doc.toJson()
+		};
+		var data = JSON.stringify(docInfo, null, "\t"); 
+		var key = "temp." + this.type;
+		localStorage.setItem(key, data);
+	}
+
+	public loadTemp(){
+		var key = "temp." + this.type;
+		var str = localStorage.getItem(key);
+		if(str) {
+			var data = JSON.parse(str);
+			this.fileName = data.fileName;
+			this.loadData(data.doc);
+		}else{
+			this.createDoc("default");
+		}
+	}
+
+	constructor(data:any, type:string, storage:ItemsStorage) {
+		super(data);
+		this.type = type;
+		this.storage = storage;
+		this.canvas = document.createElement('canvas');
+		
+		this.registerCommands();
+		this.registerConverters();
+		this.doc = Document.create();
+		
+		this.loadTemp();
+		
+		var me = this;
+		window.onunload = function() {
+			me.saveTemp();
+		}
 	}
 };
 
