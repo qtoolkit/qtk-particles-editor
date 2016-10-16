@@ -30382,11 +30382,12 @@ var editor =
 	var themeDataURL = "https://qtoolkit.github.io/demos/assets/theme/default/theme.json";
 	var ParticlesEditor = (function (_super) {
 	    __extends(ParticlesEditor, _super);
-	    function ParticlesEditor() {
-	        _super.apply(this, arguments);
+	    function ParticlesEditor(appName, viewModalName) {
+	        _super.call(this, appName);
+	        this._viewModalName = viewModalName;
 	    }
 	    ParticlesEditor.prototype.getViewModalName = function () {
-	        return null;
+	        return this._viewModalName;
 	    };
 	    ParticlesEditor.prototype.createViewModal = function () {
 	        var name = this.getViewModalName();
@@ -30398,8 +30399,8 @@ var editor =
 	        var viewModal = this.createViewModal();
 	        this.mainWindow = main_window_1.MainWindow.create({ w: vp.w, h: vp.h, app: this, viewModal: viewModal });
 	    };
-	    ParticlesEditor.run = function () {
-	        var app = new ParticlesEditor("particles-editor");
+	    ParticlesEditor.run = function (appName, viewModalName) {
+	        var app = new ParticlesEditor(appName, viewModalName);
 	        app.init({ sysThemeDataURL: themeDataURL });
 	        app.run();
 	        return app;
@@ -30566,11 +30567,12 @@ var editor =
 	    ParticleProperties.prototype.getStyle = function () {
 	        return this._style;
 	    };
-	    ParticleProperties.prototype.onCreated = function () {
+	    ParticleProperties.prototype.createUI = function () {
 	        var _this = this;
 	        var viewModal = this.viewModal;
 	        var propsDesc = viewModal.getPropsDesc();
 	        this._style = qtk_1.Style.create();
+	        this.removeAllChildren();
 	        propsDesc.forEach(function (pageDesc) {
 	            var page = qtk_1.PropertyPage.create({ titleW: "40%" });
 	            page.initWithPropsDesc(pageDesc.propsDesc);
@@ -30578,6 +30580,16 @@ var editor =
 	            page.bindData(viewModal);
 	            titlePage.collapsed = false;
 	        });
+	    };
+	    ParticleProperties.prototype.onCreated = function () {
+	        var _this = this;
+	        var viewModal = this.viewModal;
+	        viewModal.onChange(function (evt) {
+	            if (evt.prop === "/") {
+	                _this.createUI();
+	            }
+	        });
+	        this.createUI();
 	    };
 	    ParticleProperties.create = function (options) {
 	        var view = new ParticleProperties();

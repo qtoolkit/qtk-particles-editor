@@ -1,4 +1,4 @@
-import {TitleContent, PagePropsDesc, PropertyPage, PropertySheets, Style} from "qtk";
+import {TitleContent, PagePropsDesc, PropertyPage, PropertySheets, Style, Events} from "qtk";
 import {IParticlesViewModal} from "../view-modals/iparticles-view-modal";
 
 export class ParticleProperties extends PropertySheets {
@@ -9,11 +9,12 @@ export class ParticleProperties extends PropertySheets {
 		return this._style;
 	}
 
-	protected onCreated() {
+	protected createUI() {
 		var viewModal = this.viewModal;
 		var propsDesc = viewModal.getPropsDesc();
-		
 		this._style = Style.create(); 
+		
+		this.removeAllChildren();
 		propsDesc.forEach((pageDesc:PagePropsDesc) => {
 			var page = PropertyPage.create({titleW:"40%"});
 			page.initWithPropsDesc(pageDesc.propsDesc);
@@ -21,6 +22,16 @@ export class ParticleProperties extends PropertySheets {
 			page.bindData(viewModal);
 			titlePage.collapsed = false;
 		});
+	}
+
+	protected onCreated() {
+		var viewModal = this.viewModal;
+		viewModal.onChange((evt:Events.PropChangeEvent) => {
+			if(evt.prop === "/") {
+				this.createUI();
+			}
+		});
+		this.createUI();
 	}
 
 	public static TYPE = "particles-view";

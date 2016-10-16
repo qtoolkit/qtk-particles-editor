@@ -13,11 +13,12 @@ var ParticleProperties = (function (_super) {
     ParticleProperties.prototype.getStyle = function () {
         return this._style;
     };
-    ParticleProperties.prototype.onCreated = function () {
+    ParticleProperties.prototype.createUI = function () {
         var _this = this;
         var viewModal = this.viewModal;
         var propsDesc = viewModal.getPropsDesc();
         this._style = qtk_1.Style.create();
+        this.removeAllChildren();
         propsDesc.forEach(function (pageDesc) {
             var page = qtk_1.PropertyPage.create({ titleW: "40%" });
             page.initWithPropsDesc(pageDesc.propsDesc);
@@ -25,6 +26,16 @@ var ParticleProperties = (function (_super) {
             page.bindData(viewModal);
             titlePage.collapsed = false;
         });
+    };
+    ParticleProperties.prototype.onCreated = function () {
+        var _this = this;
+        var viewModal = this.viewModal;
+        viewModal.onChange(function (evt) {
+            if (evt.prop === "/") {
+                _this.createUI();
+            }
+        });
+        this.createUI();
     };
     ParticleProperties.create = function (options) {
         var view = new ParticleProperties();

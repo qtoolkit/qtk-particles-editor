@@ -4,6 +4,7 @@ export declare class ParticleProperties extends PropertySheets {
     protected _style: Style;
     protected viewModal: IParticlesViewModal;
     getStyle(): Style;
+    protected createUI(): void;
     protected onCreated(): void;
     static TYPE: string;
     static create(options: any): ParticleProperties;
