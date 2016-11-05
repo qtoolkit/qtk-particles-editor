@@ -4,7 +4,7 @@ var __extends = (this && this.__extends) || function (d, b) {
     function __() { this.constructor = d; }
     d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 };
-var draw_info_1 = require("../modals/draw-info");
+var draw_info_1 = require("../models/draw-info");
 var qtk_1 = require("qtk");
 var ParticlesView = (function (_super) {
     __extends(ParticlesView, _super);
@@ -14,11 +14,11 @@ var ParticlesView = (function (_super) {
         this._style = qtk_1.Style.create();
     }
     ParticlesView.prototype.drawBackground = function (ctx, style) {
-        var viewModal = this.viewModal;
-        ctx.fillStyle = viewModal.getProp("/backGroundColor") || "#F6F6F6";
+        var viewModel = this.viewModel;
+        ctx.fillStyle = viewModel.getProp("/backGroundColor") || "#F6F6F6";
         ctx.fillRect(0, 0, this.w, this.h);
         this._drawInfo.init(ctx, qtk_1.Rect.rect.init(0, 0, this.w, this.h));
-        viewModal.execCommand("draw", this._drawInfo);
+        viewModel.execCommand("draw", this._drawInfo);
         this.requestRedraw();
         return this;
     };

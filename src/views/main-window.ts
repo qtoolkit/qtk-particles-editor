@@ -2,27 +2,27 @@ import {Direction, Application} from "qtk";
 import {MainMenuBar} from "./main-menu-bar";
 import {ParticlesView} from "./particles-view";
 import {ParticleProperties} from "./particle-properties";
-import {IParticlesViewModal} from "../view-modals/iparticles-view-modal";
-import {Widget, IViewModal, WindowNormal, DockLayouter, DockLayouterParam} from "qtk"
+import {IParticlesViewModel} from "../view-models/iparticles-view-model";
+import {Widget, IViewModel, WindowNormal, DockLayouter, DockLayouterParam} from "qtk"
 
 export class MainWindow extends WindowNormal {
-	protected viewModal : IParticlesViewModal;
+	protected viewModel : IParticlesViewModel;
 
 	protected onCreated() {
 		super.onCreated();
 
-		var viewModal = this.viewModal;
+		var viewModel = this.viewModel;
 		this.childrenLayouter = DockLayouter.create();
 
-		this.addChild(MainMenuBar.create({viewModal:viewModal, 
+		this.addChild(MainMenuBar.create({viewModel:viewModel, 
 			layoutParam : DockLayouterParam.create({position:Direction.TOP, size:30})
 		}));
 		
-		this.addChild(ParticlesView.create({viewModal:viewModal, 
+		this.addChild(ParticlesView.create({viewModel:viewModel, 
 			layoutParam : DockLayouterParam.create({position:Direction.LEFT, size:"70%"})
 		}));
 		
-		this.addChild(ParticleProperties.create({viewModal:viewModal, 
+		this.addChild(ParticleProperties.create({viewModel:viewModel, 
 			layoutParam : DockLayouterParam.create({position:Direction.LEFT, size:"100%"})
 		}));
 	}

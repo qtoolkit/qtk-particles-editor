@@ -1,8 +1,8 @@
 import { PropertySheets, Style } from "qtk";
-import { IParticlesViewModal } from "../view-modals/iparticles-view-modal";
+import { IParticlesViewModel } from "../view-models/iparticles-view-model";
 export declare class ParticleProperties extends PropertySheets {
     protected _style: Style;
-    protected viewModal: IParticlesViewModal;
+    protected viewModel: IParticlesViewModel;
     getStyle(): Style;
     protected createUI(): void;
     protected onCreated(): void;

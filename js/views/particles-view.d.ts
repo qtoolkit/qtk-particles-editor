@@ -1,8 +1,8 @@
-import { DrawInfo } from "../modals/draw-info";
-import { IViewModal, Widget, Style } from "qtk";
+import { DrawInfo } from "../models/draw-info";
+import { IViewModel, Widget, Style } from "qtk";
 export declare class ParticlesView extends Widget {
     protected _style: Style;
-    protected viewModal: IViewModal;
+    protected viewModel: IViewModel;
     protected _drawInfo: DrawInfo;
     protected drawBackground(ctx: any, style: Style): Widget;
     getStyle(): Style;

@@ -1,9 +1,9 @@
 import {Events, DockLayouterParam, Direction} from "qtk";
 import {Widget, MenuBar, MenuBarItem, Menu, MenuItem} from "qtk";
-import {ParticlesViewModal} from "../view-modals/particles-view-modal";
+import {ParticlesViewModel} from "../view-models/particles-view-model";
 
 export class MainMenuBar extends MenuBar {
-	protected viewModal : ParticlesViewModal;
+	protected viewModel : ParticlesViewModel;
 
 	protected onFileMenu(menu:Menu) {
 		menu.w = 128;
@@ -15,7 +15,7 @@ export class MainMenuBar extends MenuBar {
 		menu.addSpace();
 		menu.addItem("Export", null).set({dataBindingRule:{click:{command:"export"}}});
 
-		menu.bindData(this.viewModal);
+		menu.bindData(this.viewModel);
 	}
 	
 	protected onHelpMenu(menu:Menu) {
@@ -23,7 +23,7 @@ export class MainMenuBar extends MenuBar {
 		menu.addItem("Content", null).set({dataBindingRule:{click:{command:"content"}}});
 		menu.addItem("About", null).set({dataBindingRule:{click:{command:"about"}}});
 
-		menu.bindData(this.viewModal);
+		menu.bindData(this.viewModel);
 	}
 
 	protected onCreated() {

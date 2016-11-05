@@ -19,13 +19,13 @@ var MainMenuBar = (function (_super) {
         menu.addItem("Remove", null).set({ dataBindingRule: { click: { command: "remove" } } });
         menu.addSpace();
         menu.addItem("Export", null).set({ dataBindingRule: { click: { command: "export" } } });
-        menu.bindData(this.viewModal);
+        menu.bindData(this.viewModel);
     };
     MainMenuBar.prototype.onHelpMenu = function (menu) {
         menu.w = 128;
         menu.addItem("Content", null).set({ dataBindingRule: { click: { command: "content" } } });
         menu.addItem("About", null).set({ dataBindingRule: { click: { command: "about" } } });
-        menu.bindData(this.viewModal);
+        menu.bindData(this.viewModel);
     };
     MainMenuBar.prototype.onCreated = function () {
         _super.prototype.onCreated.call(this);

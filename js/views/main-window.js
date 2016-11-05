@@ -16,15 +16,15 @@ var MainWindow = (function (_super) {
     }
     MainWindow.prototype.onCreated = function () {
         _super.prototype.onCreated.call(this);
-        var viewModal = this.viewModal;
+        var viewModel = this.viewModel;
         this.childrenLayouter = qtk_2.DockLayouter.create();
-        this.addChild(main_menu_bar_1.MainMenuBar.create({ viewModal: viewModal,
+        this.addChild(main_menu_bar_1.MainMenuBar.create({ viewModel: viewModel,
             layoutParam: qtk_2.DockLayouterParam.create({ position: qtk_1.Direction.TOP, size: 30 })
         }));
-        this.addChild(particles_view_1.ParticlesView.create({ viewModal: viewModal,
+        this.addChild(particles_view_1.ParticlesView.create({ viewModel: viewModel,
             layoutParam: qtk_2.DockLayouterParam.create({ position: qtk_1.Direction.LEFT, size: "70%" })
         }));
-        this.addChild(particle_properties_1.ParticleProperties.create({ viewModal: viewModal,
+        this.addChild(particle_properties_1.ParticleProperties.create({ viewModel: viewModel,
             layoutParam: qtk_2.DockLayouterParam.create({ position: qtk_1.Direction.LEFT, size: "100%" })
         }));
     };

@@ -1,19 +1,19 @@
-import {DrawInfo} from "../modals/draw-info"
-import {IViewModal, Widget, Style, Rect} from "qtk";
+import {DrawInfo} from "../models/draw-info"
+import {IViewModel, Widget, Style, Rect} from "qtk";
 
 export class ParticlesView extends Widget {
 	protected _style : Style;
-	protected viewModal : IViewModal;
+	protected viewModel : IViewModel;
 	protected _drawInfo = DrawInfo.create();
 
 	protected drawBackground(ctx:any, style:Style) : Widget {
-		var viewModal = this.viewModal;
+		var viewModel = this.viewModel;
 
-		ctx.fillStyle = viewModal.getProp("/backGroundColor") || "#F6F6F6";
+		ctx.fillStyle = viewModel.getProp("/backGroundColor") || "#F6F6F6";
 		ctx.fillRect(0, 0, this.w, this.h);
 
 		this._drawInfo.init(ctx, Rect.rect.init(0, 0, this.w, this.h));
-		viewModal.execCommand("draw", this._drawInfo);
+		viewModel.execCommand("draw", this._drawInfo);
 		this.requestRedraw();
 
 		return this;

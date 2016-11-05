@@ -15,23 +15,23 @@ var ParticleProperties = (function (_super) {
     };
     ParticleProperties.prototype.createUI = function () {
         var _this = this;
-        var viewModal = this.viewModal;
-        var propsDesc = viewModal.getPropsDesc();
+        var viewModel = this.viewModel;
+        var propsDesc = viewModel.getPropsDesc();
         this._style = qtk_1.Style.create();
-        var titleW = viewModal.getPropTitleWidth();
+        var titleW = viewModel.getPropTitleWidth();
         this.removeAllChildren();
         propsDesc.forEach(function (pageDesc) {
             var page = qtk_1.PropertyPage.create({ titleW: titleW });
             page.initWithPropsDesc(pageDesc.propsDesc);
             var titlePage = _this.addPage(pageDesc.title, page);
-            page.bindData(viewModal);
+            page.bindData(viewModel);
             titlePage.collapsed = false;
         });
     };
     ParticleProperties.prototype.onCreated = function () {
         var _this = this;
-        var viewModal = this.viewModal;
-        viewModal.onChange(function (evt) {
+        var viewModel = this.viewModel;
+        viewModel.onChange(function (evt) {
             if (evt.prop === "/") {
                 _this.createUI();
             }
