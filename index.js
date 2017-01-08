@@ -58706,7 +58706,7 @@ var editor =
 	var main_window_1 = __webpack_require__(360);
 	var qtk_1 = __webpack_require__(2);
 	var iparticles_view_model_1 = __webpack_require__(364);
-	var themeDataURL = "https://qtoolkit.github.io/demos/assets/theme/default/theme.json";
+	var themeDataURL = "https://qtoolkit.github.io/demos/assets/theme/default/theme.js";
 	var ParticlesEditor = (function (_super) {
 	    __extends(ParticlesEditor, _super);
 	    function ParticlesEditor(appName, viewModelName) {
@@ -58728,8 +58728,11 @@ var editor =
 	    };
 	    ParticlesEditor.run = function (appName, viewModelName) {
 	        var app = new ParticlesEditor(appName, viewModelName);
-	        app.init({ sysThemeDataURL: themeDataURL });
-	        app.run();
+	        var assetsURLs = [themeDataURL];
+	        app.preload(assetsURLs, function onLoad() {
+	            app.init({ sysThemeDataURL: themeDataURL });
+	            app.run();
+	        });
 	        return app;
 	    };
 	    return ParticlesEditor;

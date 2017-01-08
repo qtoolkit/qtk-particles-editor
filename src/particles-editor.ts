@@ -3,7 +3,7 @@ import {MainWindow} from "./views/main-window";
 import {Application, ItemsStorage, Events} from "qtk";
 import {IParticlesViewModel, ParticlesViewModelFactory} from "./view-models/iparticles-view-model";
 
-var themeDataURL = "https://qtoolkit.github.io/demos/assets/theme/default/theme.json";
+var themeDataURL = "https://qtoolkit.github.io/demos/assets/theme/default/theme.js";
 
 export class ParticlesEditor extends Application {
 	public mainWindow : MainWindow;
@@ -32,8 +32,12 @@ export class ParticlesEditor extends Application {
 
 	public static run(appName:string, viewModelName:string) : ParticlesEditor {
 		var app = new ParticlesEditor(appName, viewModelName);
-		app.init({sysThemeDataURL:themeDataURL});
-		app.run();
+		var assetsURLs = [themeDataURL];
+
+		app.preload(assetsURLs, function onLoad() {
+			app.init({sysThemeDataURL:themeDataURL});
+			app.run();
+		});
 
 		return app;
 	}

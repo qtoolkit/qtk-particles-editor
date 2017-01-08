@@ -7,7 +7,7 @@ var __extends = (this && this.__extends) || function (d, b) {
 var main_window_1 = require("./views/main-window");
 var qtk_1 = require("qtk");
 var iparticles_view_model_1 = require("./view-models/iparticles-view-model");
-var themeDataURL = "https://qtoolkit.github.io/demos/assets/theme/default/theme.json";
+var themeDataURL = "https://qtoolkit.github.io/demos/assets/theme/default/theme.js";
 var ParticlesEditor = (function (_super) {
     __extends(ParticlesEditor, _super);
     function ParticlesEditor(appName, viewModelName) {
@@ -29,8 +29,11 @@ var ParticlesEditor = (function (_super) {
     };
     ParticlesEditor.run = function (appName, viewModelName) {
         var app = new ParticlesEditor(appName, viewModelName);
-        app.init({ sysThemeDataURL: themeDataURL });
-        app.run();
+        var assetsURLs = [themeDataURL];
+        app.preload(assetsURLs, function onLoad() {
+            app.init({ sysThemeDataURL: themeDataURL });
+            app.run();
+        });
         return app;
     };
     return ParticlesEditor;
